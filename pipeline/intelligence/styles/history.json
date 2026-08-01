@@ -1,0 +1,48 @@
+{
+  "style_id": "history",
+  "name": "History",
+  "source": "vidrush_theme:History",
+  "topic_keywords": [
+    "history", "historical", "ancient", "empire", "war", "ww2", "ww1",
+    "civil war", "revolution", "century", "medieval", "roman", "dynasty",
+    "biography", "president", "king", "queen", "fall of", "rise of",
+    "history of", "archive", "forgotten", "legacy", "origin of"
+  ],
+  "format_words": ["history of", "rise and fall", "the story of", "documentary"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "documentary",
+    "sentence_rhythm": "authoritative, steady, complete declarative sentences",
+    "hook_form": "context-setting statement or paradox",
+    "tone_words": ["authoritative", "reflective", "serious", "analytical"]
+  },
+  "vo": {
+    "pace": "measured",
+    "energy": "authoritative",
+    "pause_markers": [".", "—"],
+    "voice_hint": "documentary narrator, warm and authoritative"
+  },
+  "visual": {
+    "palette": {"bg": "#16120c", "text": "#efe6d5", "accent": "#b8860b"},
+    "typography": {"family": "classic serif", "weight": 600, "tracking": "normal"},
+    "title_animation": "mask_wipe_slow",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "opacity_cut_4f",
+    "grade": {"darken": 0.5, "vignette": "medium", "grain": 0.05}
+  },
+  "motion": {
+    "transition": {"xfade": "dissolve", "frames": 14, "chapter_xfade": "circleopen"},
+    "ken_burns_zoom": 1.04,
+    "wipe_frames": 12,
+    "plate_frames": 12,
+    "hard_titles": false,
+    "allowed_easings": ["linear"],
+    "spring_allowed": false
+  },
+  "broll": {
+    "keywords": ["archive footage", "old map", "monument", "museum", "painting", "historic building", "manuscript", "battlefield", "ruins"],
+    "avoid": ["modern technology close-ups", "neon lights", "smartphones"],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": ["transition.frames", "transition.chapter_xfade", "grade.darken", "grade.grain", "ken_burns_zoom", "wipe_frames", "plate_frames", "palette", "grade.look", "motion.drift", "typography.fonts"]
+}

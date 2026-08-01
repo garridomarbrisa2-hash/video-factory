@@ -1,0 +1,64 @@
+{
+  "style_id": "ledger",
+  "name": "Ledger",
+  "source": "vidiq_audit:projects/american-ledger-vidiq.md",
+  "topic_keywords": [
+    "federal budget", "national debt", "tax money", "government spending",
+    "deficit", "treasury", "debt crisis", "fiscal", "american economy",
+    "american history", "economic history", "banking panic", "wall street crash",
+    "monopoly", "antitrust", "union", "strike", "labor", "rust belt",
+    "company town", "robber baron", "great depression", "where your taxes go",
+    "accountability", "ledger"
+  ],
+  "format_words": ["the cost of", "where the money went", "who actually paid", "i read the", "every dollar", "so you don't have to", "what they didn't tell you"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "accountability_explain",
+    "sentence_rhythm": "measured declaratives, hard stops on figures, em-dash reveals",
+    "hook_form": "specific-dollar-figure claim or personal stakes statement",
+    "tone_words": ["sober", "authoritative", "incredulous", "investigative"]
+  },
+  "vo": {
+    "pace": "measured",
+    "energy": "controlled_outrage",
+    "pause_markers": [".", "—"],
+    "voice_hint": "documentary narrator, low, steady, precise with numbers"
+  },
+  "visual": {
+    "palette": {"bg": "#0b0a08", "text": "#f4ead5", "accent": "#b21f1f"},
+    "secondary_palette": {"gold": "#c9a227", "dim": "#3a2f22"},
+    "typography": {"family": "condensed grotesque caps + mono stamps", "weight": 700, "tracking": "tight"},
+    "title_animation": "mask_wipe_slow",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "opacity_cut_3f",
+    "grade": {"darken": 0.62, "vignette": "strong", "grain": 0.05},
+    "signature_chart": "red_plunging_line",
+    "title_rule": "2-3 huge outlined caps words, one focal object, no clutter; center reserved for hook, thesis, and climax"
+  },
+  "motion": {
+    "transition": {"xfade": "fadeblack", "frames": 14},
+    "ken_burns_zoom": 1.04,
+    "wipe_frames": 12,
+    "plate_frames": 12,
+    "hard_titles": true,
+    "allowed_easings": ["linear"],
+    "spring_allowed": false
+  },
+  "broll": {
+    "keywords": [
+      "us capitol night", "federal reserve building", "stack of cash", "ledger book",
+      "old courtroom", "ink and quill", "printing press", "vintage bank interior",
+      "stock ticker tape", "empty factory floor", "coal mine", "rail yard dusk",
+      "congressional hearing", "wall street night", "dollar bill macro",
+      "grain silo", "steel mill", "abandoned main street"
+    ],
+    "avoid": ["bright lifestyle", "smiling stock-photo office", "neon tech", "beaches"],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": [
+    "transition.frames", "grade.darken", "grade.vignette", "grade.grain",
+    "ken_burns_zoom", "wipe_frames", "plate_frames", "palette",
+    "secondary_palette", "visual.signature_chart", "visual.title_rule",
+    "motion.hard_titles", "script.hook_form", "vo.energy"
+  ]
+}

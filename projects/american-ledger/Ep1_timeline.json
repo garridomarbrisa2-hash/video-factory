@@ -1,0 +1,5812 @@
+{
+  "title": "$75M in Debt to $27 Trillion - Every American Economic Machine",
+  "global_style": "ledger",
+  "asset_mode": "auto",
+  "music": null,
+  "music_duck_db": -12,
+  "loudness_target_lufs": -14,
+  "sfx_volume": 0.6,
+  "scenes": [
+    {
+      "id": 0,
+      "type": "stat",
+      "duration": 7.02,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "hook",
+      "still_motion": "push",
+      "vo_text": "In 1790, the United States owed seventy-five million dollars it couldn't pay.",
+      "props": {
+        "unit": "U.S. NATIONAL DEBT, 1790",
+        "stat_text": "$75,000,000",
+        "numeric_value": 75000000,
+        "prefix": "$",
+        "context_text": "It couldn't pay it back.",
+        "bg_image": "gen_0d02668032835a8a460b.png",
+        "document_image": "gen_0d02668032835a8a460b.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "ledger book quill candlelight 1790",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "An antique leather-bound ledger book open to a handwritten column of dates and figures, a quill and inkpot beside it, a single candle flame to the left, deep shadow, near-black background, period documentary still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\f6b9283484e9d5601a809b8d.wav",
+      "vo_duration": 6.32,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "1790,",
+          0.29
+        ],
+        [
+          "the",
+          0.446
+        ],
+        [
+          "United",
+          0.735
+        ],
+        [
+          "States",
+          1.604
+        ],
+        [
+          "owed",
+          2.183
+        ],
+        [
+          "seventy-five",
+          2.762
+        ],
+        [
+          "million",
+          3.92
+        ],
+        [
+          "dollars",
+          4.5
+        ],
+        [
+          "it",
+          5.079
+        ],
+        [
+          "couldn't",
+          5.368
+        ],
+        [
+          "pay.",
+          5.658
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "type": "stat",
+      "duration": 12.46,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "turn",
+      "still_motion": "push",
+      "transition_out": "whip",
+      "transition_note": "because the open-stakes hook snaps straight into the payoff figure",
+      "vo_text": "One hundred sixty-two years later, it produced half of everything on Earth. That gap was not smooth, and it was not inevitable. It was built, broken, and rebuilt — at least a dozen times.",
+      "props": {
+        "unit": "U.S. SHARE OF WORLD OUTPUT, 1952",
+        "stat_text": "50%",
+        "numeric_value": 50,
+        "suffix": "%",
+        "context_text": "One nation. Half the world's output.",
+        "bg_image": "gen_3bb153a1b06243a2fc83.png",
+        "document_image": "gen_3bb153a1b06243a2fc83.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1950s american factory assembly aerial",
+        "fallback_prompt": "An aerial view of a vast 1950s American industrial district, smokestacks, rail lines, boxcars, the skyline of a mid-century industrial city, warm archival color photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\c1482e93724d2db4b30d28a2.wav",
+      "vo_duration": 11.76,
+      "word_times": [
+        [
+          "One",
+          0.0
+        ],
+        [
+          "hundred",
+          0.205
+        ],
+        [
+          "sixty-two",
+          0.616
+        ],
+        [
+          "years",
+          1.233
+        ],
+        [
+          "later,",
+          1.438
+        ],
+        [
+          "it",
+          1.96
+        ],
+        [
+          "produced",
+          2.165
+        ],
+        [
+          "half",
+          2.781
+        ],
+        [
+          "of",
+          2.987
+        ],
+        [
+          "everything",
+          3.192
+        ],
+        [
+          "on",
+          4.014
+        ],
+        [
+          "Earth.",
+          4.219
+        ],
+        [
+          "That",
+          4.622
+        ],
+        [
+          "gap",
+          4.827
+        ],
+        [
+          "was",
+          5.033
+        ],
+        [
+          "not",
+          5.238
+        ],
+        [
+          "smooth,",
+          5.444
+        ],
+        [
+          "and",
+          5.76
+        ],
+        [
+          "it",
+          5.965
+        ],
+        [
+          "was",
+          6.171
+        ],
+        [
+          "not",
+          6.376
+        ],
+        [
+          "inevitable.",
+          6.582
+        ],
+        [
+          "It",
+          7.806
+        ],
+        [
+          "was",
+          8.011
+        ],
+        [
+          "built,",
+          8.217
+        ],
+        [
+          "broken,",
+          8.533
+        ],
+        [
+          "and",
+          9.055
+        ],
+        [
+          "rebuilt",
+          9.26
+        ],
+        [
+          "—",
+          9.671
+        ],
+        [
+          "at",
+          9.948
+        ],
+        [
+          "least",
+          10.154
+        ],
+        [
+          "a",
+          10.359
+        ],
+        [
+          "dozen",
+          10.565
+        ],
+        [
+          "times.",
+          10.976
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "type": "intro",
+      "duration": 5.18,
+      "energy": "mid",
+      "placement": "hero",
+      "arc_position": "context",
+      "still_motion": "push",
+      "vo_text": "Here is every machine that made America rich, and what killed each one.",
+      "props": {
+        "label": "AMERICAN LEDGER",
+        "title": "EVERY MACHINE THAT MADE AMERICA RICH",
+        "sub_hook": "And what broke each one",
+        "bg_image": "gen_0cd47b485a055e99ec9c.png",
+        "document_image": "gen_0cd47b485a055e99ec9c.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "old brass mechanical gear macro dark",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A single aged brass gear with worn teeth, macro photograph, near-black background, top-down warm key light, one focal object centered, museum artifact style"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\b8b3f128c13f0723ba231ee2.wav",
+      "vo_duration": 4.48,
+      "word_times": [
+        [
+          "Here",
+          0.0
+        ],
+        [
+          "is",
+          0.205
+        ],
+        [
+          "every",
+          0.41
+        ],
+        [
+          "machine",
+          1.026
+        ],
+        [
+          "that",
+          1.437
+        ],
+        [
+          "made",
+          1.642
+        ],
+        [
+          "America",
+          1.847
+        ],
+        [
+          "rich,",
+          2.668
+        ],
+        [
+          "and",
+          2.984
+        ],
+        [
+          "what",
+          3.19
+        ],
+        [
+          "killed",
+          3.395
+        ],
+        [
+          "each",
+          3.805
+        ],
+        [
+          "one.",
+          4.011
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "duration": 14.14,
+      "energy": "mid",
+      "placement": "hero",
+      "arc_position": "context",
+      "still_motion": "push",
+      "transition_out": "dip",
+      "transition_note": "because we open Act I on the founding-finance era — the 1790s",
+      "vo_text": "Take the number itself. Seventy-five million dollars. For a nation of four million farmers, that debt was absurd. There was no central bank. No standing tax system. Just thirteen state treasuries that couldn't agree.",
+      "props": {
+        "unit": "U.S. POPULATION, 1790 CENSUS",
+        "stat_text": "4,000,000",
+        "numeric_value": 4000000,
+        "context_text": "Farmers. No central bank. No tax system.",
+        "bg_image": "gen_d29c734e0f6a707880ef.png",
+        "document_image": "gen_d29c734e0f6a707880ef.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "colonial farmhouse field 1790 pennsylvania",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A small colonial-era farmhouse and tended field under a gray sky, 1790s Pennsylvania countryside, no people visible, cold morning light, period realistic painting"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\cd36e024af36734c1f4f4474.wav",
+      "vo_duration": 13.44,
+      "word_times": [
+        [
+          "Take",
+          0.0
+        ],
+        [
+          "the",
+          0.227
+        ],
+        [
+          "number",
+          0.454
+        ],
+        [
+          "itself.",
+          0.908
+        ],
+        [
+          "Seventy-five",
+          1.58
+        ],
+        [
+          "million",
+          2.489
+        ],
+        [
+          "dollars.",
+          2.943
+        ],
+        [
+          "For",
+          3.615
+        ],
+        [
+          "a",
+          3.842
+        ],
+        [
+          "nation",
+          4.069
+        ],
+        [
+          "of",
+          4.523
+        ],
+        [
+          "four",
+          4.75
+        ],
+        [
+          "million",
+          4.977
+        ],
+        [
+          "farmers,",
+          5.432
+        ],
+        [
+          "that",
+          6.008
+        ],
+        [
+          "debt",
+          6.235
+        ],
+        [
+          "was",
+          6.463
+        ],
+        [
+          "absurd.",
+          6.69
+        ],
+        [
+          "There",
+          7.362
+        ],
+        [
+          "was",
+          7.589
+        ],
+        [
+          "no",
+          7.816
+        ],
+        [
+          "central",
+          8.043
+        ],
+        [
+          "bank.",
+          8.497
+        ],
+        [
+          "No",
+          8.942
+        ],
+        [
+          "standing",
+          9.169
+        ],
+        [
+          "tax",
+          9.623
+        ],
+        [
+          "system.",
+          9.85
+        ],
+        [
+          "Just",
+          10.523
+        ],
+        [
+          "thirteen",
+          10.75
+        ],
+        [
+          "state",
+          11.204
+        ],
+        [
+          "treasuries",
+          11.431
+        ],
+        [
+          "that",
+          12.112
+        ],
+        [
+          "couldn't",
+          12.339
+        ],
+        [
+          "agree.",
+          12.566
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "type": "document",
+      "duration": 8.94,
+      "energy": "mid",
+      "placement": "editorial",
+      "arc_position": "evidence",
+      "still_motion": "hold",
+      "photo_move": "none",
+      "vo_text": "Alexander Hamilton saw the weakness as a weapon. In January 1790, he sent Congress the Report on Public Credit.",
+      "props": {
+        "label": "JANUARY 9, 1790",
+        "text": "REPORT ON PUBLIC CREDIT",
+        "bg_image": "gen_0d02668032835a8a460b.png",
+        "document_image": "gen_0d02668032835a8a460b.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "alexander hamilton handwriting parchment",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "An open 18th-century handwritten document on aged parchment, faded brown ink, titled 'Report on Public Credit', lying on a dark desk, single warm lamp light, archival document still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\d9cc114f68d0990c3ee98d61.wav",
+      "vo_duration": 8.24,
+      "word_times": [
+        [
+          "Alexander",
+          0.0
+        ],
+        [
+          "Hamilton",
+          0.97
+        ],
+        [
+          "saw",
+          1.698
+        ],
+        [
+          "the",
+          1.941
+        ],
+        [
+          "weakness",
+          2.183
+        ],
+        [
+          "as",
+          2.668
+        ],
+        [
+          "a",
+          2.911
+        ],
+        [
+          "weapon.",
+          3.153
+        ],
+        [
+          "In",
+          3.871
+        ],
+        [
+          "January",
+          4.114
+        ],
+        [
+          "1790,",
+          4.842
+        ],
+        [
+          "he",
+          4.973
+        ],
+        [
+          "sent",
+          5.215
+        ],
+        [
+          "Congress",
+          5.458
+        ],
+        [
+          "the",
+          5.943
+        ],
+        [
+          "Report",
+          6.186
+        ],
+        [
+          "on",
+          6.671
+        ],
+        [
+          "Public",
+          6.913
+        ],
+        [
+          "Credit.",
+          7.398
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "type": "content",
+      "duration": 12.3,
+      "layout": "plate",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "His argument was simple: assume every state war debt — twenty-five million dollars of it — and fold it into one federal obligation. Force the creditors to buy American.",
+      "props": {
+        "text": "$25,000,000 in state war debt",
+        "emphasis": "$25,000,000",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "colonial coins silver dollar 1790",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A small pile of late-1700s American silver coins and early paper currency on a dark oak table, dramatic side light, near-black background, period documentary still, one focal object"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\aeddf8af00c30e240a7ea915.wav",
+      "vo_duration": 11.600042,
+      "word_times": [
+        [
+          "His",
+          0.0
+        ],
+        [
+          "argument",
+          0.215
+        ],
+        [
+          "was",
+          0.86
+        ],
+        [
+          "simple:",
+          1.075
+        ],
+        [
+          "assume",
+          1.621
+        ],
+        [
+          "every",
+          2.05
+        ],
+        [
+          "state",
+          2.695
+        ],
+        [
+          "war",
+          2.91
+        ],
+        [
+          "debt",
+          3.125
+        ],
+        [
+          "—",
+          3.34
+        ],
+        [
+          "twenty-five",
+          3.63
+        ],
+        [
+          "million",
+          4.275
+        ],
+        [
+          "dollars",
+          4.705
+        ],
+        [
+          "of",
+          5.135
+        ],
+        [
+          "it",
+          5.35
+        ],
+        [
+          "—",
+          5.565
+        ],
+        [
+          "and",
+          5.855
+        ],
+        [
+          "fold",
+          6.07
+        ],
+        [
+          "it",
+          6.285
+        ],
+        [
+          "into",
+          6.5
+        ],
+        [
+          "one",
+          6.93
+        ],
+        [
+          "federal",
+          7.144
+        ],
+        [
+          "obligation.",
+          7.789
+        ],
+        [
+          "Force",
+          8.855
+        ],
+        [
+          "the",
+          9.07
+        ],
+        [
+          "creditors",
+          9.285
+        ],
+        [
+          "to",
+          9.93
+        ],
+        [
+          "buy",
+          10.145
+        ],
+        [
+          "American.",
+          10.36
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "type": "content",
+      "duration": 10.14,
+      "layout": "bare",
+      "placement": "float",
+      "energy": "low",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "The South hated it — they'd already paid their debts. Hamilton had to trade them the permanent capital, moved from New York to a swamp on the Potomac, to get the vote.",
+      "props": {
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "washington dc potomac river marsh 1790",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A wide flat tidal swamp along the Potomac River, 1790s, bare land with a few surveying stakes, overcast sky, period realistic painting, somber and empty"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\5641b7de654130ba7035b49b.wav",
+      "vo_duration": 9.44,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "South",
+          0.196
+        ],
+        [
+          "hated",
+          0.393
+        ],
+        [
+          "it",
+          0.786
+        ],
+        [
+          "—",
+          0.982
+        ],
+        [
+          "they'd",
+          1.247
+        ],
+        [
+          "already",
+          1.443
+        ],
+        [
+          "paid",
+          2.032
+        ],
+        [
+          "their",
+          2.229
+        ],
+        [
+          "debts.",
+          2.425
+        ],
+        [
+          "Hamilton",
+          2.81
+        ],
+        [
+          "had",
+          3.399
+        ],
+        [
+          "to",
+          3.596
+        ],
+        [
+          "trade",
+          3.792
+        ],
+        [
+          "them",
+          3.988
+        ],
+        [
+          "the",
+          4.185
+        ],
+        [
+          "permanent",
+          4.381
+        ],
+        [
+          "capital,",
+          4.97
+        ],
+        [
+          "moved",
+          5.665
+        ],
+        [
+          "from",
+          6.058
+        ],
+        [
+          "New",
+          6.255
+        ],
+        [
+          "York",
+          6.451
+        ],
+        [
+          "to",
+          6.647
+        ],
+        [
+          "a",
+          6.844
+        ],
+        [
+          "swamp",
+          7.04
+        ],
+        [
+          "on",
+          7.236
+        ],
+        [
+          "the",
+          7.433
+        ],
+        [
+          "Potomac,",
+          7.629
+        ],
+        [
+          "to",
+          8.324
+        ],
+        [
+          "get",
+          8.521
+        ],
+        [
+          "the",
+          8.717
+        ],
+        [
+          "vote.",
+          8.914
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "duration": 12.3,
+      "energy": "mid",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "push",
+      "vo_text": "He won. In February 1791 he chartered the First Bank of the United States with ten million dollars in capital. That was larger than every other American corporation combined.",
+      "props": {
+        "unit": "FIRST BANK OF THE UNITED STATES, 1791",
+        "stat_text": "$10,000,000",
+        "numeric_value": 10000000,
+        "prefix": "$",
+        "context_text": "Larger than every other U.S. corporation. Combined.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "neoclassical bank facade philadelphia 1791 columns",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A neoclassical stone bank facade with columns, Philadelphia 1791, dramatic low-angle shot, cool morning light, near-monochrome, archival photograph style"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\702d1718e767300d3546ca8b.wav",
+      "vo_duration": 11.600042,
+      "word_times": [
+        [
+          "He",
+          0.0
+        ],
+        [
+          "won.",
+          0.212
+        ],
+        [
+          "In",
+          0.628
+        ],
+        [
+          "February",
+          0.84
+        ],
+        [
+          "1791",
+          1.476
+        ],
+        [
+          "he",
+          1.476
+        ],
+        [
+          "chartered",
+          1.688
+        ],
+        [
+          "the",
+          2.324
+        ],
+        [
+          "First",
+          2.536
+        ],
+        [
+          "Bank",
+          2.748
+        ],
+        [
+          "of",
+          2.96
+        ],
+        [
+          "the",
+          3.172
+        ],
+        [
+          "United",
+          3.385
+        ],
+        [
+          "States",
+          4.021
+        ],
+        [
+          "with",
+          4.445
+        ],
+        [
+          "ten",
+          4.657
+        ],
+        [
+          "million",
+          4.869
+        ],
+        [
+          "dollars",
+          5.293
+        ],
+        [
+          "in",
+          5.717
+        ],
+        [
+          "capital.",
+          5.929
+        ],
+        [
+          "That",
+          6.769
+        ],
+        [
+          "was",
+          6.981
+        ],
+        [
+          "larger",
+          7.193
+        ],
+        [
+          "than",
+          7.617
+        ],
+        [
+          "every",
+          7.829
+        ],
+        [
+          "other",
+          8.466
+        ],
+        [
+          "American",
+          8.89
+        ],
+        [
+          "corporation",
+          9.738
+        ],
+        [
+          "combined.",
+          10.586
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "type": "content",
+      "duration": 5.42,
+      "layout": "bare",
+      "placement": "float",
+      "energy": "low",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "transition_out": "dip",
+      "transition_note": "because Act I on Hamilton closes and we dip into the cotton & canal era",
+      "vo_text": "The credit machine was built. Now it needed something to fund.",
+      "props": {
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "early american harbor sailing ships dawn",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A wooden schooner moored at a small colonial wharf at dawn, faint gold sky, calm water reflections, no people, still documentary frame"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\10c2c6b163540ac08c487be7.wav",
+      "vo_duration": 4.72,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "credit",
+          0.259
+        ],
+        [
+          "machine",
+          0.778
+        ],
+        [
+          "was",
+          1.297
+        ],
+        [
+          "built.",
+          1.557
+        ],
+        [
+          "Now",
+          2.065
+        ],
+        [
+          "it",
+          2.325
+        ],
+        [
+          "needed",
+          2.584
+        ],
+        [
+          "something",
+          3.103
+        ],
+        [
+          "to",
+          3.881
+        ],
+        [
+          "fund.",
+          4.141
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "type": "content",
+      "duration": 11.02,
+      "layout": "plate",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "Eli Whitney's cotton gin, patented in 1793, was a hand-crank that let one worker clean fifty pounds of lint a day instead of five. The multiplier was brutal.",
+      "props": {
+        "text": "50 lbs per day, instead of 5",
+        "emphasis": "50 lbs",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "antique cotton gin wooden machine gears 1793",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "An early 19th-century cotton gin machine, wire-toothed rollers and wooden frame, raw cotton bolls nearby, single warm lamp, near-black background, archival industrial still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\02ed3d8d8f57043819a0557b.wav",
+      "vo_duration": 10.32,
+      "word_times": [
+        [
+          "Eli",
+          0.0
+        ],
+        [
+          "Whitney's",
+          0.484
+        ],
+        [
+          "cotton",
+          0.968
+        ],
+        [
+          "gin,",
+          1.452
+        ],
+        [
+          "patented",
+          1.825
+        ],
+        [
+          "in",
+          2.551
+        ],
+        [
+          "1793,",
+          2.793
+        ],
+        [
+          "was",
+          2.924
+        ],
+        [
+          "a",
+          3.166
+        ],
+        [
+          "hand-crank",
+          3.408
+        ],
+        [
+          "that",
+          3.892
+        ],
+        [
+          "let",
+          4.134
+        ],
+        [
+          "one",
+          4.376
+        ],
+        [
+          "worker",
+          4.618
+        ],
+        [
+          "clean",
+          5.102
+        ],
+        [
+          "fifty",
+          5.344
+        ],
+        [
+          "pounds",
+          5.828
+        ],
+        [
+          "of",
+          6.07
+        ],
+        [
+          "lint",
+          6.312
+        ],
+        [
+          "a",
+          6.554
+        ],
+        [
+          "day",
+          6.796
+        ],
+        [
+          "instead",
+          7.038
+        ],
+        [
+          "of",
+          7.522
+        ],
+        [
+          "five.",
+          7.764
+        ],
+        [
+          "The",
+          8.239
+        ],
+        [
+          "multiplier",
+          8.481
+        ],
+        [
+          "was",
+          9.207
+        ],
+        [
+          "brutal.",
+          9.449
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "duration": 15.5,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "push",
+      "vo_text": "In 1790, the United States produced three thousand bales of cotton. By 1860, it was producing nearly four million — two-thirds of world supply. Cotton alone was sixty percent of everything America sold abroad.",
+      "props": {
+        "unit": "U.S. COTTON PRODUCTION, 1860",
+        "stat_text": "4,000,000 bales",
+        "numeric_value": 4000000,
+        "context_text": "From 3,000 bales in 1790. Two-thirds of world supply. 60% of U.S. exports.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "cotton field white bolls sunrise rows",
+        "fallback_prompt": "Endless rows of white cotton bolls stretching to the horizon at first light, a single basket in the mid-ground, warm archival color film look, one vast subject"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ae9fe2c98fe24dd9bb793e58.wav",
+      "vo_duration": 14.8,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "1790,",
+          0.238
+        ],
+        [
+          "the",
+          0.366
+        ],
+        [
+          "United",
+          0.604
+        ],
+        [
+          "States",
+          1.317
+        ],
+        [
+          "produced",
+          1.793
+        ],
+        [
+          "three",
+          2.506
+        ],
+        [
+          "thousand",
+          2.744
+        ],
+        [
+          "bales",
+          3.219
+        ],
+        [
+          "of",
+          3.695
+        ],
+        [
+          "cotton.",
+          3.933
+        ],
+        [
+          "By",
+          4.637
+        ],
+        [
+          "1860,",
+          4.874
+        ],
+        [
+          "it",
+          5.003
+        ],
+        [
+          "was",
+          5.241
+        ],
+        [
+          "producing",
+          5.478
+        ],
+        [
+          "nearly",
+          6.192
+        ],
+        [
+          "four",
+          6.667
+        ],
+        [
+          "million",
+          6.905
+        ],
+        [
+          "—",
+          7.381
+        ],
+        [
+          "two-thirds",
+          7.702
+        ],
+        [
+          "of",
+          8.177
+        ],
+        [
+          "world",
+          8.415
+        ],
+        [
+          "supply.",
+          8.653
+        ],
+        [
+          "Cotton",
+          9.356
+        ],
+        [
+          "alone",
+          9.832
+        ],
+        [
+          "was",
+          10.308
+        ],
+        [
+          "sixty",
+          10.545
+        ],
+        [
+          "percent",
+          11.021
+        ],
+        [
+          "of",
+          11.496
+        ],
+        [
+          "everything",
+          11.734
+        ],
+        [
+          "America",
+          12.685
+        ],
+        [
+          "sold",
+          13.636
+        ],
+        [
+          "abroad.",
+          13.874
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "type": "content",
+      "duration": 14.14,
+      "layout": "bare",
+      "placement": "float",
+      "energy": "low",
+      "arc_position": "evidence",
+      "still_motion": "parallax",
+      "vo_text": "And the workforce that built it grew from seven hundred thousand enslaved people in 1790 to four million by 1860. Every profit, every export figure, every bank deposit downstream — built on that.",
+      "props": {
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "historical silhouette field workers dawn plantation",
+        "fallback_prompt": "Distant silhouetted field workers in a large plantation landscape at dawn, mist over rows, muted sepia archival photograph, wide restrained shot, no faces"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ff08dd2472dd55a28206ebd7.wav",
+      "vo_duration": 13.44,
+      "word_times": [
+        [
+          "And",
+          0.0
+        ],
+        [
+          "the",
+          0.244
+        ],
+        [
+          "workforce",
+          0.487
+        ],
+        [
+          "that",
+          0.974
+        ],
+        [
+          "built",
+          1.218
+        ],
+        [
+          "it",
+          1.461
+        ],
+        [
+          "grew",
+          1.705
+        ],
+        [
+          "from",
+          1.949
+        ],
+        [
+          "seven",
+          2.192
+        ],
+        [
+          "hundred",
+          2.679
+        ],
+        [
+          "thousand",
+          3.166
+        ],
+        [
+          "enslaved",
+          3.654
+        ],
+        [
+          "people",
+          4.384
+        ],
+        [
+          "in",
+          4.872
+        ],
+        [
+          "1790",
+          5.115
+        ],
+        [
+          "to",
+          5.115
+        ],
+        [
+          "four",
+          5.359
+        ],
+        [
+          "million",
+          5.602
+        ],
+        [
+          "by",
+          6.089
+        ],
+        [
+          "1860.",
+          6.333
+        ],
+        [
+          "Every",
+          6.567
+        ],
+        [
+          "profit,",
+          7.298
+        ],
+        [
+          "every",
+          7.916
+        ],
+        [
+          "export",
+          8.647
+        ],
+        [
+          "figure,",
+          9.134
+        ],
+        [
+          "every",
+          9.753
+        ],
+        [
+          "bank",
+          10.484
+        ],
+        [
+          "deposit",
+          10.727
+        ],
+        [
+          "downstream",
+          11.458
+        ],
+        [
+          "—",
+          11.945
+        ],
+        [
+          "built",
+          12.274
+        ],
+        [
+          "on",
+          12.517
+        ],
+        [
+          "that.",
+          12.761
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "type": "stat",
+      "duration": 15.98,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "Then came the Erie Canal. Three hundred sixty-three miles. Eighty-three locks. Seven million dollars. Dug by hand between 1817 and 1825. It cut freight costs from Buffalo to New York City from one hundred dollars a ton to six.",
+      "props": {
+        "unit": "FREIGHT COST, BUFFALO → NEW YORK, 1825",
+        "stat_text": "$100 → $6",
+        "context_text": "The Erie Canal. 363 miles. 83 locks. $7M to build.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "erie canal packet boat lock 1820s mules",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A packet boat passing through a stone lock on the Erie Canal, 1820s, mule team on the towpath, period-realistic painting, cool daylight, one focal vessel"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\6a5f1e389b3b79122bc8dc17.wav",
+      "vo_duration": 15.28,
+      "word_times": [
+        [
+          "Then",
+          0.0
+        ],
+        [
+          "came",
+          0.256
+        ],
+        [
+          "the",
+          0.512
+        ],
+        [
+          "Erie",
+          0.768
+        ],
+        [
+          "Canal.",
+          1.025
+        ],
+        [
+          "Three",
+          1.783
+        ],
+        [
+          "hundred",
+          2.039
+        ],
+        [
+          "sixty-three",
+          2.551
+        ],
+        [
+          "miles.",
+          3.32
+        ],
+        [
+          "Eighty-three",
+          4.078
+        ],
+        [
+          "locks.",
+          4.846
+        ],
+        [
+          "Seven",
+          5.348
+        ],
+        [
+          "million",
+          5.86
+        ],
+        [
+          "dollars.",
+          6.373
+        ],
+        [
+          "Dug",
+          7.131
+        ],
+        [
+          "by",
+          7.387
+        ],
+        [
+          "hand",
+          7.643
+        ],
+        [
+          "between",
+          7.899
+        ],
+        [
+          "1817",
+          8.412
+        ],
+        [
+          "and",
+          8.412
+        ],
+        [
+          "1825.",
+          8.668
+        ],
+        [
+          "It",
+          8.914
+        ],
+        [
+          "cut",
+          9.17
+        ],
+        [
+          "freight",
+          9.426
+        ],
+        [
+          "costs",
+          9.682
+        ],
+        [
+          "from",
+          9.938
+        ],
+        [
+          "Buffalo",
+          10.194
+        ],
+        [
+          "to",
+          10.963
+        ],
+        [
+          "New",
+          11.219
+        ],
+        [
+          "York",
+          11.475
+        ],
+        [
+          "City",
+          11.731
+        ],
+        [
+          "from",
+          12.244
+        ],
+        [
+          "one",
+          12.5
+        ],
+        [
+          "hundred",
+          12.756
+        ],
+        [
+          "dollars",
+          13.268
+        ],
+        [
+          "a",
+          13.78
+        ],
+        [
+          "ton",
+          14.036
+        ],
+        [
+          "to",
+          14.293
+        ],
+        [
+          "six.",
+          14.549
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "type": "content",
+      "duration": 6.86,
+      "layout": "plate",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "transition_out": "hard",
+      "transition_note": "because the canal era ends and we snap into the railroad consolidators",
+      "vo_text": "That machine stitched the Midwest to the Atlantic and turned New York into the commercial capital of the continent.",
+      "props": {
+        "text": "New York became the commercial capital of the continent",
+        "emphasis": "commercial capital",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "new york south street wharf 1830 tall ships",
+        "fallback_prompt": "Tall sailing ships moored at New York's South Street wharves in the 1830s, warehouses and crates, arches of masts against the sky, warm archival-color photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\6195c4b798494c9d1934c086.wav",
+      "vo_duration": 6.16,
+      "word_times": [
+        [
+          "That",
+          0.0
+        ],
+        [
+          "machine",
+          0.184
+        ],
+        [
+          "stitched",
+          0.552
+        ],
+        [
+          "the",
+          0.92
+        ],
+        [
+          "Midwest",
+          1.105
+        ],
+        [
+          "to",
+          1.473
+        ],
+        [
+          "the",
+          1.657
+        ],
+        [
+          "Atlantic",
+          1.841
+        ],
+        [
+          "and",
+          2.393
+        ],
+        [
+          "turned",
+          2.577
+        ],
+        [
+          "New",
+          2.945
+        ],
+        [
+          "York",
+          3.13
+        ],
+        [
+          "into",
+          3.314
+        ],
+        [
+          "the",
+          3.682
+        ],
+        [
+          "commercial",
+          3.866
+        ],
+        [
+          "capital",
+          4.418
+        ],
+        [
+          "of",
+          4.97
+        ],
+        [
+          "the",
+          5.155
+        ],
+        [
+          "continent.",
+          5.339
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "type": "document",
+      "duration": 8.38,
+      "energy": "mid",
+      "placement": "editorial",
+      "arc_position": "context",
+      "still_motion": "hold",
+      "photo_move": "none",
+      "vo_text": "The Homestead Act and the Pacific Railway Act — both 1862 — gave away land and financed a railroad across the continent.",
+      "props": {
+        "label": "1862",
+        "text": "HOMESTEAD ACT + PACIFIC RAILWAY ACT",
+        "bg_image": "gen_3bb153a1b06243a2fc83.png",
+        "document_image": "gen_3bb153a1b06243a2fc83.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1862 legislative document parchment",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "An 1862 U.S. legislative act document on parchment, recognizable 19th-century government typography, slight yellowing, single warm lamp, near-black background, archival document still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\b4fa7970de87d125951c0c01.wav",
+      "vo_duration": 7.68,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "Homestead",
+          0.218
+        ],
+        [
+          "Act",
+          0.873
+        ],
+        [
+          "and",
+          1.091
+        ],
+        [
+          "the",
+          1.31
+        ],
+        [
+          "Pacific",
+          1.528
+        ],
+        [
+          "Railway",
+          2.183
+        ],
+        [
+          "Act",
+          2.619
+        ],
+        [
+          "—",
+          2.837
+        ],
+        [
+          "both",
+          3.132
+        ],
+        [
+          "1862",
+          3.35
+        ],
+        [
+          "—",
+          3.35
+        ],
+        [
+          "gave",
+          3.645
+        ],
+        [
+          "away",
+          3.863
+        ],
+        [
+          "land",
+          4.3
+        ],
+        [
+          "and",
+          4.518
+        ],
+        [
+          "financed",
+          4.736
+        ],
+        [
+          "a",
+          5.391
+        ],
+        [
+          "railroad",
+          5.609
+        ],
+        [
+          "across",
+          6.046
+        ],
+        [
+          "the",
+          6.482
+        ],
+        [
+          "continent.",
+          6.701
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "type": "stat",
+      "duration": 15.26,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "parallax",
+      "vo_text": "The golden spike at Promontory Summit, Utah — May 10, 1869 — cut New York to San Francisco from months to seven days. By 1900, two hundred thousand miles of track. Five times what the country had in 1860.",
+      "props": {
+        "unit": "NEW YORK → SAN FRANCISCO, 1869",
+        "stat_text": "7 days",
+        "numeric_value": 7,
+        "context_text": "By 1900: 200,000 miles of track. Five times the 1860 network.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "transcontinental railroad golden spike promontory 1869",
+        "fallback_prompt": "Two steam locomotives facing each other at Promontory Summit, Utah, May 1869, crowd of workers between them, sepia archival photograph, dramatic composition, one center point where rails meet"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\b91c06f25f665c0839c8b694.wav",
+      "vo_duration": 14.56,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "golden",
+          0.265
+        ],
+        [
+          "spike",
+          0.794
+        ],
+        [
+          "at",
+          1.058
+        ],
+        [
+          "Promontory",
+          1.323
+        ],
+        [
+          "Summit,",
+          2.381
+        ],
+        [
+          "Utah",
+          3.054
+        ],
+        [
+          "—",
+          3.583
+        ],
+        [
+          "May",
+          3.94
+        ],
+        [
+          "10,",
+          4.205
+        ],
+        [
+          "1869",
+          4.347
+        ],
+        [
+          "—",
+          4.347
+        ],
+        [
+          "cut",
+          4.705
+        ],
+        [
+          "New",
+          4.969
+        ],
+        [
+          "York",
+          5.234
+        ],
+        [
+          "to",
+          5.498
+        ],
+        [
+          "San",
+          5.763
+        ],
+        [
+          "Francisco",
+          6.028
+        ],
+        [
+          "from",
+          6.822
+        ],
+        [
+          "months",
+          7.086
+        ],
+        [
+          "to",
+          7.351
+        ],
+        [
+          "seven",
+          7.615
+        ],
+        [
+          "days.",
+          8.145
+        ],
+        [
+          "By",
+          8.663
+        ],
+        [
+          "1900,",
+          8.928
+        ],
+        [
+          "two",
+          9.071
+        ],
+        [
+          "hundred",
+          9.335
+        ],
+        [
+          "thousand",
+          9.864
+        ],
+        [
+          "miles",
+          10.394
+        ],
+        [
+          "of",
+          10.923
+        ],
+        [
+          "track.",
+          11.188
+        ],
+        [
+          "Five",
+          11.706
+        ],
+        [
+          "times",
+          11.971
+        ],
+        [
+          "what",
+          12.5
+        ],
+        [
+          "the",
+          12.765
+        ],
+        [
+          "country",
+          13.029
+        ],
+        [
+          "had",
+          13.558
+        ],
+        [
+          "in",
+          13.823
+        ],
+        [
+          "1860.",
+          14.088
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "type": "content",
+      "duration": 16.06,
+      "layout": "keyword",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "On top of the rails sat the consolidators. Vanderbilt took the roads. Rockefeller's Standard Oil — founded in 1870 — ended up controlling ninety percent of American refining. Carnegie's steel operations fed the railroad, the bridge, the skyscraper.",
+      "props": {
+        "text": "Vanderbilt. Rockefeller. Carnegie.",
+        "emphasis": "90%",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "oil refinery smokestacks 1890 ohio",
+        "fallback_prompt": "An 1890s oil refinery with smoking chimneys and wooden derricks, hazy sepia archival photograph, industrial landscape, one column of smoke center frame"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\f405e32d78a2fe42eea4978b.wav",
+      "vo_duration": 15.36,
+      "word_times": [
+        [
+          "On",
+          0.0
+        ],
+        [
+          "top",
+          0.208
+        ],
+        [
+          "of",
+          0.417
+        ],
+        [
+          "the",
+          0.625
+        ],
+        [
+          "rails",
+          0.833
+        ],
+        [
+          "sat",
+          1.042
+        ],
+        [
+          "the",
+          1.25
+        ],
+        [
+          "consolidators.",
+          1.458
+        ],
+        [
+          "Vanderbilt",
+          2.7
+        ],
+        [
+          "took",
+          3.325
+        ],
+        [
+          "the",
+          3.533
+        ],
+        [
+          "roads.",
+          3.742
+        ],
+        [
+          "Rockefeller's",
+          4.15
+        ],
+        [
+          "Standard",
+          4.983
+        ],
+        [
+          "Oil",
+          5.4
+        ],
+        [
+          "—",
+          5.608
+        ],
+        [
+          "founded",
+          5.89
+        ],
+        [
+          "in",
+          6.306
+        ],
+        [
+          "1870",
+          6.515
+        ],
+        [
+          "—",
+          6.515
+        ],
+        [
+          "ended",
+          6.796
+        ],
+        [
+          "up",
+          7.213
+        ],
+        [
+          "controlling",
+          7.421
+        ],
+        [
+          "ninety",
+          8.046
+        ],
+        [
+          "percent",
+          8.671
+        ],
+        [
+          "of",
+          9.088
+        ],
+        [
+          "American",
+          9.296
+        ],
+        [
+          "refining.",
+          10.129
+        ],
+        [
+          "Carnegie's",
+          10.954
+        ],
+        [
+          "steel",
+          11.579
+        ],
+        [
+          "operations",
+          11.788
+        ],
+        [
+          "fed",
+          12.621
+        ],
+        [
+          "the",
+          12.83
+        ],
+        [
+          "railroad,",
+          13.038
+        ],
+        [
+          "the",
+          13.567
+        ],
+        [
+          "bridge,",
+          13.775
+        ],
+        [
+          "the",
+          14.096
+        ],
+        [
+          "skyscraper.",
+          14.305
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "type": "stat",
+      "duration": 13.1,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "push",
+      "vo_text": "In February 1901, Carnegie sold his company to J.P. Morgan for four hundred eighty million dollars. Morgan merged it into U.S. Steel — the first billion-dollar corporation in history.",
+      "props": {
+        "unit": "CARNEGIE → MORGAN, FEBRUARY 1901",
+        "stat_text": "$480,000,000",
+        "numeric_value": 480000000,
+        "prefix": "$",
+        "context_text": "Created U.S. Steel — the world's first billion-dollar corporation.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "molten steel pour sparks 1900 mill",
+        "fallback_prompt": "Molten steel pouring from a giant ladle inside a dark cavernous mill, sparks arcing, silhouetted workers at a distance, high-contrast archival industrial photograph, one bright focal pour"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\dfe07ebf44f79e40513ee9ec.wav",
+      "vo_duration": 12.4,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "February",
+          0.227
+        ],
+        [
+          "1901,",
+          0.909
+        ],
+        [
+          "Carnegie",
+          1.032
+        ],
+        [
+          "sold",
+          1.487
+        ],
+        [
+          "his",
+          1.714
+        ],
+        [
+          "company",
+          1.941
+        ],
+        [
+          "to",
+          2.623
+        ],
+        [
+          "J.P.",
+          2.851
+        ],
+        [
+          "Morgan",
+          3.296
+        ],
+        [
+          "for",
+          3.751
+        ],
+        [
+          "four",
+          3.978
+        ],
+        [
+          "hundred",
+          4.205
+        ],
+        [
+          "eighty",
+          4.66
+        ],
+        [
+          "million",
+          5.115
+        ],
+        [
+          "dollars.",
+          5.569
+        ],
+        [
+          "Morgan",
+          6.242
+        ],
+        [
+          "merged",
+          6.697
+        ],
+        [
+          "it",
+          7.152
+        ],
+        [
+          "into",
+          7.379
+        ],
+        [
+          "U.S.",
+          7.834
+        ],
+        [
+          "Steel",
+          8.279
+        ],
+        [
+          "—",
+          8.506
+        ],
+        [
+          "the",
+          8.813
+        ],
+        [
+          "first",
+          9.041
+        ],
+        [
+          "billion-dollar",
+          9.268
+        ],
+        [
+          "corporation",
+          10.177
+        ],
+        [
+          "in",
+          11.086
+        ],
+        [
+          "history.",
+          11.314
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "type": "content",
+      "duration": 13.26,
+      "layout": "bare",
+      "placement": "float",
+      "energy": "low",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "Then came the bank panics. Eighteen seventy-three. Eighteen ninety-three. And in 1907, a panic so bad the government didn't fix it — J.P. Morgan did. Personally. From his library.",
+      "props": {
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "bank run crowd 1907 wall street",
+        "fallback_prompt": "A dense crowd of men in 1907 coats and hats pressed against the doors of a stone bank, anxious faces, grainy black-and-white archival street photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\075586866438d498eee6b151.wav",
+      "vo_duration": 12.56,
+      "word_times": [
+        [
+          "Then",
+          0.0
+        ],
+        [
+          "came",
+          0.231
+        ],
+        [
+          "the",
+          0.462
+        ],
+        [
+          "bank",
+          0.692
+        ],
+        [
+          "panics.",
+          0.923
+        ],
+        [
+          "Eighteen",
+          1.606
+        ],
+        [
+          "seventy-three.",
+          2.068
+        ],
+        [
+          "Eighteen",
+          3.212
+        ],
+        [
+          "ninety-three.",
+          3.674
+        ],
+        [
+          "And",
+          4.818
+        ],
+        [
+          "in",
+          5.049
+        ],
+        [
+          "1907,",
+          5.28
+        ],
+        [
+          "a",
+          5.405
+        ],
+        [
+          "panic",
+          5.635
+        ],
+        [
+          "so",
+          6.097
+        ],
+        [
+          "bad",
+          6.328
+        ],
+        [
+          "the",
+          6.558
+        ],
+        [
+          "government",
+          6.789
+        ],
+        [
+          "didn't",
+          7.482
+        ],
+        [
+          "fix",
+          7.712
+        ],
+        [
+          "it",
+          7.943
+        ],
+        [
+          "—",
+          8.174
+        ],
+        [
+          "J.P.",
+          8.485
+        ],
+        [
+          "Morgan",
+          8.938
+        ],
+        [
+          "did.",
+          9.399
+        ],
+        [
+          "Personally.",
+          9.852
+        ],
+        [
+          "From",
+          10.996
+        ],
+        [
+          "his",
+          11.227
+        ],
+        [
+          "library.",
+          11.458
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "type": "document",
+      "duration": 15.02,
+      "energy": "mid",
+      "placement": "editorial",
+      "arc_position": "evidence",
+      "still_motion": "hold",
+      "photo_move": "none",
+      "vo_text": "The lesson of 1907 was that one man couldn't referee the national economy forever. On December 23, 1913, Woodrow Wilson signed the Federal Reserve Act. Twelve regional banks under a Washington board.",
+      "props": {
+        "label": "DECEMBER 23, 1913",
+        "text": "FEDERAL RESERVE ACT",
+        "bg_image": "gen_0cd47b485a055e99ec9c.png",
+        "document_image": "gen_0cd47b485a055e99ec9c.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "federal reserve act signed document 1913",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A 1913 typed legislative act on aged paper, formal capitalized title 'Federal Reserve Act', signature lines, single lamp light on a dark desk, archival government document still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\26c049e1bf4f0aa6b4cc73c5.wav",
+      "vo_duration": 14.32,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "lesson",
+          0.252
+        ],
+        [
+          "of",
+          0.756
+        ],
+        [
+          "1907",
+          1.008
+        ],
+        [
+          "was",
+          1.008
+        ],
+        [
+          "that",
+          1.26
+        ],
+        [
+          "one",
+          1.512
+        ],
+        [
+          "man",
+          1.764
+        ],
+        [
+          "couldn't",
+          2.016
+        ],
+        [
+          "referee",
+          2.269
+        ],
+        [
+          "the",
+          3.025
+        ],
+        [
+          "national",
+          3.277
+        ],
+        [
+          "economy",
+          4.033
+        ],
+        [
+          "forever.",
+          5.041
+        ],
+        [
+          "On",
+          6.039
+        ],
+        [
+          "December",
+          6.291
+        ],
+        [
+          "23,",
+          7.048
+        ],
+        [
+          "1913,",
+          7.184
+        ],
+        [
+          "Woodrow",
+          7.32
+        ],
+        [
+          "Wilson",
+          7.824
+        ],
+        [
+          "signed",
+          8.328
+        ],
+        [
+          "the",
+          8.832
+        ],
+        [
+          "Federal",
+          9.084
+        ],
+        [
+          "Reserve",
+          9.84
+        ],
+        [
+          "Act.",
+          10.344
+        ],
+        [
+          "Twelve",
+          10.839
+        ],
+        [
+          "regional",
+          11.091
+        ],
+        [
+          "banks",
+          11.847
+        ],
+        [
+          "under",
+          12.099
+        ],
+        [
+          "a",
+          12.603
+        ],
+        [
+          "Washington",
+          12.855
+        ],
+        [
+          "board.",
+          13.611
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "type": "stat",
+      "duration": 18.94,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "push",
+      "vo_text": "Two months earlier, at a factory outside Detroit, Henry Ford had flipped on the moving assembly line. Building a Model T had taken twelve and a half hours. Afterward: ninety-three minutes. The price fell from eight hundred fifty dollars in 1908 to two hundred sixty in 1924. Fifteen million sold.",
+      "props": {
+        "unit": "MODEL T BUILD TIME, 1913",
+        "stat_text": "93 min",
+        "numeric_value": 93,
+        "context_text": "Down from 12.5 hours. Price fell $850 → $260. 15 million sold.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "ford highland park moving assembly line 1913",
+        "fallback_prompt": "A moving assembly line at Ford's Highland Park plant, 1913, chassis rolling past stationary workers, dramatic angle down the line, sepia archival photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\89b1ffecf30aa4a3d2bb4641.wav",
+      "vo_duration": 18.24,
+      "word_times": [
+        [
+          "Two",
+          0.0
+        ],
+        [
+          "months",
+          0.221
+        ],
+        [
+          "earlier,",
+          0.441
+        ],
+        [
+          "at",
+          1.002
+        ],
+        [
+          "a",
+          1.222
+        ],
+        [
+          "factory",
+          1.443
+        ],
+        [
+          "outside",
+          2.105
+        ],
+        [
+          "Detroit,",
+          2.546
+        ],
+        [
+          "Henry",
+          3.107
+        ],
+        [
+          "Ford",
+          3.548
+        ],
+        [
+          "had",
+          3.769
+        ],
+        [
+          "flipped",
+          3.99
+        ],
+        [
+          "on",
+          4.431
+        ],
+        [
+          "the",
+          4.652
+        ],
+        [
+          "moving",
+          4.872
+        ],
+        [
+          "assembly",
+          5.314
+        ],
+        [
+          "line.",
+          5.976
+        ],
+        [
+          "Building",
+          6.408
+        ],
+        [
+          "a",
+          6.849
+        ],
+        [
+          "Model",
+          7.07
+        ],
+        [
+          "T",
+          7.511
+        ],
+        [
+          "had",
+          7.732
+        ],
+        [
+          "taken",
+          7.953
+        ],
+        [
+          "twelve",
+          8.394
+        ],
+        [
+          "and",
+          8.615
+        ],
+        [
+          "a",
+          8.835
+        ],
+        [
+          "half",
+          9.056
+        ],
+        [
+          "hours.",
+          9.277
+        ],
+        [
+          "Afterward:",
+          9.709
+        ],
+        [
+          "ninety-three",
+          10.49
+        ],
+        [
+          "minutes.",
+          11.373
+        ],
+        [
+          "The",
+          12.247
+        ],
+        [
+          "price",
+          12.467
+        ],
+        [
+          "fell",
+          12.688
+        ],
+        [
+          "from",
+          12.909
+        ],
+        [
+          "eight",
+          13.129
+        ],
+        [
+          "hundred",
+          13.35
+        ],
+        [
+          "fifty",
+          13.791
+        ],
+        [
+          "dollars",
+          14.233
+        ],
+        [
+          "in",
+          14.674
+        ],
+        [
+          "1908",
+          14.895
+        ],
+        [
+          "to",
+          14.895
+        ],
+        [
+          "two",
+          15.115
+        ],
+        [
+          "hundred",
+          15.336
+        ],
+        [
+          "sixty",
+          15.777
+        ],
+        [
+          "in",
+          16.219
+        ],
+        [
+          "1924.",
+          16.439
+        ],
+        [
+          "Fifteen",
+          16.651
+        ],
+        [
+          "million",
+          17.093
+        ],
+        [
+          "sold.",
+          17.534
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "type": "stat",
+      "duration": 14.94,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "Then World War One flipped America's place on the global ledger. The United States loaned the Allies roughly ten billion dollars. By 1918, it was the world's creditor — and, for the first time, the largest economy on Earth.",
+      "props": {
+        "unit": "WWI U.S. LOANS TO THE ALLIES",
+        "stat_text": "$10,000,000,000",
+        "numeric_value": 10000000000,
+        "prefix": "$",
+        "context_text": "By 1918, the U.S. was the world's creditor and its largest economy.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "liberty bond poster 1917 currency stack",
+        "fallback_prompt": "A US Liberty Bond poster from 1917, bold red and gold lettering, alongside a stack of paper currency, single overhead lamp, near-black background, archival flat-lay"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\53261b98185858c72546b933.wav",
+      "vo_duration": 14.24,
+      "word_times": [
+        [
+          "Then",
+          0.0
+        ],
+        [
+          "World",
+          0.223
+        ],
+        [
+          "War",
+          0.446
+        ],
+        [
+          "One",
+          0.67
+        ],
+        [
+          "flipped",
+          0.893
+        ],
+        [
+          "America's",
+          1.339
+        ],
+        [
+          "place",
+          2.232
+        ],
+        [
+          "on",
+          2.455
+        ],
+        [
+          "the",
+          2.678
+        ],
+        [
+          "global",
+          2.901
+        ],
+        [
+          "ledger.",
+          3.348
+        ],
+        [
+          "The",
+          4.008
+        ],
+        [
+          "United",
+          4.231
+        ],
+        [
+          "States",
+          4.901
+        ],
+        [
+          "loaned",
+          5.347
+        ],
+        [
+          "the",
+          5.794
+        ],
+        [
+          "Allies",
+          6.017
+        ],
+        [
+          "roughly",
+          6.463
+        ],
+        [
+          "ten",
+          6.909
+        ],
+        [
+          "billion",
+          7.133
+        ],
+        [
+          "dollars.",
+          7.579
+        ],
+        [
+          "By",
+          8.24
+        ],
+        [
+          "1918,",
+          8.463
+        ],
+        [
+          "it",
+          8.583
+        ],
+        [
+          "was",
+          8.806
+        ],
+        [
+          "the",
+          9.03
+        ],
+        [
+          "world's",
+          9.253
+        ],
+        [
+          "creditor",
+          9.476
+        ],
+        [
+          "—",
+          10.145
+        ],
+        [
+          "and,",
+          10.447
+        ],
+        [
+          "for",
+          10.79
+        ],
+        [
+          "the",
+          11.014
+        ],
+        [
+          "first",
+          11.237
+        ],
+        [
+          "time,",
+          11.46
+        ],
+        [
+          "the",
+          11.804
+        ],
+        [
+          "largest",
+          12.027
+        ],
+        [
+          "economy",
+          12.473
+        ],
+        [
+          "on",
+          13.366
+        ],
+        [
+          "Earth.",
+          13.589
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "type": "stat",
+      "duration": 10.54,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "turn",
+      "still_motion": "push",
+      "transition_out": "whip",
+      "transition_note": "because the roar of the 20s whips straight into the crash",
+      "vo_text": "The nineteen-twenties looked endless. The Dow climbed from sixty-three in 1921 to three hundred eighty-one on September 3, 1929.",
+      "props": {
+        "unit": "DOW JONES, SEPTEMBER 3, 1929",
+        "stat_text": "381.17",
+        "numeric_value": 381.17,
+        "context_text": "The peak.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1920s wall street ticker tape traders",
+        "fallback_prompt": "A crowded 1920s Wall Street scene, ticker-tape machines, brokers in dark suits, upward momentum implied, hazy black-and-white archival photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\47d86cbe7f6e0f31f9e7ce38.wav",
+      "vo_duration": 9.84,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "nineteen-twenties",
+          0.308
+        ],
+        [
+          "looked",
+          1.849
+        ],
+        [
+          "endless.",
+          2.465
+        ],
+        [
+          "The",
+          3.377
+        ],
+        [
+          "Dow",
+          3.685
+        ],
+        [
+          "climbed",
+          3.993
+        ],
+        [
+          "from",
+          4.609
+        ],
+        [
+          "sixty-three",
+          4.917
+        ],
+        [
+          "in",
+          5.841
+        ],
+        [
+          "1921",
+          6.149
+        ],
+        [
+          "to",
+          6.149
+        ],
+        [
+          "three",
+          6.457
+        ],
+        [
+          "hundred",
+          6.766
+        ],
+        [
+          "eighty-one",
+          7.382
+        ],
+        [
+          "on",
+          7.998
+        ],
+        [
+          "September",
+          8.306
+        ],
+        [
+          "3,",
+          9.23
+        ],
+        [
+          "1929.",
+          9.397
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "type": "stat",
+      "duration": 12.22,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "turn",
+      "shake": 0.5,
+      "shake_dir": "y",
+      "still_motion": "parallax",
+      "vo_text": "Six weeks later, it wasn't. The Dow didn't stop falling until July 8, 1932 — when it closed at forty-one point two two. Eighty-nine percent below the peak.",
+      "props": {
+        "unit": "DOW JONES, JULY 8, 1932",
+        "stat_text": "41.22",
+        "numeric_value": 41.22,
+        "context_text": "Down 89% from the 1929 peak.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1932 empty wall street brokerage",
+        "fallback_prompt": "An empty Wall Street brokerage house in 1932, scattered ticker tape on the floor, abandoned desks, single shaft of daylight through tall windows, black-and-white archival photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\02d66a00c21295f4d88a7b31.wav",
+      "vo_duration": 11.520042,
+      "word_times": [
+        [
+          "Six",
+          0.0
+        ],
+        [
+          "weeks",
+          0.281
+        ],
+        [
+          "later,",
+          0.563
+        ],
+        [
+          "it",
+          1.278
+        ],
+        [
+          "wasn't.",
+          1.56
+        ],
+        [
+          "The",
+          2.111
+        ],
+        [
+          "Dow",
+          2.393
+        ],
+        [
+          "didn't",
+          2.674
+        ],
+        [
+          "stop",
+          2.956
+        ],
+        [
+          "falling",
+          3.237
+        ],
+        [
+          "until",
+          3.8
+        ],
+        [
+          "July",
+          4.363
+        ],
+        [
+          "8,",
+          4.926
+        ],
+        [
+          "1932",
+          5.078
+        ],
+        [
+          "—",
+          5.078
+        ],
+        [
+          "when",
+          5.458
+        ],
+        [
+          "it",
+          5.74
+        ],
+        [
+          "closed",
+          6.021
+        ],
+        [
+          "at",
+          6.584
+        ],
+        [
+          "forty-one",
+          6.866
+        ],
+        [
+          "point",
+          7.429
+        ],
+        [
+          "two",
+          7.71
+        ],
+        [
+          "two.",
+          7.992
+        ],
+        [
+          "Eighty-nine",
+          8.544
+        ],
+        [
+          "percent",
+          9.388
+        ],
+        [
+          "below",
+          9.951
+        ],
+        [
+          "the",
+          10.514
+        ],
+        [
+          "peak.",
+          10.796
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "type": "content",
+      "duration": 15.34,
+      "layout": "plate",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "By 1933, unemployment hit twenty-five percent. National income fell from eighty-seven point eight billion to forty point two billion. Of the twenty-five thousand banks in the United States, nine thousand failed. Depositors lost everything.",
+      "props": {
+        "text": "9,000 of 25,000 banks failed",
+        "emphasis": "9,000",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1930s bank failure depositors crowd",
+        "fallback_prompt": "A crowd of 1930s depositors queued outside a closed bank, despairing faces, coats and hats, grainy black-and-white archival street photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ed3ea8bbf7a1820e8030aec5.wav",
+      "vo_duration": 14.64,
+      "word_times": [
+        [
+          "By",
+          0.0
+        ],
+        [
+          "1933,",
+          0.215
+        ],
+        [
+          "unemployment",
+          0.332
+        ],
+        [
+          "hit",
+          1.194
+        ],
+        [
+          "twenty-five",
+          1.409
+        ],
+        [
+          "percent.",
+          2.056
+        ],
+        [
+          "National",
+          2.694
+        ],
+        [
+          "income",
+          3.34
+        ],
+        [
+          "fell",
+          3.771
+        ],
+        [
+          "from",
+          3.987
+        ],
+        [
+          "eighty-seven",
+          4.202
+        ],
+        [
+          "point",
+          5.064
+        ],
+        [
+          "eight",
+          5.279
+        ],
+        [
+          "billion",
+          5.495
+        ],
+        [
+          "to",
+          5.926
+        ],
+        [
+          "forty",
+          6.141
+        ],
+        [
+          "point",
+          6.572
+        ],
+        [
+          "two",
+          6.788
+        ],
+        [
+          "billion.",
+          7.003
+        ],
+        [
+          "Of",
+          7.641
+        ],
+        [
+          "the",
+          7.857
+        ],
+        [
+          "twenty-five",
+          8.072
+        ],
+        [
+          "thousand",
+          8.719
+        ],
+        [
+          "banks",
+          9.15
+        ],
+        [
+          "in",
+          9.365
+        ],
+        [
+          "the",
+          9.581
+        ],
+        [
+          "United",
+          9.796
+        ],
+        [
+          "States,",
+          10.443
+        ],
+        [
+          "nine",
+          10.99
+        ],
+        [
+          "thousand",
+          11.205
+        ],
+        [
+          "failed.",
+          11.636
+        ],
+        [
+          "Depositors",
+          12.274
+        ],
+        [
+          "lost",
+          13.136
+        ],
+        [
+          "everything.",
+          13.352
+        ]
+      ]
+    },
+    {
+      "id": 25,
+      "type": "quote",
+      "duration": 21.98,
+      "energy": "low",
+      "placement": "editorial",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "grade_override": "archival",
+      "transition_out": "dissolve",
+      "transition_note": "because the bust softens into the New Deal rebuild",
+      "vo_text": "Franklin Roosevelt closed every bank in the country for four days in March 1933. Then he rebuilt the system. Glass-Steagall split commercial from investment banking. The FDIC guaranteed deposits. The SEC policed the markets. In 1935 the Social Security Act built the floor Americans still retire on.",
+      "props": {
+        "quote_text": "The only thing we have to fear is fear itself.",
+        "attribution": "Franklin D. Roosevelt, March 4, 1933",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1930s WPA workers building road",
+        "fallback_prompt": "Great Depression-era American workers building a road, 1930s WPA project, pickaxes and wheelbarrows, warm sepia archival photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\81b44a5f7730022c196fa198.wav",
+      "vo_duration": 21.28,
+      "word_times": [
+        [
+          "Franklin",
+          0.0
+        ],
+        [
+          "Roosevelt",
+          0.513
+        ],
+        [
+          "closed",
+          1.282
+        ],
+        [
+          "every",
+          1.795
+        ],
+        [
+          "bank",
+          2.564
+        ],
+        [
+          "in",
+          2.82
+        ],
+        [
+          "the",
+          3.076
+        ],
+        [
+          "country",
+          3.333
+        ],
+        [
+          "for",
+          3.846
+        ],
+        [
+          "four",
+          4.102
+        ],
+        [
+          "days",
+          4.358
+        ],
+        [
+          "in",
+          4.615
+        ],
+        [
+          "March",
+          4.871
+        ],
+        [
+          "1933.",
+          5.127
+        ],
+        [
+          "Then",
+          5.374
+        ],
+        [
+          "he",
+          5.63
+        ],
+        [
+          "rebuilt",
+          5.886
+        ],
+        [
+          "the",
+          6.399
+        ],
+        [
+          "system.",
+          6.655
+        ],
+        [
+          "Glass-Steagall",
+          7.414
+        ],
+        [
+          "split",
+          8.183
+        ],
+        [
+          "commercial",
+          8.44
+        ],
+        [
+          "from",
+          9.209
+        ],
+        [
+          "investment",
+          9.465
+        ],
+        [
+          "banking.",
+          10.234
+        ],
+        [
+          "The",
+          10.993
+        ],
+        [
+          "FDIC",
+          11.25
+        ],
+        [
+          "guaranteed",
+          11.506
+        ],
+        [
+          "deposits.",
+          12.275
+        ],
+        [
+          "The",
+          13.29
+        ],
+        [
+          "SEC",
+          13.547
+        ],
+        [
+          "policed",
+          13.803
+        ],
+        [
+          "the",
+          14.572
+        ],
+        [
+          "markets.",
+          14.828
+        ],
+        [
+          "In",
+          15.587
+        ],
+        [
+          "1935",
+          15.844
+        ],
+        [
+          "the",
+          15.844
+        ],
+        [
+          "Social",
+          16.1
+        ],
+        [
+          "Security",
+          16.613
+        ],
+        [
+          "Act",
+          17.638
+        ],
+        [
+          "built",
+          17.895
+        ],
+        [
+          "the",
+          18.151
+        ],
+        [
+          "floor",
+          18.407
+        ],
+        [
+          "Americans",
+          18.664
+        ],
+        [
+          "still",
+          19.689
+        ],
+        [
+          "retire",
+          19.946
+        ],
+        [
+          "on.",
+          20.458
+        ]
+      ]
+    },
+    {
+      "id": 26,
+      "type": "stat",
+      "duration": 17.9,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "Nothing fixed American industry forever except America at war. Between 1940 and 1945, war production doubled GDP. Unemployment fell to one percent. American factories turned out nearly three hundred thousand aircraft. Nineteen million women entered the workforce.",
+      "props": {
+        "unit": "U.S. GDP GROWTH, 1940 → 1945",
+        "stat_text": "+100%",
+        "numeric_value": 100,
+        "context_text": "Doubled. Unemployment fell to 1%.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1940s rosie riveter aircraft factory women",
+        "fallback_prompt": "A 1940s American wartime aircraft factory, women riveters working on fuselages, warm industrial light, vast row of half-assembled planes, archival color photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\d0ff328709bcf351cb52702d.wav",
+      "vo_duration": 17.2,
+      "word_times": [
+        [
+          "Nothing",
+          0.0
+        ],
+        [
+          "fixed",
+          0.433
+        ],
+        [
+          "American",
+          0.865
+        ],
+        [
+          "industry",
+          1.73
+        ],
+        [
+          "forever",
+          2.379
+        ],
+        [
+          "except",
+          3.028
+        ],
+        [
+          "America",
+          3.46
+        ],
+        [
+          "at",
+          4.325
+        ],
+        [
+          "war.",
+          4.542
+        ],
+        [
+          "Between",
+          4.965
+        ],
+        [
+          "1940",
+          5.398
+        ],
+        [
+          "and",
+          5.398
+        ],
+        [
+          "1945,",
+          5.614
+        ],
+        [
+          "war",
+          5.731
+        ],
+        [
+          "production",
+          5.947
+        ],
+        [
+          "doubled",
+          6.596
+        ],
+        [
+          "GDP.",
+          7.029
+        ],
+        [
+          "Unemployment",
+          7.452
+        ],
+        [
+          "fell",
+          8.317
+        ],
+        [
+          "to",
+          8.534
+        ],
+        [
+          "one",
+          8.75
+        ],
+        [
+          "percent.",
+          8.966
+        ],
+        [
+          "American",
+          9.606
+        ],
+        [
+          "factories",
+          10.471
+        ],
+        [
+          "turned",
+          11.12
+        ],
+        [
+          "out",
+          11.553
+        ],
+        [
+          "nearly",
+          11.769
+        ],
+        [
+          "three",
+          12.202
+        ],
+        [
+          "hundred",
+          12.418
+        ],
+        [
+          "thousand",
+          12.85
+        ],
+        [
+          "aircraft.",
+          13.283
+        ],
+        [
+          "Nineteen",
+          13.923
+        ],
+        [
+          "million",
+          14.572
+        ],
+        [
+          "women",
+          15.004
+        ],
+        [
+          "entered",
+          15.437
+        ],
+        [
+          "the",
+          16.086
+        ],
+        [
+          "workforce.",
+          16.302
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "type": "document",
+      "duration": 15.1,
+      "energy": "mid",
+      "placement": "editorial",
+      "arc_position": "reveal",
+      "still_motion": "hold",
+      "photo_move": "none",
+      "vo_text": "In July 1944, forty-four nations met at Bretton Woods, New Hampshire, and rebuilt the world economy around the dollar — pegged to gold at thirty-five dollars an ounce. The IMF. The World Bank. The dollar became the anchor.",
+      "props": {
+        "label": "JULY 1944",
+        "text": "BRETTON WOODS — $35 PER OUNCE",
+        "bg_image": "gen_d29c734e0f6a707880ef.png",
+        "document_image": "gen_d29c734e0f6a707880ef.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "bretton woods mount washington hotel 1944",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "The Mount Washington Hotel at Bretton Woods, New Hampshire, 1944, hotel marquee, period black-and-white archival photograph, modest classical facade"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\0d7a479c5972a9917c30e7fe.wav",
+      "vo_duration": 14.4,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "July",
+          0.229
+        ],
+        [
+          "1944,",
+          0.688
+        ],
+        [
+          "forty-four",
+          0.812
+        ],
+        [
+          "nations",
+          1.501
+        ],
+        [
+          "met",
+          1.96
+        ],
+        [
+          "at",
+          2.189
+        ],
+        [
+          "Bretton",
+          2.419
+        ],
+        [
+          "Woods,",
+          2.878
+        ],
+        [
+          "New",
+          3.231
+        ],
+        [
+          "Hampshire,",
+          3.461
+        ],
+        [
+          "and",
+          4.043
+        ],
+        [
+          "rebuilt",
+          4.273
+        ],
+        [
+          "the",
+          4.732
+        ],
+        [
+          "world",
+          4.961
+        ],
+        [
+          "economy",
+          5.191
+        ],
+        [
+          "around",
+          6.109
+        ],
+        [
+          "the",
+          6.568
+        ],
+        [
+          "dollar",
+          6.797
+        ],
+        [
+          "—",
+          7.256
+        ],
+        [
+          "pegged",
+          7.566
+        ],
+        [
+          "to",
+          8.025
+        ],
+        [
+          "gold",
+          8.254
+        ],
+        [
+          "at",
+          8.484
+        ],
+        [
+          "thirty-five",
+          8.713
+        ],
+        [
+          "dollars",
+          9.402
+        ],
+        [
+          "an",
+          9.861
+        ],
+        [
+          "ounce.",
+          10.09
+        ],
+        [
+          "The",
+          10.54
+        ],
+        [
+          "IMF.",
+          10.769
+        ],
+        [
+          "The",
+          11.219
+        ],
+        [
+          "World",
+          11.449
+        ],
+        [
+          "Bank.",
+          11.678
+        ],
+        [
+          "The",
+          12.128
+        ],
+        [
+          "dollar",
+          12.357
+        ],
+        [
+          "became",
+          12.816
+        ],
+        [
+          "the",
+          13.275
+        ],
+        [
+          "anchor.",
+          13.505
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "type": "stat",
+      "duration": 20.3,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "still_motion": "push",
+      "vo_text": "By 1945, the United States produced nearly half of everything the world made. The GI Bill sent millions to college. The Interstate Highway Act of 1956 — twenty-five billion dollars, forty-one thousand miles — was the largest public works project in American history. The top marginal tax rate sat at ninety-one percent.",
+      "props": {
+        "unit": "U.S. SHARE OF WORLD OUTPUT, 1945",
+        "stat_text": "50%",
+        "numeric_value": 50,
+        "suffix": "%",
+        "context_text": "Half the world's output. Top tax rate: 91%.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1950s american suburbia aerial development houses",
+        "fallback_prompt": "An aerial view of a 1950s American suburb under construction, identical new homes in neat rows, freshly laid streets, one bulldozer visible, warm mid-century color film photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\196ed3295eea5ea5c8f90c29.wav",
+      "vo_duration": 19.6,
+      "word_times": [
+        [
+          "By",
+          0.0
+        ],
+        [
+          "1945,",
+          0.215
+        ],
+        [
+          "the",
+          0.332
+        ],
+        [
+          "United",
+          0.547
+        ],
+        [
+          "States",
+          1.193
+        ],
+        [
+          "produced",
+          1.624
+        ],
+        [
+          "nearly",
+          2.271
+        ],
+        [
+          "half",
+          2.701
+        ],
+        [
+          "of",
+          2.917
+        ],
+        [
+          "everything",
+          3.132
+        ],
+        [
+          "the",
+          3.994
+        ],
+        [
+          "world",
+          4.209
+        ],
+        [
+          "made.",
+          4.425
+        ],
+        [
+          "The",
+          4.847
+        ],
+        [
+          "GI",
+          5.062
+        ],
+        [
+          "Bill",
+          5.278
+        ],
+        [
+          "sent",
+          5.493
+        ],
+        [
+          "millions",
+          5.709
+        ],
+        [
+          "to",
+          6.139
+        ],
+        [
+          "college.",
+          6.355
+        ],
+        [
+          "The",
+          6.993
+        ],
+        [
+          "Interstate",
+          7.208
+        ],
+        [
+          "Highway",
+          7.854
+        ],
+        [
+          "Act",
+          8.285
+        ],
+        [
+          "of",
+          8.5
+        ],
+        [
+          "1956",
+          8.716
+        ],
+        [
+          "—",
+          8.716
+        ],
+        [
+          "twenty-five",
+          9.007
+        ],
+        [
+          "billion",
+          9.653
+        ],
+        [
+          "dollars,",
+          10.084
+        ],
+        [
+          "forty-one",
+          10.631
+        ],
+        [
+          "thousand",
+          11.062
+        ],
+        [
+          "miles",
+          11.493
+        ],
+        [
+          "—",
+          11.924
+        ],
+        [
+          "was",
+          12.214
+        ],
+        [
+          "the",
+          12.43
+        ],
+        [
+          "largest",
+          12.645
+        ],
+        [
+          "public",
+          13.076
+        ],
+        [
+          "works",
+          13.507
+        ],
+        [
+          "project",
+          13.722
+        ],
+        [
+          "in",
+          14.153
+        ],
+        [
+          "American",
+          14.369
+        ],
+        [
+          "history.",
+          15.23
+        ],
+        [
+          "The",
+          16.083
+        ],
+        [
+          "top",
+          16.299
+        ],
+        [
+          "marginal",
+          16.514
+        ],
+        [
+          "tax",
+          17.16
+        ],
+        [
+          "rate",
+          17.376
+        ],
+        [
+          "sat",
+          17.591
+        ],
+        [
+          "at",
+          17.807
+        ],
+        [
+          "ninety-one",
+          18.022
+        ],
+        [
+          "percent.",
+          18.668
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "type": "document",
+      "duration": 11.02,
+      "energy": "mid",
+      "placement": "editorial",
+      "arc_position": "turn",
+      "still_motion": "hold",
+      "photo_move": "none",
+      "transition_out": "dip",
+      "transition_note": "because the golden age ends on the Nixon Shock and we dip into the rust era",
+      "vo_text": "Then, on August 15, 1971, Richard Nixon closed the gold window. The dollar — the anchor of the whole postwar system — was suddenly floating.",
+      "props": {
+        "label": "AUGUST 15, 1971",
+        "text": "THE GOLD WINDOW CLOSED",
+        "bg_image": "gen_055fdb712f3d59231725.png",
+        "document_image": "gen_055fdb712f3d59231725.png",
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1971 tv announcement nixon dollar gold",
+        "fallback_prompt": "A black-and-white television screen in a dim living room showing a suited man at a desk with an American flag, 1971, archival broadcast still, vignetted edges"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\c162190a5e180ed3fd65c8ad.wav",
+      "vo_duration": 10.32,
+      "word_times": [
+        [
+          "Then,",
+          0.0
+        ],
+        [
+          "on",
+          0.389
+        ],
+        [
+          "August",
+          0.642
+        ],
+        [
+          "15,",
+          1.147
+        ],
+        [
+          "1971,",
+          1.283
+        ],
+        [
+          "Richard",
+          1.42
+        ],
+        [
+          "Nixon",
+          1.925
+        ],
+        [
+          "closed",
+          2.43
+        ],
+        [
+          "the",
+          2.935
+        ],
+        [
+          "gold",
+          3.188
+        ],
+        [
+          "window.",
+          3.441
+        ],
+        [
+          "The",
+          4.188
+        ],
+        [
+          "dollar",
+          4.441
+        ],
+        [
+          "—",
+          4.946
+        ],
+        [
+          "the",
+          5.287
+        ],
+        [
+          "anchor",
+          5.54
+        ],
+        [
+          "of",
+          6.045
+        ],
+        [
+          "the",
+          6.298
+        ],
+        [
+          "whole",
+          6.55
+        ],
+        [
+          "postwar",
+          7.056
+        ],
+        [
+          "system",
+          7.561
+        ],
+        [
+          "—",
+          8.066
+        ],
+        [
+          "was",
+          8.407
+        ],
+        [
+          "suddenly",
+          8.66
+        ],
+        [
+          "floating.",
+          9.417
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "type": "content",
+      "duration": 19.58,
+      "layout": "bare",
+      "placement": "float",
+      "energy": "low",
+      "arc_position": "evidence",
+      "still_motion": "parallax",
+      "vo_text": "The nineteen-seventies hurt. OPEC quadrupled the price of oil. Inflation peaked near thirteen and a half percent in 1980. Fed chairman Paul Volcker drove the federal funds rate to twenty percent in June 1981 to break it. He broke the inflation. He also broke the factories.",
+      "props": {
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "gas station lines 1973 oil crisis",
+        "fallback_prompt": "A long line of cars queued at an American gas station, 1973 oil crisis, hand-lettered rationing sign, late-day archival color photograph, one focal sign"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\7a0c8ab5e642bdf7954316cc.wav",
+      "vo_duration": 18.88,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "nineteen-seventies",
+          0.252
+        ],
+        [
+          "hurt.",
+          1.765
+        ],
+        [
+          "OPEC",
+          2.259
+        ],
+        [
+          "quadrupled",
+          2.763
+        ],
+        [
+          "the",
+          3.52
+        ],
+        [
+          "price",
+          3.772
+        ],
+        [
+          "of",
+          4.024
+        ],
+        [
+          "oil.",
+          4.276
+        ],
+        [
+          "Inflation",
+          4.77
+        ],
+        [
+          "peaked",
+          5.527
+        ],
+        [
+          "near",
+          6.031
+        ],
+        [
+          "thirteen",
+          6.283
+        ],
+        [
+          "and",
+          6.787
+        ],
+        [
+          "a",
+          7.039
+        ],
+        [
+          "half",
+          7.291
+        ],
+        [
+          "percent",
+          7.544
+        ],
+        [
+          "in",
+          8.048
+        ],
+        [
+          "1980.",
+          8.3
+        ],
+        [
+          "Fed",
+          8.542
+        ],
+        [
+          "chairman",
+          8.794
+        ],
+        [
+          "Paul",
+          9.298
+        ],
+        [
+          "Volcker",
+          9.551
+        ],
+        [
+          "drove",
+          10.055
+        ],
+        [
+          "the",
+          10.307
+        ],
+        [
+          "federal",
+          10.559
+        ],
+        [
+          "funds",
+          11.315
+        ],
+        [
+          "rate",
+          11.568
+        ],
+        [
+          "to",
+          11.82
+        ],
+        [
+          "twenty",
+          12.072
+        ],
+        [
+          "percent",
+          12.576
+        ],
+        [
+          "in",
+          13.08
+        ],
+        [
+          "June",
+          13.332
+        ],
+        [
+          "1981",
+          13.585
+        ],
+        [
+          "to",
+          13.585
+        ],
+        [
+          "break",
+          13.837
+        ],
+        [
+          "it.",
+          14.089
+        ],
+        [
+          "He",
+          14.583
+        ],
+        [
+          "broke",
+          14.835
+        ],
+        [
+          "the",
+          15.087
+        ],
+        [
+          "inflation.",
+          15.339
+        ],
+        [
+          "He",
+          16.338
+        ],
+        [
+          "also",
+          16.59
+        ],
+        [
+          "broke",
+          17.094
+        ],
+        [
+          "the",
+          17.346
+        ],
+        [
+          "factories.",
+          17.598
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "type": "stat",
+      "duration": 14.7,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "turn",
+      "shake": 0.4,
+      "shake_dir": "x",
+      "still_motion": "parallax",
+      "vo_text": "On September 19, 1977, Youngstown Sheet and Tube shut the Campbell Works. Five thousand jobs gone in one afternoon. That day has a name now — Black Monday — the day the Rust Belt was born.",
+      "props": {
+        "unit": "CAMPBELL WORKS, YOUNGSTOWN, SEPT 19 1977",
+        "stat_text": "5,000 jobs",
+        "numeric_value": 5000,
+        "context_text": "Gone in one afternoon.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "abandoned rust belt steel mill gate locked",
+        "fallback_prompt": "A locked chain-link gate on a rusted steel mill entrance, cooling towers behind, overcast 1970s film photograph, somber and still, one focal gate"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\1a8e0c8943def5f01c4f50cc.wav",
+      "vo_duration": 14.0,
+      "word_times": [
+        [
+          "On",
+          0.0
+        ],
+        [
+          "September",
+          0.296
+        ],
+        [
+          "19,",
+          1.182
+        ],
+        [
+          "1977,",
+          1.342
+        ],
+        [
+          "Youngstown",
+          1.501
+        ],
+        [
+          "Sheet",
+          2.092
+        ],
+        [
+          "and",
+          2.388
+        ],
+        [
+          "Tube",
+          2.684
+        ],
+        [
+          "shut",
+          2.979
+        ],
+        [
+          "the",
+          3.275
+        ],
+        [
+          "Campbell",
+          3.57
+        ],
+        [
+          "Works.",
+          4.161
+        ],
+        [
+          "Five",
+          4.74
+        ],
+        [
+          "thousand",
+          5.036
+        ],
+        [
+          "jobs",
+          5.627
+        ],
+        [
+          "gone",
+          5.923
+        ],
+        [
+          "in",
+          6.218
+        ],
+        [
+          "one",
+          6.514
+        ],
+        [
+          "afternoon.",
+          6.809
+        ],
+        [
+          "That",
+          7.98
+        ],
+        [
+          "day",
+          8.275
+        ],
+        [
+          "has",
+          8.571
+        ],
+        [
+          "a",
+          8.866
+        ],
+        [
+          "name",
+          9.162
+        ],
+        [
+          "now",
+          9.457
+        ],
+        [
+          "—",
+          9.753
+        ],
+        [
+          "Black",
+          10.152
+        ],
+        [
+          "Monday",
+          10.447
+        ],
+        [
+          "—",
+          11.039
+        ],
+        [
+          "the",
+          11.437
+        ],
+        [
+          "day",
+          11.733
+        ],
+        [
+          "the",
+          12.029
+        ],
+        [
+          "Rust",
+          12.324
+        ],
+        [
+          "Belt",
+          12.62
+        ],
+        [
+          "was",
+          12.915
+        ],
+        [
+          "born.",
+          13.211
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "type": "stat",
+      "duration": 16.7,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "evidence",
+      "still_motion": "push",
+      "vo_text": "From 1982 to 2000, finance took over. The Dow ran from under one thousand past eleven thousand. Congress repealed Glass-Steagall in 1999 — the law built in 1933 to stop the next 1929.",
+      "props": {
+        "unit": "DOW JONES, 1982 → 1999",
+        "stat_text": "1,000 → 11,000",
+        "context_text": "Glass-Steagall repealed in 1999.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "1990s nyse floor traders bull market",
+        "fallback_prompt": "1990s New York Stock Exchange trading floor at peak activity, jubilant floor traders, paper tickets in the air, teletype and CRT monitors, archival color news photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\b77034205c53c7d8714e2539.wav",
+      "vo_duration": 16.0,
+      "word_times": [
+        [
+          "From",
+          0.0
+        ],
+        [
+          "1982",
+          0.36
+        ],
+        [
+          "to",
+          0.36
+        ],
+        [
+          "2000,",
+          0.72
+        ],
+        [
+          "finance",
+          0.915
+        ],
+        [
+          "took",
+          1.635
+        ],
+        [
+          "over.",
+          1.995
+        ],
+        [
+          "The",
+          3.061
+        ],
+        [
+          "Dow",
+          3.421
+        ],
+        [
+          "ran",
+          3.781
+        ],
+        [
+          "from",
+          4.141
+        ],
+        [
+          "under",
+          4.501
+        ],
+        [
+          "one",
+          5.221
+        ],
+        [
+          "thousand",
+          5.581
+        ],
+        [
+          "past",
+          6.301
+        ],
+        [
+          "eleven",
+          6.661
+        ],
+        [
+          "thousand.",
+          7.741
+        ],
+        [
+          "Congress",
+          8.807
+        ],
+        [
+          "repealed",
+          9.527
+        ],
+        [
+          "Glass-Steagall",
+          10.607
+        ],
+        [
+          "in",
+          11.688
+        ],
+        [
+          "1999",
+          12.048
+        ],
+        [
+          "—",
+          12.048
+        ],
+        [
+          "the",
+          12.534
+        ],
+        [
+          "law",
+          12.894
+        ],
+        [
+          "built",
+          13.254
+        ],
+        [
+          "in",
+          13.614
+        ],
+        [
+          "1933",
+          13.974
+        ],
+        [
+          "to",
+          13.974
+        ],
+        [
+          "stop",
+          14.334
+        ],
+        [
+          "the",
+          14.694
+        ],
+        [
+          "next",
+          15.054
+        ],
+        [
+          "1929.",
+          15.414
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "type": "stat",
+      "duration": 12.22,
+      "energy": "high",
+      "placement": "hero",
+      "arc_position": "reveal",
+      "shake": 0.6,
+      "shake_dir": "y",
+      "still_motion": "parallax",
+      "transition_out": "dip",
+      "transition_note": "because 2008 closes the historical arc before the reflection",
+      "vo_text": "Nine years later, on September 15, 2008, Lehman Brothers collapsed. The Treasury authorized seven hundred billion dollars in emergency funds. Unemployment hit ten percent.",
+      "props": {
+        "unit": "TROUBLED ASSET RELIEF PROGRAM, 2008",
+        "stat_text": "$700,000,000,000",
+        "numeric_value": 700000000000,
+        "prefix": "$",
+        "context_text": "The rescue fund.",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "lehman brothers collapse september 2008 boxes",
+        "fallback_prompt": "Office workers carrying cardboard boxes out of a glass tower at dusk, September 2008, news vans in the foreground, cool late-day light, gritty documentary photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\f42c5a25e9f74e12b502a3e9.wav",
+      "vo_duration": 11.520042,
+      "word_times": [
+        [
+          "Nine",
+          0.0
+        ],
+        [
+          "years",
+          0.229
+        ],
+        [
+          "later,",
+          0.458
+        ],
+        [
+          "on",
+          1.041
+        ],
+        [
+          "September",
+          1.27
+        ],
+        [
+          "15,",
+          1.958
+        ],
+        [
+          "2008,",
+          2.081
+        ],
+        [
+          "Lehman",
+          2.205
+        ],
+        [
+          "Brothers",
+          2.664
+        ],
+        [
+          "collapsed.",
+          3.122
+        ],
+        [
+          "The",
+          4.03
+        ],
+        [
+          "Treasury",
+          4.259
+        ],
+        [
+          "authorized",
+          4.947
+        ],
+        [
+          "seven",
+          5.864
+        ],
+        [
+          "hundred",
+          6.322
+        ],
+        [
+          "billion",
+          6.781
+        ],
+        [
+          "dollars",
+          7.239
+        ],
+        [
+          "in",
+          7.698
+        ],
+        [
+          "emergency",
+          7.927
+        ],
+        [
+          "funds.",
+          8.844
+        ],
+        [
+          "Unemployment",
+          9.293
+        ],
+        [
+          "hit",
+          10.21
+        ],
+        [
+          "ten",
+          10.439
+        ],
+        [
+          "percent.",
+          10.669
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "type": "content",
+      "duration": 18.06,
+      "layout": "keyword",
+      "placement": "editorial",
+      "energy": "mid",
+      "arc_position": "reflection",
+      "still_motion": "push",
+      "vo_text": "So here's the pattern. America got rich by inventing machines — financial ones, industrial ones, digital ones. Every machine worked. Every machine broke. And the people who ran them usually needed a depression, a war, or a panic to admit the old machine was done.",
+      "props": {
+        "text": "Every machine worked. Every machine broke.",
+        "emphasis": "broke",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "single brass gear macro dark museum",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A single aged brass gear under dim museum spotlights against a near-black background, slight reflection below, one focal object, archival artifact photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\7ca4600f985e306dccf7d469.wav",
+      "vo_duration": 17.36,
+      "word_times": [
+        [
+          "So",
+          0.0
+        ],
+        [
+          "here's",
+          0.198
+        ],
+        [
+          "the",
+          0.594
+        ],
+        [
+          "pattern.",
+          0.792
+        ],
+        [
+          "America",
+          1.379
+        ],
+        [
+          "got",
+          2.171
+        ],
+        [
+          "rich",
+          2.369
+        ],
+        [
+          "by",
+          2.568
+        ],
+        [
+          "inventing",
+          2.766
+        ],
+        [
+          "machines",
+          3.36
+        ],
+        [
+          "—",
+          3.954
+        ],
+        [
+          "financial",
+          4.222
+        ],
+        [
+          "ones,",
+          4.816
+        ],
+        [
+          "industrial",
+          5.319
+        ],
+        [
+          "ones,",
+          5.914
+        ],
+        [
+          "digital",
+          6.417
+        ],
+        [
+          "ones.",
+          7.011
+        ],
+        [
+          "Every",
+          7.598
+        ],
+        [
+          "machine",
+          8.192
+        ],
+        [
+          "worked.",
+          8.588
+        ],
+        [
+          "Every",
+          9.175
+        ],
+        [
+          "machine",
+          9.769
+        ],
+        [
+          "broke.",
+          10.165
+        ],
+        [
+          "And",
+          10.554
+        ],
+        [
+          "the",
+          10.752
+        ],
+        [
+          "people",
+          10.95
+        ],
+        [
+          "who",
+          11.346
+        ],
+        [
+          "ran",
+          11.544
+        ],
+        [
+          "them",
+          11.742
+        ],
+        [
+          "usually",
+          11.941
+        ],
+        [
+          "needed",
+          12.535
+        ],
+        [
+          "a",
+          12.931
+        ],
+        [
+          "depression,",
+          13.129
+        ],
+        [
+          "a",
+          13.831
+        ],
+        [
+          "war,",
+          14.029
+        ],
+        [
+          "or",
+          14.334
+        ],
+        [
+          "a",
+          14.532
+        ],
+        [
+          "panic",
+          14.73
+        ],
+        [
+          "to",
+          15.126
+        ],
+        [
+          "admit",
+          15.324
+        ],
+        [
+          "the",
+          15.721
+        ],
+        [
+          "old",
+          15.919
+        ],
+        [
+          "machine",
+          16.117
+        ],
+        [
+          "was",
+          16.513
+        ],
+        [
+          "done.",
+          16.711
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "type": "content",
+      "duration": 19.34,
+      "layout": "plate",
+      "placement": "editorial",
+      "energy": "low",
+      "arc_position": "reflection",
+      "still_motion": "push",
+      "vo_text": "The country hit twenty-seven trillion dollars in annual output not because it avoided breaking — but because it rebuilt faster than it fell. Each rebuild moved the bill somewhere else: onto workers, taxpayers, debtors, or the next generation. Growth made the balance sheet larger. It never made the balance sheet disappear.",
+      "props": {
+        "text": "$27,000,000,000,000 a year",
+        "emphasis": "$27T",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "modern manhattan skyline night restrained",
+        "fallback_prompt": "The Manhattan skyline at night, dark and geometric, one skyscraper bright against deep shadows, restrained warm key light, cinematic documentary photograph"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\921a9ebcad5976ae918e2d7a.wav",
+      "vo_duration": 18.64,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "country",
+          0.205
+        ],
+        [
+          "hit",
+          0.616
+        ],
+        [
+          "twenty-seven",
+          0.822
+        ],
+        [
+          "trillion",
+          1.644
+        ],
+        [
+          "dollars",
+          2.055
+        ],
+        [
+          "in",
+          2.466
+        ],
+        [
+          "annual",
+          2.671
+        ],
+        [
+          "output",
+          3.082
+        ],
+        [
+          "not",
+          3.493
+        ],
+        [
+          "because",
+          3.699
+        ],
+        [
+          "it",
+          4.11
+        ],
+        [
+          "avoided",
+          4.315
+        ],
+        [
+          "breaking",
+          4.932
+        ],
+        [
+          "—",
+          5.343
+        ],
+        [
+          "but",
+          5.62
+        ],
+        [
+          "because",
+          5.826
+        ],
+        [
+          "it",
+          6.237
+        ],
+        [
+          "rebuilt",
+          6.442
+        ],
+        [
+          "faster",
+          6.853
+        ],
+        [
+          "than",
+          7.264
+        ],
+        [
+          "it",
+          7.47
+        ],
+        [
+          "fell.",
+          7.675
+        ],
+        [
+          "Each",
+          8.078
+        ],
+        [
+          "rebuild",
+          8.283
+        ],
+        [
+          "moved",
+          8.694
+        ],
+        [
+          "the",
+          9.105
+        ],
+        [
+          "bill",
+          9.311
+        ],
+        [
+          "somewhere",
+          9.516
+        ],
+        [
+          "else:",
+          10.133
+        ],
+        [
+          "onto",
+          10.449
+        ],
+        [
+          "workers,",
+          10.86
+        ],
+        [
+          "taxpayers,",
+          11.382
+        ],
+        [
+          "debtors,",
+          11.904
+        ],
+        [
+          "or",
+          12.426
+        ],
+        [
+          "the",
+          12.631
+        ],
+        [
+          "next",
+          12.837
+        ],
+        [
+          "generation.",
+          13.042
+        ],
+        [
+          "Growth",
+          14.062
+        ],
+        [
+          "made",
+          14.267
+        ],
+        [
+          "the",
+          14.473
+        ],
+        [
+          "balance",
+          14.678
+        ],
+        [
+          "sheet",
+          15.089
+        ],
+        [
+          "larger.",
+          15.295
+        ],
+        [
+          "It",
+          15.903
+        ],
+        [
+          "never",
+          16.108
+        ],
+        [
+          "made",
+          16.519
+        ],
+        [
+          "the",
+          16.725
+        ],
+        [
+          "balance",
+          16.93
+        ],
+        [
+          "sheet",
+          17.341
+        ],
+        [
+          "disappear.",
+          17.547
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "type": "outro",
+      "duration": 15.58,
+      "energy": "low",
+      "placement": "hero",
+      "arc_position": "cta",
+      "still_motion": "push",
+      "vo_text": "Whether the current machine follows the same pattern is up to you. The next break will have winners, losers, and an invoice. But the ledger keeps score either way. Every number leaves a receipt. Someone always pays the balance. Follow American Ledger.",
+      "props": {
+        "cta_text": "The ledger keeps score either way.",
+        "subtext": "Follow American Ledger",
+        "bg_image": null,
+        "bg_video": null
+      },
+      "broll": {
+        "keyword": "antique closed leather ledger book dark gold spine",
+        "source": "generated",
+        "gen_kind": "image",
+        "fallback_prompt": "A closed antique leather ledger book on a dark table, gold-stamped spine, single candle to the left, near-black background, museum artifact still"
+      },
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\820efa0a28765f3013d023a0.wav",
+      "vo_duration": 14.88,
+      "word_times": [
+        [
+          "Whether",
+          0.0
+        ],
+        [
+          "the",
+          0.408
+        ],
+        [
+          "current",
+          0.612
+        ],
+        [
+          "machine",
+          1.02
+        ],
+        [
+          "follows",
+          1.428
+        ],
+        [
+          "the",
+          1.836
+        ],
+        [
+          "same",
+          2.04
+        ],
+        [
+          "pattern",
+          2.244
+        ],
+        [
+          "is",
+          2.652
+        ],
+        [
+          "up",
+          2.856
+        ],
+        [
+          "to",
+          3.06
+        ],
+        [
+          "you.",
+          3.264
+        ],
+        [
+          "The",
+          3.664
+        ],
+        [
+          "next",
+          3.868
+        ],
+        [
+          "break",
+          4.072
+        ],
+        [
+          "will",
+          4.276
+        ],
+        [
+          "have",
+          4.48
+        ],
+        [
+          "winners,",
+          4.684
+        ],
+        [
+          "losers,",
+          5.203
+        ],
+        [
+          "and",
+          5.721
+        ],
+        [
+          "an",
+          5.925
+        ],
+        [
+          "invoice.",
+          6.129
+        ],
+        [
+          "But",
+          6.733
+        ],
+        [
+          "the",
+          6.937
+        ],
+        [
+          "ledger",
+          7.141
+        ],
+        [
+          "keeps",
+          7.549
+        ],
+        [
+          "score",
+          7.753
+        ],
+        [
+          "either",
+          7.957
+        ],
+        [
+          "way.",
+          8.365
+        ],
+        [
+          "Every",
+          8.765
+        ],
+        [
+          "number",
+          9.377
+        ],
+        [
+          "leaves",
+          9.785
+        ],
+        [
+          "a",
+          10.193
+        ],
+        [
+          "receipt.",
+          10.397
+        ],
+        [
+          "Someone",
+          11.001
+        ],
+        [
+          "always",
+          11.409
+        ],
+        [
+          "pays",
+          11.817
+        ],
+        [
+          "the",
+          12.021
+        ],
+        [
+          "balance.",
+          12.225
+        ],
+        [
+          "Follow",
+          12.829
+        ],
+        [
+          "American",
+          13.237
+        ],
+        [
+          "Ledger.",
+          14.053
+        ]
+      ]
+    }
+  ]
+}

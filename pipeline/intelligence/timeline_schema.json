@@ -1,0 +1,247 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VideoTimeline",
+  "type": "object",
+  "required": ["title", "scenes"],
+  "additionalProperties": false,
+  "properties": {
+    "title": {"type": "string", "minLength": 1},
+    "global_style": {
+      "type": "string",
+      "description": "Global style template (VidRush theme parity). One choice drives script pacing, VO tone, palette/typography, transitions, B-roll mood. Legacy names accepted as aliases.",
+      "enum": [
+        "crime", "history", "ledger", "modern", "minimalist", "standard",
+        "documentary", "storytelling", "listicle", "explainer", "commentary"
+      ],
+      "default": "standard"
+    },
+    "edit_style": {
+      "type": "string",
+      "description": "DEPRECATED — use global_style. Kept so old timelines validate; resolved through the legacy alias map.",
+      "enum": [
+        "crime", "history", "ledger", "modern", "minimalist", "standard",
+        "documentary", "storytelling", "listicle", "explainer", "commentary"
+      ]
+    },
+    "asset_mode": {
+      "type": "string",
+      "description": "The asset route for the whole video (Path A/B/C). 'auto' (default) = the pipeline auto-fills: image beats are generated via ModelScope (Z-Image photoreal/bilingual by default, Krea-2-Turbo for stylized/LoRA beats), video beats go to the stock search. 'stock' = pull footage from Pexels/Pixabay per scene keyword. 'generated' = you drop AI-generated stills/clips into assets/in/ per scene (image gen, or image+video gen); the pipeline prints the 04/05 prompt for any scene it's missing. A scene may override via broll.source.",
+      "enum": ["auto", "stock", "generated"],
+      "default": "auto"
+    },
+    "vo_config": {
+      "type": "string",
+      "description": "Path to VO provider config (default: pipeline/config/vo.json)"
+    },
+    "music": {"type": ["string", "null"]},
+    "music_duck_db": {"type": "number", "default": -12},
+    "loudness_target_lufs": {"type": "number", "default": -14},
+    "total_sec": {
+      "type": "number",
+      "description": "RESOLVED (orchestrator): expected program duration on the assembled-picture clock (sum of scene durations minus xfade overlaps). Written by stage_retime_to_vo; not authored by the director."
+    },
+    "sfx_volume": {
+      "type": "number",
+      "description": "Default per-scene SFX level (0..1) before the VO duck. Director overrides per scene.",
+      "default": 0.6,
+      "minimum": 0,
+      "maximum": 1
+    },
+    "accent_color": {"type": "string", "default": "#ff6b35"},
+    "text_color": {"type": "string", "default": "#ffffff"},
+    "transition_sec": {"type": "number", "default": 0.6, "minimum": 0},
+    "scenes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/scene"}
+    }
+  },
+  "$defs": {
+    "scene": {
+      "type": "object",
+      "required": ["id", "type", "duration", "props"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "integer", "minimum": 0},
+        "type": {
+          "type": "string",
+          "enum": ["intro", "content", "stat", "quote", "list", "comparison", "person", "document", "map", "crime-board", "outro"]
+        },
+        "duration": {"type": "number", "exclusiveMinimum": 0},
+        "layout": {
+          "type": "string",
+          "description": "Editorial layout variant (content scenes). Director's choice.",
+          "enum": ["plate", "keyword", "bare", "collage"]
+        },
+        "energy": {
+          "type": "string",
+          "description": "Director's pacing choice. low=still/quiet, mid=default, high=kinetic accent (hook/turn/reveal only).",
+          "enum": ["low", "mid", "high"],
+          "default": "mid"
+        },
+        "placement": {
+          "type": "string",
+          "description": "Content placement intent — where text/content anchors (rule-of-thirds). Director's choice.",
+          "enum": ["hero", "editorial", "sidebar", "float"]
+        },
+        "shake": {
+          "type": "number",
+          "description": "Impact shake intensity 0..1. 0/absent = off. Director opts in ONLY for genuine impact beats.",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0
+        },
+        "shake_at": {
+          "type": "integer",
+          "description": "Frame the impact shake starts on (default 0 = scene opening beat).",
+          "minimum": 0,
+          "default": 0
+        },
+        "shake_dir": {
+          "type": "string",
+          "description": "Dominant direction of the impact kick (Phase 8, P4). x=horizontal hit (default), y=vertical, diag=both. Director intent; the style renders it into motion.",
+          "enum": ["x", "y", "diag"],
+          "default": "x"
+        },
+        "arc_position": {
+          "type": "string",
+          "description": "Genre-arc beat this scene serves (context/evidence/reveal/…) — informational, from genreArcs."
+        },
+        "beats": {
+          "type": "object",
+          "description": "Director beat-choreography overrides (Phase 8, P0): named beat → SECONDS from scene start. Only set the beats you move; the rest keep style defaults. Beat names per scene type are documented in skills/02_director.md. Seconds = editorial intent; the scene renders them into frames+easing.",
+          "additionalProperties": {"type": "number", "minimum": 0}
+        },
+        "tempo": {
+          "type": "number",
+          "description": "Director rhythm multiplier for this scene (default 1). >1 slower/heavier, <1 tighter. Scales the style's default beat timing; explicit `beats` still win.",
+          "minimum": 0.4,
+          "maximum": 2.5,
+          "default": 1
+        },
+        "transition_out": {
+          "type": "string",
+          "description": "Director's cut intent OUT of this scene (Phase 8, P2). hard=instant cut, style=the style's default xfade, dissolve/dip=soften, whip=act-break energy. Never a raw xfade name — placement is yours, the type is the style's.",
+          "enum": ["hard", "style", "dissolve", "dip", "whip"]
+        },
+        "transition_note": {
+          "type": "string",
+          "description": "One-sentence justification for a non-default transition_out (the 'because ___')."
+        },
+        "sfx": {
+          "type": "string",
+          "description": "Director opt-in sound effect for THIS scene (Phase 8, P6): a filename in pipeline/assets/sfx/ (paper.wav, whoosh.wav, hit.wav). Motivated by the beat — a document rustle, a transition whoosh, an impact hit — never decoration. Placed at scene start, ducked under VO. Rarity: >2 per video warns.",
+          "minLength": 1
+        },
+        "sfx_volume": {
+          "type": "number",
+          "description": "This scene's SFX level (0..1) before the VO duck. Overrides the timeline default.",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "grade_override": {
+          "type": "string",
+          "description": "Per-scene grade intent (Phase 8, P7): signpost era/mood for THIS scene only, mapped onto the style palette. archival=old footage, clean=present-day, noir=hard crime, sepia=warm history, halftone=print/document.",
+          "enum": ["archival", "clean", "noir", "sepia", "halftone"]
+        },
+        "signature": {
+          "type": "object",
+          "description": "Director opt-in signature move (Phase 8, P5) — the genre's one recognizable move, fired only when you call it. Style-capped; minimalist/standard forbid most. glitch_at=frame of the crime twist glitch; archival=0..1 scratch/dust era overlay (history). Rarity enforced: a move used >1× gets a validator warning.",
+          "properties": {
+            "glitch_at": {"type": "integer", "minimum": 0},
+            "archival": {"type": "number", "minimum": 0, "maximum": 1}
+          },
+          "additionalProperties": false
+        },
+        "word_times": {
+          "type": ["array", "null"],
+          "description": "VO→visual sync (Phase 8, P1): [[word, t_seconds], ...] relative to scene start, filled by the orchestrator from the VO provider (native timings or prosody estimate). Scenes land text/punch/shake on the spoken syllables. Not authored by the director.",
+          "items": {
+            "type": "array",
+            "items": [{"type": "string"}, {"type": "number"}]
+          }
+        },
+        "photo_move": {
+          "type": "string",
+          "description": "Director's ken-burns move for the photo base (FFmpeg side). in=push toward subject, out=release, left/right/up/down=pan. Motivated by the beat: push-in for intimacy/turn, out for resolve, pan to follow action.",
+          "enum": ["in", "out", "left", "right", "up", "down"],
+          "default": "in"
+        },
+        "parallax": {
+          "type": "boolean",
+          "description": "Director opt-in: does this beat earn the 2-plane depth move? Off for quiet/VO-carrying beats, on for reveals/turns. Default true (most beats benefit).",
+          "default": true
+        },
+        "vo_text": {"type": ["string", "null"]},
+        "vo_start": {"type": "number", "minimum": 0},
+        "voice": {"type": ["string", "null"]},
+        "vo_audio": {
+          "type": ["string", "null"],
+          "description": "RESOLVED: path to the synthesized VO clip for this scene (stage_vo)."
+        },
+        "vo_duration": {
+          "type": ["number", "null"],
+          "description": "RESOLVED: measured VO length in seconds; drives scene retiming."
+        },
+        "vo_tail": {
+          "type": ["number", "null"],
+          "description": "Padding after measured VO before the cut (default 0.5s). Director may tune."
+        },
+        "needs_manual_asset": {
+          "type": "boolean",
+          "description": "RESOLVED: asset resolution fell back to a style plate; drop a manual file at pipeline/assets/in/."
+        },
+        "resolved_asset_kind": {
+          "type": "string",
+          "description": "RESOLVED (orchestrator): provenance that drives the footage-type router. image/plate → Remotion full theme; video → FFmpeg minimal edit. Never inferred from file extension.",
+          "enum": ["image", "video", "plate"]
+        },
+        "resolved_segments": {
+          "type": "array",
+          "description": "RESOLVED: ordered video source segments that fill this scene's measured duration (fetch-to-cover, trim-to-fit).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {"type": "string"},
+              "source_start": {"type": "number", "minimum": 0},
+              "target_duration": {"type": "number", "exclusiveMinimum": 0}
+            }
+          }
+        },
+        "render_route": {
+          "type": "string",
+          "description": "RESOLVED: derived from resolved_asset_kind (remotion|ffmpeg); persisted for diagnostics, not authored.",
+          "enum": ["remotion", "ffmpeg"]
+        },
+        "broll": {"$ref": "#/$defs/broll"},
+        "props": {
+          "type": "object",
+          "description": "Scene-type-specific Remotion props. Must include bg_image or bg_video."
+        }
+      }
+    },
+    "broll": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "keyword": {"type": "string"},
+        "source": {
+          "type": "string",
+          "enum": ["pexels", "pixabay", "manual", "local", "generated"],
+          "default": "pexels"
+        },
+        "gen_kind": {
+          "type": ["string", "null"],
+          "enum": ["image", "image_video", "video", null],
+          "description": "Path B only: what to drop in assets/in/ — image (still, looped), image_video (still + motion clip), or video (motion clip). Drives the printed prompt (04 image / 05 video)."
+        },
+        "fallback_prompt": {"type": ["string", "null"]},
+        "local_path": {
+          "type": ["string", "null"],
+          "description": "If source=local/manual/generated, path relative to assets/in/"
+        }
+      }
+    }
+  }
+}

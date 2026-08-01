@@ -1,0 +1,48 @@
+{
+  "style_id": "modern",
+  "name": "Modern",
+  "source": "vidrush_theme:Modern",
+  "topic_keywords": [
+    "tech", "technology", "ai", "startup", "business", "saas", "app",
+    "crypto", "finance", "stock market", "economy", "news", "breaking",
+    "productivity", "software", "data", "silicon valley", "innovation",
+    "future of", "explained", "industry"
+  ],
+  "format_words": ["explained", "breaking", "what's happening", "crisis"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "crisis_news",
+    "sentence_rhythm": "short, punchy sentences; high information density",
+    "hook_form": "bold claim or surprising number",
+    "tone_words": ["energetic", "confident", "urgent", "fact-driven"]
+  },
+  "vo": {
+    "pace": "brisk",
+    "energy": "energetic_confident",
+    "pause_markers": ["."],
+    "voice_hint": "confident explainer, Vox-style"
+  },
+  "visual": {
+    "palette": {"bg": "#0f141a", "text": "#ffffff", "accent": "#2dd4bf"},
+    "typography": {"family": "geometric sans", "weight": 700, "tracking": "tight"},
+    "title_animation": "mask_wipe_fast",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "spring_clamped",
+    "grade": {"darken": 0.48, "vignette": "subtle", "grain": 0.0}
+  },
+  "motion": {
+    "transition": {"xfade": "wipeleft", "frames": 9, "alt_xfade": "slideleft"},
+    "ken_burns_zoom": 1.06,
+    "wipe_frames": 8,
+    "plate_frames": 8,
+    "hard_titles": false,
+    "allowed_easings": ["linear"],
+    "spring_allowed": true
+  },
+  "broll": {
+    "keywords": ["city skyline", "technology", "people working", "office", "data center", "product close-up", "startup", "screens"],
+    "avoid": ["vintage film look", "sepia", "rural farmland"],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": ["transition.frames", "grade.darken", "ken_burns_zoom", "wipe_frames", "plate_frames", "palette", "grade.look", "motion.punch", "motion.cut_leak", "typography.fonts"]
+}

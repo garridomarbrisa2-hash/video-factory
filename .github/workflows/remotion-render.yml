@@ -1,0 +1,56 @@
+name: Remotion Render
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: Manifest path relative to repository root
+        required: true
+        default: remotion/manifest.json
+      concurrency:
+        description: Parallel Chrome renders
+        required: true
+        default: '2'
+      scene_pause:
+        description: Seconds between scene renders
+        required: true
+        default: '1'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: remotion/package-lock.json
+      - run: npm ci --prefix remotion
+      - run: npx remotion browser ensure
+        working-directory: remotion
+      - name: Stage payload assets
+        shell: bash
+        run: |
+          mkdir -p remotion/public/assets
+          if [ -d remotion/cloud-payload/assets ]; then
+            cp -R remotion/cloud-payload/assets/. remotion/public/assets/
+          fi
+      - name: Render scenes
+        env:
+          INPUT_MANIFEST: ${{ inputs.manifest }}
+        run: >-
+          node remotion/src/render.js --batch ${INPUT_MANIFEST}
+          --clips-only --clips-dir output/remotion-clips
+          --concurrency ${{ inputs.concurrency }}
+          --scene-pause ${{ inputs.scene_pause }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: remotion-clips-${{ github.run_id }}
+          path: output/remotion-clips
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 1

@@ -1,0 +1,47 @@
+{
+  "style_id": "standard",
+  "name": "Standard",
+  "source": "vidrush_theme:Standard",
+  "topic_keywords": [
+    "top 10", "top 5", "list", "best", "worst", "ranked", "countdown",
+    "reasons", "facts", "things you didn't know", "the truth about",
+    "what happened"
+  ],
+  "format_words": ["top 10", "top 5", "reasons why", "facts about"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "listicle",
+    "sentence_rhythm": "balanced, conversational, item -> key fact -> why it matters",
+    "hook_form": "countdown tease or bold curiosity statement",
+    "tone_words": ["informative", "entertaining", "neutral"]
+  },
+  "vo": {
+    "pace": "conversational",
+    "energy": "adaptable",
+    "pause_markers": ["."],
+    "voice_hint": "friendly narrator, adaptable"
+  },
+  "visual": {
+    "palette": {"bg": "#101014", "text": "#ffffff", "accent": "#ff6b35"},
+    "typography": {"family": "balanced sans", "weight": 600, "tracking": "normal"},
+    "title_animation": "mask_wipe",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "opacity_cut_3f",
+    "grade": {"darken": 0.5, "vignette": "medium", "grain": 0.02}
+  },
+  "motion": {
+    "transition": {"xfade": "fade", "frames": 10, "alt_xfade": "dissolve"},
+    "ken_burns_zoom": 1.05,
+    "wipe_frames": 10,
+    "plate_frames": 10,
+    "hard_titles": false,
+    "allowed_easings": ["linear"],
+    "spring_allowed": false
+  },
+  "broll": {
+    "keywords": ["satellite view", "city aerial", "people", "nature", "documentary b-roll", "establishing shot"],
+    "avoid": [],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": ["transition.frames", "grade.darken", "grade.grain", "ken_burns_zoom", "wipe_frames", "plate_frames", "grade.look", "motion.drift", "motion.cut_leak", "typography.fonts"]
+}

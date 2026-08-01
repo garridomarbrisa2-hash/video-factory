@@ -1,0 +1,24 @@
+{
+  "name": "ffmpeg-mcp-remotion",
+  "version": "1.0.0",
+  "description": "GPU-optimized Remotion renderer for FFmpeg MCP",
+  "scripts": {
+    "render": "node src/render.js",
+    "bundle": "node src/bundle.js"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.495",
+    "@remotion/cli": "^4.0.495",
+    "@remotion/google-fonts": "^4.0.495",
+    "@remotion/light-leaks": "^4.0.495",
+    "@remotion/media": "4.0.495",
+    "@remotion/noise": "^4.0.495",
+    "@remotion/paths": "^4.0.495",
+    "@remotion/renderer": "^4.0.495",
+    "@remotion/transitions": "^4.0.495",
+    "execa": "^9.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.495"
+  }
+}

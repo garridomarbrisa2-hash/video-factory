@@ -1,0 +1,48 @@
+{
+  "style_id": "crime",
+  "name": "Crime",
+  "source": "vidrush_theme:Crime",
+  "topic_keywords": [
+    "true crime", "crime", "murder", "mystery", "investigation", "detective",
+    "conspiracy", "cold case", "serial killer", "heist", "fraud", "scandal",
+    "trial", "disappearance", "unsolved", "criminal", "manhunt", "cover-up",
+    "forensic", "evidence"
+  ],
+  "format_words": ["investigation", "mystery", "cold case", "what really happened"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "mystery_investigation",
+    "sentence_rhythm": "measured, long pauses, em-dash breaks",
+    "hook_form": "question or cold-open statement",
+    "tone_words": ["suspenseful", "mysterious", "compelling"]
+  },
+  "vo": {
+    "pace": "measured",
+    "energy": "low_intense",
+    "pause_markers": ["—", "..."],
+    "voice_hint": "deep, calm, serious"
+  },
+  "visual": {
+    "palette": {"bg": "#0a0a0c", "text": "#f2f2f2", "accent": "#c0392b"},
+    "typography": {"family": "condensed grotesque or dramatic serif", "weight": 700, "tracking": "tight"},
+    "title_animation": "mask_wipe_slow",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "opacity_cut_3f",
+    "grade": {"darken": 0.6, "vignette": "strong", "grain": 0.04}
+  },
+  "motion": {
+    "transition": {"xfade": "fadeblack", "frames": 12},
+    "ken_burns_zoom": 1.05,
+    "wipe_frames": 12,
+    "plate_frames": 12,
+    "hard_titles": false,
+    "allowed_easings": ["linear"],
+    "spring_allowed": false
+  },
+  "broll": {
+    "keywords": ["night city", "evidence", "archive footage", "interrogation", "crime scene", "dark alley", "case files", "surveillance"],
+    "avoid": ["bright daylight lifestyle", "cheering crowds", "beach vacation"],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": ["transition.frames", "grade.darken", "grade.vignette", "grade.grain", "ken_burns_zoom", "wipe_frames", "plate_frames", "palette", "grade.look", "motion.drift", "motion.shake", "motion.cut_leak", "typography.fonts"]
+}

@@ -1,0 +1,59 @@
+{
+  "provider": "modal_qwen",
+  "api_key_env": "VO_API_KEY",
+  "voice": "male-narrator1",
+  "fallback_chain": [],
+  "cache_dir": "pipeline/assets/cache/vo",
+  "providers": {
+    "modal_qwen": {
+      "type": "modal_qwen",
+      "_note": "Qwen3-TTS on a Modal direct-download endpoint. Endpoint URL comes from docs/API/modal-qwen3tts.md (canonical, gitignored) — override with env VO_ENDPOINT or the endpoint key below. POST {text, voice_id, language} -> raw audio (audio/wav). Voices: male-narrator1 (default) .. male-narrator4.",
+      "endpoint": "",
+      "voice_id": "male-narrator1",
+      "language": "english",
+      "output_ext": "wav",
+      "timeout": 300
+    },
+    "gradio_qwen": {
+      "type": "gradio_qwen",
+      "_note": "Qwen3-TTS on a Gradio app (Google Colab). The *.gradio.live base_url is EPHEMERAL — Colab issues a new one each session. UPDATE base_url here (or set env VO_ENDPOINT) every time the Colab tunnel restarts. Default mode = voice_design (text -> voice description).",
+      "base_url": "https://cilantro-blasphemy-freebase.ngrok-free.dev",
+      "api_name": "voice_design",
+      "voice_description": "A mature male narrator in his late 40s to mid-50s, speaking with a polished General American accent. The voice has a deep baritone timbre—warm, resonant, and calm, with a strong sense of gravitas and authority. The tone is reflective, cinematic, and engaging, perfect for historical audiobooks and documentaries. Pacing is deliberate and measured, taking natural dramatic pauses after key financial figures or historic events. Articulation is crisp and crystal-clear.",
+      "voice_name": "serena",
+      "instruction": "",
+      "output_ext": "wav",
+      "timeout": 300,
+      "poll_interval": 1.5
+    },
+    "custom_http": {
+      "type": "custom_http",
+      "endpoint": "https://YOUR_TTS_HOST/synthesize",
+      "method": "POST",
+      "api_key_env": "VO_API_KEY",
+      "headers": {
+        "Authorization": "Bearer ${VO_API_KEY}",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "text": "{text}",
+        "voice": "{voice}"
+      },
+      "response_type": "audio_binary",
+      "output_ext": "mp3",
+      "_word_timing_note": "OPTIONAL (Phase 8, P1): if your TTS returns word timestamps, set response_type=json_url or json_with_timings and add a word_timing block below so text/punch/shake land on the exact spoken syllables. Without it the pipeline estimates timing from syllable weight (close, not exact).",
+      "word_timing": {
+        "path": "words",
+        "word_key": "word",
+        "start_key": "start",
+        "time_unit": "s"
+      }
+    },
+    "custom_cli": {
+      "type": "custom_cli",
+      "command": ["YOUR_TTS_CLI", "--voice", "{voice}", "--output", "{output_path}"],
+      "stdin": "text",
+      "output_ext": "wav"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "project_root": ".",
+  "output_dir": "output",
+  "assets_in_dir": "pipeline/assets/in",
+  "assets_cache_dir": "pipeline/assets/cache",
+  "remotion_dir": "remotion",
+  "ffmpeg_bin": "ffmpeg",
+  "ffprobe_bin": "ffprobe",
+  "default_fps": 30,
+  "default_width": 1920,
+  "default_height": 1080,
+  "nvenc_preset": "p6",
+  "nvenc_bitrate": "12M",
+  "nvenc_maxrate": "16M",
+  "transition_sec": 0.6,
+  "stock": {
+    "pexels_api_key_env": "PEXELS_API_KEY",
+    "pixabay_api_key_env": "PIXABAY_API_KEY",
+    "preferred_source": "pexels",
+    "min_width": 1920,
+    "prefer_landscape": true
+  },
+  "generate": {
+    "modelscope_api_key_env": "MODELSCOPE_API_KEY",
+    "model": null,
+    "loras": null,
+    "poll_interval": 5.0,
+    "timeout": 300.0
+  },
+  "loudness": {
+    "target_lufs": -14,
+    "true_peak": -1.0
+  }
+}

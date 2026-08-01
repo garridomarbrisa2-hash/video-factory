@@ -1,0 +1,70 @@
+{
+  "title": "Why You Are Still Stuck",
+  "edit_style": "storytelling",
+  "vo_config": "pipeline/config/vo.json",
+  "music": null,
+  "music_duck_db": -12,
+  "loudness_target_lufs": -14,
+  "accent_color": "#ff6b35",
+  "text_color": "#ffffff",
+  "transition_sec": 0.6,
+  "scenes": [
+    {
+      "id": 0,
+      "type": "intro",
+      "duration": 4,
+      "vo_text": null,
+      "props": {
+        "hook_text": "Why You Are Still Stuck",
+        "label": "WATCH THIS",
+        "bg_image": "1.png"
+      }
+    },
+    {
+      "id": 1,
+      "type": "content",
+      "duration": 5,
+      "props": {
+        "label": "THE TRUTH",
+        "text": "Hard work alone is not enough",
+        "subtext": "Winners work on different things.",
+        "bg_image": "2.png",
+        "focus": "left",
+        "ken_burns": "right"
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "duration": 4,
+      "props": {
+        "stat_text": "93%",
+        "context_text": "of people never finish what they start",
+        "bg_image": "3.png"
+      }
+    },
+    {
+      "id": 3,
+      "type": "comparison",
+      "duration": 5,
+      "props": {
+        "left_text": "Amateur",
+        "right_text": "Pro",
+        "left_image": "2.png",
+        "right_image": "4.png",
+        "bg_image": "1.png",
+        "vs_label": "VS"
+      }
+    },
+    {
+      "id": 4,
+      "type": "outro",
+      "duration": 4,
+      "props": {
+        "cta_text": "Go Build Something",
+        "subtext": "Subscribe for more",
+        "bg_image": "thumbnail.png"
+      }
+    }
+  ]
+}

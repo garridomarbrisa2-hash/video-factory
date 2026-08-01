@@ -1,0 +1,47 @@
+{
+  "style_id": "minimalist",
+  "name": "Minimalist",
+  "source": "vidrush_theme:Minimalist",
+  "topic_keywords": [
+    "how to", "guide", "tutorial", "explainer", "corporate", "product",
+    "onboarding", "training", "course", "lesson", "educational", "basics",
+    "introduction to", "step by step", "framework", "method"
+  ],
+  "format_words": ["how to", "step by step", "guide to", "introduction to"],
+  "script": {
+    "talking_points_per_min": 0.5,
+    "format": "educational",
+    "sentence_rhythm": "short declarative lines, one idea per sentence",
+    "hook_form": "direct promise of what the viewer will learn",
+    "tone_words": ["calm", "formal", "clear", "precise"]
+  },
+  "vo": {
+    "pace": "measured",
+    "energy": "calm_formal",
+    "pause_markers": ["."],
+    "voice_hint": "calm, neutral, professional"
+  },
+  "visual": {
+    "palette": {"bg": "#f5f5f3", "text": "#1a1a1a", "accent": "#2563eb"},
+    "typography": {"family": "light-weight sans", "weight": 400, "tracking": "normal"},
+    "title_animation": "opacity_cut_3f",
+    "lower_third": "plate_slide_linear",
+    "stat_reveal": "opacity_cut_3f",
+    "grade": {"darken": 0.3, "vignette": "none", "grain": 0.0}
+  },
+  "motion": {
+    "transition": {"xfade": "fade", "frames": 10},
+    "ken_burns_zoom": 1.03,
+    "wipe_frames": 8,
+    "plate_frames": 8,
+    "hard_titles": true,
+    "allowed_easings": ["linear"],
+    "spring_allowed": false
+  },
+  "broll": {
+    "keywords": ["minimal workspace", "product on white", "office abstract", "clean desk", "architecture lines", "soft shadows"],
+    "avoid": ["busy crowds", "heavy grain", "dark moody"],
+    "preferred_sources": ["pexels"]
+  },
+  "design_decisions": ["transition.frames", "grade.darken", "ken_burns_zoom", "wipe_frames", "plate_frames", "palette", "grade.look", "typography.fonts"]
+}

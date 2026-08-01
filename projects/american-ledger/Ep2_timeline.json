@@ -1,0 +1,6732 @@
+{
+  "title": "$75 Million Broke America: The Panic Wall Street Wants Forgotten",
+  "global_style": "ledger",
+  "asset_mode": "auto",
+  "music": null,
+  "music_duck_db": -12,
+  "loudness_target_lufs": -14,
+  "sfx_volume": 0.6,
+  "scenes": [
+    {
+      "id": 0,
+      "type": "stat",
+      "duration": 9.7,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "In March 1792, America had seventy-five million dollars in debt and one man gambling all of it on Wall Street.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\1b25f415e8069e6cd27a4159.wav",
+      "vo_duration": 9.2,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "March",
+          0.307
+        ],
+        [
+          "1792,",
+          0.614
+        ],
+        [
+          "America",
+          0.78
+        ],
+        [
+          "had",
+          2.009
+        ],
+        [
+          "seventy-five",
+          2.316
+        ],
+        [
+          "million",
+          3.545
+        ],
+        [
+          "dollars",
+          4.159
+        ],
+        [
+          "in",
+          4.774
+        ],
+        [
+          "debt",
+          5.081
+        ],
+        [
+          "and",
+          5.388
+        ],
+        [
+          "one",
+          5.695
+        ],
+        [
+          "man",
+          6.002
+        ],
+        [
+          "gambling",
+          6.31
+        ],
+        [
+          "all",
+          6.924
+        ],
+        [
+          "of",
+          7.231
+        ],
+        [
+          "it",
+          7.538
+        ],
+        [
+          "on",
+          7.846
+        ],
+        [
+          "Wall",
+          8.153
+        ],
+        [
+          "Street.",
+          8.46
+        ]
+      ],
+      "props": {
+        "unit": "U.S. FEDERAL DEBT, MARCH 1792",
+        "stat_text": "$75,000,000",
+        "numeric_value": 75000000,
+        "prefix": "$",
+        "context_text": "One man gambling all of it on Wall Street.",
+        "bg_image": null,
+        "emphasis": "seventy-five million dollars",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "keyword": "wall street new york stock exchange exterior",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "An antique open ledger book with handwritten dollar columns, a quill beside it, near-black background, single candle light, period documentary still, engraving style"
+      }
+    },
+    {
+      "id": 1,
+      "type": "content",
+      "duration": 6.58,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Within thirty days the entire financial system stopped. Here's the crash the textbooks skip.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\b2147530520db7aadd352b2b.wav",
+      "vo_duration": 6.08,
+      "word_times": [
+        [
+          "Within",
+          0.0
+        ],
+        [
+          "thirty",
+          0.481
+        ],
+        [
+          "days",
+          0.961
+        ],
+        [
+          "the",
+          1.202
+        ],
+        [
+          "entire",
+          1.442
+        ],
+        [
+          "financial",
+          1.923
+        ],
+        [
+          "system",
+          2.644
+        ],
+        [
+          "stopped.",
+          3.124
+        ],
+        [
+          "Here's",
+          3.836
+        ],
+        [
+          "the",
+          4.316
+        ],
+        [
+          "crash",
+          4.556
+        ],
+        [
+          "the",
+          4.797
+        ],
+        [
+          "textbooks",
+          5.037
+        ],
+        [
+          "skip.",
+          5.518
+        ]
+      ],
+      "props": {
+        "text": "Within thirty days the entire financial system stopped.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A crowded 18th-century New York street of low brick buildings and merchants outside a coffee house, overcast light, period engraving style, one focal street scene",
+        "keyword": "Wall Street 1790s street scene crowd"
+      }
+    },
+    {
+      "id": 2,
+      "type": "person",
+      "duration": 6.74,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "His name was William Duer. He had been Alexander Hamilton's own Assistant Secretary of the Treasury.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\3f27223c2b348b9fdabcfb57.wav",
+      "vo_duration": 6.24,
+      "word_times": [
+        [
+          "His",
+          0.0
+        ],
+        [
+          "name",
+          0.199
+        ],
+        [
+          "was",
+          0.398
+        ],
+        [
+          "William",
+          0.596
+        ],
+        [
+          "Duer.",
+          0.994
+        ],
+        [
+          "He",
+          1.384
+        ],
+        [
+          "had",
+          1.582
+        ],
+        [
+          "been",
+          1.781
+        ],
+        [
+          "Alexander",
+          1.98
+        ],
+        [
+          "Hamilton's",
+          2.775
+        ],
+        [
+          "own",
+          3.371
+        ],
+        [
+          "Assistant",
+          3.57
+        ],
+        [
+          "Secretary",
+          4.167
+        ],
+        [
+          "of",
+          4.962
+        ],
+        [
+          "the",
+          5.16
+        ],
+        [
+          "Treasury.",
+          5.359
+        ]
+      ],
+      "props": {
+        "name": "WILLIAM DUER",
+        "title": "Fmr. Assistant Secretary of the Treasury",
+        "quote": "",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved portrait of a sharp-featured 18th-century American gentleman in a dark coat and white cravat, plain background, period engraving style, one subject",
+        "keyword": "engraved portrait 18th century gentleman"
+      }
+    },
+    {
+      "id": 3,
+      "type": "content",
+      "duration": 7.14,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "He knew where every bond was priced, and he used that knowledge to blow up the market that had just been born.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\d19519ff6c4885451e56cf48.wav",
+      "vo_duration": 6.64,
+      "word_times": [
+        [
+          "He",
+          0.0
+        ],
+        [
+          "knew",
+          0.222
+        ],
+        [
+          "where",
+          0.443
+        ],
+        [
+          "every",
+          0.665
+        ],
+        [
+          "bond",
+          1.33
+        ],
+        [
+          "was",
+          1.552
+        ],
+        [
+          "priced,",
+          1.774
+        ],
+        [
+          "and",
+          2.337
+        ],
+        [
+          "he",
+          2.559
+        ],
+        [
+          "used",
+          2.78
+        ],
+        [
+          "that",
+          3.224
+        ],
+        [
+          "knowledge",
+          3.445
+        ],
+        [
+          "to",
+          3.889
+        ],
+        [
+          "blow",
+          4.11
+        ],
+        [
+          "up",
+          4.332
+        ],
+        [
+          "the",
+          4.554
+        ],
+        [
+          "market",
+          4.776
+        ],
+        [
+          "that",
+          5.219
+        ],
+        [
+          "had",
+          5.441
+        ],
+        [
+          "just",
+          5.662
+        ],
+        [
+          "been",
+          5.884
+        ],
+        [
+          "born.",
+          6.106
+        ]
+      ],
+      "props": {
+        "text": "He knew every bond price — and used it to blow up the market that had just been born.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "quill writing old paper close up",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A close-up of a hand writing figures into a ledger with a quill pen, candlelight, dark background, period documentary still"
+      }
+    },
+    {
+      "id": 4,
+      "type": "document",
+      "duration": 12.26,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "hold",
+      "vo_text": "In October 1790, Hamilton took the wreckage of Revolutionary War debt and reorganized it into two new federal bonds: the Sixes, paying six percent, and the Threes, paying three.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ca7dd0f19a90b45f7d84c157.wav",
+      "vo_duration": 11.76,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "October",
+          0.233
+        ],
+        [
+          "1790,",
+          0.933
+        ],
+        [
+          "Hamilton",
+          1.059
+        ],
+        [
+          "took",
+          1.759
+        ],
+        [
+          "the",
+          1.992
+        ],
+        [
+          "wreckage",
+          2.225
+        ],
+        [
+          "of",
+          2.692
+        ],
+        [
+          "Revolutionary",
+          2.925
+        ],
+        [
+          "War",
+          4.325
+        ],
+        [
+          "debt",
+          4.558
+        ],
+        [
+          "and",
+          4.791
+        ],
+        [
+          "reorganized",
+          5.024
+        ],
+        [
+          "it",
+          5.957
+        ],
+        [
+          "into",
+          6.191
+        ],
+        [
+          "two",
+          6.657
+        ],
+        [
+          "new",
+          6.89
+        ],
+        [
+          "federal",
+          7.124
+        ],
+        [
+          "bonds:",
+          7.823
+        ],
+        [
+          "the",
+          8.183
+        ],
+        [
+          "Sixes,",
+          8.416
+        ],
+        [
+          "paying",
+          9.008
+        ],
+        [
+          "six",
+          9.242
+        ],
+        [
+          "percent,",
+          9.475
+        ],
+        [
+          "and",
+          10.067
+        ],
+        [
+          "the",
+          10.301
+        ],
+        [
+          "Threes,",
+          10.534
+        ],
+        [
+          "paying",
+          10.893
+        ],
+        [
+          "three.",
+          11.126
+        ]
+      ],
+      "props": {
+        "label": "TREASURY REPORT, OCT. 1790",
+        "caption": "Two new federal bonds: the Sixes (6%) and the Threes (3%).",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "Treasury debt report page 1790"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "duration": 6.58,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "A year later, the Sixes still traded at seventy cents on the dollar — barely half of face value.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\9f2fd5880fe2d4cbd63959c3.wav",
+      "vo_duration": 6.08,
+      "word_times": [
+        [
+          "A",
+          0.0
+        ],
+        [
+          "year",
+          0.208
+        ],
+        [
+          "later,",
+          0.415
+        ],
+        [
+          "the",
+          0.942
+        ],
+        [
+          "Sixes",
+          1.15
+        ],
+        [
+          "still",
+          1.565
+        ],
+        [
+          "traded",
+          1.773
+        ],
+        [
+          "at",
+          2.188
+        ],
+        [
+          "seventy",
+          2.396
+        ],
+        [
+          "cents",
+          3.018
+        ],
+        [
+          "on",
+          3.226
+        ],
+        [
+          "the",
+          3.433
+        ],
+        [
+          "dollar",
+          3.641
+        ],
+        [
+          "—",
+          4.056
+        ],
+        [
+          "barely",
+          4.336
+        ],
+        [
+          "half",
+          4.959
+        ],
+        [
+          "of",
+          5.167
+        ],
+        [
+          "face",
+          5.374
+        ],
+        [
+          "value.",
+          5.582
+        ]
+      ],
+      "props": {
+        "unit": "THE SIXES, 1791",
+        "stat_text": "70¢",
+        "numeric_value": 0.7,
+        "prefix": "",
+        "context_text": "Barely half of face value.",
+        "bg_image": null,
+        "emphasis": "seventy cents",
+        "emphasis_color": "#c9a227"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Antique coins and a folded paper bond certificate on a wooden desk, warm side light, period documentary still",
+        "keyword": "coins and paper currency 1790s desk"
+      }
+    },
+    {
+      "id": 6,
+      "type": "content",
+      "duration": 12.02,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "William Duer saw the gap and moved. In 1791, he partnered with Alexander Macomb, one of the richest men in New York, to corner the market in US debt securities.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\fe7bff8771e5d31ef6af3569.wav",
+      "vo_duration": 11.520042,
+      "word_times": [
+        [
+          "William",
+          0.0
+        ],
+        [
+          "Duer",
+          0.488
+        ],
+        [
+          "saw",
+          0.731
+        ],
+        [
+          "the",
+          0.975
+        ],
+        [
+          "gap",
+          1.219
+        ],
+        [
+          "and",
+          1.463
+        ],
+        [
+          "moved.",
+          1.707
+        ],
+        [
+          "In",
+          2.428
+        ],
+        [
+          "1791,",
+          2.672
+        ],
+        [
+          "he",
+          2.804
+        ],
+        [
+          "partnered",
+          3.048
+        ],
+        [
+          "with",
+          3.779
+        ],
+        [
+          "Alexander",
+          4.023
+        ],
+        [
+          "Macomb,",
+          4.998
+        ],
+        [
+          "one",
+          5.618
+        ],
+        [
+          "of",
+          5.861
+        ],
+        [
+          "the",
+          6.105
+        ],
+        [
+          "richest",
+          6.349
+        ],
+        [
+          "men",
+          6.837
+        ],
+        [
+          "in",
+          7.08
+        ],
+        [
+          "New",
+          7.324
+        ],
+        [
+          "York,",
+          7.568
+        ],
+        [
+          "to",
+          7.944
+        ],
+        [
+          "corner",
+          8.187
+        ],
+        [
+          "the",
+          8.675
+        ],
+        [
+          "market",
+          8.919
+        ],
+        [
+          "in",
+          9.406
+        ],
+        [
+          "US",
+          9.65
+        ],
+        [
+          "debt",
+          9.894
+        ],
+        [
+          "securities.",
+          10.138
+        ]
+      ],
+      "props": {
+        "text": "Duer partnered with Alexander Macomb to corner the market in US debt.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Two well-dressed 18th-century gentlemen in conversation at a wooden desk with papers, warm interior light, period engraving style",
+        "keyword": "two 18th century gentlemen meeting office"
+      }
+    },
+    {
+      "id": 7,
+      "type": "list",
+      "duration": 5.54,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "Buy low. Squeeze the float. Force the price up.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\93bc325178a177d470d34d77.wav",
+      "vo_duration": 5.04,
+      "word_times": [
+        [
+          "Buy",
+          0.0
+        ],
+        [
+          "low.",
+          0.418
+        ],
+        [
+          "Squeeze",
+          1.237
+        ],
+        [
+          "the",
+          1.655
+        ],
+        [
+          "float.",
+          2.073
+        ],
+        [
+          "Force",
+          2.892
+        ],
+        [
+          "the",
+          3.31
+        ],
+        [
+          "price",
+          3.727
+        ],
+        [
+          "up.",
+          4.145
+        ]
+      ],
+      "props": {
+        "title": "THE PLAY",
+        "items": [
+          "Buy low.",
+          "Squeeze the float.",
+          "Force the price up."
+        ],
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A stack of 18th-century stock certificates tied with ribbon on a wooden desk, dim light, period documentary still",
+        "keyword": "stock certificates stacked desk"
+      }
+    },
+    {
+      "id": 8,
+      "type": "content",
+      "duration": 10.82,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "On July 1, 1791, scrip for shares in the new Bank of the United States went on sale at twenty-five dollars a right. The city went into a buying frenzy.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\f8d245625bd3e86d3b86b5c5.wav",
+      "vo_duration": 10.32,
+      "word_times": [
+        [
+          "On",
+          0.0
+        ],
+        [
+          "July",
+          0.236
+        ],
+        [
+          "1,",
+          0.709
+        ],
+        [
+          "1791,",
+          0.837
+        ],
+        [
+          "scrip",
+          0.965
+        ],
+        [
+          "for",
+          1.201
+        ],
+        [
+          "shares",
+          1.437
+        ],
+        [
+          "in",
+          1.91
+        ],
+        [
+          "the",
+          2.147
+        ],
+        [
+          "new",
+          2.383
+        ],
+        [
+          "Bank",
+          2.619
+        ],
+        [
+          "of",
+          2.856
+        ],
+        [
+          "the",
+          3.092
+        ],
+        [
+          "United",
+          3.329
+        ],
+        [
+          "States",
+          4.038
+        ],
+        [
+          "went",
+          4.511
+        ],
+        [
+          "on",
+          4.747
+        ],
+        [
+          "sale",
+          4.983
+        ],
+        [
+          "at",
+          5.456
+        ],
+        [
+          "twenty-five",
+          5.693
+        ],
+        [
+          "dollars",
+          6.402
+        ],
+        [
+          "a",
+          6.875
+        ],
+        [
+          "right.",
+          7.111
+        ],
+        [
+          "The",
+          7.574
+        ],
+        [
+          "city",
+          7.811
+        ],
+        [
+          "went",
+          8.283
+        ],
+        [
+          "into",
+          8.52
+        ],
+        [
+          "a",
+          8.993
+        ],
+        [
+          "buying",
+          9.229
+        ],
+        [
+          "frenzy.",
+          9.465
+        ]
+      ],
+      "props": {
+        "text": "Scrip for Bank of the United States shares went on sale — the city went into a buying frenzy.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "antique paper documents macro",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A crowd of men in period dress gathered outside a colonial coffee house, overcast light, period engraving style, one focal scene"
+      }
+    },
+    {
+      "id": 9,
+      "type": "stat",
+      "duration": 5.3,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "By July 31 — thirty days later — the Sixes hit par: one hundred.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\8c5ced0758260c4a314559c6.wav",
+      "vo_duration": 4.8,
+      "word_times": [
+        [
+          "By",
+          0.0
+        ],
+        [
+          "July",
+          0.234
+        ],
+        [
+          "31",
+          0.702
+        ],
+        [
+          "—",
+          0.702
+        ],
+        [
+          "thirty",
+          1.018
+        ],
+        [
+          "days",
+          1.486
+        ],
+        [
+          "later",
+          1.72
+        ],
+        [
+          "—",
+          2.188
+        ],
+        [
+          "the",
+          2.504
+        ],
+        [
+          "Sixes",
+          2.738
+        ],
+        [
+          "hit",
+          3.207
+        ],
+        [
+          "par:",
+          3.441
+        ],
+        [
+          "one",
+          3.801
+        ],
+        [
+          "hundred.",
+          4.035
+        ]
+      ],
+      "props": {
+        "unit": "THE SIXES, JULY 31 1791",
+        "stat_text": "100",
+        "numeric_value": 100,
+        "prefix": "",
+        "context_text": "Par value — thirty days after the scrip sale.",
+        "bg_image": null,
+        "emphasis": "par",
+        "emphasis_color": "#c9a227"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A close-up of an 18th-century government bond certificate with ornate print border, warm light, period documentary still",
+        "keyword": "bond certificate closeup"
+      }
+    },
+    {
+      "id": 10,
+      "type": "document",
+      "duration": 11.46,
+      "placement": "editorial",
+      "energy": "low",
+      "still_motion": "hold",
+      "vo_text": "Duer wasn't done. That November, he drew on funds from the Society for Establishing Useful Manufactures, Hamilton's industrial project in Paterson, New Jersey.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a946bc843d5ff56a8da73ac2.wav",
+      "vo_duration": 10.96,
+      "word_times": [
+        [
+          "Duer",
+          0.0
+        ],
+        [
+          "wasn't",
+          0.227
+        ],
+        [
+          "done.",
+          0.454
+        ],
+        [
+          "That",
+          0.899
+        ],
+        [
+          "November,",
+          1.126
+        ],
+        [
+          "he",
+          1.93
+        ],
+        [
+          "drew",
+          2.157
+        ],
+        [
+          "on",
+          2.384
+        ],
+        [
+          "funds",
+          2.611
+        ],
+        [
+          "from",
+          2.839
+        ],
+        [
+          "the",
+          3.066
+        ],
+        [
+          "Society",
+          3.293
+        ],
+        [
+          "for",
+          3.974
+        ],
+        [
+          "Establishing",
+          4.201
+        ],
+        [
+          "Useful",
+          5.109
+        ],
+        [
+          "Manufactures,",
+          5.791
+        ],
+        [
+          "Hamilton's",
+          7.049
+        ],
+        [
+          "industrial",
+          7.73
+        ],
+        [
+          "project",
+          8.411
+        ],
+        [
+          "in",
+          8.865
+        ],
+        [
+          "Paterson,",
+          9.092
+        ],
+        [
+          "New",
+          9.896
+        ],
+        [
+          "Jersey.",
+          10.123
+        ]
+      ],
+      "props": {
+        "label": "S.U.M. CHARTER, PATERSON N.J.",
+        "caption": "Duer's industrial company — and his personal line of credit.",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "industrial charter document 1791"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 11,
+      "type": "content",
+      "duration": 8.34,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "He personally governed that company and had raised five hundred thousand dollars to capitalize it. Now he used it as his own line of credit.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a4cfb51e200f4bec61183061.wav",
+      "vo_duration": 7.84,
+      "word_times": [
+        [
+          "He",
+          0.0
+        ],
+        [
+          "personally",
+          0.18
+        ],
+        [
+          "governed",
+          0.9
+        ],
+        [
+          "that",
+          1.439
+        ],
+        [
+          "company",
+          1.619
+        ],
+        [
+          "and",
+          2.159
+        ],
+        [
+          "had",
+          2.339
+        ],
+        [
+          "raised",
+          2.519
+        ],
+        [
+          "five",
+          2.879
+        ],
+        [
+          "hundred",
+          3.059
+        ],
+        [
+          "thousand",
+          3.419
+        ],
+        [
+          "dollars",
+          3.778
+        ],
+        [
+          "to",
+          4.138
+        ],
+        [
+          "capitalize",
+          4.318
+        ],
+        [
+          "it.",
+          5.038
+        ],
+        [
+          "Now",
+          5.391
+        ],
+        [
+          "he",
+          5.57
+        ],
+        [
+          "used",
+          5.75
+        ],
+        [
+          "it",
+          6.11
+        ],
+        [
+          "as",
+          6.29
+        ],
+        [
+          "his",
+          6.47
+        ],
+        [
+          "own",
+          6.65
+        ],
+        [
+          "line",
+          6.83
+        ],
+        [
+          "of",
+          7.01
+        ],
+        [
+          "credit.",
+          7.19
+        ]
+      ],
+      "props": {
+        "text": "He personally raised five hundred thousand dollars to capitalize it — then borrowed it back for himself.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A close-up of a hand counting gold coins beside an open ledger, candlelight, dark background, period documentary still",
+        "keyword": "hand counting coins ledger"
+      }
+    },
+    {
+      "id": 12,
+      "type": "comparison",
+      "duration": 12.66,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Duer's circle called themselves the Six Percent Club. Between December 1791 and January 1792, they drove the six percent bonds from one hundred ten to one hundred twenty-five.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\26d6d7093f978bef1b4052ed.wav",
+      "vo_duration": 12.16,
+      "word_times": [
+        [
+          "Duer's",
+          0.0
+        ],
+        [
+          "circle",
+          0.276
+        ],
+        [
+          "called",
+          0.827
+        ],
+        [
+          "themselves",
+          1.378
+        ],
+        [
+          "the",
+          2.205
+        ],
+        [
+          "Six",
+          2.48
+        ],
+        [
+          "Percent",
+          2.756
+        ],
+        [
+          "Club.",
+          3.307
+        ],
+        [
+          "Between",
+          3.847
+        ],
+        [
+          "December",
+          4.399
+        ],
+        [
+          "1791",
+          5.225
+        ],
+        [
+          "and",
+          5.225
+        ],
+        [
+          "January",
+          5.501
+        ],
+        [
+          "1792,",
+          6.328
+        ],
+        [
+          "they",
+          6.477
+        ],
+        [
+          "drove",
+          6.752
+        ],
+        [
+          "the",
+          7.028
+        ],
+        [
+          "six",
+          7.303
+        ],
+        [
+          "percent",
+          7.579
+        ],
+        [
+          "bonds",
+          8.13
+        ],
+        [
+          "from",
+          8.406
+        ],
+        [
+          "one",
+          8.681
+        ],
+        [
+          "hundred",
+          8.957
+        ],
+        [
+          "ten",
+          9.508
+        ],
+        [
+          "to",
+          9.784
+        ],
+        [
+          "one",
+          10.059
+        ],
+        [
+          "hundred",
+          10.335
+        ],
+        [
+          "twenty-five.",
+          10.886
+        ]
+      ],
+      "props": {
+        "left_text": "DEC 1791 — 110",
+        "right_text": "JAN 1792 — 125",
+        "vs_label": "THE SIXES",
+        "left_prompt": "A modest stack of 18th-century bond certificates on a desk, dim candlelight, engraving style, no readable text",
+        "right_prompt": "A taller stack of 18th-century bond certificates on a desk, bright candlelight, engraving style, no readable text",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved chart with a rising line over handwritten dates, sepia tone, period documentary illustration",
+        "keyword": "rising bond price chart engraving"
+      }
+    },
+    {
+      "id": 13,
+      "type": "content",
+      "duration": 7.22,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Bank of the United States shares rose from five hundred twenty-eight dollars to seven hundred twelve in the same weeks.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\540d9b9844841cbc31f61b04.wav",
+      "vo_duration": 6.72,
+      "word_times": [
+        [
+          "Bank",
+          0.0
+        ],
+        [
+          "of",
+          0.221
+        ],
+        [
+          "the",
+          0.442
+        ],
+        [
+          "United",
+          0.663
+        ],
+        [
+          "States",
+          1.326
+        ],
+        [
+          "shares",
+          1.767
+        ],
+        [
+          "rose",
+          2.209
+        ],
+        [
+          "from",
+          2.43
+        ],
+        [
+          "five",
+          2.651
+        ],
+        [
+          "hundred",
+          2.872
+        ],
+        [
+          "twenty-eight",
+          3.314
+        ],
+        [
+          "dollars",
+          3.756
+        ],
+        [
+          "to",
+          4.198
+        ],
+        [
+          "seven",
+          4.419
+        ],
+        [
+          "hundred",
+          4.861
+        ],
+        [
+          "twelve",
+          5.302
+        ],
+        [
+          "in",
+          5.523
+        ],
+        [
+          "the",
+          5.744
+        ],
+        [
+          "same",
+          5.965
+        ],
+        [
+          "weeks.",
+          6.186
+        ]
+      ],
+      "props": {
+        "text": "Bank of the United States shares rose from five hundred twenty-eight dollars to seven hundred twelve in the same weeks.",
+        "emphasis": "seven hundred twelve",
+        "emphasis_color": "#c9a227"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "The stone facade of an 18th-century American bank building, overcast light, period engraving style, one focal building",
+        "keyword": "bank building facade 18th century"
+      }
+    },
+    {
+      "id": 14,
+      "type": "content",
+      "duration": 8.18,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "The Bank noticed. On December 29, 1791, it held seven hundred six thousand dollars in cash reserves.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\c857c82a9503ef177e142baf.wav",
+      "vo_duration": 7.68,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "Bank",
+          0.27
+        ],
+        [
+          "noticed.",
+          0.54
+        ],
+        [
+          "On",
+          1.61
+        ],
+        [
+          "December",
+          1.88
+        ],
+        [
+          "29,",
+          2.691
+        ],
+        [
+          "1791,",
+          2.837
+        ],
+        [
+          "it",
+          2.983
+        ],
+        [
+          "held",
+          3.253
+        ],
+        [
+          "seven",
+          3.523
+        ],
+        [
+          "hundred",
+          4.063
+        ],
+        [
+          "six",
+          4.604
+        ],
+        [
+          "thousand",
+          4.874
+        ],
+        [
+          "dollars",
+          5.414
+        ],
+        [
+          "in",
+          5.955
+        ],
+        [
+          "cash",
+          6.225
+        ],
+        [
+          "reserves.",
+          6.495
+        ]
+      ],
+      "props": {
+        "text": "The Bank noticed. Its cash reserves stood at seven hundred six thousand dollars.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Stacks of gold coins inside a dim stone vault, single lantern light, period documentary still",
+        "keyword": "bank vault coins reserve 18th century"
+      }
+    },
+    {
+      "id": 15,
+      "type": "stat",
+      "duration": 9.78,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "By January 31, 1792: five hundred ten thousand. By March 9: two hundred forty-four thousand — a two-thirds drain in ten weeks.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\984130d1511ed611750a2afc.wav",
+      "vo_duration": 9.28,
+      "word_times": [
+        [
+          "By",
+          0.0
+        ],
+        [
+          "January",
+          0.287
+        ],
+        [
+          "31,",
+          1.147
+        ],
+        [
+          "1792:",
+          1.301
+        ],
+        [
+          "five",
+          1.456
+        ],
+        [
+          "hundred",
+          1.743
+        ],
+        [
+          "ten",
+          2.316
+        ],
+        [
+          "thousand.",
+          2.603
+        ],
+        [
+          "By",
+          3.451
+        ],
+        [
+          "March",
+          3.738
+        ],
+        [
+          "9:",
+          4.024
+        ],
+        [
+          "two",
+          4.179
+        ],
+        [
+          "hundred",
+          4.466
+        ],
+        [
+          "forty-four",
+          5.039
+        ],
+        [
+          "thousand",
+          5.899
+        ],
+        [
+          "—",
+          6.472
+        ],
+        [
+          "a",
+          6.859
+        ],
+        [
+          "two-thirds",
+          7.146
+        ],
+        [
+          "drain",
+          7.719
+        ],
+        [
+          "in",
+          8.006
+        ],
+        [
+          "ten",
+          8.292
+        ],
+        [
+          "weeks.",
+          8.579
+        ]
+      ],
+      "props": {
+        "unit": "BANK RESERVES DRAINED",
+        "bg_image": null,
+        "emphasis": "two-thirds drain",
+        "emphasis_color": "#b21f1f",
+        "stat_text": "244000",
+        "numeric_value": 244000,
+        "context_text": "From DEC 29 to MAR 9.",
+        "chart_points": [
+          706000,
+          510000,
+          244000
+        ]
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Rows of empty wooden shelves inside a dim stone vault, cold light, period documentary still",
+        "keyword": "empty vault shelves 18th century"
+      }
+    },
+    {
+      "id": 16,
+      "type": "content",
+      "duration": 7.86,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "So the Bank slammed the brakes. Discounts were cut from two point six eight million dollars to two point zero five million.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a8bad1bbc6edb2472ecc2cfc.wav",
+      "vo_duration": 7.36,
+      "word_times": [
+        [
+          "So",
+          0.0
+        ],
+        [
+          "the",
+          0.234
+        ],
+        [
+          "Bank",
+          0.469
+        ],
+        [
+          "slammed",
+          0.703
+        ],
+        [
+          "the",
+          1.172
+        ],
+        [
+          "brakes.",
+          1.407
+        ],
+        [
+          "Discounts",
+          2.101
+        ],
+        [
+          "were",
+          2.57
+        ],
+        [
+          "cut",
+          2.804
+        ],
+        [
+          "from",
+          3.039
+        ],
+        [
+          "two",
+          3.273
+        ],
+        [
+          "point",
+          3.508
+        ],
+        [
+          "six",
+          3.742
+        ],
+        [
+          "eight",
+          3.976
+        ],
+        [
+          "million",
+          4.211
+        ],
+        [
+          "dollars",
+          4.68
+        ],
+        [
+          "to",
+          5.149
+        ],
+        [
+          "two",
+          5.383
+        ],
+        [
+          "point",
+          5.618
+        ],
+        [
+          "zero",
+          5.852
+        ],
+        [
+          "five",
+          6.321
+        ],
+        [
+          "million.",
+          6.556
+        ]
+      ],
+      "props": {
+        "text": "So the Bank slammed the brakes — discounts cut hard, credit vanishing exactly when Duer needed it most.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A heavy wooden bank door shut with an iron lock, cold light, period documentary still, one focal object",
+        "keyword": "closed bank door 18th century"
+      }
+    },
+    {
+      "id": 17,
+      "type": "content",
+      "duration": 4.34,
+      "placement": "sidebar",
+      "energy": "low",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Credit vanished exactly when Duer needed to roll over his loans.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\7adf59d06df6dd2ad0c2c0e3.wav",
+      "vo_duration": 3.84,
+      "word_times": [
+        [
+          "Credit",
+          0.0
+        ],
+        [
+          "vanished",
+          0.399
+        ],
+        [
+          "exactly",
+          0.997
+        ],
+        [
+          "when",
+          1.596
+        ],
+        [
+          "Duer",
+          1.795
+        ],
+        [
+          "needed",
+          1.995
+        ],
+        [
+          "to",
+          2.394
+        ],
+        [
+          "roll",
+          2.593
+        ],
+        [
+          "over",
+          2.793
+        ],
+        [
+          "his",
+          3.192
+        ],
+        [
+          "loans.",
+          3.391
+        ]
+      ],
+      "props": {
+        "text": "Credit vanished exactly when Duer needed to roll over his loans.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A closed ledger book on an empty wooden desk, dim light, period documentary still",
+        "keyword": "empty desk closed ledger 18th century"
+      }
+    },
+    {
+      "id": 18,
+      "type": "document",
+      "duration": 12.26,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "hold",
+      "vo_text": "The bonds peaked at one hundred twenty-nine on March 5, 1792. That same week, the comptroller at the Society for Establishing Useful Manufactures discovered Duer's unauthorized loan.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ac47efc664777ff4090f1efa.wav",
+      "vo_duration": 11.76,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "bonds",
+          0.223
+        ],
+        [
+          "peaked",
+          0.446
+        ],
+        [
+          "at",
+          0.891
+        ],
+        [
+          "one",
+          1.114
+        ],
+        [
+          "hundred",
+          1.337
+        ],
+        [
+          "twenty-nine",
+          1.782
+        ],
+        [
+          "on",
+          2.45
+        ],
+        [
+          "March",
+          2.673
+        ],
+        [
+          "5,",
+          2.896
+        ],
+        [
+          "1792.",
+          3.016
+        ],
+        [
+          "That",
+          3.23
+        ],
+        [
+          "same",
+          3.453
+        ],
+        [
+          "week,",
+          3.676
+        ],
+        [
+          "the",
+          4.019
+        ],
+        [
+          "comptroller",
+          4.241
+        ],
+        [
+          "at",
+          4.91
+        ],
+        [
+          "the",
+          5.132
+        ],
+        [
+          "Society",
+          5.355
+        ],
+        [
+          "for",
+          6.023
+        ],
+        [
+          "Establishing",
+          6.246
+        ],
+        [
+          "Useful",
+          7.137
+        ],
+        [
+          "Manufactures",
+          7.806
+        ],
+        [
+          "discovered",
+          8.919
+        ],
+        [
+          "Duer's",
+          9.81
+        ],
+        [
+          "unauthorized",
+          10.033
+        ],
+        [
+          "loan.",
+          11.147
+        ]
+      ],
+      "props": {
+        "label": "S.U.M. COMPTROLLER'S DEMAND",
+        "caption": "Duer's unauthorized loan, discovered and called in.",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "demand letter document 1792"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 19,
+      "type": "content",
+      "duration": 5.62,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "He demanded it back. Duer had nowhere left to borrow.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ce9ef714542dfdfcad666b29.wav",
+      "vo_duration": 5.12,
+      "word_times": [
+        [
+          "He",
+          0.0
+        ],
+        [
+          "demanded",
+          0.317
+        ],
+        [
+          "it",
+          1.267
+        ],
+        [
+          "back.",
+          1.584
+        ],
+        [
+          "Duer",
+          2.205
+        ],
+        [
+          "had",
+          2.522
+        ],
+        [
+          "nowhere",
+          2.838
+        ],
+        [
+          "left",
+          3.472
+        ],
+        [
+          "to",
+          3.789
+        ],
+        [
+          "borrow.",
+          4.106
+        ]
+      ],
+      "props": {
+        "text": "Duer had nowhere left to borrow.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A quiet 18th-century street with shuttered shopfronts, overcast light, period engraving style",
+        "keyword": "empty street closed shops 18th century"
+      }
+    },
+    {
+      "id": 20,
+      "type": "stat",
+      "duration": 10.5,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "In three days — March 8 to March 9 — the Sixes fell from one hundred twenty-five point eight three to one hundred sixteen point two five.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\342177e02bf6fc0416869c89.wav",
+      "vo_duration": 10.0,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "three",
+          0.302
+        ],
+        [
+          "days",
+          0.603
+        ],
+        [
+          "—",
+          0.905
+        ],
+        [
+          "March",
+          1.312
+        ],
+        [
+          "8",
+          1.614
+        ],
+        [
+          "to",
+          1.614
+        ],
+        [
+          "March",
+          1.915
+        ],
+        [
+          "9",
+          2.217
+        ],
+        [
+          "—",
+          2.217
+        ],
+        [
+          "the",
+          2.624
+        ],
+        [
+          "Sixes",
+          2.925
+        ],
+        [
+          "fell",
+          3.529
+        ],
+        [
+          "from",
+          3.83
+        ],
+        [
+          "one",
+          4.132
+        ],
+        [
+          "hundred",
+          4.433
+        ],
+        [
+          "twenty-five",
+          5.037
+        ],
+        [
+          "point",
+          5.941
+        ],
+        [
+          "eight",
+          6.243
+        ],
+        [
+          "three",
+          6.545
+        ],
+        [
+          "to",
+          6.846
+        ],
+        [
+          "one",
+          7.148
+        ],
+        [
+          "hundred",
+          7.449
+        ],
+        [
+          "sixteen",
+          8.053
+        ],
+        [
+          "point",
+          8.656
+        ],
+        [
+          "two",
+          8.957
+        ],
+        [
+          "five.",
+          9.259
+        ]
+      ],
+      "props": {
+        "unit": "THE SIXES COLLAPSE",
+        "bg_image": null,
+        "emphasis": "fell",
+        "emphasis_color": "#b21f1f",
+        "stat_text": "116.25",
+        "numeric_value": 116.25,
+        "context_text": "From MAR 8 to MAR 9.",
+        "chart_points": [
+          125.83,
+          116.25
+        ]
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved chart with a sharply falling line, sepia tone, period documentary illustration, one focal chart",
+        "keyword": "plunging line chart engraving"
+      }
+    },
+    {
+      "id": 21,
+      "type": "content",
+      "duration": 4.66,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "On March 9, William Duer stopped paying his debts.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\bab42eb5ac49f938f146971b.wav",
+      "vo_duration": 4.16,
+      "word_times": [
+        [
+          "On",
+          0.0
+        ],
+        [
+          "March",
+          0.356
+        ],
+        [
+          "9,",
+          0.713
+        ],
+        [
+          "William",
+          0.905
+        ],
+        [
+          "Duer",
+          1.618
+        ],
+        [
+          "stopped",
+          1.974
+        ],
+        [
+          "paying",
+          2.687
+        ],
+        [
+          "his",
+          3.043
+        ],
+        [
+          "debts.",
+          3.399
+        ]
+      ],
+      "props": {
+        "text": "On March 9, William Duer stopped paying his debts.",
+        "bg_image": null,
+        "emphasis": "stopped paying",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A lone 18th-century gentleman seated at a dark wooden desk, head down, single candle light, period documentary still",
+        "keyword": "man alone dark office 18th century"
+      },
+      "shake": 0.4,
+      "shake_dir": "x"
+    },
+    {
+      "id": 22,
+      "type": "document",
+      "duration": 8.34,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "hold",
+      "vo_text": "Two days later he wrote to Hamilton, blaming the collapse on notes \"issued by my agent during my absence from this city.\"",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\79cbfd3f50ba347313b2d8bd.wav",
+      "vo_duration": 7.84,
+      "word_times": [
+        [
+          "Two",
+          0.0
+        ],
+        [
+          "days",
+          0.23
+        ],
+        [
+          "later",
+          0.46
+        ],
+        [
+          "he",
+          0.921
+        ],
+        [
+          "wrote",
+          1.151
+        ],
+        [
+          "to",
+          1.381
+        ],
+        [
+          "Hamilton,",
+          1.612
+        ],
+        [
+          "blaming",
+          2.427
+        ],
+        [
+          "the",
+          2.887
+        ],
+        [
+          "collapse",
+          3.118
+        ],
+        [
+          "on",
+          3.578
+        ],
+        [
+          "notes",
+          3.808
+        ],
+        [
+          "\"issued",
+          4.269
+        ],
+        [
+          "by",
+          4.729
+        ],
+        [
+          "my",
+          4.959
+        ],
+        [
+          "agent",
+          5.19
+        ],
+        [
+          "during",
+          5.65
+        ],
+        [
+          "my",
+          6.111
+        ],
+        [
+          "absence",
+          6.341
+        ],
+        [
+          "from",
+          6.801
+        ],
+        [
+          "this",
+          7.032
+        ],
+        [
+          "city.\"",
+          7.262
+        ]
+      ],
+      "props": {
+        "label": "DUER TO HAMILTON, MAR. 11 1792",
+        "caption": "\"Issued by my agent during my absence from this City.\"",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "handwritten letter 18th century"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 23,
+      "type": "quote",
+      "duration": 5.06,
+      "placement": "hero",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "Hamilton wrote back on March 14: \"Act with fortitude and honor.\"",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a1f5dcc80fa80a574d27af2a.wav",
+      "vo_duration": 4.56,
+      "word_times": [
+        [
+          "Hamilton",
+          0.0
+        ],
+        [
+          "wrote",
+          0.867
+        ],
+        [
+          "back",
+          1.156
+        ],
+        [
+          "on",
+          1.445
+        ],
+        [
+          "March",
+          1.734
+        ],
+        [
+          "14:",
+          2.023
+        ],
+        [
+          "\"Act",
+          2.179
+        ],
+        [
+          "with",
+          2.468
+        ],
+        [
+          "fortitude",
+          2.757
+        ],
+        [
+          "and",
+          3.624
+        ],
+        [
+          "honor.\"",
+          3.914
+        ]
+      ],
+      "props": {
+        "attribution": "ALEXANDER HAMILTON, MARCH 14 1792",
+        "bg_image": null,
+        "quote_text": "Act with fortitude and honor."
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A close-up of a quill pen resting in an inkwell beside a folded letter, candlelight, period documentary still",
+        "keyword": "quill pen inkwell closeup"
+      }
+    },
+    {
+      "id": 24,
+      "type": "content",
+      "duration": 9.06,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Duer didn't get the chance. On March 23, 1792, he was arrested and sent to the New Gaol debtors' prison in Manhattan.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ccafcef6b822fcbd017b2a26.wav",
+      "vo_duration": 8.56,
+      "word_times": [
+        [
+          "Duer",
+          0.0
+        ],
+        [
+          "didn't",
+          0.291
+        ],
+        [
+          "get",
+          0.581
+        ],
+        [
+          "the",
+          0.872
+        ],
+        [
+          "chance.",
+          1.163
+        ],
+        [
+          "On",
+          1.733
+        ],
+        [
+          "March",
+          2.024
+        ],
+        [
+          "23,",
+          2.314
+        ],
+        [
+          "1792,",
+          2.471
+        ],
+        [
+          "he",
+          2.628
+        ],
+        [
+          "was",
+          2.919
+        ],
+        [
+          "arrested",
+          3.21
+        ],
+        [
+          "and",
+          4.082
+        ],
+        [
+          "sent",
+          4.373
+        ],
+        [
+          "to",
+          4.664
+        ],
+        [
+          "the",
+          4.954
+        ],
+        [
+          "New",
+          5.245
+        ],
+        [
+          "Gaol",
+          5.536
+        ],
+        [
+          "debtors'",
+          5.827
+        ],
+        [
+          "prison",
+          6.408
+        ],
+        [
+          "in",
+          6.99
+        ],
+        [
+          "Manhattan.",
+          7.28
+        ]
+      ],
+      "props": {
+        "text": "On March 23, 1792, Duer was arrested and sent to the New Gaol debtors' prison in Manhattan.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A three-story stone prison building exterior, overcast light, period engraving style, one focal building",
+        "keyword": "18th century prison exterior stone"
+      }
+    },
+    {
+      "id": 25,
+      "type": "content",
+      "duration": 7.06,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Mobs surrounded the building. Inside, one creditor collected fifteen hundred dollars from him at gunpoint.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\9c61816174ed9219745eea59.wav",
+      "vo_duration": 6.56,
+      "word_times": [
+        [
+          "Mobs",
+          0.0
+        ],
+        [
+          "surrounded",
+          0.219
+        ],
+        [
+          "the",
+          0.877
+        ],
+        [
+          "building.",
+          1.097
+        ],
+        [
+          "Inside,",
+          1.746
+        ],
+        [
+          "one",
+          2.303
+        ],
+        [
+          "creditor",
+          2.522
+        ],
+        [
+          "collected",
+          3.18
+        ],
+        [
+          "fifteen",
+          3.838
+        ],
+        [
+          "hundred",
+          4.277
+        ],
+        [
+          "dollars",
+          4.716
+        ],
+        [
+          "from",
+          5.154
+        ],
+        [
+          "him",
+          5.374
+        ],
+        [
+          "at",
+          5.593
+        ],
+        [
+          "gunpoint.",
+          5.812
+        ]
+      ],
+      "props": {
+        "text": "Mobs surrounded the building. One creditor collected fifteen hundred dollars from him at gunpoint.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A dense crowd of men gathered outside a stone prison gate, tense overcast light, period engraving style",
+        "keyword": "angry crowd outside prison 18th century"
+      }
+    },
+    {
+      "id": 26,
+      "type": "stat",
+      "duration": 10.34,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "The total damage from Duer's collapse: three million dollars. A contemporary put it plainly — there was, he said, \"not a rich man in the City\" left standing.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\73b0c26c3c6b71c974bb5de4.wav",
+      "vo_duration": 9.84,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "total",
+          0.221
+        ],
+        [
+          "damage",
+          0.663
+        ],
+        [
+          "from",
+          1.104
+        ],
+        [
+          "Duer's",
+          1.325
+        ],
+        [
+          "collapse:",
+          1.546
+        ],
+        [
+          "three",
+          2.107
+        ],
+        [
+          "million",
+          2.328
+        ],
+        [
+          "dollars.",
+          2.769
+        ],
+        [
+          "A",
+          3.423
+        ],
+        [
+          "contemporary",
+          3.644
+        ],
+        [
+          "put",
+          4.748
+        ],
+        [
+          "it",
+          4.969
+        ],
+        [
+          "plainly",
+          5.19
+        ],
+        [
+          "—",
+          5.631
+        ],
+        [
+          "there",
+          5.929
+        ],
+        [
+          "was,",
+          6.15
+        ],
+        [
+          "he",
+          6.49
+        ],
+        [
+          "said,",
+          6.711
+        ],
+        [
+          "\"not",
+          7.051
+        ],
+        [
+          "a",
+          7.272
+        ],
+        [
+          "rich",
+          7.493
+        ],
+        [
+          "man",
+          7.714
+        ],
+        [
+          "in",
+          7.935
+        ],
+        [
+          "the",
+          8.155
+        ],
+        [
+          "City\"",
+          8.376
+        ],
+        [
+          "left",
+          8.818
+        ],
+        [
+          "standing.",
+          9.039
+        ]
+      ],
+      "props": {
+        "unit": "TOTAL DAMAGE",
+        "stat_text": "$3,000,000",
+        "numeric_value": 3000000,
+        "prefix": "$",
+        "context_text": "\"Not a rich man in the City left standing.\"",
+        "bg_image": null,
+        "emphasis": "three million dollars",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An empty 18th-century counting house with bare desks and scattered papers, dim light, period documentary still",
+        "keyword": "empty counting house 18th century"
+      }
+    },
+    {
+      "id": 27,
+      "type": "comparison",
+      "duration": 11.86,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "Alexander Macomb defaulted on five hundred thousand dollars in stock purchases and joined Duer in prison. One associate had personally cosigned over two hundred thousand dollars of Duer's notes.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\485b3bc6345c7f5bdc6549ff.wav",
+      "vo_duration": 11.36,
+      "word_times": [
+        [
+          "Alexander",
+          0.0
+        ],
+        [
+          "Macomb",
+          0.8
+        ],
+        [
+          "defaulted",
+          1.201
+        ],
+        [
+          "on",
+          1.801
+        ],
+        [
+          "five",
+          2.001
+        ],
+        [
+          "hundred",
+          2.201
+        ],
+        [
+          "thousand",
+          2.601
+        ],
+        [
+          "dollars",
+          3.002
+        ],
+        [
+          "in",
+          3.402
+        ],
+        [
+          "stock",
+          3.602
+        ],
+        [
+          "purchases",
+          3.802
+        ],
+        [
+          "and",
+          4.402
+        ],
+        [
+          "joined",
+          4.602
+        ],
+        [
+          "Duer",
+          5.003
+        ],
+        [
+          "in",
+          5.203
+        ],
+        [
+          "prison.",
+          5.403
+        ],
+        [
+          "One",
+          5.995
+        ],
+        [
+          "associate",
+          6.195
+        ],
+        [
+          "had",
+          6.795
+        ],
+        [
+          "personally",
+          6.996
+        ],
+        [
+          "cosigned",
+          7.796
+        ],
+        [
+          "over",
+          8.396
+        ],
+        [
+          "two",
+          8.796
+        ],
+        [
+          "hundred",
+          8.997
+        ],
+        [
+          "thousand",
+          9.397
+        ],
+        [
+          "dollars",
+          9.797
+        ],
+        [
+          "of",
+          10.197
+        ],
+        [
+          "Duer's",
+          10.397
+        ],
+        [
+          "notes.",
+          10.597
+        ]
+      ],
+      "props": {
+        "left_text": "MACOMB — $500,000",
+        "right_text": "COSIGNED — $200,000",
+        "vs_label": "DEFAULTS",
+        "left_prompt": "An empty wealthy merchant counting house, scattered papers, 1792, engraving style, no readable text",
+        "right_prompt": "A single unsigned promissory note beside an empty coin purse, 1792, engraving style, no readable text",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Torn 18th-century stock certificates scattered on a wooden floor, dim light, period documentary still",
+        "keyword": "stock certificates torn scattered"
+      }
+    },
+    {
+      "id": 28,
+      "type": "content",
+      "duration": 10.58,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Hamilton didn't wait for Congress. On March 19, 1792, he began what historians now call America's first lender-of-last-resort operation.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\0838ec48243294b260dd6f62.wav",
+      "vo_duration": 10.08,
+      "word_times": [
+        [
+          "Hamilton",
+          0.0
+        ],
+        [
+          "didn't",
+          0.805
+        ],
+        [
+          "wait",
+          1.073
+        ],
+        [
+          "for",
+          1.342
+        ],
+        [
+          "Congress.",
+          1.61
+        ],
+        [
+          "On",
+          2.404
+        ],
+        [
+          "March",
+          2.673
+        ],
+        [
+          "19,",
+          2.941
+        ],
+        [
+          "1792,",
+          3.086
+        ],
+        [
+          "he",
+          3.231
+        ],
+        [
+          "began",
+          3.499
+        ],
+        [
+          "what",
+          4.036
+        ],
+        [
+          "historians",
+          4.304
+        ],
+        [
+          "now",
+          5.109
+        ],
+        [
+          "call",
+          5.378
+        ],
+        [
+          "America's",
+          5.646
+        ],
+        [
+          "first",
+          6.719
+        ],
+        [
+          "lender-of-last-resort",
+          6.988
+        ],
+        [
+          "operation.",
+          8.598
+        ]
+      ],
+      "props": {
+        "text": "Hamilton began America's first lender-of-last-resort operation.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A gentleman writing at a Treasury desk by candlelight, warm side light, period documentary still, one focal subject",
+        "keyword": "man writing treasury desk candlelight"
+      }
+    },
+    {
+      "id": 29,
+      "type": "content",
+      "duration": 11.22,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Treasury purchases of government securities on the open market, hundreds of thousands of dollars pushed into banks across the Northeast. By May, the market had stabilized.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\15d131847dc15316862adf4f.wav",
+      "vo_duration": 10.72,
+      "word_times": [
+        [
+          "Treasury",
+          0.0
+        ],
+        [
+          "purchases",
+          0.621
+        ],
+        [
+          "of",
+          1.242
+        ],
+        [
+          "government",
+          1.449
+        ],
+        [
+          "securities",
+          2.07
+        ],
+        [
+          "on",
+          2.899
+        ],
+        [
+          "the",
+          3.106
+        ],
+        [
+          "open",
+          3.313
+        ],
+        [
+          "market,",
+          3.727
+        ],
+        [
+          "hundreds",
+          4.253
+        ],
+        [
+          "of",
+          4.667
+        ],
+        [
+          "thousands",
+          4.874
+        ],
+        [
+          "of",
+          5.288
+        ],
+        [
+          "dollars",
+          5.495
+        ],
+        [
+          "pushed",
+          5.909
+        ],
+        [
+          "into",
+          6.323
+        ],
+        [
+          "banks",
+          6.737
+        ],
+        [
+          "across",
+          6.944
+        ],
+        [
+          "the",
+          7.358
+        ],
+        [
+          "Northeast.",
+          7.565
+        ],
+        [
+          "By",
+          8.178
+        ],
+        [
+          "May,",
+          8.385
+        ],
+        [
+          "the",
+          8.704
+        ],
+        [
+          "market",
+          8.911
+        ],
+        [
+          "had",
+          9.325
+        ],
+        [
+          "stabilized.",
+          9.532
+        ]
+      ],
+      "props": {
+        "text": "Treasury purchases pushed into banks across the Northeast. By May, the market had stabilized.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A row of stone bank building facades along a colonial street, overcast light, period engraving style",
+        "keyword": "row of bank buildings street 18th century"
+      }
+    },
+    {
+      "id": 30,
+      "type": "content",
+      "duration": 12.82,
+      "placement": "hero",
+      "energy": "mid",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "Two months after the crash, on May 17, 1792, twenty-four brokers signed the Buttonwood Agreement outside 68 Wall Street — partly to shut speculators like Duer out of the market for good.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\951b9ca5dbb0e4da79067dcf.wav",
+      "vo_duration": 12.32,
+      "word_times": [
+        [
+          "Two",
+          0.0
+        ],
+        [
+          "months",
+          0.259
+        ],
+        [
+          "after",
+          0.517
+        ],
+        [
+          "the",
+          1.034
+        ],
+        [
+          "crash,",
+          1.293
+        ],
+        [
+          "on",
+          1.691
+        ],
+        [
+          "May",
+          1.95
+        ],
+        [
+          "17,",
+          2.208
+        ],
+        [
+          "1792,",
+          2.348
+        ],
+        [
+          "twenty-four",
+          2.488
+        ],
+        [
+          "brokers",
+          3.263
+        ],
+        [
+          "signed",
+          3.78
+        ],
+        [
+          "the",
+          4.298
+        ],
+        [
+          "Buttonwood",
+          4.556
+        ],
+        [
+          "Agreement",
+          5.332
+        ],
+        [
+          "outside",
+          6.108
+        ],
+        [
+          "68",
+          6.625
+        ],
+        [
+          "Wall",
+          6.625
+        ],
+        [
+          "Street",
+          6.883
+        ],
+        [
+          "—",
+          7.142
+        ],
+        [
+          "partly",
+          7.491
+        ],
+        [
+          "to",
+          8.008
+        ],
+        [
+          "shut",
+          8.267
+        ],
+        [
+          "speculators",
+          8.525
+        ],
+        [
+          "like",
+          9.56
+        ],
+        [
+          "Duer",
+          9.818
+        ],
+        [
+          "out",
+          10.077
+        ],
+        [
+          "of",
+          10.335
+        ],
+        [
+          "the",
+          10.594
+        ],
+        [
+          "market",
+          10.853
+        ],
+        [
+          "for",
+          11.37
+        ],
+        [
+          "good.",
+          11.628
+        ]
+      ],
+      "props": {
+        "text": "Two months later, twenty-four brokers signed the Buttonwood Agreement outside 68 Wall Street.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "buttonwood tree branches new york",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A group of men in period dress gathered beneath a large tree, signing a document on a small table, warm light, period engraving style"
+      }
+    },
+    {
+      "id": 31,
+      "type": "document",
+      "duration": 4.98,
+      "placement": "editorial",
+      "energy": "low",
+      "still_motion": "hold",
+      "vo_text": "That agreement became the founding document of the New York Stock Exchange.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\9a25ce4bdb20b120b70ef23f.wav",
+      "vo_duration": 4.48,
+      "word_times": [
+        [
+          "That",
+          0.0
+        ],
+        [
+          "agreement",
+          0.221
+        ],
+        [
+          "became",
+          0.884
+        ],
+        [
+          "the",
+          1.326
+        ],
+        [
+          "founding",
+          1.548
+        ],
+        [
+          "document",
+          1.99
+        ],
+        [
+          "of",
+          2.653
+        ],
+        [
+          "the",
+          2.874
+        ],
+        [
+          "New",
+          3.095
+        ],
+        [
+          "York",
+          3.316
+        ],
+        [
+          "Stock",
+          3.537
+        ],
+        [
+          "Exchange.",
+          3.758
+        ]
+      ],
+      "props": {
+        "label": "BUTTONWOOD AGREEMENT, MAY 17 1792",
+        "caption": "Founding document of the New York Stock Exchange.",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "founding agreement document signatures"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 32,
+      "type": "content",
+      "duration": 9.86,
+      "placement": "editorial",
+      "energy": "low",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "William Duer stayed in debtors' prison for seven years. He died there on May 7, 1799. He never paid a cent of what he owed.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\78f279622424804ca8196680.wav",
+      "vo_duration": 9.360042,
+      "word_times": [
+        [
+          "William",
+          0.0
+        ],
+        [
+          "Duer",
+          0.569
+        ],
+        [
+          "stayed",
+          0.853
+        ],
+        [
+          "in",
+          1.138
+        ],
+        [
+          "debtors'",
+          1.422
+        ],
+        [
+          "prison",
+          1.991
+        ],
+        [
+          "for",
+          2.559
+        ],
+        [
+          "seven",
+          2.844
+        ],
+        [
+          "years.",
+          3.413
+        ],
+        [
+          "He",
+          3.97
+        ],
+        [
+          "died",
+          4.254
+        ],
+        [
+          "there",
+          4.539
+        ],
+        [
+          "on",
+          4.823
+        ],
+        [
+          "May",
+          5.107
+        ],
+        [
+          "7,",
+          5.392
+        ],
+        [
+          "1799.",
+          5.545
+        ],
+        [
+          "He",
+          5.818
+        ],
+        [
+          "never",
+          6.103
+        ],
+        [
+          "paid",
+          6.672
+        ],
+        [
+          "a",
+          6.956
+        ],
+        [
+          "cent",
+          7.24
+        ],
+        [
+          "of",
+          7.525
+        ],
+        [
+          "what",
+          7.809
+        ],
+        [
+          "he",
+          8.093
+        ],
+        [
+          "owed.",
+          8.378
+        ]
+      ],
+      "props": {
+        "text": "William Duer died in debtors' prison seven years later. He never paid a cent.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A bare stone prison cell with a small barred window, cold dim light, period documentary still",
+        "keyword": "empty prison cell 18th century"
+      },
+      "grade_override": "noir"
+    },
+    {
+      "id": 33,
+      "type": "intro",
+      "duration": 5.7,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Twenty-seven years later, the country did the same thing to itself — at national scale.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\69ab5b979c7acf5937777699.wav",
+      "vo_duration": 5.2,
+      "word_times": [
+        [
+          "Twenty-seven",
+          0.0
+        ],
+        [
+          "years",
+          0.793
+        ],
+        [
+          "later,",
+          0.991
+        ],
+        [
+          "the",
+          1.494
+        ],
+        [
+          "country",
+          1.692
+        ],
+        [
+          "did",
+          2.088
+        ],
+        [
+          "the",
+          2.287
+        ],
+        [
+          "same",
+          2.485
+        ],
+        [
+          "thing",
+          2.683
+        ],
+        [
+          "to",
+          2.881
+        ],
+        [
+          "itself",
+          3.079
+        ],
+        [
+          "—",
+          3.475
+        ],
+        [
+          "at",
+          3.743
+        ],
+        [
+          "national",
+          3.941
+        ],
+        [
+          "scale.",
+          4.535
+        ]
+      ],
+      "props": {
+        "label": "TWENTY-SEVEN YEARS LATER",
+        "sub_hook": "The country did it again — at national scale.",
+        "bg_image": null,
+        "hook_text": "THE PANIC OF 1819"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved map of the eastern United States, sepia tone, period documentary illustration, one focal map",
+        "keyword": "US map 1819 engraving"
+      }
+    },
+    {
+      "id": 34,
+      "type": "document",
+      "duration": 12.02,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "hold",
+      "vo_text": "In 1811, Congress let the charter of the First Bank of the United States expire. For five years there was no central bank at all, and state banks printed paper without limit.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\14dd658c9d75c7343a98a6b1.wav",
+      "vo_duration": 11.520042,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "1811,",
+          0.252
+        ],
+        [
+          "Congress",
+          0.388
+        ],
+        [
+          "let",
+          0.893
+        ],
+        [
+          "the",
+          1.145
+        ],
+        [
+          "charter",
+          1.397
+        ],
+        [
+          "of",
+          1.901
+        ],
+        [
+          "the",
+          2.153
+        ],
+        [
+          "First",
+          2.406
+        ],
+        [
+          "Bank",
+          2.658
+        ],
+        [
+          "of",
+          2.91
+        ],
+        [
+          "the",
+          3.162
+        ],
+        [
+          "United",
+          3.414
+        ],
+        [
+          "States",
+          4.171
+        ],
+        [
+          "expire.",
+          4.675
+        ],
+        [
+          "For",
+          5.421
+        ],
+        [
+          "five",
+          5.674
+        ],
+        [
+          "years",
+          5.926
+        ],
+        [
+          "there",
+          6.178
+        ],
+        [
+          "was",
+          6.43
+        ],
+        [
+          "no",
+          6.682
+        ],
+        [
+          "central",
+          6.934
+        ],
+        [
+          "bank",
+          7.439
+        ],
+        [
+          "at",
+          7.691
+        ],
+        [
+          "all,",
+          7.943
+        ],
+        [
+          "and",
+          8.331
+        ],
+        [
+          "state",
+          8.584
+        ],
+        [
+          "banks",
+          8.836
+        ],
+        [
+          "printed",
+          9.088
+        ],
+        [
+          "paper",
+          9.592
+        ],
+        [
+          "without",
+          10.097
+        ],
+        [
+          "limit.",
+          10.601
+        ]
+      ],
+      "props": {
+        "label": "CHARTER EXPIRED, 1811",
+        "caption": "Five years with no central bank — state banks print freely.",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "expired bank charter document"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 35,
+      "type": "content",
+      "duration": 14.5,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "In 1816, Congress chartered a Second Bank of the United States. It opened in Philadelphia in January 1817 under president William Jones, eventually running eighteen branches with almost no oversight.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\7e74a7e89d315dfc7cb8ae20.wav",
+      "vo_duration": 14.0,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "1816,",
+          0.234
+        ],
+        [
+          "Congress",
+          0.36
+        ],
+        [
+          "chartered",
+          0.827
+        ],
+        [
+          "a",
+          1.529
+        ],
+        [
+          "Second",
+          1.762
+        ],
+        [
+          "Bank",
+          2.23
+        ],
+        [
+          "of",
+          2.464
+        ],
+        [
+          "the",
+          2.697
+        ],
+        [
+          "United",
+          2.931
+        ],
+        [
+          "States.",
+          3.632
+        ],
+        [
+          "It",
+          4.324
+        ],
+        [
+          "opened",
+          4.558
+        ],
+        [
+          "in",
+          5.259
+        ],
+        [
+          "Philadelphia",
+          5.493
+        ],
+        [
+          "in",
+          6.428
+        ],
+        [
+          "January",
+          6.661
+        ],
+        [
+          "1817",
+          7.362
+        ],
+        [
+          "under",
+          7.362
+        ],
+        [
+          "president",
+          7.83
+        ],
+        [
+          "William",
+          8.531
+        ],
+        [
+          "Jones,",
+          8.999
+        ],
+        [
+          "eventually",
+          9.592
+        ],
+        [
+          "running",
+          10.527
+        ],
+        [
+          "eighteen",
+          10.995
+        ],
+        [
+          "branches",
+          11.462
+        ],
+        [
+          "with",
+          11.93
+        ],
+        [
+          "almost",
+          12.163
+        ],
+        [
+          "no",
+          12.631
+        ],
+        [
+          "oversight.",
+          12.864
+        ]
+      ],
+      "props": {
+        "text": "The Second Bank of the United States opened in Philadelphia, 1817 — eighteen branches, almost no oversight.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "historic bank columns philadelphia",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A grand marble bank building facade with tall columns, bright daylight, period engraving style, one focal building"
+      }
+    },
+    {
+      "id": 36,
+      "type": "stat",
+      "duration": 11.62,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "A boom followed. War-torn Europe needed American cotton, wheat, corn, and tobacco. Cotton rose from a few cents a pound to thirty-three cents in 1818.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\13c2aa46736f9b59cc90af15.wav",
+      "vo_duration": 11.12,
+      "word_times": [
+        [
+          "A",
+          0.0
+        ],
+        [
+          "boom",
+          0.258
+        ],
+        [
+          "followed.",
+          0.515
+        ],
+        [
+          "War-torn",
+          1.536
+        ],
+        [
+          "Europe",
+          2.051
+        ],
+        [
+          "needed",
+          2.567
+        ],
+        [
+          "American",
+          3.082
+        ],
+        [
+          "cotton,",
+          4.113
+        ],
+        [
+          "wheat,",
+          4.768
+        ],
+        [
+          "corn,",
+          5.165
+        ],
+        [
+          "and",
+          5.562
+        ],
+        [
+          "tobacco.",
+          5.819
+        ],
+        [
+          "Cotton",
+          6.84
+        ],
+        [
+          "rose",
+          7.355
+        ],
+        [
+          "from",
+          7.613
+        ],
+        [
+          "a",
+          7.871
+        ],
+        [
+          "few",
+          8.129
+        ],
+        [
+          "cents",
+          8.386
+        ],
+        [
+          "a",
+          8.644
+        ],
+        [
+          "pound",
+          8.902
+        ],
+        [
+          "to",
+          9.159
+        ],
+        [
+          "thirty-three",
+          9.417
+        ],
+        [
+          "cents",
+          10.19
+        ],
+        [
+          "in",
+          10.448
+        ],
+        [
+          "1818.",
+          10.706
+        ]
+      ],
+      "props": {
+        "unit": "COTTON PRICE, 1818",
+        "stat_text": "33¢",
+        "numeric_value": 0.33,
+        "prefix": "",
+        "context_text": "War-torn Europe needed American cotton, wheat, corn, tobacco.",
+        "bg_image": null,
+        "emphasis": "thirty-three cents",
+        "emphasis_color": "#c9a227"
+      },
+      "broll": {
+        "keyword": "cotton field golden hour",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "Bales of cotton stacked on a wooden wharf beside a river, golden hour light, period documentary still, one focal scene"
+      }
+    },
+    {
+      "id": 37,
+      "type": "content",
+      "duration": 9.22,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "The federal government sold public land at two dollars an acre, quarter down, the rest on credit — and speculators borrowed hard against it.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\e69ead6eee9d4cfcac156fdd.wav",
+      "vo_duration": 8.72,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "federal",
+          0.213
+        ],
+        [
+          "government",
+          0.851
+        ],
+        [
+          "sold",
+          1.489
+        ],
+        [
+          "public",
+          1.701
+        ],
+        [
+          "land",
+          2.127
+        ],
+        [
+          "at",
+          2.339
+        ],
+        [
+          "two",
+          2.552
+        ],
+        [
+          "dollars",
+          2.765
+        ],
+        [
+          "an",
+          3.19
+        ],
+        [
+          "acre,",
+          3.403
+        ],
+        [
+          "quarter",
+          3.73
+        ],
+        [
+          "down,",
+          4.155
+        ],
+        [
+          "the",
+          4.483
+        ],
+        [
+          "rest",
+          4.695
+        ],
+        [
+          "on",
+          4.908
+        ],
+        [
+          "credit",
+          5.121
+        ],
+        [
+          "—",
+          5.546
+        ],
+        [
+          "and",
+          5.833
+        ],
+        [
+          "speculators",
+          6.046
+        ],
+        [
+          "borrowed",
+          6.896
+        ],
+        [
+          "hard",
+          7.534
+        ],
+        [
+          "against",
+          7.747
+        ],
+        [
+          "it.",
+          8.172
+        ]
+      ],
+      "props": {
+        "text": "Public land sold at two dollars an acre, quarter down — speculators borrowed hard against it.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A frontier land auction scene with a sheriff and a survey map on a table, overcast light, period engraving style",
+        "keyword": "frontier land auction survey map"
+      }
+    },
+    {
+      "id": 38,
+      "type": "stat",
+      "duration": 8.1,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "Public land debt owed to the government ballooned from three million dollars to seventeen million between 1815 and 1818.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\feebeda6c99bc8110892af9d.wav",
+      "vo_duration": 7.6,
+      "word_times": [
+        [
+          "Public",
+          0.0
+        ],
+        [
+          "land",
+          0.5
+        ],
+        [
+          "debt",
+          0.75
+        ],
+        [
+          "owed",
+          0.999
+        ],
+        [
+          "to",
+          1.499
+        ],
+        [
+          "the",
+          1.749
+        ],
+        [
+          "government",
+          1.999
+        ],
+        [
+          "ballooned",
+          2.749
+        ],
+        [
+          "from",
+          3.498
+        ],
+        [
+          "three",
+          3.748
+        ],
+        [
+          "million",
+          3.998
+        ],
+        [
+          "dollars",
+          4.498
+        ],
+        [
+          "to",
+          4.997
+        ],
+        [
+          "seventeen",
+          5.247
+        ],
+        [
+          "million",
+          5.997
+        ],
+        [
+          "between",
+          6.497
+        ],
+        [
+          "1815",
+          6.996
+        ],
+        [
+          "and",
+          6.996
+        ],
+        [
+          "1818.",
+          7.246
+        ]
+      ],
+      "props": {
+        "unit": "PUBLIC LAND DEBT",
+        "bg_image": null,
+        "emphasis": "ballooned",
+        "emphasis_color": "#b21f1f",
+        "stat_text": "17000000",
+        "numeric_value": 17000000,
+        "context_text": "From 1815 to 1818.",
+        "chart_points": [
+          3000000,
+          17000000
+        ]
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A tall stack of aged land deed documents tied with string, dim light, period documentary still",
+        "keyword": "stack of land deeds documents"
+      }
+    },
+    {
+      "id": 39,
+      "type": "comparison",
+      "duration": 11.54,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "In Madison County, Alabama, land that sold for thirty-five dollars an acre in 1817 went for one hundred thirty-four dollars an acre in 1818 — a two hundred seventy percent jump in a single year.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\59778fd194bbc950c5f8beec.wav",
+      "vo_duration": 11.04,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "Madison",
+          0.204
+        ],
+        [
+          "County,",
+          0.815
+        ],
+        [
+          "Alabama,",
+          1.332
+        ],
+        [
+          "land",
+          2.257
+        ],
+        [
+          "that",
+          2.46
+        ],
+        [
+          "sold",
+          2.664
+        ],
+        [
+          "for",
+          2.868
+        ],
+        [
+          "thirty-five",
+          3.071
+        ],
+        [
+          "dollars",
+          3.683
+        ],
+        [
+          "an",
+          4.09
+        ],
+        [
+          "acre",
+          4.294
+        ],
+        [
+          "in",
+          4.497
+        ],
+        [
+          "1817",
+          4.701
+        ],
+        [
+          "went",
+          4.701
+        ],
+        [
+          "for",
+          4.905
+        ],
+        [
+          "one",
+          5.108
+        ],
+        [
+          "hundred",
+          5.312
+        ],
+        [
+          "thirty-four",
+          5.719
+        ],
+        [
+          "dollars",
+          6.33
+        ],
+        [
+          "an",
+          6.738
+        ],
+        [
+          "acre",
+          6.941
+        ],
+        [
+          "in",
+          7.145
+        ],
+        [
+          "1818",
+          7.349
+        ],
+        [
+          "—",
+          7.349
+        ],
+        [
+          "a",
+          7.624
+        ],
+        [
+          "two",
+          7.827
+        ],
+        [
+          "hundred",
+          8.031
+        ],
+        [
+          "seventy",
+          8.438
+        ],
+        [
+          "percent",
+          9.049
+        ],
+        [
+          "jump",
+          9.457
+        ],
+        [
+          "in",
+          9.66
+        ],
+        [
+          "a",
+          9.864
+        ],
+        [
+          "single",
+          10.068
+        ],
+        [
+          "year.",
+          10.475
+        ]
+      ],
+      "props": {
+        "left_text": "1817 — $35/ACRE",
+        "right_text": "1818 — $134/ACRE",
+        "vs_label": "MADISON COUNTY",
+        "left_prompt": "Quiet Alabama frontier farmland with a simple survey stake, 1817, engraving style, no readable text",
+        "right_prompt": "Crowded Alabama frontier land auction around one survey map, 1818, engraving style, no readable text",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved survey map of Alabama farmland with property lines, sepia tone, period documentary illustration",
+        "keyword": "Alabama farmland survey map 1818"
+      }
+    },
+    {
+      "id": 40,
+      "type": "content",
+      "duration": 11.46,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Then the Second Bank reversed course to protect its own reserves. Loans were cut from forty-three million dollars in early 1818 to thirty-one million by September 1819.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\8ffaade0aab014fffcc204be.wav",
+      "vo_duration": 10.96,
+      "word_times": [
+        [
+          "Then",
+          0.0
+        ],
+        [
+          "the",
+          0.258
+        ],
+        [
+          "Second",
+          0.515
+        ],
+        [
+          "Bank",
+          1.03
+        ],
+        [
+          "reversed",
+          1.288
+        ],
+        [
+          "course",
+          2.06
+        ],
+        [
+          "to",
+          2.318
+        ],
+        [
+          "protect",
+          2.575
+        ],
+        [
+          "its",
+          3.09
+        ],
+        [
+          "own",
+          3.348
+        ],
+        [
+          "reserves.",
+          3.605
+        ],
+        [
+          "Loans",
+          4.625
+        ],
+        [
+          "were",
+          4.883
+        ],
+        [
+          "cut",
+          5.14
+        ],
+        [
+          "from",
+          5.398
+        ],
+        [
+          "forty-three",
+          5.655
+        ],
+        [
+          "million",
+          6.428
+        ],
+        [
+          "dollars",
+          6.943
+        ],
+        [
+          "in",
+          7.458
+        ],
+        [
+          "early",
+          7.716
+        ],
+        [
+          "1818",
+          8.231
+        ],
+        [
+          "to",
+          8.231
+        ],
+        [
+          "thirty-one",
+          8.488
+        ],
+        [
+          "million",
+          9.003
+        ],
+        [
+          "by",
+          9.518
+        ],
+        [
+          "September",
+          9.776
+        ],
+        [
+          "1819.",
+          10.548
+        ]
+      ],
+      "props": {
+        "text": "Then the Second Bank reversed course to protect its own reserves — loans cut hard within a year.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A closed wooden ledger drawer with a brass lock, dim light, period documentary still",
+        "keyword": "closed bank ledger drawer 18th century"
+      }
+    },
+    {
+      "id": 41,
+      "type": "content",
+      "duration": 3.94,
+      "placement": "sidebar",
+      "energy": "low",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Note circulation fell from ten million to four million.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\c7b5afcea15e84c63687ec64.wav",
+      "vo_duration": 3.44,
+      "word_times": [
+        [
+          "Note",
+          0.0
+        ],
+        [
+          "circulation",
+          0.226
+        ],
+        [
+          "fell",
+          1.132
+        ],
+        [
+          "from",
+          1.359
+        ],
+        [
+          "ten",
+          1.585
+        ],
+        [
+          "million",
+          1.812
+        ],
+        [
+          "to",
+          2.265
+        ],
+        [
+          "four",
+          2.491
+        ],
+        [
+          "million.",
+          2.718
+        ]
+      ],
+      "props": {
+        "text": "Note circulation fell from ten million to four million.",
+        "emphasis": "fell",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A small stack of aged banknotes on a wooden table, dim light, period documentary still",
+        "keyword": "stack of banknotes 18th century"
+      }
+    },
+    {
+      "id": 42,
+      "type": "content",
+      "duration": 5.86,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "left",
+      "vo_text": "At the same time, British mills switched to cheaper Indian cotton and European harvests recovered.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\e277117ab7ab383dd5c2e7d1.wav",
+      "vo_duration": 5.36,
+      "word_times": [
+        [
+          "At",
+          0.0
+        ],
+        [
+          "the",
+          0.192
+        ],
+        [
+          "same",
+          0.384
+        ],
+        [
+          "time,",
+          0.576
+        ],
+        [
+          "British",
+          0.872
+        ],
+        [
+          "mills",
+          1.256
+        ],
+        [
+          "switched",
+          1.448
+        ],
+        [
+          "to",
+          1.832
+        ],
+        [
+          "cheaper",
+          2.024
+        ],
+        [
+          "Indian",
+          2.407
+        ],
+        [
+          "cotton",
+          2.791
+        ],
+        [
+          "and",
+          3.175
+        ],
+        [
+          "European",
+          3.367
+        ],
+        [
+          "harvests",
+          3.943
+        ],
+        [
+          "recovered.",
+          4.327
+        ]
+      ],
+      "props": {
+        "text": "British mills switched to cheaper Indian cotton. European harvests recovered.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "cotton textile mill machinery",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A brick textile mill exterior with tall chimneys, overcast light, period engraving style, one focal building"
+      }
+    },
+    {
+      "id": 43,
+      "type": "stat",
+      "duration": 10.18,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "In January 1819, the price of cotton dropped twenty-five percent in a single day. By autumn it was down more than half from its March peak.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a7dc1c7a2ce3b3a9284f9afe.wav",
+      "vo_duration": 9.68,
+      "word_times": [
+        [
+          "In",
+          0.0
+        ],
+        [
+          "January",
+          0.262
+        ],
+        [
+          "1819,",
+          1.046
+        ],
+        [
+          "the",
+          1.187
+        ],
+        [
+          "price",
+          1.449
+        ],
+        [
+          "of",
+          1.71
+        ],
+        [
+          "cotton",
+          1.972
+        ],
+        [
+          "dropped",
+          2.495
+        ],
+        [
+          "twenty-five",
+          3.018
+        ],
+        [
+          "percent",
+          3.802
+        ],
+        [
+          "in",
+          4.325
+        ],
+        [
+          "a",
+          4.587
+        ],
+        [
+          "single",
+          4.848
+        ],
+        [
+          "day.",
+          5.371
+        ],
+        [
+          "By",
+          5.884
+        ],
+        [
+          "autumn",
+          6.146
+        ],
+        [
+          "it",
+          6.669
+        ],
+        [
+          "was",
+          6.93
+        ],
+        [
+          "down",
+          7.192
+        ],
+        [
+          "more",
+          7.453
+        ],
+        [
+          "than",
+          7.715
+        ],
+        [
+          "half",
+          7.976
+        ],
+        [
+          "from",
+          8.238
+        ],
+        [
+          "its",
+          8.499
+        ],
+        [
+          "March",
+          8.761
+        ],
+        [
+          "peak.",
+          9.022
+        ]
+      ],
+      "props": {
+        "unit": "COTTON PRICE COLLAPSE",
+        "bg_image": null,
+        "emphasis": "dropped",
+        "emphasis_color": "#b21f1f",
+        "stat_text": "15",
+        "numeric_value": 15,
+        "context_text": "From 1818 to AUTUMN.",
+        "chart_points": [
+          33,
+          24.75,
+          15
+        ]
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A close-up of a cotton field under grey overcast sky, one focal crop, period documentary still",
+        "keyword": "wilted cotton field closeup"
+      }
+    },
+    {
+      "id": 44,
+      "type": "person",
+      "duration": 6.74,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Langdon Cheves took over as Bank president in 1819 and enforced the credit cuts without mercy.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\1f175590362fc816f73d1204.wav",
+      "vo_duration": 6.24,
+      "word_times": [
+        [
+          "Langdon",
+          0.0
+        ],
+        [
+          "Cheves",
+          0.474
+        ],
+        [
+          "took",
+          0.947
+        ],
+        [
+          "over",
+          1.184
+        ],
+        [
+          "as",
+          1.657
+        ],
+        [
+          "Bank",
+          1.894
+        ],
+        [
+          "president",
+          2.131
+        ],
+        [
+          "in",
+          2.841
+        ],
+        [
+          "1819",
+          3.078
+        ],
+        [
+          "and",
+          3.078
+        ],
+        [
+          "enforced",
+          3.315
+        ],
+        [
+          "the",
+          4.025
+        ],
+        [
+          "credit",
+          4.262
+        ],
+        [
+          "cuts",
+          4.735
+        ],
+        [
+          "without",
+          4.972
+        ],
+        [
+          "mercy.",
+          5.446
+        ]
+      ],
+      "props": {
+        "name": "LANGDON CHEVES",
+        "title": "President, Second Bank of the United States",
+        "quote": "",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved portrait of a stern 19th-century banker in formal dark coat, plain background, period engraving style, one subject",
+        "keyword": "engraved portrait 19th century banker"
+      }
+    },
+    {
+      "id": 45,
+      "type": "content",
+      "duration": 12.74,
+      "placement": "editorial",
+      "energy": "high",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "State banks that couldn't redeem their notes in specie failed outright. Foreclosures swept the cotton belt — in the Huntsville region of Alabama alone, more than four hundred thousand acres were forfeited or sold off.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\42d5991e33ca20c1a8a2a750.wav",
+      "vo_duration": 12.24,
+      "word_times": [
+        [
+          "State",
+          0.0
+        ],
+        [
+          "banks",
+          0.205
+        ],
+        [
+          "that",
+          0.41
+        ],
+        [
+          "couldn't",
+          0.615
+        ],
+        [
+          "redeem",
+          0.82
+        ],
+        [
+          "their",
+          1.23
+        ],
+        [
+          "notes",
+          1.435
+        ],
+        [
+          "in",
+          1.845
+        ],
+        [
+          "specie",
+          2.05
+        ],
+        [
+          "failed",
+          2.255
+        ],
+        [
+          "outright.",
+          2.665
+        ],
+        [
+          "Foreclosures",
+          3.272
+        ],
+        [
+          "swept",
+          4.297
+        ],
+        [
+          "the",
+          4.502
+        ],
+        [
+          "cotton",
+          4.707
+        ],
+        [
+          "belt",
+          5.117
+        ],
+        [
+          "—",
+          5.322
+        ],
+        [
+          "in",
+          5.599
+        ],
+        [
+          "the",
+          5.804
+        ],
+        [
+          "Huntsville",
+          6.009
+        ],
+        [
+          "region",
+          6.624
+        ],
+        [
+          "of",
+          7.034
+        ],
+        [
+          "Alabama",
+          7.239
+        ],
+        [
+          "alone,",
+          8.059
+        ],
+        [
+          "more",
+          8.579
+        ],
+        [
+          "than",
+          8.785
+        ],
+        [
+          "four",
+          8.99
+        ],
+        [
+          "hundred",
+          9.195
+        ],
+        [
+          "thousand",
+          9.605
+        ],
+        [
+          "acres",
+          10.015
+        ],
+        [
+          "were",
+          10.425
+        ],
+        [
+          "forfeited",
+          10.63
+        ],
+        [
+          "or",
+          11.245
+        ],
+        [
+          "sold",
+          11.45
+        ],
+        [
+          "off.",
+          11.655
+        ]
+      ],
+      "props": {
+        "text": "State banks that couldn't redeem their notes failed outright. Foreclosures swept the cotton belt.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "farm foreclosure notice door",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "A weathered foreclosure notice nailed to a wooden farmhouse door, overcast light, period documentary still, one focal object"
+      }
+    },
+    {
+      "id": 46,
+      "type": "list",
+      "duration": 10.26,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "The human cost showed up in the numbers. Philadelphia committed one thousand eight hundred eight people to debtors' prison. Boston committed three thousand five hundred.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\ede2fe82529bc4a831da7e68.wav",
+      "vo_duration": 9.76,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "human",
+          0.21
+        ],
+        [
+          "cost",
+          0.629
+        ],
+        [
+          "showed",
+          0.838
+        ],
+        [
+          "up",
+          1.257
+        ],
+        [
+          "in",
+          1.467
+        ],
+        [
+          "the",
+          1.676
+        ],
+        [
+          "numbers.",
+          1.886
+        ],
+        [
+          "Philadelphia",
+          2.506
+        ],
+        [
+          "committed",
+          3.344
+        ],
+        [
+          "one",
+          3.973
+        ],
+        [
+          "thousand",
+          4.182
+        ],
+        [
+          "eight",
+          4.601
+        ],
+        [
+          "hundred",
+          4.811
+        ],
+        [
+          "eight",
+          5.23
+        ],
+        [
+          "people",
+          5.44
+        ],
+        [
+          "to",
+          5.859
+        ],
+        [
+          "debtors'",
+          6.068
+        ],
+        [
+          "prison.",
+          6.487
+        ],
+        [
+          "Boston",
+          7.108
+        ],
+        [
+          "committed",
+          7.527
+        ],
+        [
+          "three",
+          8.155
+        ],
+        [
+          "thousand",
+          8.365
+        ],
+        [
+          "five",
+          8.784
+        ],
+        [
+          "hundred.",
+          8.993
+        ]
+      ],
+      "props": {
+        "title": "THE HUMAN LEDGER",
+        "items": [
+          "Philadelphia: 1,808 in debtors' prison",
+          "Boston: 3,500 in debtors' prison"
+        ],
+        "bg_image": null,
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A line of people waiting outside a stone jail entrance, cold overcast light, period engraving style",
+        "keyword": "debtors queue outside jail 19th century"
+      }
+    },
+    {
+      "id": 47,
+      "type": "stat",
+      "duration": 8.82,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "New York State property values fell from three hundred fifteen million dollars in 1818 to two hundred fifty-six million by 1820.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\0adedb31535dd885edbb571e.wav",
+      "vo_duration": 8.32,
+      "word_times": [
+        [
+          "New",
+          0.0
+        ],
+        [
+          "York",
+          0.265
+        ],
+        [
+          "State",
+          0.529
+        ],
+        [
+          "property",
+          0.794
+        ],
+        [
+          "values",
+          1.588
+        ],
+        [
+          "fell",
+          2.118
+        ],
+        [
+          "from",
+          2.382
+        ],
+        [
+          "three",
+          2.647
+        ],
+        [
+          "hundred",
+          2.912
+        ],
+        [
+          "fifteen",
+          3.441
+        ],
+        [
+          "million",
+          3.971
+        ],
+        [
+          "dollars",
+          4.5
+        ],
+        [
+          "in",
+          5.029
+        ],
+        [
+          "1818",
+          5.294
+        ],
+        [
+          "to",
+          5.294
+        ],
+        [
+          "two",
+          5.559
+        ],
+        [
+          "hundred",
+          5.823
+        ],
+        [
+          "fifty-six",
+          6.353
+        ],
+        [
+          "million",
+          7.147
+        ],
+        [
+          "by",
+          7.676
+        ],
+        [
+          "1820.",
+          7.941
+        ]
+      ],
+      "props": {
+        "unit": "NEW YORK STATE PROPERTY VALUES",
+        "bg_image": null,
+        "emphasis": "fell",
+        "emphasis_color": "#b21f1f",
+        "stat_text": "256000000",
+        "numeric_value": 256000000,
+        "context_text": "From 1818 to 1820.",
+        "chart_points": [
+          315000000,
+          256000000
+        ]
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged property deed document with a wax seal, sepia tone, period document, scanned print look",
+        "keyword": "rural property deed document"
+      }
+    },
+    {
+      "id": 48,
+      "type": "content",
+      "duration": 8.26,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Pennsylvania land dropped from one hundred fifty dollars an acre in 1815 to thirty-five dollars in 1819.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\526c0ef0d6aefb8429648a16.wav",
+      "vo_duration": 7.76,
+      "word_times": [
+        [
+          "Pennsylvania",
+          0.0
+        ],
+        [
+          "land",
+          1.178
+        ],
+        [
+          "dropped",
+          1.472
+        ],
+        [
+          "from",
+          2.061
+        ],
+        [
+          "one",
+          2.356
+        ],
+        [
+          "hundred",
+          2.65
+        ],
+        [
+          "fifty",
+          3.239
+        ],
+        [
+          "dollars",
+          3.828
+        ],
+        [
+          "an",
+          4.417
+        ],
+        [
+          "acre",
+          4.711
+        ],
+        [
+          "in",
+          5.005
+        ],
+        [
+          "1815",
+          5.3
+        ],
+        [
+          "to",
+          5.3
+        ],
+        [
+          "thirty-five",
+          5.594
+        ],
+        [
+          "dollars",
+          6.478
+        ],
+        [
+          "in",
+          7.067
+        ],
+        [
+          "1819.",
+          7.361
+        ]
+      ],
+      "props": {
+        "text": "Pennsylvania land dropped from one hundred fifty dollars an acre in 1815 to thirty-five dollars in 1819.",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An empty fenced farmland field under grey sky, one focal scene, period documentary still",
+        "keyword": "empty farmland fence 19th century"
+      }
+    },
+    {
+      "id": 49,
+      "type": "comparison",
+      "duration": 9.06,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "New York City counted eight thousand paupers in 1819, out of a population of one hundred twenty thousand — thirteen thousand a year later.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\823a883ea2c62573e9830ced.wav",
+      "vo_duration": 8.56,
+      "word_times": [
+        [
+          "New",
+          0.0
+        ],
+        [
+          "York",
+          0.223
+        ],
+        [
+          "City",
+          0.446
+        ],
+        [
+          "counted",
+          0.891
+        ],
+        [
+          "eight",
+          1.337
+        ],
+        [
+          "thousand",
+          1.559
+        ],
+        [
+          "paupers",
+          2.005
+        ],
+        [
+          "in",
+          2.45
+        ],
+        [
+          "1819,",
+          2.673
+        ],
+        [
+          "out",
+          2.793
+        ],
+        [
+          "of",
+          3.016
+        ],
+        [
+          "a",
+          3.239
+        ],
+        [
+          "population",
+          3.462
+        ],
+        [
+          "of",
+          4.353
+        ],
+        [
+          "one",
+          4.576
+        ],
+        [
+          "hundred",
+          4.798
+        ],
+        [
+          "twenty",
+          5.244
+        ],
+        [
+          "thousand",
+          5.689
+        ],
+        [
+          "—",
+          6.135
+        ],
+        [
+          "thirteen",
+          6.436
+        ],
+        [
+          "thousand",
+          6.881
+        ],
+        [
+          "a",
+          7.327
+        ],
+        [
+          "year",
+          7.549
+        ],
+        [
+          "later.",
+          7.772
+        ]
+      ],
+      "props": {
+        "left_text": "1819 — 8,000",
+        "right_text": "1820 — 13,000",
+        "vs_label": "NEW YORK PAUPERS",
+        "left_prompt": "A short queue outside a brick relief office, New York 1819, engraving style, no readable text",
+        "right_prompt": "A much longer queue outside a brick relief office, New York 1820, engraving style, no readable text",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A crowded narrow city street with modest brick tenements, overcast light, period engraving style",
+        "keyword": "crowded tenement street 19th century"
+      }
+    },
+    {
+      "id": 50,
+      "type": "content",
+      "duration": 7.06,
+      "placement": "hero",
+      "energy": "high",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "Across New York, Philadelphia, and Baltimore combined, roughly fifty thousand people were out of work.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\2b1eaad2faecc16369cf21dc.wav",
+      "vo_duration": 6.56,
+      "word_times": [
+        [
+          "Across",
+          0.0
+        ],
+        [
+          "New",
+          0.437
+        ],
+        [
+          "York,",
+          0.655
+        ],
+        [
+          "Philadelphia,",
+          0.992
+        ],
+        [
+          "and",
+          1.983
+        ],
+        [
+          "Baltimore",
+          2.202
+        ],
+        [
+          "combined,",
+          2.857
+        ],
+        [
+          "roughly",
+          3.631
+        ],
+        [
+          "fifty",
+          4.067
+        ],
+        [
+          "thousand",
+          4.504
+        ],
+        [
+          "people",
+          4.941
+        ],
+        [
+          "were",
+          5.378
+        ],
+        [
+          "out",
+          5.597
+        ],
+        [
+          "of",
+          5.815
+        ],
+        [
+          "work.",
+          6.033
+        ]
+      ],
+      "props": {
+        "text": "Across New York, Philadelphia, and Baltimore combined, roughly fifty thousand people were out of work.",
+        "emphasis": "fifty thousand",
+        "emphasis_color": "#b21f1f"
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A group of men standing idle at a city street corner, cold overcast light, period engraving style, one focal scene",
+        "keyword": "unemployed men gathered street corner 19th century"
+      }
+    },
+    {
+      "id": 51,
+      "type": "content",
+      "duration": 5.7,
+      "placement": "editorial",
+      "energy": "low",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "The depression dragged on into 1821. Agricultural prices fell by half.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\758968095cd90a7ead26ae8d.wav",
+      "vo_duration": 5.2,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "depression",
+          0.245
+        ],
+        [
+          "dragged",
+          0.979
+        ],
+        [
+          "on",
+          1.469
+        ],
+        [
+          "into",
+          1.714
+        ],
+        [
+          "1821.",
+          2.204
+        ],
+        [
+          "Agricultural",
+          2.439
+        ],
+        [
+          "prices",
+          3.663
+        ],
+        [
+          "fell",
+          4.152
+        ],
+        [
+          "by",
+          4.397
+        ],
+        [
+          "half.",
+          4.642
+        ]
+      ],
+      "props": {
+        "text": "The depression dragged on into 1821. Agricultural prices fell by half.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A bare harvested field with an abandoned wooden cart, overcast light, period documentary still",
+        "keyword": "empty farm field harvest 19th century"
+      }
+    },
+    {
+      "id": 52,
+      "type": "document",
+      "duration": 11.86,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "hold",
+      "vo_text": "And in a final irony, the Supreme Court decided McCulloch versus Maryland in 1819 — upholding the Bank's constitutionality at the exact moment the country learned to hate it.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\9a77c744582b9aefb0dabd22.wav",
+      "vo_duration": 11.36,
+      "word_times": [
+        [
+          "And",
+          0.0
+        ],
+        [
+          "in",
+          0.216
+        ],
+        [
+          "a",
+          0.432
+        ],
+        [
+          "final",
+          0.647
+        ],
+        [
+          "irony,",
+          1.079
+        ],
+        [
+          "the",
+          1.843
+        ],
+        [
+          "Supreme",
+          2.059
+        ],
+        [
+          "Court",
+          2.49
+        ],
+        [
+          "decided",
+          2.706
+        ],
+        [
+          "McCulloch",
+          3.354
+        ],
+        [
+          "versus",
+          3.785
+        ],
+        [
+          "Maryland",
+          4.217
+        ],
+        [
+          "in",
+          4.864
+        ],
+        [
+          "1819",
+          5.08
+        ],
+        [
+          "—",
+          5.08
+        ],
+        [
+          "upholding",
+          5.371
+        ],
+        [
+          "the",
+          6.019
+        ],
+        [
+          "Bank's",
+          6.235
+        ],
+        [
+          "constitutionality",
+          6.45
+        ],
+        [
+          "at",
+          7.961
+        ],
+        [
+          "the",
+          8.177
+        ],
+        [
+          "exact",
+          8.393
+        ],
+        [
+          "moment",
+          8.824
+        ],
+        [
+          "the",
+          9.256
+        ],
+        [
+          "country",
+          9.472
+        ],
+        [
+          "learned",
+          9.903
+        ],
+        [
+          "to",
+          10.335
+        ],
+        [
+          "hate",
+          10.551
+        ],
+        [
+          "it.",
+          10.767
+        ]
+      ],
+      "props": {
+        "label": "MCCULLOCH v. MARYLAND, 1819",
+        "caption": "The Court upholds the Bank — just as the country turns against it.",
+        "highlight_box": {
+          "x": 14,
+          "y": 40,
+          "w": 70,
+          "h": 8
+        },
+        "bg_image": null,
+        "document_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An aged blank 18th-century archival paper sheet with faint ruled columns, wax seal and worn edges, sepia light, scanned print texture, no readable text",
+        "keyword": "Supreme Court ruling document 1819"
+      },
+      "grade_override": "halftone"
+    },
+    {
+      "id": 53,
+      "type": "content",
+      "duration": 9.54,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "The resentment didn't fade. It seeded Andrew Jackson's Bank War in the 1830s and the Bank's death when its charter expired in 1836.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\1a29fc603699af50ada453cd.wav",
+      "vo_duration": 9.04,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "resentment",
+          0.279
+        ],
+        [
+          "didn't",
+          1.116
+        ],
+        [
+          "fade.",
+          1.395
+        ],
+        [
+          "It",
+          1.942
+        ],
+        [
+          "seeded",
+          2.221
+        ],
+        [
+          "Andrew",
+          2.778
+        ],
+        [
+          "Jackson's",
+          3.336
+        ],
+        [
+          "Bank",
+          3.894
+        ],
+        [
+          "War",
+          4.173
+        ],
+        [
+          "in",
+          4.452
+        ],
+        [
+          "the",
+          4.731
+        ],
+        [
+          "1830s",
+          5.01
+        ],
+        [
+          "and",
+          5.289
+        ],
+        [
+          "the",
+          5.568
+        ],
+        [
+          "Bank's",
+          5.847
+        ],
+        [
+          "death",
+          6.126
+        ],
+        [
+          "when",
+          6.405
+        ],
+        [
+          "its",
+          6.684
+        ],
+        [
+          "charter",
+          6.963
+        ],
+        [
+          "expired",
+          7.521
+        ],
+        [
+          "in",
+          8.358
+        ],
+        [
+          "1836.",
+          8.637
+        ]
+      ],
+      "props": {
+        "text": "The resentment seeded Andrew Jackson's Bank War — and the Bank's death in 1836.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved portrait of a stern 19th-century statesman with swept-back hair, plain background, period engraving style, one subject",
+        "keyword": "engraved portrait Andrew Jackson stern"
+      }
+    },
+    {
+      "id": 54,
+      "type": "comparison",
+      "duration": 7.62,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "light",
+      "photo_move": "out",
+      "vo_text": "Two panics, twenty-seven years apart. The first one fit inside a single month and ended with one man in prison.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\eb13cb04168d227961851d2d.wav",
+      "vo_duration": 7.12,
+      "word_times": [
+        [
+          "Two",
+          0.0
+        ],
+        [
+          "panics,",
+          0.223
+        ],
+        [
+          "twenty-seven",
+          0.789
+        ],
+        [
+          "years",
+          1.681
+        ],
+        [
+          "apart.",
+          1.904
+        ],
+        [
+          "The",
+          2.564
+        ],
+        [
+          "first",
+          2.787
+        ],
+        [
+          "one",
+          3.009
+        ],
+        [
+          "fit",
+          3.232
+        ],
+        [
+          "inside",
+          3.455
+        ],
+        [
+          "a",
+          3.901
+        ],
+        [
+          "single",
+          4.124
+        ],
+        [
+          "month",
+          4.57
+        ],
+        [
+          "and",
+          4.793
+        ],
+        [
+          "ended",
+          5.016
+        ],
+        [
+          "with",
+          5.462
+        ],
+        [
+          "one",
+          5.685
+        ],
+        [
+          "man",
+          5.907
+        ],
+        [
+          "in",
+          6.13
+        ],
+        [
+          "prison.",
+          6.353
+        ]
+      ],
+      "props": {
+        "left_text": "1792 — ONE MONTH",
+        "right_text": "1819 — YEARS",
+        "vs_label": "TWO PANICS",
+        "left_prompt": "A single closed debtors prison cell, Manhattan 1792, engraving style, no readable text",
+        "right_prompt": "A foreclosed rural farmhouse and empty field, America 1819, engraving style, no readable text",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "Two open ledger book pages side by side on a wooden desk, warm light, period documentary still",
+        "keyword": "two ledger pages side by side"
+      }
+    },
+    {
+      "id": 55,
+      "type": "content",
+      "duration": 7.94,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "The second one took years, ruined tens of thousands of families, and rewrote how Americans thought about banks for a generation.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\fa936f9d192b76201fe3489b.wav",
+      "vo_duration": 7.44,
+      "word_times": [
+        [
+          "The",
+          0.0
+        ],
+        [
+          "second",
+          0.203
+        ],
+        [
+          "one",
+          0.61
+        ],
+        [
+          "took",
+          0.813
+        ],
+        [
+          "years,",
+          1.017
+        ],
+        [
+          "ruined",
+          1.33
+        ],
+        [
+          "tens",
+          1.737
+        ],
+        [
+          "of",
+          1.94
+        ],
+        [
+          "thousands",
+          2.143
+        ],
+        [
+          "of",
+          2.55
+        ],
+        [
+          "families,",
+          2.753
+        ],
+        [
+          "and",
+          3.473
+        ],
+        [
+          "rewrote",
+          3.676
+        ],
+        [
+          "how",
+          4.083
+        ],
+        [
+          "Americans",
+          4.286
+        ],
+        [
+          "thought",
+          5.1
+        ],
+        [
+          "about",
+          5.303
+        ],
+        [
+          "banks",
+          5.71
+        ],
+        [
+          "for",
+          5.913
+        ],
+        [
+          "a",
+          6.116
+        ],
+        [
+          "generation.",
+          6.32
+        ]
+      ],
+      "props": {
+        "text": "The second one rewrote how Americans thought about banks for a generation.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A closed leather ledger book gathering dust on a shelf, dim light, period documentary still, one focal object",
+        "keyword": "closed ledger book dust"
+      }
+    },
+    {
+      "id": 56,
+      "type": "content",
+      "duration": 7.78,
+      "placement": "sidebar",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Both started the same way: cheap credit, a rising price, and someone convinced the rise would never stop.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\a8412d974c4a59632d2db9db.wav",
+      "vo_duration": 7.28,
+      "word_times": [
+        [
+          "Both",
+          0.0
+        ],
+        [
+          "started",
+          0.26
+        ],
+        [
+          "the",
+          0.78
+        ],
+        [
+          "same",
+          1.04
+        ],
+        [
+          "way:",
+          1.3
+        ],
+        [
+          "cheap",
+          1.7
+        ],
+        [
+          "credit,",
+          1.96
+        ],
+        [
+          "a",
+          2.621
+        ],
+        [
+          "rising",
+          2.881
+        ],
+        [
+          "price,",
+          3.401
+        ],
+        [
+          "and",
+          3.801
+        ],
+        [
+          "someone",
+          4.061
+        ],
+        [
+          "convinced",
+          4.581
+        ],
+        [
+          "the",
+          5.361
+        ],
+        [
+          "rise",
+          5.621
+        ],
+        [
+          "would",
+          5.881
+        ],
+        [
+          "never",
+          6.141
+        ],
+        [
+          "stop.",
+          6.661
+        ]
+      ],
+      "props": {
+        "text": "Cheap credit. A rising price. Someone convinced the rise would never stop.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "An engraved chart with a line rising then falling sharply, sepia tone, period documentary illustration",
+        "keyword": "rising then falling line engraving"
+      }
+    },
+    {
+      "id": 57,
+      "type": "content",
+      "duration": 7.14,
+      "placement": "editorial",
+      "energy": "mid",
+      "still_motion": "pan",
+      "photo_move": "right",
+      "vo_text": "Both ended the same way too — with a central bank pulling money out of the system faster than it had put it in.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\99e0d7cd1fa6808e6bf9591d.wav",
+      "vo_duration": 6.64,
+      "word_times": [
+        [
+          "Both",
+          0.0
+        ],
+        [
+          "ended",
+          0.209
+        ],
+        [
+          "the",
+          0.627
+        ],
+        [
+          "same",
+          0.836
+        ],
+        [
+          "way",
+          1.044
+        ],
+        [
+          "too",
+          1.253
+        ],
+        [
+          "—",
+          1.462
+        ],
+        [
+          "with",
+          1.744
+        ],
+        [
+          "a",
+          1.953
+        ],
+        [
+          "central",
+          2.162
+        ],
+        [
+          "bank",
+          2.58
+        ],
+        [
+          "pulling",
+          2.789
+        ],
+        [
+          "money",
+          3.206
+        ],
+        [
+          "out",
+          3.624
+        ],
+        [
+          "of",
+          3.833
+        ],
+        [
+          "the",
+          4.042
+        ],
+        [
+          "system",
+          4.251
+        ],
+        [
+          "faster",
+          4.669
+        ],
+        [
+          "than",
+          5.087
+        ],
+        [
+          "it",
+          5.295
+        ],
+        [
+          "had",
+          5.504
+        ],
+        [
+          "put",
+          5.713
+        ],
+        [
+          "it",
+          5.922
+        ],
+        [
+          "in.",
+          6.131
+        ]
+      ],
+      "props": {
+        "text": "Both ended the same way — a central bank pulling money out faster than it went in.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A heavy iron bank vault door, dim light, period documentary still, one focal object",
+        "keyword": "bank vault door closing 18th century"
+      }
+    },
+    {
+      "id": 58,
+      "type": "content",
+      "duration": 9.7,
+      "placement": "hero",
+      "energy": "mid",
+      "still_motion": "push",
+      "photo_move": "in",
+      "vo_text": "Wall Street got its first stock exchange out of the wreckage of 1792. The country got its first taste of a national depression out of 1819.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\217055d91542c48555ed1cc9.wav",
+      "vo_duration": 9.2,
+      "word_times": [
+        [
+          "Wall",
+          0.0
+        ],
+        [
+          "Street",
+          0.275
+        ],
+        [
+          "got",
+          0.551
+        ],
+        [
+          "its",
+          0.826
+        ],
+        [
+          "first",
+          1.101
+        ],
+        [
+          "stock",
+          1.376
+        ],
+        [
+          "exchange",
+          1.652
+        ],
+        [
+          "out",
+          2.202
+        ],
+        [
+          "of",
+          2.477
+        ],
+        [
+          "the",
+          2.753
+        ],
+        [
+          "wreckage",
+          3.028
+        ],
+        [
+          "of",
+          3.579
+        ],
+        [
+          "1792.",
+          3.854
+        ],
+        [
+          "The",
+          4.118
+        ],
+        [
+          "country",
+          4.393
+        ],
+        [
+          "got",
+          4.944
+        ],
+        [
+          "its",
+          5.219
+        ],
+        [
+          "first",
+          5.494
+        ],
+        [
+          "taste",
+          5.77
+        ],
+        [
+          "of",
+          6.045
+        ],
+        [
+          "a",
+          6.32
+        ],
+        [
+          "national",
+          6.596
+        ],
+        [
+          "depression",
+          7.421
+        ],
+        [
+          "out",
+          8.247
+        ],
+        [
+          "of",
+          8.522
+        ],
+        [
+          "1819.",
+          8.798
+        ]
+      ],
+      "props": {
+        "text": "Wall Street got its stock exchange. The country got its first taste of a national depression.",
+        "bg_image": null
+      },
+      "broll": {
+        "keyword": "new york stock exchange wall street exterior",
+        "source": "pexels",
+        "gen_kind": "video",
+        "fallback_prompt": "modern NYSE facade with columns, daylight, documentary photo style"
+      }
+    },
+    {
+      "id": 59,
+      "type": "outro",
+      "duration": 7.86,
+      "placement": "hero",
+      "energy": "low",
+      "still_motion": "parallax",
+      "photo_move": "left",
+      "vo_text": "Neither lesson stuck for long. The ledger doesn't forget. It just waits for the next name to fill in the blank.",
+      "vo_audio": "D:\\AI\\Video Automation\\FFMPEG MCP\\pipeline\\assets\\cache\\vo\\c02375d4f5fcb1ef4dc6460f.wav",
+      "vo_duration": 7.36,
+      "word_times": [
+        [
+          "Neither",
+          0.0
+        ],
+        [
+          "lesson",
+          0.52
+        ],
+        [
+          "stuck",
+          1.04
+        ],
+        [
+          "for",
+          1.3
+        ],
+        [
+          "long.",
+          1.56
+        ],
+        [
+          "The",
+          2.07
+        ],
+        [
+          "ledger",
+          2.33
+        ],
+        [
+          "doesn't",
+          2.85
+        ],
+        [
+          "forget.",
+          3.11
+        ],
+        [
+          "It",
+          3.88
+        ],
+        [
+          "just",
+          4.14
+        ],
+        [
+          "waits",
+          4.4
+        ],
+        [
+          "for",
+          4.66
+        ],
+        [
+          "the",
+          4.92
+        ],
+        [
+          "next",
+          5.18
+        ],
+        [
+          "name",
+          5.44
+        ],
+        [
+          "to",
+          5.7
+        ],
+        [
+          "fill",
+          5.96
+        ],
+        [
+          "in",
+          6.22
+        ],
+        [
+          "the",
+          6.48
+        ],
+        [
+          "blank.",
+          6.74
+        ]
+      ],
+      "props": {
+        "title": "THE LEDGER DOESN'T FORGET.",
+        "rule": true,
+        "subtext": "It just waits for the next name to fill in the blank.",
+        "bg_image": null
+      },
+      "broll": {
+        "gen_kind": "image",
+        "fallback_prompt": "A closed leather ledger book beside a nearly spent candle, near-black background, period documentary still",
+        "keyword": "closed ledger candle dying light"
+      }
+    }
+  ]
+}
