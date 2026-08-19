@@ -4,7 +4,7 @@
   "description": "GPU-optimized Remotion renderer for FFmpeg MCP",
   "scripts": {
     "render": "node src/render.js",
-    "bundle": "node src/bundle.js"
+    "bundle": "node src/render.js --bundle"
   },
   "dependencies": {
     "@remotion/bundler": "^4.0.495",
