@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0c10" />
+    <title>Video Factory</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Video Factory">
+        <span class="brand-mark">▶</span>
+        <span>VIDEO FACTORY</span>
+      </a>
+      <div class="status"><span class="status-dot"></span> Motor local</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">NOVO PROJETO</div>
+        <h1>Transforme uma ideia<br />em um vídeo completo.</h1>
+        <p>Comece pelo assunto. O estilo, o roteiro e as cenas serão organizados por etapas.</p>
+      </section>
+
+      <form id="project-form" class="workspace">
+        <section class="panel main-panel">
+          <div class="step-title"><span>1</span><div><h2>Sobre o vídeo</h2><p>Explique com suas palavras.</p></div></div>
+
+          <label for="topic">Qual é o assunto?</label>
+          <textarea id="topic" name="topic" maxlength="500" required placeholder="Ex.: A história da mulher que enganou o Vale do Silício e perdeu bilhões..."></textarea>
+          <div class="field-note"><span>Dê contexto, nomes e o resultado desejado.</span><span id="counter">0/500</span></div>
+
+          <div class="field-grid">
+            <div>
+              <label for="language">Idioma</label>
+              <select id="language" name="language">
+                <option value="pt-BR">Português (Brasil)</option>
+                <option value="es">Espanhol</option>
+                <option value="en">Inglês</option>
+              </select>
+            </div>
+            <div>
+              <label for="duration">Duração</label>
+              <select id="duration" name="duration">
+                <option value="5">5 minutos</option>
+                <option value="8" selected>8 minutos</option>
+                <option value="12">12 minutos</option>
+                <option value="15">15 minutos</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel side-panel">
+          <div class="step-title compact"><span>2</span><div><h2>Estilo visual</h2><p>Você poderá mudar depois.</p></div></div>
+          <div class="styles" role="radiogroup" aria-label="Estilo visual">
+            <label class="style-card selected">
+              <input type="radio" name="style" value="auto" checked />
+              <i class="swatch auto"></i><span><strong>Automático</strong><small>Escolha inteligente</small></span><b>✓</b>
+            </label>
+            <label class="style-card">
+              <input type="radio" name="style" value="crime" />
+              <i class="swatch crime"></i><span><strong>Crime</strong><small>Tenso e investigativo</small></span><b>✓</b>
+            </label>
+            <label class="style-card">
+              <input type="radio" name="style" value="history" />
+              <i class="swatch history"></i><span><strong>História</strong><small>Documental e épico</small></span><b>✓</b>
+            </label>
+            <label class="style-card">
+              <input type="radio" name="style" value="modern" />
+              <i class="swatch modern"></i><span><strong>Moderno</strong><small>Ágil e energético</small></span><b>✓</b>
+            </label>
+            <label class="style-card">
+              <input type="radio" name="style" value="minimalist" />
+              <i class="swatch minimalist"></i><span><strong>Minimalista</strong><small>Claro e sofisticado</small></span><b>✓</b>
+            </label>
+            <label class="style-card">
+              <input type="radio" name="style" value="standard" />
+              <i class="swatch standard"></i><span><strong>Padrão</strong><small>Versátil e equilibrado</small></span><b>✓</b>
+            </label>
+          </div>
+
+          <input type="hidden" name="asset_mode" value="auto" />
+          <button id="submit" type="submit"><span>Criar projeto</span><span>→</span></button>
+          <p class="safe-note">Nesta etapa nenhuma API será chamada e nenhum vídeo será renderizado.</p>
+        </aside>
+      </form>
+
+      <section id="result" class="result" aria-live="polite" hidden></section>
+    </main>
+
+    <script src="/app.js" defer></script>
+  </body>
+</html>

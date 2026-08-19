@@ -1,0 +1,243 @@
+"""Zero-dependency local web interface for Video Factory.
+
+Run from the repository root:
+    python -m studio.server
+
+The server binds to localhost only. The first milestone creates a safe episode
+brief; rendering and paid API calls are deliberately not started here.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import threading
+import webbrowser
+from datetime import datetime, timezone
+from http import HTTPStatus
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Any
+from urllib.parse import urlparse
+
+from pipeline.intelligence.select_style import load_style, select_style
+
+
+ROOT = Path(__file__).resolve().parents[1]
+STATIC = Path(__file__).resolve().parent / "static"
+MAX_BODY_BYTES = 64 * 1024
+STYLE_IDS = ("crime", "history", "modern", "minimalist", "standard")
+LANGUAGES = {"pt-BR", "es", "en"}
+ASSET_MODES = {"auto", "stock", "generated"}
+
+
+def _slugify(value: str) -> str:
+    value = value.lower().strip()
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    return value.strip("-")[:56] or "novo-projeto"
+
+
+def _clean_line(value: Any, *, limit: int) -> str:
+    text = " ".join(str(value or "").split()).strip()
+    return text[:limit]
+
+
+def _validate_project(data: dict[str, Any]) -> dict[str, Any]:
+    topic = _clean_line(data.get("topic"), limit=500)
+    if len(topic) < 8:
+        raise ValueError("Descreva o assunto do vídeo com pelo menos 8 caracteres.")
+
+    language = _clean_line(data.get("language") or "pt-BR", limit=10)
+    if language not in LANGUAGES:
+        raise ValueError("Idioma inválido.")
+
+    try:
+        duration = int(data.get("duration", 8))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("Duração inválida.") from exc
+    if duration < 3 or duration > 20:
+        raise ValueError("A duração deve ficar entre 3 e 20 minutos.")
+
+    requested_style = _clean_line(data.get("style") or "auto", limit=20)
+    if requested_style != "auto" and requested_style not in STYLE_IDS:
+        raise ValueError("Estilo visual inválido.")
+
+    asset_mode = _clean_line(data.get("asset_mode") or "auto", limit=20)
+    if asset_mode not in ASSET_MODES:
+        raise ValueError("Modo de imagens inválido.")
+
+    suggested_style, scores = select_style(topic, return_scores=True)
+    style = suggested_style if requested_style == "auto" else requested_style
+    return {
+        "topic": topic,
+        "language": language,
+        "duration": duration,
+        "style": style,
+        "requested_style": requested_style,
+        "asset_mode": asset_mode,
+        "scores": scores,
+    }
+
+
+def _next_episode(project_dir: Path) -> int:
+    numbers = []
+    for path in project_dir.glob("Ep*.md"):
+        match = re.fullmatch(r"Ep(\d+)\.md", path.name)
+        if match:
+            numbers.append(int(match.group(1)))
+    return max(numbers, default=0) + 1
+
+
+def create_project(data: dict[str, Any]) -> dict[str, Any]:
+    project = _validate_project(data)
+    slug = _slugify(_clean_line(data.get("name") or project["topic"], limit=100))
+    project_dir = ROOT / "projects" / slug
+    project_dir.mkdir(parents=True, exist_ok=True)
+    episode = _next_episode(project_dir)
+    brief_path = project_dir / f"Ep{episode}.md"
+
+    style_data = load_style(project["style"])
+    style_label = style_data.get("label") or style_data.get("name") or project["style"].title()
+    created_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    brief = f"""# Episódio {episode}
+
+status: brief
+created_at: {created_at}
+language: {project['language']}
+target_duration_min: {project['duration']}
+global_style: {project['style']}
+asset_mode: {project['asset_mode']}
+
+## Assunto
+
+{project['topic']}
+
+## Direção inicial
+
+- Estilo visual: {style_label}
+- O roteiro ainda não foi criado.
+- Nenhuma API foi chamada.
+- Nenhum vídeo foi renderizado.
+"""
+    brief_path.write_text(brief, encoding="utf-8")
+
+    tracker_path = project_dir / "tracker.md"
+    if not tracker_path.exists():
+        tracker_path.write_text(
+            f"# {slug}\n\n- [ ] Ep{episode}: brief criado\n",
+            encoding="utf-8",
+        )
+    else:
+        with tracker_path.open("a", encoding="utf-8") as tracker:
+            tracker.write(f"- [ ] Ep{episode}: brief criado\n")
+
+    return {
+        "ok": True,
+        "project": slug,
+        "episode": episode,
+        "style": project["style"],
+        "style_label": style_label,
+        "brief_path": str(brief_path.relative_to(ROOT)),
+        "message": "Projeto criado. Nenhuma API foi chamada e nenhum vídeo foi renderizado.",
+    }
+
+
+class StudioHandler(BaseHTTPRequestHandler):
+    server_version = "VideoFactoryStudio/0.1"
+
+    def log_message(self, fmt: str, *args: Any) -> None:
+        print(f"[studio] {self.address_string()} - {fmt % args}")
+
+    def _json(self, payload: dict[str, Any], status: HTTPStatus = HTTPStatus.OK) -> None:
+        raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(raw)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def _static(self, filename: str, content_type: str) -> None:
+        path = STATIC / filename
+        if not path.is_file():
+            self.send_error(HTTPStatus.NOT_FOUND)
+            return
+        raw = path.read_bytes()
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def do_GET(self) -> None:  # noqa: N802
+        path = urlparse(self.path).path
+        if path == "/":
+            self._static("index.html", "text/html; charset=utf-8")
+        elif path == "/styles.css":
+            self._static("styles.css", "text/css; charset=utf-8")
+        elif path == "/app.js":
+            self._static("app.js", "text/javascript; charset=utf-8")
+        elif path == "/api/health":
+            self._json({"ok": True, "stage": "project-setup", "version": "0.1"})
+        elif path == "/api/styles":
+            styles = []
+            for style_id in STYLE_IDS:
+                data = load_style(style_id)
+                styles.append(
+                    {
+                        "id": style_id,
+                        "label": data.get("label") or data.get("name") or style_id.title(),
+                        "description": data.get("description") or "",
+                    }
+                )
+            self._json({"styles": styles})
+        else:
+            self.send_error(HTTPStatus.NOT_FOUND)
+
+    def do_POST(self) -> None:  # noqa: N802
+        if urlparse(self.path).path != "/api/projects":
+            self.send_error(HTTPStatus.NOT_FOUND)
+            return
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            if length <= 0 or length > MAX_BODY_BYTES:
+                raise ValueError("Pedido vazio ou grande demais.")
+            body = json.loads(self.rfile.read(length).decode("utf-8"))
+            if not isinstance(body, dict):
+                raise ValueError("Formato inválido.")
+            self._json(create_project(body), HTTPStatus.CREATED)
+        except (ValueError, json.JSONDecodeError) as exc:
+            self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
+        except Exception as exc:  # keep the local UI responsive, log details
+            print(f"[studio] unexpected error: {exc!r}")
+            self._json(
+                {"ok": False, "error": "Não foi possível criar o projeto."},
+                HTTPStatus.INTERNAL_SERVER_ERROR,
+            )
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Video Factory local studio")
+    parser.add_argument("--port", type=int, default=8787)
+    parser.add_argument("--no-browser", action="store_true")
+    args = parser.parse_args(argv)
+
+    address = f"http://127.0.0.1:{args.port}"
+    server = ThreadingHTTPServer(("127.0.0.1", args.port), StudioHandler)
+    print(f"Video Factory aberto em {address}")
+    print("Para encerrar, pressione Control+C.")
+    if not args.no_browser:
+        threading.Timer(0.5, lambda: webbrowser.open(address)).start()
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\nVideo Factory encerrado.")
+    finally:
+        server.server_close()
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

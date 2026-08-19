@@ -121,6 +121,9 @@ Per-style identity is built from these layers (all research-backed — see `docs
 ## Commands
 
 ```bash
+# Local browser interface (project setup; no API/render on first milestone)
+python -m studio.server
+
 # Full pipeline (auto style)
 python -m pipeline.orchestrator --brief "The rise and fall of Theranos"
 
