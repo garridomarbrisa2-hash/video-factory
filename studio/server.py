@@ -30,6 +30,7 @@ from studio.anthropic import (
     save_key,
     test_connection,
 )
+from studio.script_generation import generate_script
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,8 +66,8 @@ def _validate_project(data: dict[str, Any]) -> dict[str, Any]:
         duration = int(data.get("duration", 8))
     except (TypeError, ValueError) as exc:
         raise ValueError("Duração inválida.") from exc
-    if duration < 3 or duration > 20:
-        raise ValueError("A duração deve ficar entre 3 e 20 minutos.")
+    if duration < 8 or duration > 20:
+        raise ValueError("Este gerador trabalha com vídeos de 8 a 20 minutos.")
 
     requested_style = _clean_line(data.get("style") or "auto", limit=20)
     if requested_style != "auto" and requested_style not in STYLE_IDS:
@@ -189,7 +190,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "anthropic-setup", "version": "0.2"})
+            self._json({"ok": True, "stage": "script-generation", "version": "0.3"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -217,7 +218,10 @@ class StudioHandler(BaseHTTPRequestHandler):
 
     def do_POST(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
-        if path not in {"/api/projects", "/api/settings/anthropic"}:
+        script_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/script", path
+        )
+        if path not in {"/api/projects", "/api/settings/anthropic"} and not script_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -227,7 +231,20 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            if path == "/api/settings/anthropic":
+            if script_match:
+                key = configured_key(ROOT)
+                if not key:
+                    raise ValueError("Configure a API da Anthropic antes de gerar o roteiro.")
+                self._json(
+                    generate_script(
+                        ROOT,
+                        script_match.group(1),
+                        int(script_match.group(2)),
+                        key,
+                    ),
+                    HTTPStatus.CREATED,
+                )
+            elif path == "/api/settings/anthropic":
                 key = str(body.get("api_key") or "")
                 connection = test_connection(key)
                 save_key(ROOT, key)

@@ -40,7 +40,11 @@ form.addEventListener('submit', async (event) => {
     result.innerHTML = `<strong>Projeto criado com sucesso ✓</strong>
       Estilo escolhido: ${escapeHtml(payload.style_label)}.<br>
       Brief salvo em <code>${escapeHtml(payload.brief_path)}</code>.<br>
-      Nenhuma API foi chamada e nenhum vídeo foi renderizado.`;
+      Nenhuma API foi chamada e nenhum vídeo foi renderizado.
+      <button class="generate-script" type="button" data-project="${escapeHtml(payload.project)}" data-episode="${payload.episode}">
+        <span>Gerar roteiro com IA</span><span>→</span>
+      </button>
+      <div class="generation-status"></div>`;
     result.hidden = false;
     result.scrollIntoView({behavior: 'smooth', block: 'center'});
   } catch (error) {
@@ -50,6 +54,37 @@ form.addEventListener('submit', async (event) => {
   } finally {
     submit.disabled = false;
     submit.firstElementChild.textContent = 'Criar projeto';
+  }
+});
+
+result.addEventListener('click', async (event) => {
+  const button = event.target.closest('.generate-script');
+  if (!button) return;
+  const accepted = window.confirm('Gerar o roteiro agora? Esta ação consumirá uma pequena parte do saldo da sua API Anthropic.');
+  if (!accepted) return;
+
+  const status = result.querySelector('.generation-status');
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Gerando roteiro...';
+  status.textContent = 'A IA está escrevendo. Isso pode levar alguns minutos; não feche esta página.';
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/script`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível gerar o roteiro.');
+    button.remove();
+    status.innerHTML = `<strong>Roteiro concluído ✓</strong>
+      ${escapeHtml(payload.word_count)} palavras · modelo ${escapeHtml(payload.model)}.<br>
+      Salvo em <code>${escapeHtml(payload.script_path)}</code>.`;
+    status.classList.add('success');
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar gerar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
   }
 });
 

@@ -4,6 +4,7 @@ import pytest
 
 from studio import server
 from studio import anthropic
+from studio import script_generation
 
 
 def test_validate_project_auto_style() -> None:
@@ -57,3 +58,27 @@ def test_anthropic_key_is_saved_only_in_gitignored_api_dir(tmp_path: Path) -> No
 def test_anthropic_rejects_malformed_key() -> None:
     with pytest.raises(ValueError, match="começar com sk-ant"):
         anthropic.validate_key_shape("chave-invalida")
+
+
+def test_choose_script_model_prefers_current_sonnet() -> None:
+    assert script_generation.choose_script_model(
+        ["claude-haiku-4-5", "claude-sonnet-5", "claude-sonnet-4-6"]
+    ) == "claude-sonnet-5"
+
+
+def test_script_metadata_reads_brief() -> None:
+    meta = script_generation._metadata(
+        """language: pt-BR
+target_duration_min: 8
+global_style: history
+asset_mode: auto
+
+## Assunto
+
+A história da criação do Bitcoin
+
+## Direção inicial
+"""
+    )
+    assert meta["topic"] == "A história da criação do Bitcoin"
+    assert meta["style"] == "history"
