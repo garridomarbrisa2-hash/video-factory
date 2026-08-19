@@ -13,6 +13,7 @@ import argparse
 import json
 import re
 import threading
+import unicodedata
 import webbrowser
 from datetime import datetime, timezone
 from http import HTTPStatus
@@ -22,6 +23,13 @@ from typing import Any
 from urllib.parse import urlparse
 
 from pipeline.intelligence.select_style import load_style, select_style
+from studio.anthropic import (
+    AnthropicConnectionError,
+    configured_key,
+    masked_key,
+    save_key,
+    test_connection,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +41,7 @@ ASSET_MODES = {"auto", "stock", "generated"}
 
 
 def _slugify(value: str) -> str:
+    value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
     value = value.lower().strip()
     value = re.sub(r"[^a-z0-9]+", "-", value)
     return value.strip("-")[:56] or "novo-projeto"
@@ -180,7 +189,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "project-setup", "version": "0.1"})
+            self._json({"ok": True, "stage": "anthropic-setup", "version": "0.2"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -193,11 +202,22 @@ class StudioHandler(BaseHTTPRequestHandler):
                     }
                 )
             self._json({"styles": styles})
+        elif path == "/api/settings":
+            key = configured_key(ROOT)
+            self._json(
+                {
+                    "anthropic": {
+                        "configured": bool(key),
+                        "masked_key": masked_key(key) if key else None,
+                    }
+                }
+            )
         else:
             self.send_error(HTTPStatus.NOT_FOUND)
 
     def do_POST(self) -> None:  # noqa: N802
-        if urlparse(self.path).path != "/api/projects":
+        path = urlparse(self.path).path
+        if path not in {"/api/projects", "/api/settings/anthropic"}:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -207,8 +227,22 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            self._json(create_project(body), HTTPStatus.CREATED)
-        except (ValueError, json.JSONDecodeError) as exc:
+            if path == "/api/settings/anthropic":
+                key = str(body.get("api_key") or "")
+                connection = test_connection(key)
+                save_key(ROOT, key)
+                self._json(
+                    {
+                        "ok": True,
+                        "configured": True,
+                        "masked_key": masked_key(key.strip()),
+                        "model_count": connection["model_count"],
+                        "message": "Conexão confirmada. A chave ficou salva somente neste Mac.",
+                    }
+                )
+            else:
+                self._json(create_project(body), HTTPStatus.CREATED)
+        except (ValueError, json.JSONDecodeError, AnthropicConnectionError) as exc:
             self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
         except Exception as exc:  # keep the local UI responsive, log details
             print(f"[studio] unexpected error: {exc!r}")

@@ -3,6 +3,11 @@ const topic = document.querySelector('#topic');
 const counter = document.querySelector('#counter');
 const result = document.querySelector('#result');
 const submit = document.querySelector('#submit');
+const apiDialog = document.querySelector('#api-dialog');
+const apiForm = document.querySelector('#api-form');
+const apiStatus = document.querySelector('#api-status');
+const apiMessage = document.querySelector('#api-message');
+const saveApi = document.querySelector('#save-api');
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -54,3 +59,48 @@ function escapeHtml(value) {
   return node.innerHTML;
 }
 
+document.querySelector('#open-api').addEventListener('click', () => apiDialog.showModal());
+document.querySelector('#close-api').addEventListener('click', () => apiDialog.close());
+
+async function refreshSettings() {
+  try {
+    const response = await fetch('/api/settings');
+    const payload = await response.json();
+    if (payload.anthropic.configured) {
+      apiStatus.textContent = `Conectada · ${payload.anthropic.masked_key}`;
+      apiStatus.classList.add('connected');
+      document.querySelector('#open-api').textContent = 'Alterar';
+    }
+  } catch (_) {
+    apiStatus.textContent = 'Não foi possível verificar';
+  }
+}
+
+apiForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  apiMessage.textContent = '';
+  apiMessage.classList.remove('success');
+  saveApi.disabled = true;
+  saveApi.firstElementChild.textContent = 'Testando...';
+  try {
+    const response = await fetch('/api/settings/anthropic', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({api_key: document.querySelector('#api-key').value}),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível conectar.');
+    document.querySelector('#api-key').value = '';
+    apiMessage.textContent = payload.message;
+    apiMessage.classList.add('success');
+    await refreshSettings();
+    setTimeout(() => apiDialog.close(), 1200);
+  } catch (error) {
+    apiMessage.textContent = error.message;
+  } finally {
+    saveApi.disabled = false;
+    saveApi.firstElementChild.textContent = 'Testar e salvar';
+  }
+});
+
+refreshSettings();

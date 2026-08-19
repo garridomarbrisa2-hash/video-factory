@@ -56,6 +56,10 @@ def _key_from_md(path: Path) -> str | None:
     m = re.search(r"\bms-[0-9a-zA-Z-]{8,}\b", text)
     if m:
         return m.group(0)
+    # Anthropic regular API key (not an Admin API key).
+    m = re.search(r"\bsk-ant-[A-Za-z0-9_-]{20,}\b", text)
+    if m:
+        return m.group(0)
     # Pixabay-style "<digits>-<hex>".
     m = re.search(r"\b\d{6,}-[0-9a-f]{16,}\b", text)
     if m:
@@ -76,6 +80,7 @@ def _load_api_docs_keys() -> dict[str, str]:
         "PEXELS_API_KEY": ("pexels.md", "pexel.md"),
         "PIXABAY_API_KEY": ("pixabay.md",),
         "MODELSCOPE_API_KEY": ("modelscope.md",),
+        "ANTHROPIC_API_KEY": ("anthropic.md",),
     }
     api_dir = PROJECT_ROOT / "docs" / "API"
     found: dict[str, str] = {}

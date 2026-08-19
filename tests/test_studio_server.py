@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from studio import server
+from studio import anthropic
 
 
 def test_validate_project_auto_style() -> None:
@@ -24,6 +25,10 @@ def test_validate_project_rejects_short_topic() -> None:
         server._validate_project({"topic": "curto"})
 
 
+def test_slugify_removes_accents_cleanly() -> None:
+    assert server._slugify("A história da criação") == "a-historia-da-criacao"
+
+
 def test_create_project_writes_brief_without_rendering(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(server, "ROOT", tmp_path)
     result = server.create_project(
@@ -41,3 +46,14 @@ def test_create_project_writes_brief_without_rendering(tmp_path: Path, monkeypat
     assert "global_style: history" in brief.read_text(encoding="utf-8")
     assert not list(tmp_path.rglob("*.mp4"))
 
+
+def test_anthropic_key_is_saved_only_in_gitignored_api_dir(tmp_path: Path) -> None:
+    key = "sk-ant-api03-abcdefghijklmnopqrstuvwxyz123456"
+    path = anthropic.save_key(tmp_path, key)
+    assert path == tmp_path / "docs" / "API" / "anthropic.md"
+    assert key in path.read_text(encoding="utf-8")
+
+
+def test_anthropic_rejects_malformed_key() -> None:
+    with pytest.raises(ValueError, match="começar com sk-ant"):
+        anthropic.validate_key_shape("chave-invalida")

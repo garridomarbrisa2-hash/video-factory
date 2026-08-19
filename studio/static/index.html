@@ -82,6 +82,11 @@
           </div>
 
           <input type="hidden" name="asset_mode" value="auto" />
+          <div class="api-card" id="api-card">
+            <div class="api-icon">AI</div>
+            <div><strong>IA do roteiro</strong><small id="api-status">Não configurada</small></div>
+            <button class="api-button" id="open-api" type="button">Configurar</button>
+          </div>
           <button id="submit" type="submit"><span>Criar projeto</span><span>→</span></button>
           <p class="safe-note">Nesta etapa nenhuma API será chamada e nenhum vídeo será renderizado.</p>
         </aside>
@@ -89,6 +94,21 @@
 
       <section id="result" class="result" aria-live="polite" hidden></section>
     </main>
+
+    <dialog id="api-dialog">
+      <form id="api-form" method="dialog">
+        <button class="dialog-close" id="close-api" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon">AI</div>
+        <div class="eyebrow">CONEXÃO SEGURA</div>
+        <h2>Conectar à Anthropic</h2>
+        <p>A chave será testada sem gerar texto e ficará salva somente neste Mac.</p>
+        <label for="api-key">Chave da API</label>
+        <input id="api-key" name="api_key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-••••••••••••••••" required />
+        <button id="save-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
+        <div id="api-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">A chave nunca será enviada ao GitHub.</small>
+      </form>
+    </dialog>
 
     <script src="/app.js" defer></script>
   </body>
