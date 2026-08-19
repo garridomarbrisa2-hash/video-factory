@@ -82,11 +82,51 @@ result.addEventListener('click', async (event) => {
     status.innerHTML = `<strong>${payload.duration_ok ? 'Roteiro concluído ✓' : 'Roteiro precisa de revisão'}</strong>
       ${escapeHtml(payload.word_count)} palavras · modelo ${escapeHtml(payload.model)}.<br>
       ${quality}<br>
-      Salvo em <code>${escapeHtml(payload.script_path)}</code>.`;
+      Salvo em <code>${escapeHtml(payload.script_path)}</code>.
+      <button class="review-script" type="button" data-project="${escapeHtml(button.dataset.project)}" data-episode="${escapeHtml(button.dataset.episode)}">
+        <span>Enviar para o Revisor</span><span>→</span>
+      </button>
+      <div class="review-status"></div>`;
     status.classList.add(payload.duration_ok ? 'success' : 'error');
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar gerar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
+  }
+});
+
+result.addEventListener('click', async (event) => {
+  const button = event.target.closest('.review-script');
+  if (!button) return;
+  const accepted = window.confirm('Revisar o roteiro agora? Esta etapa usa o saldo da API Anthropic. É uma revisão editorial; afirmações que precisarem de fontes serão marcadas.');
+  if (!accepted) return;
+
+  const status = result.querySelector('.review-status');
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Revisando...';
+  status.textContent = 'O Revisor está analisando o roteiro. Isso pode levar alguns minutos.';
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/review`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível revisar o roteiro.');
+    button.remove();
+    const sourceMessage = payload.verification_count
+      ? `${escapeHtml(payload.verification_count)} afirmação(ões) ainda precisam de fontes.`
+      : 'Nenhuma afirmação adicional foi sinalizada.';
+    status.innerHTML = `<strong>Revisão editorial concluída ✓</strong>
+      ${escapeHtml(payload.word_count)} palavras · aproximadamente ${escapeHtml(payload.estimated_minutes)} minutos.<br>
+      ${sourceMessage}<br>
+      Roteiro: <code>${escapeHtml(payload.reviewed_path)}</code><br>
+      Relatório: <code>${escapeHtml(payload.report_path)}</code>`;
+    status.classList.add(payload.decision === 'approved' ? 'success' : 'error');
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar revisar novamente';
     status.textContent = error.message;
     status.classList.add('error');
   }

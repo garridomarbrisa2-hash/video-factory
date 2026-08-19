@@ -44,6 +44,10 @@ def test_no_signal_defaults_to_standard() -> None:
     assert select_style("a video about stuff") == "standard"
 
 
+def test_portuguese_history_selects_history() -> None:
+    assert select_style("A história da criação do Bitcoin") == "history"
+
+
 def test_tie_defaults_to_standard() -> None:
     # Equal modern + standard signal, zero everything else → tie → standard.
     style_id, scores = select_style("the best tech", return_scores=True)

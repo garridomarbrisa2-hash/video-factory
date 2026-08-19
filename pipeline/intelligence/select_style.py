@@ -38,6 +38,16 @@ LEGACY_ALIASES: dict[str, str] = {
 
 DEFAULT_STYLE = "standard"
 
+# The original VidRush keyword set is English-only. These localization hints
+# cover the three languages exposed by Studio without changing style behavior.
+LOCALIZED_HINTS: dict[str, tuple[str, ...]] = {
+    "crime": ("crime", "assassinato", "investigacao", "investigação", "fraude", "golpe", "desaparecimento", "crimen", "asesinato", "investigacion", "investigación", "estafa"),
+    "history": ("historia", "história", "historico", "histórico", "origem", "criacao", "criação", "imperio", "império", "guerra", "revolucao", "revolução", "seculo", "século", "biografia", "dinastia", "historia de", "história de", "origen", "creacion", "creación", "siglo"),
+    "modern": ("tecnologia", "inovacao", "inovação", "futuro", "startup", "inteligencia artificial", "inteligência artificial", "innovacion", "innovación"),
+    "minimalist": ("como fazer", "guia", "passo a passo", "explicado", "tutorial", "paso a paso"),
+    "standard": ("lista", "melhores", "piores", "razoes", "razões", "fatos", "mejores", "peores", "razones", "datos"),
+}
+
 
 @lru_cache(maxsize=len(STYLE_IDS))
 def load_style(style_id: str) -> dict[str, Any]:
@@ -82,6 +92,9 @@ def score_brief(brief: str, style: dict[str, Any]) -> int:
     for fw in style.get("format_words", []):
         if _word_pattern(fw).search(text):
             score += 2
+    for hint in LOCALIZED_HINTS.get(style.get("style_id", ""), ()):
+        if _word_pattern(hint).search(text):
+            score += 1
     return score
 
 

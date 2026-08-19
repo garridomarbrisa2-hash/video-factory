@@ -5,6 +5,7 @@ import pytest
 from studio import server
 from studio import anthropic
 from studio import script_generation
+from studio import script_review
 
 
 def test_validate_project_auto_style() -> None:
@@ -93,3 +94,12 @@ def test_closer_script_wins() -> None:
     short = "palavra " * 800
     corrected = "palavra " * 1075
     assert script_generation._closer_to_target(short, corrected, 1080) == corrected
+
+
+def test_parse_editorial_review() -> None:
+    script = "# HOOK\n" + ("palavra " * 100) + "\n# BODY\nTexto\n# CTA\nFim"
+    raw = f'''<reviewed_script>{script}</reviewed_script>
+<review_report>{{"decision":"needs_sources","summary":"ok","corrections":[],"verification_required":["Confirmar número"]}}</review_report>'''
+    reviewed, report = script_review._parse_review(raw)
+    assert reviewed.startswith("# HOOK")
+    assert report["verification_required"] == ["Confirmar número"]

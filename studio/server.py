@@ -31,6 +31,7 @@ from studio.anthropic import (
     test_connection,
 )
 from studio.script_generation import generate_script
+from studio.script_review import review_script
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -190,7 +191,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "script-quality-gate", "version": "0.4"})
+            self._json({"ok": True, "stage": "editorial-review", "version": "0.5"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -221,7 +222,10 @@ class StudioHandler(BaseHTTPRequestHandler):
         script_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/script", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic"} and not script_match:
+        review_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/review", path
+        )
+        if path not in {"/api/projects", "/api/settings/anthropic"} and not script_match and not review_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -231,15 +235,17 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            if script_match:
+            if script_match or review_match:
                 key = configured_key(ROOT)
                 if not key:
-                    raise ValueError("Configure a API da Anthropic antes de gerar o roteiro.")
+                    raise ValueError("Configure a API da Anthropic antes de usar a IA.")
+                match = script_match or review_match
+                operation = generate_script if script_match else review_script
                 self._json(
-                    generate_script(
+                    operation(
                         ROOT,
-                        script_match.group(1),
-                        int(script_match.group(2)),
+                        match.group(1),
+                        int(match.group(2)),
                         key,
                     ),
                     HTTPStatus.CREATED,
