@@ -82,3 +82,14 @@ A história da criação do Bitcoin
     )
     assert meta["topic"] == "A história da criação do Bitcoin"
     assert meta["style"] == "history"
+
+
+def test_script_word_limits_for_eight_minutes() -> None:
+    minimum, target, maximum = script_generation._word_limits(8)
+    assert (minimum, target, maximum) == (972, 1080, 1188)
+
+
+def test_closer_script_wins() -> None:
+    short = "palavra " * 800
+    corrected = "palavra " * 1075
+    assert script_generation._closer_to_target(short, corrected, 1080) == corrected

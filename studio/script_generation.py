@@ -73,6 +73,8 @@ def _system_prompt(project_root: Path) -> str:
 def _user_prompt(meta: dict[str, Any]) -> str:
     style = load_style(meta["style"])
     target_words = int(meta["duration"] * 135)
+    minimum_words = int(target_words * 0.9)
+    maximum_words = int(target_words * 1.1)
     language = LANGUAGE_NAMES.get(meta["language"], meta["language"])
     script_rules = json.dumps(style.get("script", {}), ensure_ascii=False, indent=2)
     return f"""Crie um roteiro original para YouTube.
@@ -83,7 +85,9 @@ ASSUNTO:
 REQUISITOS OBRIGATÓRIOS:
 - Idioma: {language}.
 - Duração pretendida: {meta['duration']} minutos.
-- Aproximadamente {target_words} palavras, com tolerância de 10%.
+- Entre {minimum_words} e {maximum_words} palavras. Este intervalo é obrigatório.
+- Antes de responder, verifique silenciosamente se o texto completo está dentro
+  desse intervalo. Se estiver curto, aprofunde contexto, consequências e exemplos.
 - Estilo global: {meta['style']}.
 - Comece com uma abertura forte; nunca use "No vídeo de hoje" ou equivalente.
 - Estrutura Markdown: metadados, # HOOK, # BODY com blocos narrativos, # CTA.
@@ -94,6 +98,44 @@ REQUISITOS OBRIGATÓRIOS:
 
 REGRAS DO ESTILO:
 {script_rules}
+"""
+
+
+def _extract_text(payload: dict[str, Any]) -> str:
+    return "\n".join(
+        block.get("text", "")
+        for block in payload.get("content", [])
+        if block.get("type") == "text"
+    ).strip()
+
+
+def _word_limits(duration: int) -> tuple[int, int, int]:
+    target = duration * 135
+    return int(target * 0.9), target, int(target * 1.1)
+
+
+def _closer_to_target(first: str, second: str, target: int) -> str:
+    first_distance = abs(len(first.split()) - target)
+    second_distance = abs(len(second.split()) - target)
+    return second if second_distance < first_distance else first
+
+
+def _length_revision_prompt(script: str, meta: dict[str, Any]) -> str:
+    minimum, target, maximum = _word_limits(meta["duration"])
+    current = len(script.split())
+    direction = "expanda" if current < minimum else "reduza"
+    return f"""Revise integralmente o roteiro abaixo.
+
+O texto tem aproximadamente {current} palavras, mas precisa ter entre
+{minimum} e {maximum} palavras para alcançar {meta['duration']} minutos.
+{direction.capitalize()} o conteúdo até perto de {target} palavras.
+
+Preserve o assunto, o idioma, o estilo, a abertura e a estrutura Markdown.
+Não acrescente instruções de edição e não invente fatos, fontes ou números.
+Entregue o roteiro completo revisado, não apenas as partes modificadas.
+
+ROTEIRO ATUAL:
+{script}
 """
 
 
@@ -178,29 +220,48 @@ def generate_script(
         _user_prompt(meta),
         max_tokens,
     )
-    text_blocks = [
-        block.get("text", "")
-        for block in payload.get("content", [])
-        if block.get("type") == "text"
-    ]
-    script = "\n".join(text_blocks).strip()
+    script = _extract_text(payload)
     if len(script.split()) < 100:
         raise AnthropicConnectionError("A Anthropic devolveu um roteiro incompleto.")
 
-    usage = payload.get("usage", {})
+    minimum_words, target_words, maximum_words = _word_limits(meta["duration"])
+    revised_for_length = False
+    payloads = [payload]
+    if not minimum_words <= len(script.split()) <= maximum_words:
+        revised_payload = _request_message(
+            key,
+            model,
+            _system_prompt(project_root),
+            _length_revision_prompt(script, meta),
+            max_tokens,
+        )
+        revised = _extract_text(revised_payload)
+        if len(revised.split()) >= 100:
+            script = _closer_to_target(script, revised, target_words)
+        payloads.append(revised_payload)
+        revised_for_length = True
+
+    input_tokens = sum(p.get("usage", {}).get("input_tokens", 0) for p in payloads)
+    output_tokens = sum(p.get("usage", {}).get("output_tokens", 0) for p in payloads)
+    word_count = len(script.split())
+    duration_ok = minimum_words <= word_count <= maximum_words
     header = (
         f"<!-- model: {model}; generated_by: Anthropic API; "
-        f"input_tokens: {usage.get('input_tokens', 0)}; "
-        f"output_tokens: {usage.get('output_tokens', 0)} -->\n\n"
+        f"input_tokens: {input_tokens}; output_tokens: {output_tokens}; "
+        f"duration_check: {'approved' if duration_ok else 'review'} -->\n\n"
     )
     script_path.write_text(header + script + "\n", encoding="utf-8")
     return {
         "ok": True,
         "model": model,
-        "input_tokens": usage.get("input_tokens", 0),
-        "output_tokens": usage.get("output_tokens", 0),
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
         "script_path": str(script_path.relative_to(project_root)),
-        "word_count": len(script.split()),
+        "word_count": word_count,
+        "estimated_minutes": round(word_count / 135, 1),
+        "duration_ok": duration_ok,
+        "target_min_words": minimum_words,
+        "target_max_words": maximum_words,
+        "revised_for_length": revised_for_length,
         "message": "Roteiro gerado e salvo no projeto.",
     }
-

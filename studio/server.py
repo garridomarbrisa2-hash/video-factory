@@ -190,7 +190,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "script-generation", "version": "0.3"})
+            self._json({"ok": True, "stage": "script-quality-gate", "version": "0.4"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:

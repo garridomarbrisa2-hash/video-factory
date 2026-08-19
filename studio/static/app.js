@@ -60,7 +60,7 @@ form.addEventListener('submit', async (event) => {
 result.addEventListener('click', async (event) => {
   const button = event.target.closest('.generate-script');
   if (!button) return;
-  const accepted = window.confirm('Gerar o roteiro agora? Esta ação consumirá uma pequena parte do saldo da sua API Anthropic.');
+  const accepted = window.confirm('Gerar o roteiro agora? Esta ação usa o saldo da API Anthropic. Se a duração sair incorreta, o sistema poderá fazer uma segunda chamada para ajustar o texto.');
   if (!accepted) return;
 
   const status = result.querySelector('.generation-status');
@@ -76,10 +76,14 @@ result.addEventListener('click', async (event) => {
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || 'Não foi possível gerar o roteiro.');
     button.remove();
-    status.innerHTML = `<strong>Roteiro concluído ✓</strong>
+    const quality = payload.duration_ok
+      ? `Duração aprovada: aproximadamente ${escapeHtml(payload.estimated_minutes)} minutos.`
+      : `Atenção: duração fora da meta (${escapeHtml(payload.target_min_words)}–${escapeHtml(payload.target_max_words)} palavras).`;
+    status.innerHTML = `<strong>${payload.duration_ok ? 'Roteiro concluído ✓' : 'Roteiro precisa de revisão'}</strong>
       ${escapeHtml(payload.word_count)} palavras · modelo ${escapeHtml(payload.model)}.<br>
+      ${quality}<br>
       Salvo em <code>${escapeHtml(payload.script_path)}</code>.`;
-    status.classList.add('success');
+    status.classList.add(payload.duration_ok ? 'success' : 'error');
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar gerar novamente';
