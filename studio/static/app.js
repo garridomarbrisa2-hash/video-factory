@@ -208,9 +208,15 @@ async function loadRecent() {
       return;
     }
     recentList.innerHTML = payload.episodes.map((episode) => {
-      const action = episode.narration
-        ? `<audio controls preload="none" src="/api/projects/${escapeHtml(episode.project)}/episodes/${escapeHtml(episode.episode)}/narration/audio"></audio>`
-        : `<button class="generate-narration" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Gerar narração</span><span>→</span></button>`;
+      let action;
+      if (episode.direction) {
+        action = '<span class="stage-complete">Direção concluída ✓</span>';
+      } else if (episode.narration) {
+        action = `<div class="episode-actions"><audio controls preload="none" src="/api/projects/${escapeHtml(episode.project)}/episodes/${escapeHtml(episode.episode)}/narration/audio"></audio>
+          <button class="generate-director" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Criar direção de cenas</span><span>→</span></button></div>`;
+      } else {
+        action = `<button class="generate-narration" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Gerar narração</span><span>→</span></button>`;
+      }
       return `<article class="episode-card">
         <div><strong>${escapeHtml(episode.topic)}</strong><small>Episódio ${escapeHtml(episode.episode)}${episode.reviewed ? ' · revisado' : ''}</small></div>
         ${action}
@@ -251,6 +257,39 @@ recentList.addEventListener('click', async (event) => {
       Áudio salvo em <code>${escapeHtml(payload.audio_path)}</code>.<br>
       <audio controls preload="metadata" src="/api/projects/${escapeHtml(button.dataset.project)}/episodes/${escapeHtml(button.dataset.episode)}/narration/audio"></audio>`;
     status.classList.add(payload.status === 'approved' ? 'success' : 'error');
+    if (payload.status === 'approved') await loadRecent();
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
+  }
+});
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.generate-director');
+  if (!button) return;
+  const accepted = window.confirm('Criar a direção visual agora? Esta ação usa o saldo da API Anthropic para planejar as cenas.');
+  if (!accepted) return;
+  const card = button.closest('.episode-card');
+  const status = card.querySelector('.episode-action-status');
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Dirigindo cenas...';
+  status.textContent = 'O Diretor está sincronizando imagens e cenas com a narração. Isso pode levar alguns minutos.';
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/director`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível criar a direção.');
+    button.remove();
+    status.innerHTML = `<strong>Direção concluída ✓</strong>
+      ${escapeHtml(payload.scene_count)} cenas sincronizadas.<br>
+      Plano salvo em <code>${escapeHtml(payload.direction_path)}</code>.<br>
+      Próxima etapa: preparar os elementos visuais.`;
+    status.classList.add('success');
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar novamente';

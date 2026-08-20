@@ -137,5 +137,6 @@ def test_recent_episodes_lists_script_ready_for_narration(
             "topic": "A história da criação do Bitcoin",
             "reviewed": False,
             "narration": False,
+            "direction": False,
         }
     ]

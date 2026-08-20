@@ -40,6 +40,7 @@ from studio.elevenlabs import (
     test_connection as test_elevenlabs_connection,
 )
 from studio.narration import NarrationError, generate_narration
+from studio.director import generate_direction
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -176,6 +177,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
         script = project_dir / f"Ep{episode}_script.md"
         reviewed = project_dir / f"Ep{episode}_reviewed.md"
         narration = project_dir / f"Ep{episode}_narration.mp3"
+        direction = project_dir / f"Ep{episode}_director.json"
         if not script.exists():
             continue
         topic = ""
@@ -190,6 +192,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
                 "topic": topic or project_dir.name.replace("-", " ").title(),
                 "reviewed": reviewed.exists(),
                 "narration": narration.exists(),
+                "direction": direction.exists(),
                 "modified": script.stat().st_mtime,
             }
         )
@@ -252,7 +255,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "voice-measurement", "version": "0.7"})
+            self._json({"ok": True, "stage": "director", "version": "0.8"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -300,7 +303,10 @@ class StudioHandler(BaseHTTPRequestHandler):
         narration_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/narration", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match and not narration_match:
+        director_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/director", path
+        )
+        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match and not narration_match and not director_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -310,7 +316,17 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            if narration_match:
+            if director_match:
+                key = configured_key(ROOT)
+                if not key:
+                    raise ValueError("Configure a API da Anthropic antes de usar o Diretor.")
+                self._json(
+                    generate_direction(
+                        ROOT, director_match.group(1), int(director_match.group(2)), key
+                    ),
+                    HTTPStatus.CREATED,
+                )
+            elif narration_match:
                 if not configured_elevenlabs(ROOT):
                     raise ValueError("Configure a ElevenLabs antes de gerar a narração.")
                 self._json(
