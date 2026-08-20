@@ -219,6 +219,25 @@
       </form>
     </dialog>
 
+    <dialog id="media-review-dialog" class="media-review-dialog">
+      <div class="media-review-shell">
+        <button class="dialog-close" id="close-media-review" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon media-icon">PX</div>
+        <div class="eyebrow">REVISÃO VISUAL</div>
+        <h2>Opções para cada cena</h2>
+        <p>Pexels e Pixabay aparecem primeiro. O YouTube continua separado e deve ser usado somente quando for realmente necessário.</p>
+        <div class="media-review-toolbar">
+          <button id="previous-media-scene" class="media-nav" type="button" aria-label="Cena anterior">←</button>
+          <label for="media-scene-select">Cena</label>
+          <select id="media-scene-select"></select>
+          <button id="next-media-scene" class="media-nav" type="button" aria-label="Próxima cena">→</button>
+        </div>
+        <div id="media-scene-context" class="media-scene-context"></div>
+        <div id="media-review-results" class="media-review-results"></div>
+        <div id="media-review-message" class="api-message" aria-live="polite"></div>
+      </div>
+    </dialog>
+
     <script src="/app.js" defer></script>
   </body>
 </html>

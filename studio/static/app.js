@@ -36,9 +36,15 @@ const youtubeImportDialog = document.querySelector('#youtube-import-dialog');
 const youtubeImportForm = document.querySelector('#youtube-import-form');
 const youtubeImportMessage = document.querySelector('#youtube-import-message');
 const saveYoutubeImport = document.querySelector('#save-youtube-import');
+const mediaReviewDialog = document.querySelector('#media-review-dialog');
+const mediaSceneSelect = document.querySelector('#media-scene-select');
+const mediaSceneContext = document.querySelector('#media-scene-context');
+const mediaReviewResults = document.querySelector('#media-review-results');
+const mediaReviewMessage = document.querySelector('#media-review-message');
 let youtubeImportProject = '';
 let youtubeImportEpisode = '';
 let youtubeImportCandidates = [];
+let mediaReviewScenes = [];
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -248,8 +254,9 @@ async function loadRecent() {
       let action;
       if (episode.media_candidates) {
         action = `<div class="episode-actions"><span class="stage-complete">Mídia localizada ✓</span>
+          <button class="open-media-review" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Revisar Pexels e Pixabay</span><span>→</span></button>
           <button class="search-media secondary-action" type="button" data-refresh="true" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Refazer busca inteligente</span><span>↻</span></button>
-          <button class="open-youtube-import" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Importar trecho autorizado</span><span>→</span></button></div>`;
+          <button class="open-youtube-import youtube-exception" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>YouTube (opcional)</span><span>→</span></button></div>`;
       } else if (episode.direction) {
         action = `<button class="search-media" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Buscar elementos visuais</span><span>→</span></button>`;
       } else if (episode.narration) {
@@ -381,6 +388,83 @@ recentList.addEventListener('click', async (event) => {
 });
 
 loadRecent();
+
+function renderMediaScene() {
+  const sceneIndex = Number(mediaSceneSelect.value || 0);
+  const scene = mediaReviewScenes[sceneIndex];
+  if (!scene) {
+    mediaSceneContext.innerHTML = '';
+    mediaReviewResults.innerHTML = '<div class="empty-media-state">Nenhuma cena foi encontrada.</div>';
+    return;
+  }
+
+  const stockCandidates = (scene.candidates || []).filter((candidate) =>
+    candidate.provider === 'pexels' || candidate.provider === 'pixabay'
+  );
+  mediaSceneContext.innerHTML = `<strong>Cena ${escapeHtml(scene.scene_id)}</strong>
+    <span>${escapeHtml(scene.context || scene.topic || scene.query || '')}</span>
+    <small>Busca: ${escapeHtml(scene.query || 'sem termo registrado')}</small>`;
+
+  mediaReviewResults.innerHTML = stockCandidates.length
+    ? stockCandidates.map((candidate) => {
+        const provider = candidate.provider === 'pixabay' ? 'Pixabay' : 'Pexels';
+        const sourceUrl = candidate.pixabay_url || candidate.pexels_url || '#';
+        const preview = candidate.video_url
+          ? `<video controls muted playsinline preload="metadata" ${candidate.preview_image ? `poster="${escapeHtml(candidate.preview_image)}"` : ''} src="${escapeHtml(candidate.video_url)}"></video>`
+          : candidate.preview_image
+            ? `<img loading="lazy" src="${escapeHtml(candidate.preview_image)}" alt="Prévia da cena ${escapeHtml(scene.scene_id)}">`
+            : '<div class="media-no-preview">Prévia indisponível</div>';
+        return `<article class="media-candidate-card">
+          ${preview}
+          <div class="media-candidate-info">
+            <span class="provider-badge ${escapeHtml(candidate.provider)}">${provider}</span>
+            <strong>${escapeHtml(candidate.matched_query || scene.query || 'Resultado visual')}</strong>
+            <small>${escapeHtml(candidate.creator ? `por ${candidate.creator}` : 'Mídia do banco')}</small>
+            <a href="${escapeHtml(sourceUrl)}" target="_blank" rel="noopener noreferrer">Abrir página original ↗</a>
+          </div>
+        </article>`;
+      }).join('')
+    : `<div class="empty-media-state"><strong>Sem resultado de banco nesta cena.</strong><span>Refaça a busca ou prepare uma mídia manual. O YouTube permanece apenas como alternativa.</span></div>`;
+
+  document.querySelector('#previous-media-scene').disabled = sceneIndex <= 0;
+  document.querySelector('#next-media-scene').disabled = sceneIndex >= mediaReviewScenes.length - 1;
+}
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.open-media-review');
+  if (!button) return;
+  mediaReviewScenes = [];
+  mediaSceneSelect.innerHTML = '<option>Carregando cenas...</option>';
+  mediaReviewResults.innerHTML = '<div class="empty-media-state">Carregando opções do Pexels e Pixabay...</div>';
+  mediaReviewMessage.textContent = '';
+  mediaReviewDialog.showModal();
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/media-candidates`);
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível carregar as opções visuais.');
+    mediaReviewScenes = payload.scenes || [];
+    mediaSceneSelect.innerHTML = mediaReviewScenes.map((scene, index) => {
+      const stockCount = (scene.candidates || []).filter((candidate) => candidate.provider === 'pexels' || candidate.provider === 'pixabay').length;
+      return `<option value="${index}">Cena ${escapeHtml(scene.scene_id)} · ${stockCount} opção(ões)</option>`;
+    }).join('');
+    renderMediaScene();
+  } catch (error) {
+    mediaReviewScenes = [];
+    mediaReviewResults.innerHTML = '';
+    mediaReviewMessage.textContent = error.message;
+  }
+});
+
+document.querySelector('#close-media-review').addEventListener('click', () => mediaReviewDialog.close());
+mediaSceneSelect.addEventListener('change', renderMediaScene);
+document.querySelector('#previous-media-scene').addEventListener('click', () => {
+  mediaSceneSelect.value = String(Math.max(0, Number(mediaSceneSelect.value) - 1));
+  renderMediaScene();
+});
+document.querySelector('#next-media-scene').addEventListener('click', () => {
+  mediaSceneSelect.value = String(Math.min(mediaReviewScenes.length - 1, Number(mediaSceneSelect.value) + 1));
+  renderMediaScene();
+});
 
 recentList.addEventListener('click', async (event) => {
   const button = event.target.closest('.open-youtube-import');
