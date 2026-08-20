@@ -28,7 +28,14 @@ def test_connection(key: str, *, timeout: float = 20.0) -> dict[str, Any]:
     """Run a one-result stock search without downloading any media."""
     cleaned = validate_key_shape(key)
     url = f"{SEARCH_URL}?{urlencode({'query': 'nature', 'per_page': 1})}"
-    request = Request(url, headers={"Authorization": cleaned, "Accept": "application/json"})
+    request = Request(
+        url,
+        headers={
+            "Authorization": cleaned,
+            "Accept": "application/json",
+            "User-Agent": "VideoFactory/0.9 (local media workflow)",
+        },
+    )
     try:
         with urlopen(request, timeout=timeout) as response:  # noqa: S310 - fixed HTTPS URL
             payload = json.load(response)
