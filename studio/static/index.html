@@ -86,6 +86,11 @@
             <div><strong>IA do roteiro</strong><small id="api-status">Não configurada</small></div>
             <button class="api-button" id="open-api" type="button">Configurar</button>
           </div>
+          <div class="api-card" id="voice-api-card">
+            <div class="api-icon voice-icon">VO</div>
+            <div><strong>Voz ElevenLabs</strong><small id="voice-api-status">Não configurada</small></div>
+            <button class="api-button" id="open-voice-api" type="button">Configurar</button>
+          </div>
           <button id="submit" type="submit"><span>Criar projeto</span><span>→</span></button>
           <p class="safe-note">Nesta etapa nenhuma API será chamada e nenhum vídeo será renderizado.</p>
         </aside>
@@ -106,6 +111,25 @@
         <button id="save-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
         <div id="api-message" class="api-message" aria-live="polite"></div>
         <small class="secret-note">A chave nunca será enviada ao GitHub.</small>
+      </form>
+    </dialog>
+
+    <dialog id="voice-api-dialog">
+      <form id="voice-api-form" method="dialog">
+        <button class="dialog-close" id="close-voice-api" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon voice-icon">VO</div>
+        <div class="eyebrow">NARRAÇÃO</div>
+        <h2>Conectar à ElevenLabs</h2>
+        <p>A chave será testada sem gerar áudio. Depois você escolherá uma das vozes da sua conta.</p>
+        <label for="voice-api-key">Chave da API</label>
+        <input id="voice-api-key" name="api_key" type="password" autocomplete="off" spellcheck="false" placeholder="Cole sua chave da ElevenLabs" required />
+        <div id="voice-choice" hidden>
+          <label for="voice-id">Voz da narração</label>
+          <select id="voice-id" name="voice_id"></select>
+        </div>
+        <button id="save-voice-api" type="submit"><span>Testar e escolher voz</span><span>→</span></button>
+        <div id="voice-api-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">O teste não gasta caracteres. A chave nunca será enviada ao GitHub.</small>
       </form>
     </dialog>
 

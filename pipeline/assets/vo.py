@@ -271,6 +271,62 @@ class ModalQwenProvider:
         return out, None
 
 
+class ElevenLabsProvider:
+    """ElevenLabs Text to Speech using the locally stored Studio settings."""
+
+    def __init__(self, cfg: dict[str, Any], cache_dir: Path) -> None:
+        self.cfg = cfg
+        self.cache_dir = ensure_dir(cache_dir)
+        self.ext = cfg.get("output_ext", "mp3")
+        self.model = cfg.get("model_id", "eleven_multilingual_v2")
+        self.timeout = float(cfg.get("timeout", 300.0))
+
+    def _settings(self) -> tuple[str, str]:
+        key = os.environ.get("ELEVENLABS_API_KEY", "").strip()
+        voice_id = os.environ.get("ELEVENLABS_VOICE_ID", "").strip()
+        note = project_path("docs", "API", "elevenlabs.md")
+        if note.exists() and (not key or not voice_id):
+            for line in note.read_text(encoding="utf-8", errors="ignore").splitlines():
+                name, marker, value = line.partition(":")
+                if not marker:
+                    continue
+                if name.strip() == "ELEVENLABS_API_KEY" and not key:
+                    key = value.strip()
+                elif name.strip() == "ELEVENLABS_VOICE_ID" and not voice_id:
+                    voice_id = value.strip()
+        if not key or not voice_id:
+            raise ValueError("Configure a ElevenLabs no Studio antes de gerar a narração.")
+        return key, voice_id
+
+    def synthesize(self, text: str, voice: str | None = None) -> Path:
+        path, _ = self.synthesize_with_meta(text, voice)
+        return path
+
+    def synthesize_with_meta(self, text: str, voice: str | None = None) -> tuple[Path, Any]:
+        api_key, saved_voice = self._settings()
+        voice_id = voice or saved_voice
+        key = _cache_key(text, voice_id, "elevenlabs", self.model)
+        out = self.cache_dir / f"{key}.{self.ext}"
+        if out.exists() and out.stat().st_size > 0:
+            return out, None
+        endpoint = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+        body: dict[str, Any] = {"text": text, "model_id": self.model}
+        if self.cfg.get("voice_settings"):
+            body["voice_settings"] = self.cfg["voice_settings"]
+        with httpx.Client(timeout=self.timeout) as client:
+            response = client.post(
+                endpoint,
+                params={"output_format": self.cfg.get("output_format", "mp3_44100_128")},
+                headers={"xi-api-key": api_key, "Content-Type": "application/json"},
+                json=body,
+            )
+            response.raise_for_status()
+        if not response.content:
+            raise RuntimeError("A ElevenLabs devolveu um áudio vazio.")
+        out.write_bytes(response.content)
+        return out, None
+
+
 class CustomCliProvider:
     def __init__(self, cfg: dict[str, Any], cache_dir: Path) -> None:
         self.cfg = cfg
@@ -335,9 +391,11 @@ def load_vo_provider(config_path: str | Path | None = None) -> VOProvider:
         return GradioQwenProvider(pcfg, cache_dir)
     if ptype == "modal_qwen":
         return ModalQwenProvider(pcfg, cache_dir)
+    if ptype == "elevenlabs":
+        return ElevenLabsProvider(pcfg, cache_dir)
     raise ValueError(
         f"Unsupported VO provider type '{ptype}'. "
-        "Only custom_http, custom_cli, gradio_qwen and modal_qwen are supported. "
+        "Only custom_http, custom_cli, gradio_qwen, modal_qwen and elevenlabs are supported. "
         "Configure your TTS endpoint/CLI in pipeline/config/vo.json."
     )
 

@@ -8,6 +8,13 @@ const apiForm = document.querySelector('#api-form');
 const apiStatus = document.querySelector('#api-status');
 const apiMessage = document.querySelector('#api-message');
 const saveApi = document.querySelector('#save-api');
+const voiceApiDialog = document.querySelector('#voice-api-dialog');
+const voiceApiForm = document.querySelector('#voice-api-form');
+const voiceApiStatus = document.querySelector('#voice-api-status');
+const voiceApiMessage = document.querySelector('#voice-api-message');
+const saveVoiceApi = document.querySelector('#save-voice-api');
+const voiceChoice = document.querySelector('#voice-choice');
+const voiceSelect = document.querySelector('#voice-id');
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -150,6 +157,11 @@ async function refreshSettings() {
       apiStatus.classList.add('connected');
       document.querySelector('#open-api').textContent = 'Alterar';
     }
+    if (payload.elevenlabs.configured) {
+      voiceApiStatus.textContent = `Conectada · ${payload.elevenlabs.voice_name}`;
+      voiceApiStatus.classList.add('connected');
+      document.querySelector('#open-voice-api').textContent = 'Alterar';
+    }
   } catch (_) {
     apiStatus.textContent = 'Não foi possível verificar';
   }
@@ -183,3 +195,47 @@ apiForm.addEventListener('submit', async (event) => {
 });
 
 refreshSettings();
+
+document.querySelector('#open-voice-api').addEventListener('click', () => voiceApiDialog.showModal());
+document.querySelector('#close-voice-api').addEventListener('click', () => voiceApiDialog.close());
+
+voiceApiForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  voiceApiMessage.textContent = '';
+  voiceApiMessage.classList.remove('success');
+  saveVoiceApi.disabled = true;
+  saveVoiceApi.firstElementChild.textContent = voiceChoice.hidden ? 'Testando...' : 'Salvando...';
+  try {
+    const key = document.querySelector('#voice-api-key').value;
+    const body = {api_key: key};
+    if (!voiceChoice.hidden) body.voice_id = voiceSelect.value;
+    const response = await fetch('/api/settings/elevenlabs', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível conectar.');
+    if (!payload.configured) {
+      voiceSelect.innerHTML = payload.voices.map((voice) =>
+        `<option value="${escapeHtml(voice.voice_id)}">${escapeHtml(voice.name)}${voice.category ? ` · ${escapeHtml(voice.category)}` : ''}</option>`
+      ).join('');
+      voiceChoice.hidden = false;
+      voiceApiMessage.textContent = payload.message;
+      voiceApiMessage.classList.add('success');
+      saveVoiceApi.firstElementChild.textContent = 'Salvar voz escolhida';
+      return;
+    }
+    document.querySelector('#voice-api-key').value = '';
+    voiceChoice.hidden = true;
+    voiceApiMessage.textContent = payload.message;
+    voiceApiMessage.classList.add('success');
+    await refreshSettings();
+    setTimeout(() => voiceApiDialog.close(), 1200);
+  } catch (error) {
+    voiceApiMessage.textContent = error.message;
+  } finally {
+    saveVoiceApi.disabled = false;
+    if (voiceChoice.hidden) saveVoiceApi.firstElementChild.textContent = 'Testar e escolher voz';
+  }
+});

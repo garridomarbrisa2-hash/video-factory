@@ -32,6 +32,13 @@ from studio.anthropic import (
 )
 from studio.script_generation import generate_script
 from studio.script_review import review_script
+from studio.elevenlabs import (
+    ElevenLabsConnectionError,
+    configured_settings as configured_elevenlabs,
+    masked_key as masked_elevenlabs_key,
+    save_settings as save_elevenlabs_settings,
+    test_connection as test_elevenlabs_connection,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -191,7 +198,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "editorial-review", "version": "0.5"})
+            self._json({"ok": True, "stage": "elevenlabs-setup", "version": "0.6"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -206,12 +213,19 @@ class StudioHandler(BaseHTTPRequestHandler):
             self._json({"styles": styles})
         elif path == "/api/settings":
             key = configured_key(ROOT)
+            elevenlabs = configured_elevenlabs(ROOT)
             self._json(
                 {
                     "anthropic": {
                         "configured": bool(key),
                         "masked_key": masked_key(key) if key else None,
-                    }
+                    },
+                    "elevenlabs": {
+                        "configured": bool(elevenlabs),
+                        "masked_key": masked_elevenlabs_key(elevenlabs["api_key"]) if elevenlabs else None,
+                        "voice_id": elevenlabs["voice_id"] if elevenlabs else None,
+                        "voice_name": elevenlabs["voice_name"] if elevenlabs else None,
+                    },
                 }
             )
         else:
@@ -225,7 +239,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         review_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/review", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic"} and not script_match and not review_match:
+        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -263,9 +277,41 @@ class StudioHandler(BaseHTTPRequestHandler):
                         "message": "Conexão confirmada. A chave ficou salva somente neste Mac.",
                     }
                 )
+            elif path == "/api/settings/elevenlabs":
+                key = str(body.get("api_key") or "")
+                connection = test_elevenlabs_connection(key)
+                requested_voice = str(body.get("voice_id") or "")
+                if not requested_voice:
+                    self._json(
+                        {
+                            "ok": True,
+                            "configured": False,
+                            "voices": connection["voices"],
+                            "message": "Conexão confirmada. Agora escolha a voz.",
+                        }
+                    )
+                    return
+                selected = next(
+                    (voice for voice in connection["voices"] if voice["voice_id"] == requested_voice),
+                    connection["voices"][0],
+                )
+                save_elevenlabs_settings(
+                    ROOT, key, selected["voice_id"], selected["name"]
+                )
+                self._json(
+                    {
+                        "ok": True,
+                        "configured": True,
+                        "masked_key": masked_elevenlabs_key(key.strip()),
+                        "voice_id": selected["voice_id"],
+                        "voice_name": selected["name"],
+                        "voices": connection["voices"],
+                        "message": "ElevenLabs conectada. A chave ficou salva somente neste Mac.",
+                    }
+                )
             else:
                 self._json(create_project(body), HTTPStatus.CREATED)
-        except (ValueError, json.JSONDecodeError, AnthropicConnectionError) as exc:
+        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError) as exc:
             self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
         except Exception as exc:  # keep the local UI responsive, log details
             print(f"[studio] unexpected error: {exc!r}")

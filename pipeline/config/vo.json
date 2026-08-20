@@ -1,10 +1,24 @@
 {
-  "provider": "modal_qwen",
+  "provider": "elevenlabs",
   "api_key_env": "VO_API_KEY",
   "voice": "male-narrator1",
   "fallback_chain": [],
   "cache_dir": "pipeline/assets/cache/vo",
   "providers": {
+    "elevenlabs": {
+      "type": "elevenlabs",
+      "_note": "Official ElevenLabs Text to Speech API. Key and selected voice are stored locally in docs/API/elevenlabs.md by Studio.",
+      "model_id": "eleven_multilingual_v2",
+      "output_format": "mp3_44100_128",
+      "output_ext": "mp3",
+      "timeout": 300,
+      "voice_settings": {
+        "stability": 0.55,
+        "similarity_boost": 0.75,
+        "style": 0.15,
+        "use_speaker_boost": true
+      }
+    },
     "modal_qwen": {
       "type": "modal_qwen",
       "_note": "Qwen3-TTS on a Modal direct-download endpoint. Endpoint URL comes from docs/API/modal-qwen3tts.md (canonical, gitignored) — override with env VO_ENDPOINT or the endpoint key below. POST {text, voice_id, language} -> raw audio (audio/wav). Voices: male-narrator1 (default) .. male-narrator4.",

@@ -6,6 +6,7 @@ from studio import server
 from studio import anthropic
 from studio import script_generation
 from studio import script_review
+from studio import elevenlabs
 
 
 def test_validate_project_auto_style() -> None:
@@ -103,3 +104,16 @@ def test_parse_editorial_review() -> None:
     reviewed, report = script_review._parse_review(raw)
     assert reviewed.startswith("# HOOK")
     assert report["verification_required"] == ["Confirmar número"]
+
+
+def test_elevenlabs_settings_stay_in_gitignored_api_dir(tmp_path: Path) -> None:
+    key = "elevenlabs-secret-key-abcdefghijklmnopqrstuvwxyz"
+    path = elevenlabs.save_settings(tmp_path, key, "voice-123", "Narrador")
+    settings = elevenlabs.configured_settings(tmp_path)
+    assert path == tmp_path / "docs" / "API" / "elevenlabs.md"
+    assert settings == {"api_key": key, "voice_id": "voice-123", "voice_name": "Narrador"}
+
+
+def test_elevenlabs_rejects_short_key() -> None:
+    with pytest.raises(ValueError, match="não parece válida"):
+        elevenlabs.validate_key_shape("curta")

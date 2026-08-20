@@ -71,6 +71,7 @@ button:disabled { opacity: .65; cursor: wait; }
 
 .api-card { margin-top: 20px; padding: 12px; display: flex; align-items: center; gap: 11px; border: 1px solid #292d35; border-radius: 13px; background: #0e1014; }
 .api-icon, .api-dialog-icon { display: grid; place-items: center; flex: 0 0 auto; width: 39px; height: 39px; border-radius: 10px; color: #ffc8bb; background: linear-gradient(145deg, #54251d, #221614); font-size: 11px; font-weight: 900; }
+.voice-icon { color: #eee9ff; background: linear-gradient(145deg, #6941c6, #382378); }
 .api-card > div:nth-child(2) { display: grid; gap: 3px; flex: 1; }
 .api-card strong { font-size: 12px; }
 .api-card small { color: #858c98; font-size: 10px; }
@@ -82,8 +83,9 @@ dialog::backdrop { background: rgba(0,0,0,.7); backdrop-filter: blur(6px); }
 dialog form { position: relative; padding: 32px; }
 dialog h2 { margin: 12px 0 9px; font-size: 27px; }
 dialog p { margin: 0 0 25px; color: var(--muted); font-size: 13px; line-height: 1.55; }
-dialog input { width: 100%; height: 50px; padding: 0 14px; color: white; border: 1px solid #30343e; border-radius: 12px; background: #0c0e12; outline: none; }
-dialog input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,91,57,.09); }
+dialog input, dialog select { width: 100%; height: 50px; padding: 0 14px; color: white; border: 1px solid #30343e; border-radius: 12px; background: #0c0e12; outline: none; }
+dialog input:focus, dialog select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,91,57,.09); }
+#voice-choice { margin-top: 17px; }
 .dialog-close { position: absolute; top: 13px; right: 15px; width: 35px; height: 35px; margin: 0; display: grid; place-items: center; padding: 0; border-radius: 9px; color: #9ca2ad; background: #1b1e24; box-shadow: none; font-size: 21px; }
 .api-message { min-height: 19px; margin-top: 13px; color: #ff9c89; font-size: 12px; }
 .api-message.success { color: #42d18b; }
