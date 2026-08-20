@@ -41,6 +41,13 @@ from studio.elevenlabs import (
 )
 from studio.narration import NarrationError, generate_narration
 from studio.director import generate_direction
+from studio.pexels import (
+    PexelsConnectionError,
+    configured_key as configured_pexels_key,
+    masked_key as masked_pexels_key,
+    save_key as save_pexels_key,
+    test_connection as test_pexels_connection,
+)
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -255,7 +262,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "director-batched", "version": "0.8.1"})
+            self._json({"ok": True, "stage": "pexels-setup", "version": "0.9"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -271,6 +278,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/api/settings":
             key = configured_key(ROOT)
             elevenlabs = configured_elevenlabs(ROOT)
+            pexels = configured_pexels_key(ROOT)
             self._json(
                 {
                     "anthropic": {
@@ -282,6 +290,10 @@ class StudioHandler(BaseHTTPRequestHandler):
                         "masked_key": masked_elevenlabs_key(elevenlabs["api_key"]) if elevenlabs else None,
                         "voice_id": elevenlabs["voice_id"] if elevenlabs else None,
                         "voice_name": elevenlabs["voice_name"] if elevenlabs else None,
+                    },
+                    "pexels": {
+                        "configured": bool(pexels),
+                        "masked_key": masked_pexels_key(pexels) if pexels else None,
                     },
                 }
             )
@@ -306,7 +318,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         director_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/director", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match and not narration_match and not director_match:
+        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs", "/api/settings/pexels"} and not script_match and not review_match and not narration_match and not director_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -395,9 +407,14 @@ class StudioHandler(BaseHTTPRequestHandler):
                         "message": "ElevenLabs conectada. A chave ficou salva somente neste Mac.",
                     }
                 )
+            elif path == "/api/settings/pexels":
+                key = str(body.get("api_key") or "")
+                test_pexels_connection(key)
+                save_pexels_key(ROOT, key)
+                self._json({"ok": True, "configured": True, "masked_key": masked_pexels_key(key.strip()), "message": "Pexels conectado. A chave ficou salva somente neste Mac."})
             else:
                 self._json(create_project(body), HTTPStatus.CREATED)
-        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError, NarrationError) as exc:
+        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError, PexelsConnectionError, NarrationError) as exc:
             self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
         except Exception as exc:  # keep the local UI responsive, log details
             print(f"[studio] unexpected error: {exc!r}")

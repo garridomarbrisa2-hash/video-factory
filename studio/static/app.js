@@ -17,6 +17,11 @@ const voiceChoice = document.querySelector('#voice-choice');
 const voiceSelect = document.querySelector('#voice-id');
 const recent = document.querySelector('#recent');
 const recentList = document.querySelector('#recent-list');
+const pexelsApiDialog = document.querySelector('#pexels-api-dialog');
+const pexelsApiForm = document.querySelector('#pexels-api-form');
+const pexelsApiStatus = document.querySelector('#pexels-api-status');
+const pexelsApiMessage = document.querySelector('#pexels-api-message');
+const savePexelsApi = document.querySelector('#save-pexels-api');
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -164,6 +169,11 @@ async function refreshSettings() {
       voiceApiStatus.textContent = `Conectada · ${payload.elevenlabs.voice_name}`;
       voiceApiStatus.classList.add('connected');
       document.querySelector('#open-voice-api').textContent = 'Alterar';
+    }
+    if (payload.pexels.configured) {
+      pexelsApiStatus.textContent = `Conectado · ${payload.pexels.masked_key}`;
+      pexelsApiStatus.classList.add('connected');
+      document.querySelector('#open-pexels-api').textContent = 'Alterar';
     }
   } catch (_) {
     apiStatus.textContent = 'Não foi possível verificar';
@@ -341,5 +351,35 @@ voiceApiForm.addEventListener('submit', async (event) => {
   } finally {
     saveVoiceApi.disabled = false;
     if (voiceChoice.hidden) saveVoiceApi.firstElementChild.textContent = 'Testar e escolher voz';
+  }
+});
+
+document.querySelector('#open-pexels-api').addEventListener('click', () => pexelsApiDialog.showModal());
+document.querySelector('#close-pexels-api').addEventListener('click', () => pexelsApiDialog.close());
+
+pexelsApiForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  pexelsApiMessage.textContent = '';
+  pexelsApiMessage.classList.remove('success');
+  savePexelsApi.disabled = true;
+  savePexelsApi.firstElementChild.textContent = 'Testando...';
+  try {
+    const response = await fetch('/api/settings/pexels', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({api_key: document.querySelector('#pexels-api-key').value}),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível conectar ao Pexels.');
+    document.querySelector('#pexels-api-key').value = '';
+    pexelsApiMessage.textContent = payload.message;
+    pexelsApiMessage.classList.add('success');
+    await refreshSettings();
+    setTimeout(() => pexelsApiDialog.close(), 1200);
+  } catch (error) {
+    pexelsApiMessage.textContent = error.message;
+  } finally {
+    savePexelsApi.disabled = false;
+    savePexelsApi.firstElementChild.textContent = 'Testar e salvar';
   }
 });

@@ -91,6 +91,11 @@
             <div><strong>Voz ElevenLabs</strong><small id="voice-api-status">Não configurada</small></div>
             <button class="api-button" id="open-voice-api" type="button">Configurar</button>
           </div>
+          <div class="api-card" id="pexels-api-card">
+            <div class="api-icon media-icon">PX</div>
+            <div><strong>Mídia Pexels</strong><small id="pexels-api-status">Não configurada</small></div>
+            <button class="api-button" id="open-pexels-api" type="button">Configurar</button>
+          </div>
           <button id="submit" type="submit"><span>Criar projeto</span><span>→</span></button>
           <p class="safe-note">Nesta etapa nenhuma API será chamada e nenhum vídeo será renderizado.</p>
         </aside>
@@ -136,6 +141,21 @@
         <button id="save-voice-api" type="submit"><span>Testar e escolher voz</span><span>→</span></button>
         <div id="voice-api-message" class="api-message" aria-live="polite"></div>
         <small class="secret-note">O teste não gasta caracteres. A chave nunca será enviada ao GitHub.</small>
+      </form>
+    </dialog>
+
+    <dialog id="pexels-api-dialog">
+      <form id="pexels-api-form" method="dialog">
+        <button class="dialog-close" id="close-pexels-api" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon media-icon">PX</div>
+        <div class="eyebrow">BANCO DE VÍDEOS</div>
+        <h2>Conectar ao Pexels</h2>
+        <p>A chave será testada com uma busca mínima, sem baixar nenhum vídeo.</p>
+        <label for="pexels-api-key">Chave da API</label>
+        <input id="pexels-api-key" name="api_key" type="password" autocomplete="off" spellcheck="false" placeholder="Cole sua chave do Pexels" required />
+        <button id="save-pexels-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
+        <div id="pexels-api-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">Nenhum vídeo será baixado. A chave nunca será enviada ao GitHub.</small>
       </form>
     </dialog>
 

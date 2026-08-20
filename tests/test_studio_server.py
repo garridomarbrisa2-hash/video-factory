@@ -7,6 +7,7 @@ from studio import anthropic
 from studio import script_generation
 from studio import script_review
 from studio import elevenlabs
+from studio import pexels
 
 
 def test_validate_project_auto_style() -> None:
@@ -117,6 +118,19 @@ def test_elevenlabs_settings_stay_in_gitignored_api_dir(tmp_path: Path) -> None:
 def test_elevenlabs_rejects_short_key() -> None:
     with pytest.raises(ValueError, match="não parece válida"):
         elevenlabs.validate_key_shape("curta")
+
+
+def test_pexels_key_stays_in_gitignored_api_dir(tmp_path: Path) -> None:
+    key = "pexels-secret-key-abcdefghijklmnopqrstuvwxyz"
+    path = pexels.save_key(tmp_path, key)
+    assert path == tmp_path / "docs" / "API" / "pexels.md"
+    assert pexels.configured_key(tmp_path) == key
+    assert pexels.masked_key(key).endswith("wxyz")
+
+
+def test_pexels_rejects_short_key() -> None:
+    with pytest.raises(ValueError):
+        pexels.validate_key_shape("curta")
 
 
 def test_recent_episodes_lists_script_ready_for_narration(
