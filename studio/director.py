@@ -15,6 +15,7 @@ ALLOWED_TYPES = {"intro", "content", "stat", "quote", "list", "comparison", "per
 ALLOWED_LAYOUTS = {"plate", "keyword", "bare", "collage"}
 ALLOWED_ENERGY = {"low", "mid", "high"}
 ALLOWED_SOURCES = {"pexels", "pixabay", "web_image", "youtube", "generated"}
+DIRECTOR_BATCH_SIZE = 10
 
 
 def _split_text(text: str, duration: float, target: float = 10.0) -> list[dict[str, Any]]:
@@ -63,7 +64,10 @@ def visual_beats(plan: dict[str, Any]) -> list[dict[str, Any]]:
 
 def _extract_json(text: str) -> dict[str, Any]:
     fenced = re.search(r"```(?:json)?\s*(\{.*\})\s*```", text, re.S)
-    raw = fenced.group(1) if fenced else text[text.find("{"):text.rfind("}") + 1]
+    start, end = text.find("{"), text.rfind("}")
+    if not fenced and (start < 0 or end < start):
+        raise AnthropicConnectionError("O Diretor devolveu uma resposta incompleta. Tente novamente.")
+    raw = fenced.group(1) if fenced else text[start:end + 1]
     try:
         payload = json.loads(raw)
     except json.JSONDecodeError as exc:
@@ -145,6 +149,66 @@ def _validated_decisions(payload: dict[str, Any], units: list[dict[str, Any]]) -
     return decisions
 
 
+def _direct_in_batches(
+    key: str,
+    model: str,
+    topic: str,
+    style: str,
+    units: list[dict[str, Any]],
+    progress_path: Path | None = None,
+) -> tuple[dict[int, dict[str, str]], dict[str, int]]:
+    """Keep every Anthropic response small enough to finish as valid JSON."""
+    decisions: dict[int, dict[str, str]] = {}
+    usage = {"input_tokens": 0, "output_tokens": 0}
+    if progress_path and progress_path.is_file():
+        try:
+            saved = json.loads(progress_path.read_text(encoding="utf-8"))
+            valid_ids = {unit["id"] for unit in units}
+            decisions = {
+                int(scene_id): decision
+                for scene_id, decision in saved.get("decisions", {}).items()
+                if int(scene_id) in valid_ids and isinstance(decision, dict)
+            }
+            usage.update(saved.get("usage", {}))
+        except (ValueError, TypeError, json.JSONDecodeError):
+            decisions = {}
+            usage = {"input_tokens": 0, "output_tokens": 0}
+    for start in range(0, len(units), DIRECTOR_BATCH_SIZE):
+        batch = units[start:start + DIRECTOR_BATCH_SIZE]
+        if all(unit["id"] in decisions for unit in batch):
+            continue
+        response = _request_message(
+            key,
+            model,
+            "Você é o Diretor visual criterioso do Video Factory. Responda somente JSON válido.",
+            _prompt(topic, style, batch),
+            4_500,
+        )
+        try:
+            batch_decisions = _validated_decisions(
+                _extract_json(_extract_text(response)), batch
+            )
+        except AnthropicConnectionError as exc:
+            first, last = batch[0]["id"], batch[-1]["id"]
+            raise AnthropicConnectionError(
+                f"O Diretor não concluiu o lote de cenas {first}–{last}. Tente novamente."
+            ) from exc
+        decisions.update(batch_decisions)
+        response_usage = response.get("usage", {})
+        usage["input_tokens"] += int(response_usage.get("input_tokens", 0))
+        usage["output_tokens"] += int(response_usage.get("output_tokens", 0))
+        if progress_path:
+            progress_path.write_text(
+                json.dumps(
+                    {"decisions": decisions, "usage": usage},
+                    ensure_ascii=False,
+                    indent=2,
+                ) + "\n",
+                encoding="utf-8",
+            )
+    return decisions, usage
+
+
 def generate_direction(project_root: Path, project_slug: str, episode: int, key: str) -> dict[str, Any]:
     if not re.fullmatch(r"[a-z0-9-]{1,64}", project_slug) or not 1 <= episode <= 999:
         raise ValueError("Projeto ou episódio inválido.")
@@ -153,6 +217,7 @@ def generate_direction(project_root: Path, project_slug: str, episode: int, key:
     plan_path = project_dir / f"Ep{episode}_voice_plan.json"
     direction_path = project_dir / f"Ep{episode}_director.json"
     timeline_path = project_dir / f"Ep{episode}_timeline.json"
+    progress_path = project_dir / f"Ep{episode}_director_progress.json"
     if not brief_path.is_file() or not plan_path.is_file():
         raise ValueError("A narração medida é necessária antes do Diretor.")
     if direction_path.exists() or timeline_path.exists():
@@ -164,14 +229,9 @@ def generate_direction(project_root: Path, project_slug: str, episode: int, key:
         raise ValueError("A duração da narração ainda não foi aprovada.")
     units = visual_beats(plan)
     model = choose_script_model(test_connection(key)["models"])
-    response = _request_message(
-        key,
-        model,
-        "Você é o Diretor visual criterioso do Video Factory. Responda somente JSON válido.",
-        _prompt(meta["topic"], meta["style"], units),
-        min(16_000, max(5_000, len(units) * 220)),
+    decisions, usage = _direct_in_batches(
+        key, model, meta["topic"], meta["style"], units, progress_path
     )
-    decisions = _validated_decisions(_extract_json(_extract_text(response)), units)
     scenes = []
     notes = []
     for unit in units:
@@ -213,13 +273,13 @@ def generate_direction(project_root: Path, project_slug: str, episode: int, key:
     }
     direction_path.write_text(json.dumps({"model": model, "notes": notes, "scenes": scenes}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     timeline_path.write_text(json.dumps(timeline, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    usage = response.get("usage", {})
+    progress_path.unlink(missing_ok=True)
     return {
         "ok": True,
         "model": model,
         "scene_count": len(scenes),
-        "input_tokens": usage.get("input_tokens", 0),
-        "output_tokens": usage.get("output_tokens", 0),
+        "input_tokens": usage["input_tokens"],
+        "output_tokens": usage["output_tokens"],
         "direction_path": str(direction_path.relative_to(project_root)),
         "timeline_path": str(timeline_path.relative_to(project_root)),
         "message": "Direção de cenas concluída.",

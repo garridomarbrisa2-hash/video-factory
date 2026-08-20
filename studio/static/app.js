@@ -269,7 +269,7 @@ recentList.addEventListener('click', async (event) => {
 recentList.addEventListener('click', async (event) => {
   const button = event.target.closest('.generate-director');
   if (!button) return;
-  const accepted = window.confirm('Criar a direção visual agora? Esta ação usa o saldo da API Anthropic para planejar as cenas.');
+  const accepted = window.confirm('Criar a direção visual agora? Esta ação usa o saldo da API Anthropic e poderá fazer várias chamadas pequenas para planejar todas as cenas com segurança.');
   if (!accepted) return;
   const card = button.closest('.episode-card');
   const status = card.querySelector('.episode-action-status');
