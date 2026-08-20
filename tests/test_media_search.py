@@ -48,17 +48,24 @@ def test_media_search_uses_each_configured_provider_without_downloading(
     saved = json.loads((project / "Ep2_media_candidates.json").read_text(encoding="utf-8"))
 
     assert result["scene_count"] == 5
-    assert result["queries_made"] == 4
+    assert result["queries_made"] == 10
     assert calls == [
+        ("pexels", "bitcoin mining"),
+        ("pixabay", "bitcoin mining"),
+        ("pexels", "computer code"),
+        ("pixabay", "computer code"),
+        ("pexels", "Satoshi interview"),
+        ("pixabay", "Satoshi interview"),
         ("youtube", "Bitcoin"),
         ("youtube", "Bitcoin documentary"),
-        ("pexels", "bitcoin mining"),
-        ("pixabay", "computer code"),
+        ("pexels", "Bitcoin whitepaper"),
+        ("pixabay", "Bitcoin whitepaper"),
     ]
-    assert saved["search_strategy"] == "topic-and-scene-context"
-    assert any(candidate.get("youtube_url") for candidate in saved["scenes"][0]["candidates"])
+    assert saved["search_strategy"] == "stock-first-with-youtube-fallback"
+    assert not any(candidate.get("youtube_url") for candidate in saved["scenes"][0]["candidates"])
+    assert any(candidate.get("youtube_url") for candidate in saved["scenes"][3]["candidates"])
     assert saved["downloaded_media"] is False
-    assert saved["scenes"][4]["status"] == "awaiting_manual_or_generated_media"
+    assert saved["scenes"][4]["status"] == "found"
     assert not (project / "Ep2_media_search_progress.json").exists()
 
 
@@ -74,10 +81,38 @@ def test_media_search_leaves_unconfigured_provider_pending(
     monkeypatch.setattr(media_search, "configured_pexels", lambda _: "pexels-key")
     monkeypatch.setattr(media_search, "configured_pixabay", lambda _: None)
     monkeypatch.setattr(media_search, "configured_youtube", lambda _: None)
+    monkeypatch.setattr(media_search, "search_pexels", lambda _key, _query: [{"id": 7}])
 
     result = media_search.find_media_candidates(tmp_path, "history", 1)
-    assert result["pending_scene_count"] == 1
-    assert result["queries_made"] == 0
+    assert result["pending_scene_count"] == 0
+    assert result["queries_made"] == 1
+
+
+def test_youtube_is_only_used_when_stock_has_no_results(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "projects" / "history"
+    project.mkdir(parents=True)
+    (project / "Ep1_director.json").write_text(
+        json.dumps({"notes": [{"id": 1, "source_route": "pexels", "search_query": "rare archive"}]}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(media_search, "configured_pexels", lambda _: "pexels-key")
+    monkeypatch.setattr(media_search, "configured_pixabay", lambda _: "pixabay-key")
+    monkeypatch.setattr(media_search, "configured_youtube", lambda _: "youtube-key")
+    monkeypatch.setattr(media_search, "search_pexels", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(media_search, "search_pixabay", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(
+        media_search,
+        "search_youtube",
+        lambda *_args, **_kwargs: [{"id": "yt-1", "youtube_url": "https://youtu.be/abcdefghijk", "title": "Rare archive history"}],
+    )
+
+    media_search.find_media_candidates(tmp_path, "history", 1)
+    saved = json.loads((project / "Ep1_media_candidates.json").read_text(encoding="utf-8"))
+
+    assert saved["scenes"][0]["youtube_used_as_fallback"] is True
+    assert saved["scenes"][0]["candidates"][0]["provider"] == "youtube"
 
 
 def test_load_media_candidates_reads_only_requested_episode(tmp_path: Path) -> None:

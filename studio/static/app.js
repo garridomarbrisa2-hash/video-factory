@@ -343,13 +343,13 @@ recentList.addEventListener('click', async (event) => {
 recentList.addEventListener('click', async (event) => {
   const button = event.target.closest('.search-media');
   if (!button) return;
-  const accepted = window.confirm('Fazer uma busca contextual? O sistema combina o tema completo do vídeo com a narração de cada cena, usa Pexels, Pixabay e YouTube e não baixa vídeos.');
+  const accepted = window.confirm('Fazer uma busca contextual? O sistema procura primeiro no Pexels e Pixabay. O YouTube será usado apenas como alternativa para cenas específicas ou sem resultado nos bancos. Nenhum vídeo será baixado.');
   if (!accepted) return;
   const card = button.closest('.episode-card');
   const status = card.querySelector('.episode-action-status');
   button.disabled = true;
   button.firstElementChild.textContent = 'Pesquisando...';
-  status.textContent = 'O Agente de Mídia está pesquisando cada cena. Pode levar alguns minutos; não feche esta página.';
+  status.textContent = 'O Agente de Mídia está pesquisando primeiro no Pexels e Pixabay. Pode levar alguns minutos; não feche esta página.';
   try {
     const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/media-search`, {
       method: 'POST',

@@ -129,19 +129,57 @@ def find_media_candidates(
     topic = _topic(project_dir, episode, project_slug)
     youtube_theme_candidates: list[dict[str, Any]] = []
     youtube_key, _ = providers["youtube"]
-    youtube_queries = _youtube_theme_queries(topic) if youtube_key else []
-    for query in youtube_queries:
-        cache_key = f"youtube-theme\n{query.casefold()}"
+    youtube_queries: list[str] = []
+
+    def save_progress() -> None:
+        progress_path.write_text(
+            json.dumps({"searches": query_cache}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+    def stock_candidates(provider: str, query: str) -> list[dict[str, Any]]:
+        key, search = providers[provider]
+        if not key:
+            return []
+        cache_key = f"{provider}\n{query.casefold()}"
         if cache_key not in query_cache:
-            query_cache[cache_key] = search_youtube(youtube_key or "", query, max_results=10)
-            queries_by_provider["youtube"] += 1
-            progress_path.write_text(json.dumps({"searches": query_cache}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        for candidate in query_cache[cache_key]:
-            candidate_id = str(candidate.get("id") or candidate.get("youtube_url") or "")
-            if candidate_id and not any(str(item.get("id") or item.get("youtube_url") or "") == candidate_id for item in youtube_theme_candidates):
-                youtube_theme_candidates.append(
-                    dict(candidate, provider="youtube", thematic_query=query)
+            query_cache[cache_key] = search(key, query)
+            queries_by_provider[provider] += 1
+            save_progress()
+        candidates = [
+            dict(candidate, provider=provider, matched_query=query, priority="stock")
+            for candidate in query_cache[cache_key]
+        ]
+        candidates_by_provider[provider] += len(candidates)
+        return candidates
+
+    def load_youtube_theme_candidates() -> None:
+        nonlocal youtube_queries
+        if youtube_theme_candidates or not youtube_key:
+            return
+        youtube_queries = _youtube_theme_queries(topic)
+        for theme_query in youtube_queries:
+            cache_key = f"youtube-theme\n{theme_query.casefold()}"
+            if cache_key not in query_cache:
+                query_cache[cache_key] = search_youtube(
+                    youtube_key, theme_query, max_results=10
                 )
+                queries_by_provider["youtube"] += 1
+                save_progress()
+            for candidate in query_cache[cache_key]:
+                candidate_id = str(candidate.get("id") or candidate.get("youtube_url") or "")
+                if candidate_id and not any(
+                    str(item.get("id") or item.get("youtube_url") or "") == candidate_id
+                    for item in youtube_theme_candidates
+                ):
+                    youtube_theme_candidates.append(
+                        dict(
+                            candidate,
+                            provider="youtube",
+                            thematic_query=theme_query,
+                            priority="fallback",
+                        )
+                    )
     for note in notes:
         scene_id = int(note.get("id") or 0)
         route = str(note.get("source_route") or "pexels")
@@ -155,33 +193,30 @@ def find_media_candidates(
                 str(scene.get("vo_text") or ""),
             ) if part
         )
-        if route not in providers:
-            results.append({"scene_id": scene_id, "route": route, "query": query, "status": "awaiting_manual_or_generated_media", "candidates": []})
-            continue
-        scenes_by_provider[route] += 1
-        key, search = providers[route]
-        base_candidates: list[dict[str, Any]] = []
-        # YouTube is searched by the whole episode theme above. This avoids spending
-        # one expensive YouTube search request for every short visual beat.
-        if key and route != "youtube":
-            cache_key = f"{route}\n{query.casefold()}"
-            if cache_key not in query_cache:
-                query_cache[cache_key] = search(key, query)
-                queries_by_provider[route] += 1
-                progress_path.write_text(json.dumps({"searches": query_cache}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            base_candidates = [dict(candidate, provider=route, matched_query=query) for candidate in query_cache[cache_key]]
-        thematic_youtube = _rank_youtube(youtube_theme_candidates, scene_context)
-        candidates = list(base_candidates)
-        existing_youtube = {str(item.get("youtube_url") or "") for item in base_candidates}
-        candidates.extend(
-            candidate for candidate in thematic_youtube
-            if str(candidate.get("youtube_url") or "") not in existing_youtube
-        )
-        candidates_by_provider[route] += len(base_candidates)
-        candidates_by_provider["youtube"] += len(thematic_youtube)
+        # Stock footage is always the first choice. Search both connected banks so
+        # the user has real alternatives instead of seeing YouTube for every scene.
+        preferred_stock = "pixabay" if route == "pixabay" else "pexels"
+        other_stock = "pexels" if preferred_stock == "pixabay" else "pixabay"
+        candidates = stock_candidates(preferred_stock, query)
+        candidates.extend(stock_candidates(other_stock, query))
+        for provider in (preferred_stock, other_stock):
+            if any(item.get("provider") == provider for item in candidates):
+                scenes_by_provider[provider] += 1
+
+        # YouTube is the exception: use it only when the Director explicitly asked
+        # for an identifiable excerpt or when neither stock bank found anything.
+        youtube_needed = route == "youtube" or not candidates
+        thematic_youtube: list[dict[str, Any]] = []
+        if youtube_needed and youtube_key:
+            load_youtube_theme_candidates()
+            thematic_youtube = _rank_youtube(youtube_theme_candidates, scene_context)
+            candidates.extend(thematic_youtube)
+            if thematic_youtube:
+                scenes_by_provider["youtube"] += 1
+                candidates_by_provider["youtube"] += len(thematic_youtube)
         if candidates:
             status = "found"
-        elif not key:
+        elif not any(key for key, _ in providers.values()):
             status = "awaiting_configuration"
         else:
             status = "no_results"
@@ -191,7 +226,8 @@ def find_media_candidates(
             "query": query,
             "topic": topic,
             "context": scene_context,
-            "youtube_theme_queries": youtube_queries,
+            "youtube_theme_queries": youtube_queries if youtube_needed else [],
+            "youtube_used_as_fallback": bool(thematic_youtube),
             "status": status,
             "candidates": candidates,
         })
@@ -212,7 +248,7 @@ def find_media_candidates(
             for name, (key, _) in providers.items()
         },
         "downloaded_media": False,
-        "search_strategy": "topic-and-scene-context",
+        "search_strategy": "stock-first-with-youtube-fallback",
         "topic": topic,
         "scenes": results,
     }
