@@ -22,6 +22,16 @@ const pexelsApiForm = document.querySelector('#pexels-api-form');
 const pexelsApiStatus = document.querySelector('#pexels-api-status');
 const pexelsApiMessage = document.querySelector('#pexels-api-message');
 const savePexelsApi = document.querySelector('#save-pexels-api');
+const pixabayApiDialog = document.querySelector('#pixabay-api-dialog');
+const pixabayApiForm = document.querySelector('#pixabay-api-form');
+const pixabayApiStatus = document.querySelector('#pixabay-api-status');
+const pixabayApiMessage = document.querySelector('#pixabay-api-message');
+const savePixabayApi = document.querySelector('#save-pixabay-api');
+const youtubeApiDialog = document.querySelector('#youtube-api-dialog');
+const youtubeApiForm = document.querySelector('#youtube-api-form');
+const youtubeApiStatus = document.querySelector('#youtube-api-status');
+const youtubeApiMessage = document.querySelector('#youtube-api-message');
+const saveYoutubeApi = document.querySelector('#save-youtube-api');
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -175,6 +185,16 @@ async function refreshSettings() {
       pexelsApiStatus.classList.add('connected');
       document.querySelector('#open-pexels-api').textContent = 'Alterar';
     }
+    if (payload.pixabay.configured) {
+      pixabayApiStatus.textContent = `Conectado · ${payload.pixabay.masked_key}`;
+      pixabayApiStatus.classList.add('connected');
+      document.querySelector('#open-pixabay-api').textContent = 'Alterar';
+    }
+    if (payload.youtube.configured) {
+      youtubeApiStatus.textContent = `Conectado · ${payload.youtube.masked_key}`;
+      youtubeApiStatus.classList.add('connected');
+      document.querySelector('#open-youtube-api').textContent = 'Alterar';
+    }
   } catch (_) {
     apiStatus.textContent = 'Não foi possível verificar';
   }
@@ -219,8 +239,10 @@ async function loadRecent() {
     }
     recentList.innerHTML = payload.episodes.map((episode) => {
       let action;
-      if (episode.direction) {
-        action = '<span class="stage-complete">Direção concluída ✓</span>';
+      if (episode.media_candidates) {
+        action = '<span class="stage-complete">Mídia localizada ✓</span>';
+      } else if (episode.direction) {
+        action = `<button class="search-media" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Buscar elementos visuais</span><span>→</span></button>`;
       } else if (episode.narration) {
         action = `<div class="episode-actions"><audio controls preload="none" src="/api/projects/${escapeHtml(episode.project)}/episodes/${escapeHtml(episode.episode)}/narration/audio"></audio>
           <button class="generate-director" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Criar direção de cenas</span><span>→</span></button></div>`;
@@ -300,6 +322,47 @@ recentList.addEventListener('click', async (event) => {
       Plano salvo em <code>${escapeHtml(payload.direction_path)}</code>.<br>
       Próxima etapa: preparar os elementos visuais.`;
     status.classList.add('success');
+    await loadRecent();
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
+  }
+});
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.search-media');
+  if (!button) return;
+  const accepted = window.confirm('Buscar candidatos visuais agora? O sistema usa Pexels, Pixabay e YouTube configurados, salva somente links e informações e não baixa vídeos.');
+  if (!accepted) return;
+  const card = button.closest('.episode-card');
+  const status = card.querySelector('.episode-action-status');
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Pesquisando...';
+  status.textContent = 'O Agente de Mídia está pesquisando cada cena. Pode levar alguns minutos; não feche esta página.';
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/media-search`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível buscar os elementos visuais.');
+    button.remove();
+    const providers = Object.entries(payload.provider_counts || {})
+      .map(([name, count]) => `${name}: ${count.candidates} candidato(s)`)
+      .join(' · ');
+    const pending = payload.pending_scene_count
+      ? `<br>${escapeHtml(payload.pending_scene_count)} cena(s) ficaram pendentes para mídia manual, gerada ou provedor ainda não configurado.`
+      : '';
+    status.innerHTML = `<strong>Busca visual concluída ✓</strong>
+      ${escapeHtml(payload.scene_count)} cenas · ${escapeHtml(payload.candidate_count)} candidatos.<br>
+      ${escapeHtml(providers)}${pending}<br>
+      Salvo em <code>${escapeHtml(payload.path)}</code>.<br>
+      Nenhum vídeo foi baixado.`;
+    status.classList.add('success');
+    await loadRecent();
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar novamente';
@@ -383,3 +446,37 @@ pexelsApiForm.addEventListener('submit', async (event) => {
     savePexelsApi.firstElementChild.textContent = 'Testar e salvar';
   }
 });
+
+function bindMediaProvider({name, dialog, form, message, saveButton}) {
+  document.querySelector(`#open-${name}-api`).addEventListener('click', () => dialog.showModal());
+  document.querySelector(`#close-${name}-api`).addEventListener('click', () => dialog.close());
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    message.textContent = '';
+    message.classList.remove('success');
+    saveButton.disabled = true;
+    saveButton.firstElementChild.textContent = 'Testando...';
+    try {
+      const response = await fetch(`/api/settings/${name}`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({api_key: document.querySelector(`#${name}-api-key`).value}),
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.error || `Não foi possível conectar ao ${name}.`);
+      document.querySelector(`#${name}-api-key`).value = '';
+      message.textContent = payload.message;
+      message.classList.add('success');
+      await refreshSettings();
+      setTimeout(() => dialog.close(), 1200);
+    } catch (error) {
+      message.textContent = error.message;
+    } finally {
+      saveButton.disabled = false;
+      saveButton.firstElementChild.textContent = 'Testar e salvar';
+    }
+  });
+}
+
+bindMediaProvider({name: 'pixabay', dialog: pixabayApiDialog, form: pixabayApiForm, message: pixabayApiMessage, saveButton: savePixabayApi});
+bindMediaProvider({name: 'youtube', dialog: youtubeApiDialog, form: youtubeApiForm, message: youtubeApiMessage, saveButton: saveYoutubeApi});

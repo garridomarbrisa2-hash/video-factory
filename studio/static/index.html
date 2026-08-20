@@ -96,6 +96,16 @@
             <div><strong>Mídia Pexels</strong><small id="pexels-api-status">Não configurada</small></div>
             <button class="api-button" id="open-pexels-api" type="button">Configurar</button>
           </div>
+          <div class="api-card" id="pixabay-api-card">
+            <div class="api-icon pixabay-icon">PB</div>
+            <div><strong>Mídia Pixabay</strong><small id="pixabay-api-status">Não configurada</small></div>
+            <button class="api-button" id="open-pixabay-api" type="button">Configurar</button>
+          </div>
+          <div class="api-card" id="youtube-api-card">
+            <div class="api-icon youtube-icon">YT</div>
+            <div><strong>Pesquisa YouTube</strong><small id="youtube-api-status">Não configurada</small></div>
+            <button class="api-button" id="open-youtube-api" type="button">Configurar</button>
+          </div>
           <button id="submit" type="submit"><span>Criar projeto</span><span>→</span></button>
           <p class="safe-note">Nesta etapa nenhuma API será chamada e nenhum vídeo será renderizado.</p>
         </aside>
@@ -156,6 +166,36 @@
         <button id="save-pexels-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
         <div id="pexels-api-message" class="api-message" aria-live="polite"></div>
         <small class="secret-note">Nenhum vídeo será baixado. A chave nunca será enviada ao GitHub.</small>
+      </form>
+    </dialog>
+
+    <dialog id="pixabay-api-dialog">
+      <form id="pixabay-api-form" method="dialog">
+        <button class="dialog-close" id="close-pixabay-api" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon pixabay-icon">PB</div>
+        <div class="eyebrow">BANCO DE VÍDEOS</div>
+        <h2>Conectar ao Pixabay</h2>
+        <p>A chave será testada com uma busca mínima, sem baixar nenhuma mídia.</p>
+        <label for="pixabay-api-key">Chave da API</label>
+        <input id="pixabay-api-key" name="api_key" type="password" autocomplete="off" spellcheck="false" placeholder="Cole sua chave do Pixabay" required />
+        <button id="save-pixabay-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
+        <div id="pixabay-api-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">Nenhuma mídia será baixada. A chave nunca será enviada ao GitHub.</small>
+      </form>
+    </dialog>
+
+    <dialog id="youtube-api-dialog">
+      <form id="youtube-api-form" method="dialog">
+        <button class="dialog-close" id="close-youtube-api" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon youtube-icon">YT</div>
+        <div class="eyebrow">PESQUISA DE REFERÊNCIAS</div>
+        <h2>Conectar ao YouTube</h2>
+        <p>A chave pesquisa somente links e informações. O teste utiliza uma pequena parte da cota da YouTube Data API.</p>
+        <label for="youtube-api-key">Chave da API</label>
+        <input id="youtube-api-key" name="api_key" type="password" autocomplete="off" spellcheck="false" placeholder="Cole sua chave da YouTube Data API" required />
+        <button id="save-youtube-api" type="submit"><span>Testar e salvar</span><span>→</span></button>
+        <div id="youtube-api-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">Resultados limitados a Creative Commons e incorporáveis. Nenhum vídeo será baixado automaticamente.</small>
       </form>
     </dialog>
 

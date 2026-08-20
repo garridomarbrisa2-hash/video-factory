@@ -8,6 +8,8 @@ from studio import script_generation
 from studio import script_review
 from studio import elevenlabs
 from studio import pexels
+from studio import pixabay
+from studio import youtube
 
 
 def test_validate_project_auto_style() -> None:
@@ -133,6 +135,15 @@ def test_pexels_rejects_short_key() -> None:
         pexels.validate_key_shape("curta")
 
 
+def test_pixabay_and_youtube_keys_stay_in_api_dir(tmp_path: Path) -> None:
+    pixabay_key = "12345678-pixabay-secret-key"
+    youtube_key = "youtube-secret-key-abcdefghijklmnopqrstuvwxyz"
+    assert pixabay.save_key(tmp_path, pixabay_key) == tmp_path / "docs" / "API" / "pixabay.md"
+    assert youtube.save_key(tmp_path, youtube_key) == tmp_path / "docs" / "API" / "youtube.md"
+    assert pixabay.configured_key(tmp_path) == pixabay_key
+    assert youtube.configured_key(tmp_path) == youtube_key
+
+
 def test_recent_episodes_lists_script_ready_for_narration(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -152,5 +163,6 @@ def test_recent_episodes_lists_script_ready_for_narration(
             "reviewed": False,
             "narration": False,
             "direction": False,
+            "media_candidates": False,
         }
     ]

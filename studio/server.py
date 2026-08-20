@@ -48,6 +48,21 @@ from studio.pexels import (
     save_key as save_pexels_key,
     test_connection as test_pexels_connection,
 )
+from studio.pixabay import (
+    PixabayConnectionError,
+    configured_key as configured_pixabay_key,
+    masked_key as masked_pixabay_key,
+    save_key as save_pixabay_key,
+    test_connection as test_pixabay_connection,
+)
+from studio.youtube import (
+    YouTubeConnectionError,
+    configured_key as configured_youtube_key,
+    masked_key as masked_youtube_key,
+    save_key as save_youtube_key,
+    test_connection as test_youtube_connection,
+)
+from studio.media_search import find_media_candidates
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -185,6 +200,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
         reviewed = project_dir / f"Ep{episode}_reviewed.md"
         narration = project_dir / f"Ep{episode}_narration.mp3"
         direction = project_dir / f"Ep{episode}_director.json"
+        media_candidates = project_dir / f"Ep{episode}_media_candidates.json"
         if not script.exists():
             continue
         topic = ""
@@ -200,6 +216,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
                 "reviewed": reviewed.exists(),
                 "narration": narration.exists(),
                 "direction": direction.exists(),
+                "media_candidates": media_candidates.exists(),
                 "modified": script.stat().st_mtime,
             }
         )
@@ -262,7 +279,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "pexels-setup", "version": "0.9.2"})
+            self._json({"ok": True, "stage": "multi-source-media-search", "version": "1.0"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -279,6 +296,8 @@ class StudioHandler(BaseHTTPRequestHandler):
             key = configured_key(ROOT)
             elevenlabs = configured_elevenlabs(ROOT)
             pexels = configured_pexels_key(ROOT)
+            pixabay = configured_pixabay_key(ROOT)
+            youtube = configured_youtube_key(ROOT)
             self._json(
                 {
                     "anthropic": {
@@ -294,6 +313,14 @@ class StudioHandler(BaseHTTPRequestHandler):
                     "pexels": {
                         "configured": bool(pexels),
                         "masked_key": masked_pexels_key(pexels) if pexels else None,
+                    },
+                    "pixabay": {
+                        "configured": bool(pixabay),
+                        "masked_key": masked_pixabay_key(pixabay) if pixabay else None,
+                    },
+                    "youtube": {
+                        "configured": bool(youtube),
+                        "masked_key": masked_youtube_key(youtube) if youtube else None,
                     },
                 }
             )
@@ -318,7 +345,14 @@ class StudioHandler(BaseHTTPRequestHandler):
         director_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/director", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs", "/api/settings/pexels"} and not script_match and not review_match and not narration_match and not director_match:
+        media_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/media-search", path
+        )
+        settings_paths = {
+            "/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs",
+            "/api/settings/pexels", "/api/settings/pixabay", "/api/settings/youtube",
+        }
+        if path not in settings_paths and not script_match and not review_match and not narration_match and not director_match and not media_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -328,7 +362,14 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            if director_match:
+            if media_match:
+                self._json(
+                    find_media_candidates(
+                        ROOT, media_match.group(1), int(media_match.group(2))
+                    ),
+                    HTTPStatus.CREATED,
+                )
+            elif director_match:
                 key = configured_key(ROOT)
                 if not key:
                     raise ValueError("Configure a API da Anthropic antes de usar o Diretor.")
@@ -412,9 +453,19 @@ class StudioHandler(BaseHTTPRequestHandler):
                 test_pexels_connection(key)
                 save_pexels_key(ROOT, key)
                 self._json({"ok": True, "configured": True, "masked_key": masked_pexels_key(key.strip()), "message": "Pexels conectado. A chave ficou salva somente neste Mac."})
+            elif path == "/api/settings/pixabay":
+                key = str(body.get("api_key") or "")
+                test_pixabay_connection(key)
+                save_pixabay_key(ROOT, key)
+                self._json({"ok": True, "configured": True, "masked_key": masked_pixabay_key(key.strip()), "message": "Pixabay conectado. A chave ficou salva somente neste Mac."})
+            elif path == "/api/settings/youtube":
+                key = str(body.get("api_key") or "")
+                test_youtube_connection(key)
+                save_youtube_key(ROOT, key)
+                self._json({"ok": True, "configured": True, "masked_key": masked_youtube_key(key.strip()), "message": "YouTube conectado para busca de links e informações. A chave ficou salva somente neste Mac."})
             else:
                 self._json(create_project(body), HTTPStatus.CREATED)
-        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError, PexelsConnectionError, NarrationError) as exc:
+        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError, PexelsConnectionError, PixabayConnectionError, YouTubeConnectionError, NarrationError) as exc:
             self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
         except Exception as exc:  # keep the local UI responsive, log details
             print(f"[studio] unexpected error: {exc!r}")

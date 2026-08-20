@@ -53,6 +53,57 @@ def test_connection(key: str, *, timeout: float = 20.0) -> dict[str, Any]:
     return {"ok": True}
 
 
+def search_videos(key: str, query: str, *, per_page: int = 3, timeout: float = 25.0) -> list[dict[str, Any]]:
+    """Return normalized landscape candidates without downloading their files."""
+    cleaned = validate_key_shape(key)
+    clean_query = " ".join(query.split()).strip()[:120]
+    if not clean_query:
+        raise ValueError("A cena não possui palavras-chave para buscar no Pexels.")
+    params = {"query": clean_query, "per_page": max(1, min(per_page, 10)), "orientation": "landscape"}
+    request = Request(
+        f"{SEARCH_URL}?{urlencode(params)}",
+        headers={
+            "Authorization": cleaned,
+            "Accept": "application/json",
+            "User-Agent": "VideoFactory/0.9 (local media workflow)",
+        },
+    )
+    try:
+        with urlopen(request, timeout=timeout) as response:  # noqa: S310 - fixed HTTPS URL
+            payload = json.load(response)
+    except HTTPError as exc:
+        messages = {
+            401: "O Pexels recusou a chave salva.",
+            403: "O Pexels recusou esta busca.",
+            429: "O limite temporário de buscas do Pexels foi atingido.",
+        }
+        raise PexelsConnectionError(messages.get(exc.code, f"O Pexels respondeu com erro {exc.code}.")) from exc
+    except (URLError, TimeoutError) as exc:
+        raise PexelsConnectionError("A busca no Pexels falhou por problema de conexão.") from exc
+
+    candidates = []
+    for video in payload.get("videos", []):
+        files = [item for item in video.get("video_files", []) if item.get("link")]
+        files.sort(key=lambda item: (abs(int(item.get("width") or 0) - 1920), -int(item.get("height") or 0)))
+        if not files:
+            continue
+        user = video.get("user") or {}
+        candidates.append(
+            {
+                "id": int(video.get("id") or 0),
+                "duration_sec": float(video.get("duration") or 0),
+                "width": int(video.get("width") or 0),
+                "height": int(video.get("height") or 0),
+                "preview_image": str(video.get("image") or ""),
+                "pexels_url": str(video.get("url") or ""),
+                "video_url": str(files[0]["link"]),
+                "creator": str(user.get("name") or "Pexels contributor"),
+                "creator_url": str(user.get("url") or ""),
+            }
+        )
+    return candidates
+
+
 def save_key(project_root: Path, key: str) -> Path:
     cleaned = validate_key_shape(key)
     api_dir = project_root / "docs" / "API"
