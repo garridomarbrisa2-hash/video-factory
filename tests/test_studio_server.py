@@ -117,3 +117,25 @@ def test_elevenlabs_settings_stay_in_gitignored_api_dir(tmp_path: Path) -> None:
 def test_elevenlabs_rejects_short_key() -> None:
     with pytest.raises(ValueError, match="não parece válida"):
         elevenlabs.validate_key_shape("curta")
+
+
+def test_recent_episodes_lists_script_ready_for_narration(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(server, "ROOT", tmp_path)
+    project = tmp_path / "projects" / "historia-do-bitcoin"
+    project.mkdir(parents=True)
+    (project / "Ep2.md").write_text(
+        "## Assunto\n\nA história da criação do Bitcoin\n", encoding="utf-8"
+    )
+    (project / "Ep2_script.md").write_text("Roteiro pronto.", encoding="utf-8")
+
+    assert server.recent_episodes() == [
+        {
+            "project": "historia-do-bitcoin",
+            "episode": 2,
+            "topic": "A história da criação do Bitcoin",
+            "reviewed": False,
+            "narration": False,
+        }
+    ]

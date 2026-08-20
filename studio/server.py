@@ -39,6 +39,7 @@ from studio.elevenlabs import (
     save_settings as save_elevenlabs_settings,
     test_connection as test_elevenlabs_connection,
 )
+from studio.narration import NarrationError, generate_narration
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -161,6 +162,43 @@ asset_mode: {project['asset_mode']}
     }
 
 
+def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
+    episodes: list[dict[str, Any]] = []
+    projects_dir = ROOT / "projects"
+    if not projects_dir.exists():
+        return episodes
+    for brief in projects_dir.glob("*/Ep*.md"):
+        match = re.fullmatch(r"Ep(\d+)\.md", brief.name)
+        if not match:
+            continue
+        episode = int(match.group(1))
+        project_dir = brief.parent
+        script = project_dir / f"Ep{episode}_script.md"
+        reviewed = project_dir / f"Ep{episode}_reviewed.md"
+        narration = project_dir / f"Ep{episode}_narration.mp3"
+        if not script.exists():
+            continue
+        topic = ""
+        text = brief.read_text(encoding="utf-8", errors="ignore")
+        topic_match = re.search(r"^## Assunto\s*\n+(.+?)(?=\n## |\Z)", text, re.M | re.S)
+        if topic_match:
+            topic = " ".join(topic_match.group(1).split())
+        episodes.append(
+            {
+                "project": project_dir.name,
+                "episode": episode,
+                "topic": topic or project_dir.name.replace("-", " ").title(),
+                "reviewed": reviewed.exists(),
+                "narration": narration.exists(),
+                "modified": script.stat().st_mtime,
+            }
+        )
+    episodes.sort(key=lambda item: item["modified"], reverse=True)
+    for item in episodes:
+        item.pop("modified", None)
+    return episodes[:limit]
+
+
 class StudioHandler(BaseHTTPRequestHandler):
     server_version = "VideoFactoryStudio/0.1"
 
@@ -189,8 +227,24 @@ class StudioHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(raw)
 
+    def _audio(self, project_slug: str, episode: int) -> None:
+        path = ROOT / "projects" / project_slug / f"Ep{episode}_narration.mp3"
+        if not path.is_file():
+            self.send_error(HTTPStatus.NOT_FOUND)
+            return
+        raw = path.read_bytes()
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "audio/mpeg")
+        self.send_header("Content-Length", str(len(raw)))
+        self.send_header("Cache-Control", "no-cache")
+        self.end_headers()
+        self.wfile.write(raw)
+
     def do_GET(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
+        audio_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/narration/audio", path
+        )
         if path == "/":
             self._static("index.html", "text/html; charset=utf-8")
         elif path == "/styles.css":
@@ -198,7 +252,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "elevenlabs-setup", "version": "0.6"})
+            self._json({"ok": True, "stage": "voice-measurement", "version": "0.7"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -228,6 +282,10 @@ class StudioHandler(BaseHTTPRequestHandler):
                     },
                 }
             )
+        elif path == "/api/projects/recent":
+            self._json({"episodes": recent_episodes()})
+        elif audio_match:
+            self._audio(audio_match.group(1), int(audio_match.group(2)))
         else:
             self.send_error(HTTPStatus.NOT_FOUND)
 
@@ -239,7 +297,10 @@ class StudioHandler(BaseHTTPRequestHandler):
         review_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/review", path
         )
-        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match:
+        narration_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/narration", path
+        )
+        if path not in {"/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs"} and not script_match and not review_match and not narration_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -249,7 +310,16 @@ class StudioHandler(BaseHTTPRequestHandler):
             body = json.loads(self.rfile.read(length).decode("utf-8"))
             if not isinstance(body, dict):
                 raise ValueError("Formato inválido.")
-            if script_match or review_match:
+            if narration_match:
+                if not configured_elevenlabs(ROOT):
+                    raise ValueError("Configure a ElevenLabs antes de gerar a narração.")
+                self._json(
+                    generate_narration(
+                        ROOT, narration_match.group(1), int(narration_match.group(2))
+                    ),
+                    HTTPStatus.CREATED,
+                )
+            elif script_match or review_match:
                 key = configured_key(ROOT)
                 if not key:
                     raise ValueError("Configure a API da Anthropic antes de usar a IA.")
@@ -311,7 +381,7 @@ class StudioHandler(BaseHTTPRequestHandler):
                 )
             else:
                 self._json(create_project(body), HTTPStatus.CREATED)
-        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError) as exc:
+        except (ValueError, json.JSONDecodeError, AnthropicConnectionError, ElevenLabsConnectionError, NarrationError) as exc:
             self._json({"ok": False, "error": str(exc)}, HTTPStatus.BAD_REQUEST)
         except Exception as exc:  # keep the local UI responsive, log details
             print(f"[studio] unexpected error: {exc!r}")

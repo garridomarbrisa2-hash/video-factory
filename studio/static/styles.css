@@ -98,10 +98,23 @@ dialog input:focus, dialog select:focus { border-color: var(--accent); box-shado
 .generation-status, .review-status { margin-top: 14px; color: #aeb5c0; font-size: 12px; }
 .generation-status.success, .review-status.success { color: #baf2d6; }
 .generation-status.error, .review-status.error { color: #ff9c89; }
+.recent { margin-top: 48px; }
+.recent h2 { margin: 8px 0 18px; font-size: 28px; }
+.recent-list { display: grid; gap: 12px; }
+.episode-card { padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; border: 1px solid #292d35; border-radius: 15px; background: #101218; }
+.episode-card strong { display: block; margin-bottom: 4px; }
+.episode-card small { color: #858c98; }
+.episode-card button { width: auto; min-width: 190px; height: 42px; margin: 0; box-shadow: none; }
+.episode-card audio { width: min(360px, 100%); height: 40px; }
+.episode-action-status { grid-column: 1 / -1; color: #aeb5c0; font-size: 12px; }
+.episode-action-status.success { color: #baf2d6; }
+.episode-action-status.error { color: #ff9c89; }
 
 @media (max-width: 820px) {
   main { padding-top: 46px; }
   .workspace { grid-template-columns: 1fr; }
   .field-grid { grid-template-columns: 1fr; }
   .topbar { padding-inline: 20px; }
+  .episode-card { grid-template-columns: 1fr; }
+  .episode-card button { width: 100%; }
 }

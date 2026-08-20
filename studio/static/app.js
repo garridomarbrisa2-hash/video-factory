@@ -15,6 +15,8 @@ const voiceApiMessage = document.querySelector('#voice-api-message');
 const saveVoiceApi = document.querySelector('#save-voice-api');
 const voiceChoice = document.querySelector('#voice-choice');
 const voiceSelect = document.querySelector('#voice-id');
+const recent = document.querySelector('#recent');
+const recentList = document.querySelector('#recent-list');
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -95,6 +97,7 @@ result.addEventListener('click', async (event) => {
       </button>
       <div class="review-status"></div>`;
     status.classList.add(payload.duration_ok ? 'success' : 'error');
+    await loadRecent();
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar gerar novamente';
@@ -195,6 +198,68 @@ apiForm.addEventListener('submit', async (event) => {
 });
 
 refreshSettings();
+
+async function loadRecent() {
+  try {
+    const response = await fetch('/api/projects/recent');
+    const payload = await response.json();
+    if (!payload.episodes?.length) {
+      recent.hidden = true;
+      return;
+    }
+    recentList.innerHTML = payload.episodes.map((episode) => {
+      const action = episode.narration
+        ? `<audio controls preload="none" src="/api/projects/${escapeHtml(episode.project)}/episodes/${escapeHtml(episode.episode)}/narration/audio"></audio>`
+        : `<button class="generate-narration" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Gerar narração</span><span>→</span></button>`;
+      return `<article class="episode-card">
+        <div><strong>${escapeHtml(episode.topic)}</strong><small>Episódio ${escapeHtml(episode.episode)}${episode.reviewed ? ' · revisado' : ''}</small></div>
+        ${action}
+        <div class="episode-action-status"></div>
+      </article>`;
+    }).join('');
+    recent.hidden = false;
+  } catch (_) {
+    recent.hidden = true;
+  }
+}
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.generate-narration');
+  if (!button) return;
+  const accepted = window.confirm('Gerar a narração completa agora? Esta ação usa os créditos de caracteres da ElevenLabs.');
+  if (!accepted) return;
+  const card = button.closest('.episode-card');
+  const status = card.querySelector('.episode-action-status');
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Gerando voz...';
+  status.textContent = 'A ElevenLabs está narrando o roteiro em partes. Isso pode levar alguns minutos; não feche esta página.';
+  try {
+    const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/narration`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: '{}',
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível gerar a narração.');
+    button.remove();
+    const gate = payload.status === 'approved'
+      ? 'Duração aprovada para seguir ao Diretor.'
+      : 'A duração ficou fora de 8–20 minutos; o roteiro precisa ser ajustado antes do Diretor.';
+    status.innerHTML = `<strong>Narração concluída ✓</strong>
+      ${escapeHtml(payload.total_minutes)} minutos · ${escapeHtml(payload.beat_count)} trechos.<br>
+      ${gate}<br>
+      Áudio salvo em <code>${escapeHtml(payload.audio_path)}</code>.<br>
+      <audio controls preload="metadata" src="/api/projects/${escapeHtml(button.dataset.project)}/episodes/${escapeHtml(button.dataset.episode)}/narration/audio"></audio>`;
+    status.classList.add(payload.status === 'approved' ? 'success' : 'error');
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
+  }
+});
+
+loadRecent();
 
 document.querySelector('#open-voice-api').addEventListener('click', () => voiceApiDialog.showModal());
 document.querySelector('#close-voice-api').addEventListener('click', () => voiceApiDialog.close());

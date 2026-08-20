@@ -7,7 +7,7 @@ from pipeline.vo_plan import build_vo_plan, script_paragraphs
 
 
 def test_script_paragraphs_excludes_markdown_metadata() -> None:
-    text = "# Title\n\nglobal_style: ledger\n\n## HOOK\n\nFirst line.\n\nSecond line.\n\nStyle: ledger\nTone: sober\n"
+    text = "<!-- model: sonnet; tokens: 12 -->\n\n# Title\n\nglobal_style: ledger\n\n## HOOK\n\nFirst line.\n\nSecond line.\n\nStyle: ledger\nTone: sober\n"
     assert script_paragraphs(text) == ["First line.", "Second line."]
 
 

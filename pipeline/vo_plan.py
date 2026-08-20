@@ -12,6 +12,7 @@ from pipeline.assets.vo import synthesize_script_plan
 
 def script_paragraphs(text: str) -> list[str]:
     """Return spoken Markdown paragraphs, excluding headings and production metadata."""
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
     paragraphs: list[str] = []
     for block in re.split(r"\n\s*\n", text):
         lines = [line.strip() for line in block.splitlines() if line.strip()]
@@ -19,6 +20,8 @@ def script_paragraphs(text: str) -> list[str]:
             line for line in lines
             if not line.startswith("#")
             and not line.startswith("global_style:")
+            and not line.startswith("language:")
+            and not line.startswith("target_duration_min:")
             and not line.startswith("Style:")
             and not line.startswith("Tone:")
         ]
