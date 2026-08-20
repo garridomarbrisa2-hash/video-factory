@@ -32,6 +32,13 @@ const youtubeApiForm = document.querySelector('#youtube-api-form');
 const youtubeApiStatus = document.querySelector('#youtube-api-status');
 const youtubeApiMessage = document.querySelector('#youtube-api-message');
 const saveYoutubeApi = document.querySelector('#save-youtube-api');
+const youtubeImportDialog = document.querySelector('#youtube-import-dialog');
+const youtubeImportForm = document.querySelector('#youtube-import-form');
+const youtubeImportMessage = document.querySelector('#youtube-import-message');
+const saveYoutubeImport = document.querySelector('#save-youtube-import');
+let youtubeImportProject = '';
+let youtubeImportEpisode = '';
+let youtubeImportCandidates = [];
 
 topic.addEventListener('input', () => {
   counter.textContent = `${topic.value.length}/500`;
@@ -240,7 +247,8 @@ async function loadRecent() {
     recentList.innerHTML = payload.episodes.map((episode) => {
       let action;
       if (episode.media_candidates) {
-        action = '<span class="stage-complete">Mídia localizada ✓</span>';
+        action = `<div class="episode-actions"><span class="stage-complete">Mídia localizada ✓</span>
+          <button class="open-youtube-import" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Importar trecho autorizado</span><span>→</span></button></div>`;
       } else if (episode.direction) {
         action = `<button class="search-media" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Buscar elementos visuais</span><span>→</span></button>`;
       } else if (episode.narration) {
@@ -372,6 +380,71 @@ recentList.addEventListener('click', async (event) => {
 });
 
 loadRecent();
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.open-youtube-import');
+  if (!button) return;
+  youtubeImportProject = button.dataset.project;
+  youtubeImportEpisode = button.dataset.episode;
+  youtubeImportMessage.textContent = '';
+  youtubeImportMessage.classList.remove('success');
+  youtubeImportDialog.showModal();
+  const select = document.querySelector('#youtube-import-candidate');
+  select.innerHTML = '<option value="">Carregando candidatos...</option>';
+  try {
+    const response = await fetch(`/api/projects/${youtubeImportProject}/episodes/${youtubeImportEpisode}/media-candidates`);
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível carregar os candidatos.');
+    youtubeImportCandidates = (payload.scenes || []).flatMap((scene) =>
+      (scene.candidates || [])
+        .filter((candidate) => candidate.youtube_url)
+        .map((candidate) => ({...candidate, scene_id: scene.scene_id}))
+    );
+    select.innerHTML = youtubeImportCandidates.length
+      ? youtubeImportCandidates.map((candidate, index) => `<option value="${index}">Cena ${escapeHtml(candidate.scene_id)} · ${escapeHtml(candidate.title || candidate.channel || 'Vídeo do YouTube')}</option>`).join('')
+      : '<option value="">Nenhum candidato do YouTube foi encontrado</option>';
+    saveYoutubeImport.disabled = !youtubeImportCandidates.length;
+  } catch (error) {
+    youtubeImportCandidates = [];
+    select.innerHTML = '<option value="">Não foi possível carregar</option>';
+    saveYoutubeImport.disabled = true;
+    youtubeImportMessage.textContent = error.message;
+  }
+});
+
+document.querySelector('#close-youtube-import').addEventListener('click', () => youtubeImportDialog.close());
+
+youtubeImportForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  youtubeImportMessage.textContent = '';
+  youtubeImportMessage.classList.remove('success');
+  saveYoutubeImport.disabled = true;
+  saveYoutubeImport.firstElementChild.textContent = 'Importando...';
+  try {
+    const candidate = youtubeImportCandidates[Number(document.querySelector('#youtube-import-candidate').value)];
+    if (!candidate) throw new Error('Escolha um candidato do YouTube.');
+    const response = await fetch(`/api/projects/${youtubeImportProject}/episodes/${youtubeImportEpisode}/youtube-import`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        scene_id: Number(candidate.scene_id),
+        youtube_url: candidate.youtube_url,
+        start_seconds: Number(document.querySelector('#youtube-import-start').value),
+        end_seconds: Number(document.querySelector('#youtube-import-end').value),
+        rights_confirmed: document.querySelector('#youtube-import-rights').checked,
+      }),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível importar o trecho.');
+    youtubeImportMessage.innerHTML = `Trecho importado ✓<br>Salvo em <code>${escapeHtml(payload.media_path)}</code>.`;
+    youtubeImportMessage.classList.add('success');
+  } catch (error) {
+    youtubeImportMessage.textContent = error.message;
+  } finally {
+    saveYoutubeImport.disabled = false;
+    saveYoutubeImport.firstElementChild.textContent = 'Importar e recortar';
+  }
+});
 
 document.querySelector('#open-voice-api').addEventListener('click', () => voiceApiDialog.showModal());
 document.querySelector('#close-voice-api').addEventListener('click', () => voiceApiDialog.close());

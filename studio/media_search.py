@@ -15,6 +15,20 @@ from studio.youtube import configured_key as configured_youtube, search_videos a
 SearchFunction = Callable[[str, str], list[dict[str, Any]]]
 
 
+def load_media_candidates(project_root: Path, project_slug: str, episode: int) -> dict[str, Any]:
+    if not re.fullmatch(r"[a-z0-9-]{1,64}", project_slug) or not 1 <= episode <= 999:
+        raise ValueError("Projeto ou episódio inválido.")
+    path = project_root / "projects" / project_slug / f"Ep{episode}_media_candidates.json"
+    if not path.is_file():
+        raise ValueError("A busca de mídia ainda não foi concluída.")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "project": project_slug,
+        "episode": episode,
+        "scenes": payload.get("scenes") or [],
+    }
+
+
 def _load_progress(path: Path) -> dict[str, list[dict[str, Any]]]:
     if not path.is_file():
         return {}

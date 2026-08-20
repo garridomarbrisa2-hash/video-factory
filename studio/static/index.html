@@ -199,6 +199,26 @@
       </form>
     </dialog>
 
+    <dialog id="youtube-import-dialog">
+      <form id="youtube-import-form" method="dialog">
+        <button class="dialog-close" id="close-youtube-import" type="button" aria-label="Fechar">×</button>
+        <div class="api-dialog-icon youtube-icon">YT</div>
+        <div class="eyebrow">TRECHO AUTORIZADO</div>
+        <h2>Importar trecho do YouTube</h2>
+        <p>Use somente um candidato encontrado para a cena e para o qual você tenha permissão de reutilização.</p>
+        <label for="youtube-import-candidate">Vídeo encontrado</label>
+        <select id="youtube-import-candidate" required></select>
+        <div class="field-grid">
+          <div><label for="youtube-import-start">Início (segundos)</label><input id="youtube-import-start" type="number" min="0" step="0.1" value="0" required /></div>
+          <div><label for="youtube-import-end">Fim (segundos)</label><input id="youtube-import-end" type="number" min="0.1" step="0.1" value="10" required /></div>
+        </div>
+        <label class="rights-confirmation"><input id="youtube-import-rights" type="checkbox" required /> Confirmo que tenho autorização para reutilizar este trecho.</label>
+        <button id="save-youtube-import" type="submit"><span>Importar e recortar</span><span>→</span></button>
+        <div id="youtube-import-message" class="api-message" aria-live="polite"></div>
+        <small class="secret-note">O trecho máximo é de 90 segundos. A origem e a autorização ficam registradas no projeto.</small>
+      </form>
+    </dialog>
+
     <script src="/app.js" defer></script>
   </body>
 </html>

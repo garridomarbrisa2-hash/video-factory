@@ -71,3 +71,14 @@ def test_media_search_leaves_unconfigured_provider_pending(
     result = media_search.find_media_candidates(tmp_path, "history", 1)
     assert result["pending_scene_count"] == 1
     assert result["queries_made"] == 0
+
+
+def test_load_media_candidates_reads_only_requested_episode(tmp_path: Path) -> None:
+    project = tmp_path / "projects" / "history"
+    project.mkdir(parents=True)
+    expected = {"scenes": [{"scene_id": 3, "candidates": [{"youtube_url": "https://youtu.be/abcdefghijk"}]}]}
+    (project / "Ep1_media_candidates.json").write_text(json.dumps(expected), encoding="utf-8")
+    result = media_search.load_media_candidates(tmp_path, "history", 1)
+    assert result["project"] == "history"
+    assert result["episode"] == 1
+    assert result["scenes"] == expected["scenes"]
