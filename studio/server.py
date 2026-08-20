@@ -283,7 +283,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "authorized-youtube-import", "version": "1.1"})
+            self._json({"ok": True, "stage": "contextual-media-search", "version": "1.2"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -396,7 +396,10 @@ class StudioHandler(BaseHTTPRequestHandler):
             elif media_match:
                 self._json(
                     find_media_candidates(
-                        ROOT, media_match.group(1), int(media_match.group(2))
+                        ROOT,
+                        media_match.group(1),
+                        int(media_match.group(2)),
+                        refresh=body.get("refresh") is True,
                     ),
                     HTTPStatus.CREATED,
                 )

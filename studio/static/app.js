@@ -248,6 +248,7 @@ async function loadRecent() {
       let action;
       if (episode.media_candidates) {
         action = `<div class="episode-actions"><span class="stage-complete">Mídia localizada ✓</span>
+          <button class="search-media secondary-action" type="button" data-refresh="true" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Refazer busca inteligente</span><span>↻</span></button>
           <button class="open-youtube-import" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Importar trecho autorizado</span><span>→</span></button></div>`;
       } else if (episode.direction) {
         action = `<button class="search-media" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Buscar elementos visuais</span><span>→</span></button>`;
@@ -342,7 +343,7 @@ recentList.addEventListener('click', async (event) => {
 recentList.addEventListener('click', async (event) => {
   const button = event.target.closest('.search-media');
   if (!button) return;
-  const accepted = window.confirm('Buscar candidatos visuais agora? O sistema usa Pexels, Pixabay e YouTube configurados, salva somente links e informações e não baixa vídeos.');
+  const accepted = window.confirm('Fazer uma busca contextual? O sistema combina o tema completo do vídeo com a narração de cada cena, usa Pexels, Pixabay e YouTube e não baixa vídeos.');
   if (!accepted) return;
   const card = button.closest('.episode-card');
   const status = card.querySelector('.episode-action-status');
@@ -353,18 +354,18 @@ recentList.addEventListener('click', async (event) => {
     const response = await fetch(`/api/projects/${button.dataset.project}/episodes/${button.dataset.episode}/media-search`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: '{}',
+      body: JSON.stringify({refresh: button.dataset.refresh === 'true'}),
     });
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || 'Não foi possível buscar os elementos visuais.');
-    button.remove();
+    if (!button.dataset.refresh) button.remove();
     const providers = Object.entries(payload.provider_counts || {})
       .map(([name, count]) => `${name}: ${count.candidates} candidato(s)`)
       .join(' · ');
     const pending = payload.pending_scene_count
       ? `<br>${escapeHtml(payload.pending_scene_count)} cena(s) ficaram pendentes para mídia manual, gerada ou provedor ainda não configurado.`
       : '';
-    status.innerHTML = `<strong>Busca visual concluída ✓</strong>
+    status.innerHTML = `<strong>Busca contextual concluída ✓</strong>
       ${escapeHtml(payload.scene_count)} cenas · ${escapeHtml(payload.candidate_count)} candidatos.<br>
       ${escapeHtml(providers)}${pending}<br>
       Salvo em <code>${escapeHtml(payload.path)}</code>.<br>

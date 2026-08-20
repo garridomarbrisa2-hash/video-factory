@@ -24,12 +24,21 @@ def validate_key_shape(key: str) -> str:
     return cleaned
 
 
-def _request(key: str, query: str, max_results: int, timeout: float) -> dict[str, Any]:
+def _request(
+    key: str,
+    query: str,
+    max_results: int,
+    timeout: float,
+    *,
+    creative_common_only: bool = False,
+) -> dict[str, Any]:
     params = {
         "key": validate_key_shape(key), "part": "snippet", "q": query[:120],
         "type": "video", "maxResults": max(1, min(max_results, 10)),
-        "videoLicense": "creativeCommon", "videoEmbeddable": "true", "safeSearch": "strict",
+        "videoEmbeddable": "true", "safeSearch": "strict", "order": "relevance",
     }
+    if creative_common_only:
+        params["videoLicense"] = "creativeCommon"
     request = Request(f"{SEARCH_URL}?{urlencode(params)}", headers={"Accept": "application/json", "User-Agent": "VideoFactory/1.0"})
     try:
         with urlopen(request, timeout=timeout) as response:  # noqa: S310 - fixed HTTPS URL
@@ -62,10 +71,11 @@ def search_videos(key: str, query: str, *, max_results: int = 3, timeout: float 
             "id": video_id,
             "title": str(snippet.get("title") or ""),
             "channel": str(snippet.get("channelTitle") or ""),
+            "description": str(snippet.get("description") or ""),
             "published_at": str(snippet.get("publishedAt") or ""),
             "preview_image": str(preview),
             "youtube_url": f"https://www.youtube.com/watch?v={video_id}",
-            "license_filter": "creativeCommon",
+            "license_filter": "unverified",
             "download_allowed": False,
         })
     return results
