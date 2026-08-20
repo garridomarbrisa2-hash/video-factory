@@ -10,7 +10,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-SEARCH_URL = "https://api.pexels.com/videos/search"
+SEARCH_URL = "https://api.pexels.com/v1/videos/search"
 
 
 class PexelsConnectionError(RuntimeError):

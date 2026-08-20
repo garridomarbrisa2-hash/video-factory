@@ -262,7 +262,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "pexels-setup", "version": "0.9"})
+            self._json({"ok": True, "stage": "pexels-setup", "version": "0.9.1"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
