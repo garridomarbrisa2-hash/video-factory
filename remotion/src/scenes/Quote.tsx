@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {SceneShell, type KenBurnsDir} from '../components/SceneShell';
 import {BodyText, Rule, OpacityCut} from '../components/AeType';
-import {MaskLineReveal} from '../components/effects/typography';
+import {AutoEffect} from '../components/effects/AutoEffect';
 import {fontsFor} from '../components/effects/fonts';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, dur, motionVocab} from '../components/tokens';
@@ -107,7 +107,12 @@ export const QuoteScene: React.FC<QuoteSceneProps> = ({
           >
             “
           </div>
-          <MaskLineReveal
+          <AutoEffect
+            category="text"
+            sceneType="quote"
+            energy={energy}
+            global_style={global_style}
+            scene_seed={scene_seed}
             text={quote_text}
             color={textCol}
             fontSize={40}
@@ -116,14 +121,25 @@ export const QuoteScene: React.FC<QuoteSceneProps> = ({
             align="left"
             startFrame={tQuote}
             frames={dur(DURATION.slow, vocab.tempo)}
-            global_style={global_style}
           />
           {attribution ? (
             <OpacityCut startFrame={tAttr} frames={3}>
               <div style={{display: 'flex', alignItems: 'center', gap: 14}}>
                 <Rule color={accent} width={36} height={2} />
                 <div style={{display: 'flex', flexDirection: 'column', gap: 3}}>
-                  <span style={{fontFamily: fonts.body, fontSize: 21, fontWeight: 600, color: 'rgba(255,255,255,0.92)'}}>{attribution}</span>
+                  <AutoEffect
+                    category="highlight"
+                    sceneType="quote"
+                    energy={energy}
+                    global_style={global_style}
+                    scene_seed={scene_seed}
+                    text={attribution}
+                    color="rgba(255,255,255,0.92)"
+                    accent={accent}
+                    fontSize={21}
+                    align="left"
+                    startFrame={tAttr}
+                  />
                   {source ? (
                     <span style={{fontFamily: fonts.label, fontSize: 15, fontWeight: 400, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em'}}>{source}</span>
                   ) : null}

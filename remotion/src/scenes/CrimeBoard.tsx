@@ -4,6 +4,7 @@ import {SceneShell} from '../components/SceneShell';
 import {CrimeBoard, type BoardItem} from '../components/effects/signature/CrimeBoard';
 import {signatureCaps} from '../components/tokens';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
+import {AutoWrapEffect} from '../components/effects/AutoEffect';
 
 interface CrimeBoardSceneProps {
   /** Evidence items: images (public/) or text labels (names/places/dates). */
@@ -39,7 +40,11 @@ export const CrimeBoardScene: React.FC<CrimeBoardSceneProps> = ({
   return (
     <SceneShell bg_image={bg_image ?? 'texture_dark.png'} accent_color={accent} global_style={global_style} scene_seed={scene_seed} transparent={transparent} ken_burns="none" darken={0.55} grade_override={grade_override}>
       <AbsoluteFill>
-        {items.length > 0 ? <CrimeBoard items={items} accent={accent} global_style={global_style} seed={scene_seed} /> : null}
+        {items.length > 0 ? (
+          <AutoWrapEffect category="transition" sceneType="crime-board" global_style={global_style} scene_seed={scene_seed} startFrame={0}>
+            <CrimeBoard items={items} accent={accent} global_style={global_style} seed={scene_seed} />
+          </AutoWrapEffect>
+        ) : null}
       </AbsoluteFill>
     </SceneShell>
   );

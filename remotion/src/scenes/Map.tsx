@@ -2,11 +2,11 @@ import React from 'react';
 import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {evolvePath, getLength, getPointAtLength} from '@remotion/paths';
 import {SceneShell} from '../components/SceneShell';
-import {Label, BodyText} from '../components/AeType';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {AE_SETTLE, DURATION, dur, motionVocab} from '../components/tokens';
 import {choreoBeats, type SceneBeats} from '../components/beats';
 import {cutIn} from '../components/choreo';
+import {AutoEffect} from '../components/effects/AutoEffect';
 
 const clamp = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 
@@ -164,7 +164,18 @@ export const MapScene: React.FC<MapSceneProps> = ({
         {/* Caption */}
         {caption ? (
           <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'flex-start', padding: '0 8% 8%'}}>
-            <BodyText text={caption} accent={accent} fontSize={24} align="left" startFrame={tDive} global_style={global_style} />
+            <AutoEffect
+              category="highlight"
+              sceneType="map"
+              global_style={global_style}
+              scene_seed={scene_seed}
+              text={caption}
+              color={textCol}
+              accent={accent}
+              fontSize={24}
+              align="left"
+              startFrame={tDive}
+            />
           </AbsoluteFill>
         ) : null}
       </AbsoluteFill>

@@ -14,6 +14,8 @@ import {GrainOverlay} from '../components/effects/Grain';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, dur, motionVocab} from '../components/tokens';
 import {choreoBeats, type SceneBeats} from '../components/beats';
+import {pickEffect} from '../components/effects/effectRegistry';
+import {BeforeAfterWipe} from '../components/effects/imported/transitions';
 
 interface ComparisonSceneProps {
   left_text: string;
@@ -70,6 +72,47 @@ export const ComparisonScene: React.FC<ComparisonSceneProps> = ({
     fps,
   );
   const vsOp = interpolate(frame, [t.vs, t.vs + 3], [0, 1], {...clamp, easing: linear});
+
+  // Automatic transition selection (HyperFrames integration): rotates between
+  // the classic static split and a wipe reveal, deterministic per scene.
+  const transitionChoice = pickEffect('transition', {
+    sceneType: 'comparison',
+    style: normalizeStyleId(global_style),
+    sceneIndex: scene_seed,
+  });
+
+  if (transitionChoice.id === 'before-after-wipe') {
+    return (
+      <AbsoluteFill style={{backgroundColor: '#000', overflow: 'hidden'}}>
+        <BeforeAfterWipe
+          before={<Img src={staticFile(left_image)} style={{width: '100%', height: '100%', objectFit: 'cover', filter: look.filter}} />}
+          after={<Img src={staticFile(right_image)} style={{width: '100%', height: '100%', objectFit: 'cover', filter: look.filter}} />}
+          beforeLabel={left_text}
+          afterLabel={right_text}
+          accent={accent}
+          startFrame={t.left}
+          restSplit={50}
+        />
+        <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', pointerEvents: 'none'}}>
+          <div
+            style={{
+              ...typeStyle,
+              fontSize: 18,
+              fontWeight: 700,
+              color: '#fff',
+              opacity: vsOp,
+              backgroundColor: 'rgba(0,0,0,0.85)',
+              border: `1px solid ${accent}`,
+              padding: '6px 12px',
+            }}
+          >
+            {vs_label}
+          </div>
+        </AbsoluteFill>
+        <GrainOverlay opacity={grain * 2} seed={scene_seed} />
+      </AbsoluteFill>
+    );
+  }
 
   const half: React.CSSProperties = {
     flex: 1,

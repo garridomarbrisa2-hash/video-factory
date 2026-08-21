@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {SceneShell, type KenBurnsDir} from '../components/SceneShell';
 import {LowerThirdPlate, OpacityCut, Label} from '../components/AeType';
-import {MaskLineReveal} from '../components/effects/typography';
+import {AutoEffect} from '../components/effects/AutoEffect';
 import {fontsFor} from '../components/effects/fonts';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, dur, motionVocab} from '../components/tokens';
@@ -86,7 +86,18 @@ export const PersonCardScene: React.FC<PersonCardSceneProps> = ({
     <SceneShell bg_image={bg_image} bg_video={bg_video} focus="right" ken_burns="left" photo_move={photo_move} energy={energy} drift={drift} grade_override={grade_override} accent_color={accent} global_style={global_style} scene_seed={scene_seed} midground={midground} foreground={foreground} overlay={overlay} transparent={transparent}>
       <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'flex-start', padding: '0 6% 10%'}}>
         <LowerThirdPlate startFrame={t.plate} accent_color={accent} maxWidth="52%" global_style={global_style}>
-          <MaskLineReveal text={name} color={textCol} fontSize={38} align="left" startFrame={t.name} global_style={global_style} />
+          <AutoEffect
+            category="title"
+            sceneType="person"
+            energy={energy}
+            global_style={global_style}
+            scene_seed={scene_seed}
+            text={name}
+            color={textCol}
+            fontSize={38}
+            align="left"
+            startFrame={t.name}
+          />
           {title ? (
             <OpacityCut startFrame={t.title} frames={3}>
               <div style={{fontFamily: fonts.label, fontSize: 18, fontWeight: 600, color: accent, marginTop: 8, letterSpacing: '0.08em', textTransform: 'uppercase'}}>
@@ -96,8 +107,20 @@ export const PersonCardScene: React.FC<PersonCardSceneProps> = ({
           ) : null}
           {quote ? (
             <OpacityCut startFrame={t.quote} frames={3}>
-              <div style={{fontFamily: fonts.accent, fontSize: 20, fontWeight: 400, color: 'rgba(255,255,255,0.85)', marginTop: 12, fontStyle: 'italic', lineHeight: 1.35}}>
-                {`“${quote}”`}
+              <div style={{marginTop: 12, fontStyle: 'italic'}}>
+                <AutoEffect
+                  category="highlight"
+                  sceneType="person"
+                  energy={energy}
+                  global_style={global_style}
+                  scene_seed={scene_seed}
+                  text={`“${quote}”`}
+                  color="rgba(255,255,255,0.85)"
+                  accent={accent}
+                  fontSize={20}
+                  align="left"
+                  startFrame={t.quote}
+                />
               </div>
             </OpacityCut>
           ) : null}

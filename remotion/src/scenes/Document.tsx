@@ -2,13 +2,13 @@ import React from 'react';
 import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {SceneShell} from '../components/SceneShell';
 import {Label} from '../components/AeType';
-import {fontsFor} from '../components/effects/fonts';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {AE_EASE, AE_SETTLE, DURATION, dur, motionVocab} from '../components/tokens';
 import {choreoBeats, type SceneBeats} from '../components/beats';
 import {cutIn} from '../components/choreo';
 import {HalftoneDoc} from '../components/effects/signature/HalftoneDoc';
 import {signatureCaps} from '../components/tokens';
+import {AutoEffect} from '../components/effects/AutoEffect';
 
 const clamp = {extrapolateLeft: 'clamp' as const, extrapolateRight: 'clamp' as const};
 
@@ -77,7 +77,6 @@ export const DocumentScene: React.FC<DocumentSceneProps> = ({
   const {fps} = useVideoConfig();
   const style = getGlobalStyle(normalizeStyleId(global_style));
   const vocab = motionVocab(global_style);
-  const fonts = fontsFor(global_style);
   const accent = accent_color ?? style.visual.palette.accent;
   const textCol = text_color ?? style.visual.palette.text;
   const caps = signatureCaps(global_style);
@@ -163,9 +162,18 @@ export const DocumentScene: React.FC<DocumentSceneProps> = ({
                 textAlign: 'center',
               }}
             >
-              <span style={{fontFamily: fonts.body, fontSize: 24, fontWeight: 500, color: textCol, lineHeight: 1.4, textShadow: '0 2px 8px rgba(0,0,0,0.8)'}}>
-                {caption}
-              </span>
+              <AutoEffect
+                category="highlight"
+                sceneType="document"
+                global_style={global_style}
+                scene_seed={scene_seed}
+                text={caption}
+                color={textCol}
+                accent={accent}
+                fontSize={24}
+                align="center"
+                startFrame={tCaption}
+              />
             </div>
           ) : null}
         </div>

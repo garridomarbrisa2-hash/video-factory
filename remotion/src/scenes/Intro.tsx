@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {SceneShell, type KenBurnsDir} from '../components/SceneShell';
 import {Label, BodyText, Rule, OpacityCut} from '../components/AeType';
-import {MaskLineReveal} from '../components/effects/typography';
+import {AutoEffect} from '../components/effects/AutoEffect';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, PHRASE_STAGGER, dur, motionVocab} from '../components/tokens';
 import {choreoBeats, type SceneBeats} from '../components/beats';
@@ -136,7 +136,12 @@ export const IntroScene: React.FC<IntroSceneProps> = ({
               <Label text={label} accent={accent} startFrame={tLabel} global_style={global_style} />
             </div>
           ) : null}
-          <MaskLineReveal
+          <AutoEffect
+            category="title"
+            sceneType="intro"
+            energy={energy}
+            global_style={global_style}
+            scene_seed={scene_seed}
             text={hook_text}
             color={textCol}
             accent={accent}
@@ -145,7 +150,6 @@ export const IntroScene: React.FC<IntroSceneProps> = ({
             align={place.textAlign}
             startFrame={tTitle}
             maxCharsPerLine={intent === 'hero' ? 20 : 24}
-            global_style={global_style}
           />
           {sub_hook ? (
             <BodyText text={sub_hook} accent={accent} fontSize={26} align={place.textAlign} startFrame={tSub} global_style={global_style} />

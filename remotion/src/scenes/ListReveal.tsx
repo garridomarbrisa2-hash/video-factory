@@ -1,8 +1,9 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {SceneShell, type KenBurnsDir} from '../components/SceneShell';
-import {OpacityCut, Label} from '../components/AeType';
+import {OpacityCut} from '../components/AeType';
 import {AE_EASE, DURATION, dur, motionVocab} from '../components/tokens';
+import {AutoEffect} from '../components/effects/AutoEffect';
 import {choreoBeats, type SceneBeats} from '../components/beats';
 import {fontsFor} from '../components/effects/fonts';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
@@ -86,7 +87,19 @@ export const ListRevealScene: React.FC<ListRevealSceneProps> = ({
         >
           <OpacityCut startFrame={t.title} frames={3}>
             <div style={{marginBottom: 16}}>
-              <Label text={title} accent={accent} startFrame={t.title} global_style={global_style} />
+              <AutoEffect
+                category="highlight"
+                sceneType="list"
+                energy={energy}
+                global_style={global_style}
+                scene_seed={scene_seed}
+                text={title}
+                color={accent}
+                accent={accent}
+                fontSize={20}
+                align="left"
+                startFrame={t.title}
+              />
             </div>
           </OpacityCut>
           <div style={{display: 'flex', flexDirection: 'column', gap: 12}}>
@@ -98,19 +111,22 @@ export const ListRevealScene: React.FC<ListRevealSceneProps> = ({
                   <span style={{fontFamily: fonts.label, fontSize: 20, fontWeight: 600, color: accent, minWidth: 32, opacity: p}}>
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <div
-                    style={{
-                      fontFamily: fonts.body,
-                      fontSize: 30,
-                      fontWeight: 600,
-                      color: textCol,
-                      lineHeight: 1.3,
-                      transform: `translateY(${(1 - p) * 100}%)`,
-                      opacity: Math.min(1, p * 2),
-                    }}
-                  >
-                    {item}
-                  </div>
+                  {/* Each item rotates through the text registry — its own
+                      anti-repeat key (scene_seed*100 + i) keeps neighboring
+                      items from landing on the same effect. */}
+                  <AutoEffect
+                    category="text"
+                    sceneType="list"
+                    energy={energy}
+                    global_style={global_style}
+                    scene_seed={scene_seed * 100 + i}
+                    text={item}
+                    color={textCol}
+                    fontSize={30}
+                    fontWeight={600}
+                    align="left"
+                    startFrame={ti}
+                  />
                 </div>
               );
             })}

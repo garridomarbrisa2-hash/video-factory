@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {SceneShell} from '../components/SceneShell';
 import {LowerThirdPlate, BodyText, Label} from '../components/AeType';
-import {MaskLineReveal, WordPop} from '../components/effects/typography';
+import {AutoEffect, AutoWrapEffect} from '../components/effects/AutoEffect';
 import type {FocusPoint, KenBurnsDir} from '../components/SceneShell';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, dur, motionVocab} from '../components/tokens';
@@ -157,7 +157,12 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
                 <Label text={label} accent={accent} startFrame={tText} global_style={global_style} />
               </div>
             ) : null}
-            <MaskLineReveal
+            <AutoEffect
+              category="text"
+              sceneType="content"
+              energy={energy}
+              global_style={global_style}
+              scene_seed={scene_seed}
               text={text}
               color={textCol}
               accent={accent}
@@ -165,7 +170,6 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
               fontSize={34}
               align={place.textAlign}
               startFrame={tText}
-              global_style={global_style}
             />
             {subtext ? (
               <div style={{marginTop: 10}}>
@@ -183,7 +187,13 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
       <SceneShell {...shellProps}>
         <AbsoluteFill style={place.container as React.CSSProperties}>
           <div style={{maxWidth: place.maxWidth}}>
-            <WordPop
+          <AutoWrapEffect category="transition" sceneType="content" energy={energy} global_style={global_style} scene_seed={scene_seed} startFrame={tText}>
+            <AutoEffect
+              category="text"
+              sceneType="content"
+              energy={energy}
+              global_style={global_style}
+              scene_seed={scene_seed}
               text={text}
               color={textCol}
               accent={accent}
@@ -192,13 +202,13 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
               align={place.textAlign}
               startFrame={tText}
               word_times={word_times}
-              global_style={global_style}
             />
             {subtext ? (
               <div style={{marginTop: 20}}>
                 <BodyText text={subtext} accent={accent} fontSize={24} align={place.textAlign} startFrame={tSub} global_style={global_style} />
               </div>
             ) : null}
+          </AutoWrapEffect>
           </div>
         </AbsoluteFill>
       </SceneShell>
@@ -215,7 +225,12 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
               <Label text={label} accent={accent} startFrame={tText} global_style={global_style} />
             </div>
           ) : null}
-          <MaskLineReveal
+          <AutoEffect
+            category="text"
+            sceneType="content"
+            energy={energy}
+            global_style={global_style}
+            scene_seed={scene_seed}
             text={text}
             color={textCol}
             accent={accent}
@@ -223,7 +238,6 @@ export const ContentScene: React.FC<ContentSceneProps> = ({
             fontSize={40}
             align={place.textAlign}
             startFrame={tText}
-            global_style={global_style}
           />
           {subtext ? (
             <div style={{marginTop: 12}}>

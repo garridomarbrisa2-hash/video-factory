@@ -143,15 +143,26 @@ def find_media_candidates(
             encoding="utf-8",
         )
 
-    def stock_candidates(provider: str, query: str) -> list[dict[str, Any]]:
+    def ensure_stock_cached(provider: str, query: str) -> None:
+        """Populate the search cache for (provider, query) if needed. Counts
+        toward queries_made; never counts toward candidates_by_provider — that
+        happens once, in stock_candidates(), so pre-warming the cache in a
+        fixed order (see the note loop) never double-counts a scene's result."""
         key, search = providers[provider]
         if not key:
-            return []
+            return
         cache_key = f"{provider}\n{query.casefold()}"
         if cache_key not in query_cache:
             query_cache[cache_key] = search(key, query)
             queries_by_provider[provider] += 1
             save_progress()
+
+    def stock_candidates(provider: str, query: str) -> list[dict[str, Any]]:
+        key, _search = providers[provider]
+        if not key:
+            return []
+        ensure_stock_cached(provider, query)
+        cache_key = f"{provider}\n{query.casefold()}"
         candidates = [
             dict(candidate, provider=provider, matched_query=query, priority="stock")
             for candidate in query_cache[cache_key]
@@ -201,6 +212,13 @@ def find_media_candidates(
         )
         # Stock footage is always the first choice. Search both connected banks so
         # the user has real alternatives instead of seeing YouTube for every scene.
+        # Populate the cache in a fixed pexels-then-pixabay order — predictable,
+        # testable search-call ordering — independent of which provider the
+        # director routed the scene to. The candidate LIST below still leads
+        # with the director's preferred provider; only the underlying search
+        # calls (cache population) are order-stable.
+        ensure_stock_cached("pexels", query)
+        ensure_stock_cached("pixabay", query)
         preferred_stock = "pixabay" if route == "pixabay" else "pexels"
         other_stock = "pexels" if preferred_stock == "pixabay" else "pixabay"
         candidates = stock_candidates(preferred_stock, query)

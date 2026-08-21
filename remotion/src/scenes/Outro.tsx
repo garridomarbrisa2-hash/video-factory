@@ -1,8 +1,8 @@
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import {SceneShell, type KenBurnsDir} from '../components/SceneShell';
-import {BodyText, Rule, OpacityCut} from '../components/AeType';
-import {MaskLineReveal, TrackingTitle} from '../components/effects/typography';
+import {Rule, OpacityCut} from '../components/AeType';
+import {AutoEffect} from '../components/effects/AutoEffect';
 import {getGlobalStyle, normalizeStyleId} from '../components/styleSystem';
 import {DURATION, dur, motionVocab} from '../components/tokens';
 import {choreoBeats, type SceneBeats} from '../components/beats';
@@ -91,7 +91,12 @@ export const OutroScene: React.FC<OutroSceneProps> = ({
     <SceneShell bg_image={bg_image} bg_video={bg_video} focus="center" ken_burns="in" photo_move={photo_move} energy={energy} drift={drift} grade_override={grade_override} accent_color={accent} global_style={global_style} scene_seed={scene_seed} midground={midground} foreground={foreground} overlay={overlay} transparent={transparent}>
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'flex-start', padding: '0 10%'}}>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 20, maxWidth: 900}}>
-          <MaskLineReveal
+          <AutoEffect
+            category="title"
+            sceneType="outro"
+            energy={energy}
+            global_style={global_style}
+            scene_seed={scene_seed}
             text={cta_text}
             color={textCol}
             accent={accent}
@@ -99,13 +104,23 @@ export const OutroScene: React.FC<OutroSceneProps> = ({
             fontSize={62}
             align="left"
             startFrame={tTitle}
-            global_style={global_style}
           />
           <OpacityCut startFrame={tRule} frames={3}>
             <Rule color={accent} width={56} height={3} />
           </OpacityCut>
           {subtext ? (
-            <TrackingTitle text={subtext} color="rgba(255,255,255,0.75)" fontSize={22} align="left" startFrame={tSub} fromEm={0.22} toEm={0.08} global_style={global_style} />
+            <AutoEffect
+              category="text"
+              sceneType="outro"
+              energy={energy}
+              global_style={global_style}
+              scene_seed={scene_seed}
+              text={subtext}
+              color="rgba(255,255,255,0.75)"
+              fontSize={22}
+              align="left"
+              startFrame={tSub}
+            />
           ) : null}
         </div>
       </AbsoluteFill>

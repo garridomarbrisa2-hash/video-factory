@@ -10,6 +10,7 @@ import {AE_SETTLE, DURATION, dur, motionVocab, signatureCaps} from '../component
 import {choreoBeats, type SceneBeats} from '../components/beats';
 import {ChartDrawOn} from '../components/effects/signature/ChartDrawOn';
 import {numberOnsetFrame} from '../components/effects/sync';
+import {AutoEffect, AutoWrapEffect} from '../components/effects/AutoEffect';
 import {countUp, cutIn} from '../components/choreo';
 import {interpolate} from 'remotion';
 import type {MediaSlot} from '../components/effects/mediaSlots';
@@ -144,6 +145,7 @@ export const StatScene: React.FC<StatSceneProps> = ({
   return (
     <SceneShell bg_image={bg_image} bg_video={bg_video} focus="center" ken_burns="in" photo_move={photo_move} energy={energy} drift={drift} grade_override={grade_override} accent_color={accent} global_style={global_style} scene_seed={scene_seed} midground={midground} foreground={foreground} overlay={overlay} transparent={transparent}>
       <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', padding: '0 10%', transform: `scale(${punch})`}}>
+        <AutoWrapEffect category="camera" sceneType="stat" energy={energy} global_style={global_style} scene_seed={scene_seed} startFrame={tUnit}>
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14}}>
           {showChart ? (
             <div style={{marginBottom: 4, opacity: cutIn(frame, tUnit, dur(DURATION.fast, vocab.tempo))}}>
@@ -151,21 +153,40 @@ export const StatScene: React.FC<StatSceneProps> = ({
             </div>
           ) : null}
           {unit ? <Label text={unit} accent={accent} startFrame={tUnit} global_style={global_style} /> : null}
-          <div
-            style={{
-              fontFamily: fonts.display,
-              opacity: numOp,
-              fontSize: 148,
-              fontWeight: 900,
-              color: textCol,
-              textAlign: 'center',
-              lineHeight: 1,
-              fontVariantNumeric: 'tabular-nums',
-              textShadow: '0 4px 18px rgba(0,0,0,0.5)',
-            }}
-          >
-            {display}
-          </div>
+          {isCounting ? (
+            <AutoEffect
+              category="number"
+              sceneType="stat"
+              energy={energy}
+              global_style={global_style}
+              scene_seed={scene_seed}
+              value={numeric_value}
+              decimals={decimals}
+              prefix={prefix}
+              suffix={suffix}
+              color={textCol}
+              accent={accent}
+              fontSize={148}
+              startFrame={tNum}
+              frames={countFrames}
+            />
+          ) : (
+            <div
+              style={{
+                fontFamily: fonts.display,
+                opacity: numOp,
+                fontSize: 148,
+                fontWeight: 900,
+                color: textCol,
+                textAlign: 'center',
+                lineHeight: 1,
+                fontVariantNumeric: 'tabular-nums',
+                textShadow: '0 4px 18px rgba(0,0,0,0.5)',
+              }}
+            >
+              {display}
+            </div>
+          )}
           {vocab.accentMode === 'highlight' || vocab.accentMode === 'underline' ? (
             <DrawOnUnderline width={120} color={accent} startFrame={tAccent} frames={dur(DURATION.fast, vocab.tempo)} strokeWidth={4} />
           ) : (
@@ -177,6 +198,7 @@ export const StatScene: React.FC<StatSceneProps> = ({
             <BodyText text={context_text} accent={accent} fontSize={27} align="center" startFrame={tCtx} global_style={global_style} />
           ) : null}
         </div>
+        </AutoWrapEffect>
       </AbsoluteFill>
     </SceneShell>
   );
