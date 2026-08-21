@@ -63,6 +63,7 @@ from studio.youtube import (
     test_connection as test_youtube_connection,
 )
 from studio.media_search import find_media_candidates, load_media_candidates
+from studio.visual_selection import select_visual_assets
 from studio.ytdlp_import import YouTubeImportError, import_authorized_clip, installed_version
 
 
@@ -202,6 +203,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
         narration = project_dir / f"Ep{episode}_narration.mp3"
         direction = project_dir / f"Ep{episode}_director.json"
         media_candidates = project_dir / f"Ep{episode}_media_candidates.json"
+        visual_selection = project_dir / f"Ep{episode}_visual_selection.json"
         if not script.exists():
             continue
         topic = ""
@@ -218,6 +220,7 @@ def recent_episodes(limit: int = 8) -> list[dict[str, Any]]:
                 "narration": narration.exists(),
                 "direction": direction.exists(),
                 "media_candidates": media_candidates.exists(),
+                "visual_selection": visual_selection.exists(),
                 "modified": script.stat().st_mtime,
             }
         )
@@ -283,7 +286,7 @@ class StudioHandler(BaseHTTPRequestHandler):
         elif path == "/app.js":
             self._static("app.js", "text/javascript; charset=utf-8")
         elif path == "/api/health":
-            self._json({"ok": True, "stage": "thematic-youtube-clips", "version": "1.5"})
+            self._json({"ok": True, "stage": "automatic-authorized-visuals", "version": "1.6"})
         elif path == "/api/styles":
             styles = []
             for style_id in STYLE_IDS:
@@ -362,6 +365,9 @@ class StudioHandler(BaseHTTPRequestHandler):
         media_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/media-search", path
         )
+        visual_match = re.fullmatch(
+            r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/visual-selection", path
+        )
         youtube_import_match = re.fullmatch(
             r"/api/projects/([a-z0-9-]{1,64})/episodes/(\d+)/youtube-import", path
         )
@@ -369,7 +375,7 @@ class StudioHandler(BaseHTTPRequestHandler):
             "/api/projects", "/api/settings/anthropic", "/api/settings/elevenlabs",
             "/api/settings/pexels", "/api/settings/pixabay", "/api/settings/youtube",
         }
-        if path not in settings_paths and not script_match and not review_match and not narration_match and not director_match and not media_match and not youtube_import_match:
+        if path not in settings_paths and not script_match and not review_match and not narration_match and not director_match and not media_match and not visual_match and not youtube_import_match:
             self.send_error(HTTPStatus.NOT_FOUND)
             return
         try:
@@ -390,6 +396,16 @@ class StudioHandler(BaseHTTPRequestHandler):
                         start_seconds=float(body.get("start_seconds") or 0),
                         end_seconds=float(body.get("end_seconds") or 0),
                         rights_confirmed=body.get("rights_confirmed") is True,
+                    ),
+                    HTTPStatus.CREATED,
+                )
+            elif visual_match:
+                self._json(
+                    select_visual_assets(
+                        ROOT,
+                        visual_match.group(1),
+                        int(visual_match.group(2)),
+                        refresh=body.get("refresh") is True,
                     ),
                     HTTPStatus.CREATED,
                 )

@@ -1,4 +1,5 @@
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -68,3 +69,31 @@ def test_rejects_clip_longer_than_five_seconds(tmp_path: Path) -> None:
             youtube_url="https://www.youtube.com/watch?v=abcdefghijk",
             start_seconds=0, end_seconds=6, rights_confirmed=True,
         )
+
+
+def test_explains_youtube_403_without_exposing_signed_urls(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _candidates(tmp_path)
+    monkeypatch.setattr(ytdlp_import.shutil, "which", lambda _: "/opt/homebrew/bin/yt-dlp")
+
+    def forbidden(command, **_kwargs):
+        raise subprocess.CalledProcessError(
+            1, command, stderr="HTTP Error 403 Forbidden https://secret.example/signed"
+        )
+
+    monkeypatch.setattr(ytdlp_import.subprocess, "run", forbidden)
+
+    with pytest.raises(ytdlp_import.YouTubeImportError, match="Pexels e Pixabay") as error:
+        ytdlp_import.import_authorized_clip(
+            tmp_path,
+            "bitcoin",
+            2,
+            scene_id=4,
+            youtube_url="https://www.youtube.com/watch?v=abcdefghijk",
+            start_seconds=0,
+            end_seconds=5,
+            rights_confirmed=True,
+        )
+
+    assert "secret.example" not in str(error.value)

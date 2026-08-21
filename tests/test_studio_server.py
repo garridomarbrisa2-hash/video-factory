@@ -164,5 +164,6 @@ def test_recent_episodes_lists_script_ready_for_narration(
             "narration": False,
             "direction": False,
             "media_candidates": False,
+            "visual_selection": False,
         }
     ]

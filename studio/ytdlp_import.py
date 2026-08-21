@@ -109,7 +109,13 @@ def import_authorized_clip(
         raise YouTubeImportError("O download demorou demais e foi interrompido.") from exc
     except subprocess.CalledProcessError as exc:
         detail = (exc.stderr or exc.stdout or "").lower()
-        if "sign in" in detail or "cookies" in detail:
+        if "403" in detail or "forbidden" in detail or "access denied" in detail:
+            print("[studio] Importação opcional do YouTube bloqueada pelo serviço: HTTP 403")
+            message = (
+                "O YouTube bloqueou o acesso a este vídeo (403). "
+                "Continue com as cenas do Pexels e Pixabay ou utilize um arquivo autorizado."
+            )
+        elif "sign in" in detail or "cookies" in detail:
             message = "O YouTube exige login para esse vídeo. Escolha outro candidato."
         elif "unavailable" in detail or "private" in detail:
             message = "Esse vídeo não está disponível para importação."

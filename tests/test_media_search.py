@@ -184,3 +184,56 @@ def test_media_search_refresh_replaces_previous_results(tmp_path: Path, monkeypa
     assert result["candidate_count"] == 1
     saved = json.loads((project / "Ep1_media_candidates.json").read_text(encoding="utf-8"))
     assert "old" not in saved
+
+
+def test_failed_refresh_preserves_previous_media_results(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "projects" / "history"
+    project.mkdir(parents=True)
+    (project / "Ep1_director.json").write_text(
+        json.dumps({"notes": [{"id": 1, "source_route": "pexels", "search_query": "archive"}]}),
+        encoding="utf-8",
+    )
+    previous = project / "Ep1_media_candidates.json"
+    previous.write_text('{"previous": true}', encoding="utf-8")
+    monkeypatch.setattr(media_search, "configured_pexels", lambda _: "pexels-key")
+    monkeypatch.setattr(media_search, "configured_pixabay", lambda _: None)
+    monkeypatch.setattr(media_search, "configured_youtube", lambda _: None)
+
+    def unavailable(*_args, **_kwargs):
+        raise RuntimeError("Busca temporariamente indisponível")
+
+    monkeypatch.setattr(media_search, "search_pexels", unavailable)
+
+    with pytest.raises(RuntimeError, match="indisponível"):
+        media_search.find_media_candidates(tmp_path, "history", 1, refresh=True)
+
+    assert json.loads(previous.read_text(encoding="utf-8")) == {"previous": True}
+
+
+def test_youtube_failure_does_not_discard_stock_candidates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "projects" / "history"
+    project.mkdir(parents=True)
+    (project / "Ep1_director.json").write_text(
+        json.dumps({"notes": [{"id": 1, "source_route": "pexels", "search_query": "archive"}]}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(media_search, "configured_pexels", lambda _: "pexels-key")
+    monkeypatch.setattr(media_search, "configured_pixabay", lambda _: None)
+    monkeypatch.setattr(media_search, "configured_youtube", lambda _: "youtube-key")
+    monkeypatch.setattr(media_search, "search_pexels", lambda *_args, **_kwargs: [{"id": "stock"}])
+
+    def blocked(*_args, **_kwargs):
+        raise media_search.YouTubeConnectionError("YouTube indisponível")
+
+    monkeypatch.setattr(media_search, "search_youtube", blocked)
+
+    result = media_search.find_media_candidates(tmp_path, "history", 1)
+    saved = json.loads((project / "Ep1_media_candidates.json").read_text(encoding="utf-8"))
+
+    assert result["provider_counts"]["pexels"]["candidates"] == 1
+    assert saved["scenes"][0]["candidates"][0]["provider"] == "pexels"
+    assert saved["youtube_warning"]

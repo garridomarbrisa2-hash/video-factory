@@ -252,11 +252,15 @@ async function loadRecent() {
     }
     recentList.innerHTML = payload.episodes.map((episode) => {
       let action;
-      if (episode.media_candidates) {
+      if (episode.visual_selection) {
+        action = `<div class="episode-actions"><span class="stage-complete">Cenas escolhidas automaticamente ✓</span>
+          <button class="open-media-review" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Ver opções Pexels e Pixabay</span><span>→</span></button>
+          <button class="select-visuals secondary-action" type="button" data-refresh="true" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Refazer seleção automática</span><span>↻</span></button></div>`;
+      } else if (episode.media_candidates) {
         action = `<div class="episode-actions"><span class="stage-complete">Mídia localizada ✓</span>
-          <button class="open-media-review" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Revisar Pexels e Pixabay</span><span>→</span></button>
-          <button class="search-media secondary-action" type="button" data-refresh="true" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Refazer busca inteligente</span><span>↻</span></button>
-          <button class="open-youtube-import youtube-exception" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>YouTube (opcional)</span><span>→</span></button></div>`;
+          <button class="select-visuals" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Selecionar cenas automaticamente</span><span>→</span></button>
+          <button class="open-media-review secondary-action" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Ver opções Pexels e Pixabay</span><span>→</span></button>
+          <button class="search-media secondary-action" type="button" data-refresh="true" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Refazer busca inteligente</span><span>↻</span></button></div>`;
       } else if (episode.direction) {
         action = `<button class="search-media" type="button" data-project="${escapeHtml(episode.project)}" data-episode="${escapeHtml(episode.episode)}"><span>Buscar elementos visuais</span><span>→</span></button>`;
       } else if (episode.narration) {
@@ -379,6 +383,49 @@ recentList.addEventListener('click', async (event) => {
       Nenhum vídeo foi baixado.`;
     status.classList.add('success');
     await loadRecent();
+  } catch (error) {
+    button.disabled = false;
+    button.firstElementChild.textContent = 'Tentar novamente';
+    status.textContent = error.message;
+    status.classList.add('error');
+  }
+});
+
+recentList.addEventListener('click', async (event) => {
+  const button = event.target.closest('.select-visuals');
+  if (!button) return;
+  const card = button.closest('.episode-card');
+  const status = card.querySelector('.episode-action-status');
+  const project = button.dataset.project;
+  const episode = button.dataset.episode;
+  button.disabled = true;
+  button.firstElementChild.textContent = 'Selecionando cenas...';
+  status.textContent = 'Escolhendo automaticamente os melhores vídeos do Pexels e Pixabay. O YouTube não bloqueará esta etapa.';
+  try {
+    const response = await fetch(`/api/projects/${project}/episodes/${episode}/visual-selection`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({refresh: button.dataset.refresh === 'true'}),
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload.error || 'Não foi possível selecionar as cenas automaticamente.');
+    await loadRecent();
+    const selectedButton = [...recentList.querySelectorAll('.select-visuals')]
+      .find((item) => item.dataset.project === project && item.dataset.episode === episode);
+    const updatedStatus = selectedButton?.closest('.episode-card')?.querySelector('.episode-action-status');
+    if (updatedStatus) {
+      const missing = payload.missing_count
+        ? `<br>${escapeHtml(payload.missing_count)} cena(s) ainda precisam de mídia autorizada.`
+        : '';
+      const local = payload.authorized_local_clip_count
+        ? `<br>${escapeHtml(payload.authorized_local_clip_count)} trecho(s) local(is) autorizados, recortados automaticamente.`
+        : '';
+      updatedStatus.innerHTML = `<strong>Cenas selecionadas automaticamente ✓</strong><br>
+        ${escapeHtml(payload.selected_count)} de ${escapeHtml(payload.scene_count)} cenas.<br>
+        Pexels: ${escapeHtml(payload.provider_counts.pexels)} · Pixabay: ${escapeHtml(payload.provider_counts.pixabay)}.${missing}${local}<br>
+        Plano salvo em <code>${escapeHtml(payload.path)}</code>.`;
+      updatedStatus.classList.add('success');
+    }
   } catch (error) {
     button.disabled = false;
     button.firstElementChild.textContent = 'Tentar novamente';

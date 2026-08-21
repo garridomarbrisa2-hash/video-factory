@@ -9,7 +9,11 @@ from typing import Any, Callable
 
 from studio.pexels import configured_key as configured_pexels, search_videos as search_pexels
 from studio.pixabay import configured_key as configured_pixabay, search_videos as search_pixabay
-from studio.youtube import configured_key as configured_youtube, search_videos as search_youtube
+from studio.youtube import (
+    YouTubeConnectionError,
+    configured_key as configured_youtube,
+    search_videos as search_youtube,
+)
 
 
 SearchFunction = Callable[[str, str], list[dict[str, Any]]]
@@ -103,7 +107,6 @@ def find_media_candidates(
     if output_path.exists() and not refresh:
         raise ValueError("Este episódio já possui uma busca de mídia salva.")
     if refresh:
-        output_path.unlink(missing_ok=True)
         progress_path.unlink(missing_ok=True)
 
     providers: dict[str, tuple[str | None, SearchFunction]] = {
@@ -132,6 +135,7 @@ def find_media_candidates(
     youtube_theme_candidates: list[dict[str, Any]] = []
     youtube_key, _ = providers["youtube"]
     youtube_queries: list[str] = []
+    youtube_warning: str | None = None
 
     def save_progress() -> None:
         progress_path.write_text(
@@ -227,7 +231,11 @@ def find_media_candidates(
     # to ten distinct source videos across the scenes they actually fit; stock
     # candidates remain first and importing still requires explicit permission.
     if youtube_key and results:
-        load_youtube_theme_candidates()
+        try:
+            load_youtube_theme_candidates()
+        except YouTubeConnectionError as exc:
+            youtube_warning = str(exc)
+            print(f"[studio] Busca opcional do YouTube indisponível: {youtube_warning}")
         selected_videos = _rank_youtube(
             youtube_theme_candidates, topic, limit=MAX_YOUTUBE_VIDEOS
         )
@@ -281,10 +289,17 @@ def find_media_candidates(
         "downloaded_media": False,
         "search_strategy": "stock-first-with-thematic-youtube-supplements",
         "youtube_video_limit": MAX_YOUTUBE_VIDEOS,
+        "youtube_warning": youtube_warning,
         "topic": topic,
         "scenes": results,
     }
-    output_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary_path = output_path.with_suffix(".json.tmp")
+    temporary_path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    temporary_path.replace(output_path)
+    if refresh:
+        (project_dir / f"Ep{episode}_visual_selection.json").unlink(missing_ok=True)
     progress_path.unlink(missing_ok=True)
     searched = sum(queries_by_provider.values())
     found = sum(candidates_by_provider.values())
@@ -295,6 +310,7 @@ def find_media_candidates(
         "candidate_count": found,
         "provider_counts": {name: {"scenes": scenes_by_provider[name], "candidates": candidates_by_provider[name]} for name in providers},
         "pending_scene_count": sum(1 for item in results if item["status"].startswith("awaiting_")),
+        "youtube_warning": youtube_warning,
         "path": str(output_path.relative_to(project_root)),
         "message": "Candidatos localizados. Nenhum vídeo foi baixado.",
     }
