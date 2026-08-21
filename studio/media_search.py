@@ -22,6 +22,8 @@ STOP_WORDS = {
     "or", "that", "this", "to", "with",
 }
 
+MAX_YOUTUBE_VIDEOS = 10
+
 
 def _tokens(text: str) -> set[str]:
     return {
@@ -177,7 +179,7 @@ def find_media_candidates(
                             candidate,
                             provider="youtube",
                             thematic_query=theme_query,
-                            priority="fallback",
+                            priority="supplemental",
                         )
                     )
     for note in notes:
@@ -203,17 +205,6 @@ def find_media_candidates(
             if any(item.get("provider") == provider for item in candidates):
                 scenes_by_provider[provider] += 1
 
-        # YouTube is the exception: use it only when the Director explicitly asked
-        # for an identifiable excerpt or when neither stock bank found anything.
-        youtube_needed = route == "youtube" or not candidates
-        thematic_youtube: list[dict[str, Any]] = []
-        if youtube_needed and youtube_key:
-            load_youtube_theme_candidates()
-            thematic_youtube = _rank_youtube(youtube_theme_candidates, scene_context)
-            candidates.extend(thematic_youtube)
-            if thematic_youtube:
-                scenes_by_provider["youtube"] += 1
-                candidates_by_provider["youtube"] += len(thematic_youtube)
         if candidates:
             status = "found"
         elif not any(key for key, _ in providers.values()):
@@ -226,11 +217,51 @@ def find_media_candidates(
             "query": query,
             "topic": topic,
             "context": scene_context,
-            "youtube_theme_queries": youtube_queries if youtube_needed else [],
-            "youtube_used_as_fallback": bool(thematic_youtube),
+            "youtube_theme_queries": [],
+            "youtube_used_as_fallback": False,
             "status": status,
             "candidates": candidates,
         })
+
+    # Search the episode's subject once, not each scene separately. Distribute up
+    # to ten distinct source videos across the scenes they actually fit; stock
+    # candidates remain first and importing still requires explicit permission.
+    if youtube_key and results:
+        load_youtube_theme_candidates()
+        selected_videos = _rank_youtube(
+            youtube_theme_candidates, topic, limit=MAX_YOUTUBE_VIDEOS
+        )
+        youtube_scene_counts: dict[int, int] = {}
+        for candidate in selected_videos:
+            candidate_text = " ".join(
+                str(candidate.get(field) or "")
+                for field in ("title", "description", "channel")
+            )
+            candidate_tokens = _tokens(candidate_text)
+
+            def scene_score(item: dict[str, Any]) -> tuple[int, int, int]:
+                overlap = len(candidate_tokens & _tokens(str(item.get("context") or "")))
+                requested = int(item.get("route") == "youtube")
+                already_assigned = youtube_scene_counts.get(int(item["scene_id"]), 0)
+                return requested, overlap - already_assigned * 3, -already_assigned
+
+            chosen_scene = max(results, key=scene_score)
+            scene_id = int(chosen_scene["scene_id"])
+            matched = dict(
+                candidate,
+                relevance_score=scene_score(chosen_scene)[1],
+                suggested_clip_seconds=5,
+            )
+            chosen_scene["candidates"].append(matched)
+            chosen_scene["youtube_theme_queries"] = youtube_queries
+            chosen_scene["youtube_used_as_fallback"] = not any(
+                item.get("provider") in {"pexels", "pixabay"}
+                for item in chosen_scene["candidates"]
+            )
+            chosen_scene["status"] = "found"
+            youtube_scene_counts[scene_id] = youtube_scene_counts.get(scene_id, 0) + 1
+            candidates_by_provider["youtube"] += 1
+        scenes_by_provider["youtube"] = len(youtube_scene_counts)
 
     payload = {
         "providers": {
@@ -248,7 +279,8 @@ def find_media_candidates(
             for name, (key, _) in providers.items()
         },
         "downloaded_media": False,
-        "search_strategy": "stock-first-with-youtube-fallback",
+        "search_strategy": "stock-first-with-thematic-youtube-supplements",
+        "youtube_video_limit": MAX_YOUTUBE_VIDEOS,
         "topic": topic,
         "scenes": results,
     }

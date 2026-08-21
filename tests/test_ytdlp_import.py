@@ -42,10 +42,10 @@ def test_import_uses_argument_list_and_records_provenance(
     result = ytdlp_import.import_authorized_clip(
         tmp_path, "bitcoin", 2, scene_id=4,
         youtube_url="https://www.youtube.com/watch?v=abcdefghijk",
-        start_seconds=2.5, end_seconds=12.5, rights_confirmed=True,
+        start_seconds=2.5, end_seconds=7.5, rights_confirmed=True,
     )
     metadata = json.loads((tmp_path / result["metadata_path"]).read_text(encoding="utf-8"))
-    assert result["duration_seconds"] == 10
+    assert result["duration_seconds"] == 5
     assert metadata["rights_confirmed"] is True
     assert metadata["scene_id"] == 4
 
@@ -57,5 +57,14 @@ def test_rejects_url_not_found_for_scene(tmp_path: Path, monkeypatch: pytest.Mon
         ytdlp_import.import_authorized_clip(
             tmp_path, "bitcoin", 2, scene_id=4,
             youtube_url="https://www.youtube.com/watch?v=zyxwvutsrqp",
-            start_seconds=0, end_seconds=10, rights_confirmed=True,
+            start_seconds=0, end_seconds=5, rights_confirmed=True,
+        )
+
+
+def test_rejects_clip_longer_than_five_seconds(tmp_path: Path) -> None:
+    with pytest.raises(ValueError, match="até 5 segundos"):
+        ytdlp_import.import_authorized_clip(
+            tmp_path, "bitcoin", 2, scene_id=4,
+            youtube_url="https://www.youtube.com/watch?v=abcdefghijk",
+            start_seconds=0, end_seconds=6, rights_confirmed=True,
         )

@@ -73,8 +73,8 @@ def import_authorized_clip(
     video_id = _youtube_id(youtube_url)
     if not video_id:
         raise ValueError("Use um link válido de vídeo do YouTube.")
-    if start_seconds < 0 or end_seconds <= start_seconds or end_seconds - start_seconds > 90:
-        raise ValueError("Escolha um trecho de até 90 segundos, com início e fim válidos.")
+    if start_seconds < 0 or end_seconds <= start_seconds or end_seconds - start_seconds > 5:
+        raise ValueError("Escolha um trecho de até 5 segundos, com início e fim válidos.")
     binary = shutil.which("yt-dlp")
     if not binary:
         raise YouTubeImportError("O yt-dlp ainda não está instalado neste Mac.")

@@ -350,7 +350,7 @@ recentList.addEventListener('click', async (event) => {
 recentList.addEventListener('click', async (event) => {
   const button = event.target.closest('.search-media');
   if (!button) return;
-  const accepted = window.confirm('Fazer uma busca contextual? O sistema procura primeiro no Pexels e Pixabay. O YouTube será usado apenas como alternativa para cenas específicas ou sem resultado nos bancos. Nenhum vídeo será baixado.');
+  const accepted = window.confirm('Fazer uma busca contextual? Pexels e Pixabay continuam como base. O YouTube também pode localizar até 10 vídeos relacionados ao tema central, para trechos opcionais de até 5 segundos. Nenhum vídeo será baixado.');
   if (!accepted) return;
   const card = button.closest('.episode-card');
   const status = card.querySelector('.episode-action-status');
@@ -480,11 +480,12 @@ recentList.addEventListener('click', async (event) => {
     const response = await fetch(`/api/projects/${youtubeImportProject}/episodes/${youtubeImportEpisode}/media-candidates`);
     const payload = await response.json();
     if (!response.ok) throw new Error(payload.error || 'Não foi possível carregar os candidatos.');
-    youtubeImportCandidates = (payload.scenes || []).flatMap((scene) =>
+    const discoveredCandidates = (payload.scenes || []).flatMap((scene) =>
       (scene.candidates || [])
         .filter((candidate) => candidate.youtube_url)
         .map((candidate) => ({...candidate, scene_id: scene.scene_id}))
     );
+    youtubeImportCandidates = [...new Map(discoveredCandidates.map((candidate) => [candidate.youtube_url, candidate])).values()].slice(0, 10);
     select.innerHTML = youtubeImportCandidates.length
       ? youtubeImportCandidates.map((candidate, index) => `<option value="${index}">Cena ${escapeHtml(candidate.scene_id)} · ${escapeHtml(candidate.title || candidate.channel || 'Vídeo do YouTube')}</option>`).join('')
       : '<option value="">Nenhum candidato do YouTube foi encontrado</option>';
@@ -508,14 +509,19 @@ youtubeImportForm.addEventListener('submit', async (event) => {
   try {
     const candidate = youtubeImportCandidates[Number(document.querySelector('#youtube-import-candidate').value)];
     if (!candidate) throw new Error('Escolha um candidato do YouTube.');
+    const startSeconds = Number(document.querySelector('#youtube-import-start').value);
+    const endSeconds = Number(document.querySelector('#youtube-import-end').value);
+    if (endSeconds <= startSeconds || endSeconds - startSeconds > 5) {
+      throw new Error('Escolha um trecho de no máximo 5 segundos.');
+    }
     const response = await fetch(`/api/projects/${youtubeImportProject}/episodes/${youtubeImportEpisode}/youtube-import`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         scene_id: Number(candidate.scene_id),
         youtube_url: candidate.youtube_url,
-        start_seconds: Number(document.querySelector('#youtube-import-start').value),
-        end_seconds: Number(document.querySelector('#youtube-import-end').value),
+        start_seconds: startSeconds,
+        end_seconds: endSeconds,
         rights_confirmed: document.querySelector('#youtube-import-rights').checked,
       }),
     });

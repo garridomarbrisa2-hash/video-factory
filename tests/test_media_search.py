@@ -56,17 +56,57 @@ def test_media_search_uses_each_configured_provider_without_downloading(
         ("pixabay", "computer code"),
         ("pexels", "Satoshi interview"),
         ("pixabay", "Satoshi interview"),
-        ("youtube", "Bitcoin"),
-        ("youtube", "Bitcoin documentary"),
         ("pexels", "Bitcoin whitepaper"),
         ("pixabay", "Bitcoin whitepaper"),
+        ("youtube", "Bitcoin"),
+        ("youtube", "Bitcoin documentary"),
     ]
-    assert saved["search_strategy"] == "stock-first-with-youtube-fallback"
+    assert saved["search_strategy"] == "stock-first-with-thematic-youtube-supplements"
     assert not any(candidate.get("youtube_url") for candidate in saved["scenes"][0]["candidates"])
     assert any(candidate.get("youtube_url") for candidate in saved["scenes"][3]["candidates"])
     assert saved["downloaded_media"] is False
     assert saved["scenes"][4]["status"] == "found"
     assert not (project / "Ep2_media_search_progress.json").exists()
+
+
+def test_youtube_search_adds_thematic_clips_even_when_stock_exists(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = tmp_path / "projects" / "bitcoin-satoshi"
+    project.mkdir(parents=True)
+    (project / "Ep1_director.json").write_text(
+        json.dumps({"notes": [
+            {"id": scene_id, "source_route": "pexels", "search_query": f"bitcoin archive {scene_id}"}
+            for scene_id in range(1, 13)
+        ]}), encoding="utf-8"
+    )
+    (project / "Ep1_timeline.json").write_text(
+        json.dumps({"title": "Satoshi Nakamoto e a criação do Bitcoin"}), encoding="utf-8"
+    )
+    monkeypatch.setattr(media_search, "configured_pexels", lambda _: "pexels-key")
+    monkeypatch.setattr(media_search, "configured_pixabay", lambda _: None)
+    monkeypatch.setattr(media_search, "configured_youtube", lambda _: "youtube-key")
+    monkeypatch.setattr(media_search, "search_pexels", lambda *_args, **_kwargs: [{"id": "stock"}])
+    monkeypatch.setattr(
+        media_search,
+        "search_youtube",
+        lambda *_args, **_kwargs: [
+            {"id": str(index), "youtube_url": f"https://youtu.be/video{index:06d}",
+             "title": f"Satoshi Nakamoto Bitcoin documentary {index}"}
+            for index in range(12)
+        ],
+    )
+
+    result = media_search.find_media_candidates(tmp_path, "bitcoin-satoshi", 1)
+    saved = json.loads((project / "Ep1_media_candidates.json").read_text(encoding="utf-8"))
+    youtube = [candidate for scene in saved["scenes"] for candidate in scene["candidates"]
+               if candidate.get("provider") == "youtube"]
+
+    assert len(youtube) == 10
+    assert len({candidate["id"] for candidate in youtube}) == 10
+    assert all(candidate["suggested_clip_seconds"] == 5 for candidate in youtube)
+    assert result["provider_counts"]["pexels"]["scenes"] == 12
+    assert result["provider_counts"]["youtube"]["scenes"] == 10
 
 
 def test_media_search_leaves_unconfigured_provider_pending(
